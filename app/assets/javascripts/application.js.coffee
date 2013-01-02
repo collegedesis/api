@@ -11,7 +11,6 @@
 #= require_self
 #= require collegedesis
 
-window.CollegeDesis = Ember.Application.create
-  rootElement: '#app'
+window.CollegeDesis = Ember.Application.create()
 
 #= require _tree
