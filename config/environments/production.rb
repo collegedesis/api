@@ -4,8 +4,8 @@ Collegedesis::Application.configure do
   # ENV variables set at Heroku config variables
   # AWS Settings
   AWS::S3::Base.establish_connection!(
-    :access_key_id     => ENV[S3_ACCESS_KEY],
-    :secret_access_key => ENV[S3_SECRET]
+    :access_key_id     => ENV['S3_ACCESS_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
   )
 
   # Mailgun settings
@@ -13,9 +13,9 @@ Collegedesis::Application.configure do
     :authentication           => :plain,
     :address                  => "smtp.mailgun.org",
     :port                     => 587,
-    :domain                   => ENV[MAILGUN_DOMAIN],
-    :user_name                => ENV[MAILGUN_USER],
-    :password                 => ENV[MAILGUN_PASSWORD]
+    :domain                   => ENV['MAILGUN_DOMAIN'],
+    :user_name                => ENV['MAILGUN_USER'],
+    :password                 => ENV['MAILGUN_PASSWORD']
   }
 
   # Code is not reloaded between requests
