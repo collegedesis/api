@@ -1,0 +1,8 @@
+Hey <%= @org.name %>,
+
+<%= @markdown.render(@msg.body).html_safe %>
+
+<hr />
+<p style="font-size:10px; color:#444">
+  This message was sent to you by <%= @msg.from_email %> via the CollegeDesis <a href="http://collegedesis.com/directory">Directory</a>. If you consider this spam, please forward this email to brownkids@collegedesis.com.
+</p>

@@ -1,0 +1,1 @@
+CollegeDesis.BulletinsController = Ember.ArrayController.extend()

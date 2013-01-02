@@ -1,0 +1,50 @@
+// Place all the styles related to the stories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.button, a.button:hover, a.button:visited {
+	font-size:12px;
+	color:#666;
+	text-decoration:none;
+}
+
+ul.stories, ol.stories {
+	margin:0;
+}
+ul.stories li, ol.stories li{
+	list-style-type:none;
+	letter-spacing:0.5px;
+}
+
+div.user {
+	margin-top:-10px;
+}
+div.user span{
+	font-size:10px;
+	color:#666;
+}
+
+.stories ul li a {
+	//background-color:#$brown0;
+	height:20px;
+	width:100%;
+	display:block;
+}
+
+.stories ul li a:hover {
+	text-decoration:none;
+	color:#006699;
+}
+
+.stories form {
+  display:inline;
+}
+
+input.button {
+  display:inline;
+  -webkit-appearance: none;
+  position:relative;
+    bottom:1px;
+  padding: 0 4px;
+  border:none;
+}

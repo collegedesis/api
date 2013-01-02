@@ -1,0 +1,17 @@
+%h3
+  Stories
+  =link_to 'Add one', new_story_path, :class=>"button"
+%ol.stories
+  - @stories.each do |story|
+    %li.left-align<
+      - if current_user
+        = form_for Vote.new do |f|
+          = f.hidden_field :story_id, value: story.id
+          = f.hidden_field :user_id, value: current_user.id
+          = f.submit "↑", {class: 'button'}
+        =link_to(story.title, story.url, :target=>"blank")
+      %div.user
+        %span.user
+          =story.user.username
+        %span.user
+          is responsible for this submission

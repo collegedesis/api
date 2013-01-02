@@ -1,0 +1,6 @@
+#search_field
+  {{view CollegeDesis.SearchSelectField valueBinding="controller.searchParam" placeholder="add"}}
+  = hb 'if searched' do
+    %ul#search_results
+      = hb 'each result in searchResults' do
+        %li{_action: 'selectResult result'} {{result.name}}

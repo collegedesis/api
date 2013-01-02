@@ -1,0 +1,70 @@
+// = require_self
+
+@import 'imports.css.scss';
+@import 'app.css.scss';
+@import 'bulletins.css.scss';
+
+html, body { 
+  height:100%;
+}
+
+* {
+  margin: 0; 
+  padding: 0;
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;   
+  box-sizing: border-box;
+  border: 0;
+  zoom: 1;
+  vertical-align: baseline;
+}
+
+p { 
+  margin-bottom:10px;
+  max-width:500px;
+}
+li { list-style-type:none; }
+
+a.btn {
+  @include awesome-btn;
+}
+
+/* Layout */
+body{
+  width: 60%;
+  min-width:1015px;
+  margin:0 auto;
+  #app { 
+    padding:20px; 
+    overflow:auto;
+  }
+}
+
+/* Backgrounds and Default Styles */
+body {
+  background-color:darken($background, 7%);
+  background-image: -webkit-radial-gradient(center center, circle cover, $background, darken($background, 7%));
+  background-image: -moz-radial-gradient(center center, circle cover, $background, darken($background, 7%));
+  -webkit-box-shadow: 0 0 5px 1px lighten($background, 5%);
+  -moz-box-shadow: 0 0 5px 1px lighten($background, 5%);
+  box-shadow: 0 0 5px 1px lighten($background, 5%);
+  border: solid 1px lighten($background, 5%);
+}
+html {
+  background-color:$brown3;
+  background-image: -webkit-radial-gradient(top left, circle cover, $brown3, darken($brown3, 7%));
+  background-image: -moz-radial-gradient(top left, circle cover, $brown3, darken($brown3, 7%));
+}
+
+/* Typography */
+
+body {
+  font-size:$font-size;
+  font-family: $font;
+  color: $brown4;
+  a, a:hover, a:visited {
+    text-decoration:none;
+    color: $link-color;
+    cursor:pointer;
+  }
+}

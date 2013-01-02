@@ -1,0 +1,22 @@
+.letter-reactions
+  .votes
+    = form_for Vote.new do |v|
+      / # = v.hidden_field :votable_id, value: letter.id, id: "votable_id_#{letter.id}"
+      = v.hidden_field :votable_type, value: letter.class, id: "votable_type_#{letter.id}"
+      %div.approve{id: "approve_#{letter.id}",title:'Approve', data: {imgcredit: 'thenounproject.com'}}
+    .votes_count{id: "approve_count_#{letter.id}"}
+      = letter.votes.count
+  .comments
+    - if !current_user
+      %p Commenting coming soon.
+      %p
+        = link_to "Tweet us", tweet_link(letter_url(letter.id))
+        us a reaction!
+    - else
+      %p Commenting coming soon.
+      %p
+        = link_to "Tweet us", tweet_link(letter_url(letter.id)), target: 'blank'
+        us a reaction!
+        / = form_for Comment.new(user_id: current_user.id) do |c|
+        /   = c.text_field :body
+        /   = c.submit "Comment"
