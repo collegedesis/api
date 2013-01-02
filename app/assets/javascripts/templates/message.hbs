@@ -1,0 +1,35 @@
+.cell.header
+  %h3 
+    {{#if recipients.length}}
+    Write to {{recipients.length}} organizations
+    {{else}}
+    &larr; Select some organizations!
+    {{/if}}
+.body.message
+  = hb 'if inWriteMode' do
+    {{view Ember.TextField valueBinding="subject" placeholder="Subject line"}}
+    {{view Ember.TextArea valueBinding="body" placeholder="Write a funtastic email. here                                                                                                                                                                                                         You can use this format to make hyperlinks: [click me](http://link.com)                                                                                           You can even do **bold** and *italic* styles.                                                                                         Leave a blank space between paragraphs to make paragraphs "}}
+    .row
+      %div
+        {{view Ember.TextField valueBinding="from_name" placeholder="your display name (optional)"}}
+      %div
+        {{view Ember.TextField valueBinding="from_email" placeholder="your email"}}
+    = hb 'else'
+    %section
+      .subject Subject: {{subject}}
+      .body {{body}}
+.footer
+  = hb 'if readyToSend' do
+    %a.btn{_action: 'sendTest target="controller"'} Test
+    {{#if testSent}}Sent test!{{/if}}
+    %div
+      = hb 'if unlocked' do
+        %a.btn{_action: 'sendMessage target="controller"'} Send
+        = hb 'else'
+        %div
+          {{view Ember.TextField valueBinding="unlockPassword" placeholder="you need an access code to send for real"}}
+    = hb 'else'
+    %p Enter an email address!
+/ .control
+/   %a{_action: 'toggleMode target="controller"'}
+/     {{#if inWriteMode}}Preview{{else}}Write{{/if}}

@@ -1,0 +1,16 @@
+%ul
+  = hb 'each org in selectedOrganizations' do
+    %li {{org.name}}
+  {{view CollegeDesis.SearchSelectContainerView}}
+.subject
+  {{view Ember.TextField valueBinding="subject" placeholder="Subject line"}}
+.body
+  {{view Ember.TextArea valueBinding="body" placeholder="Write a funtastic email here"}}
+
+= hb 'unless emailHasBeenVerified' do
+  // verification stuff
+  %p What address would you like to email from?
+  {{view Ember.TextField valueBinding="from" placeholder="your email"}}
+  = hb 'validEmail' do
+    %p To make sure you are who you say you are, we'll send you a confirmation code.
+    %button{event:{action:'verifySender', target:'controller'}} Verify

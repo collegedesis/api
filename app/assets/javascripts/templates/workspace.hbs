@@ -1,0 +1,7 @@
+%section
+  %ul.results
+    = hb 'each org in selectedOrgs' do
+      %li {{org.name}}
+%section
+  = hb 'if unlocked' do
+    {{outlet message}}

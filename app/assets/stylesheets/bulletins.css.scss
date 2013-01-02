@@ -1,0 +1,22 @@
+.bulletin {
+  margin-bottom: 10px;
+  border-bottom: solid 3px $brown2;
+  background-color:lighten($brown2, 10%);
+  padding:10px;
+  &:hover{
+    background: $brown2;
+    cursor: pointer;
+  }
+}
+
+.bulletin .preview {
+  .title {
+    color: $brown3;
+    font-weight:bold;
+    &:after {content:': ';}
+  }
+  .body {
+    color:darken($brown2, 30%);
+    font-size:$font-size*0.8;
+  }
+}

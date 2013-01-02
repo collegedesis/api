@@ -1,0 +1,10 @@
+.cell.header
+  %h3 {{name}}
+.body
+  %h4 {{university.name}}
+  = hb 'if website' do
+    %a{bind:{href:"website"}}Website
+    = hb 'else'
+    No website listed
+  = hb 'unless has_email' do
+    No email address

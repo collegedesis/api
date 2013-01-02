@@ -1,0 +1,6 @@
+<p>
+  <%= @org.name %> just earned <%= number_to_currency @product.beneficiary_payout %> because someone referred you as a beneficiary while buying <%= link_to @product.name, product_path(@product) %>.
+</p>
+<p>
+  Note: We're working on a dashboard where you can track your earnings, but in the meantime, you may be getting a lot of these emails. Reply to this email if this is a problem, we'll fix it faster.
+</p>

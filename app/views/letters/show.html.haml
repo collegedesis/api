@@ -1,0 +1,17 @@
+.letters
+  .letter
+    %article
+      .letter-body
+        .date
+          = @letter.created_at.strftime(format='%B %e, %Y')
+        %p Dear CollegeDesis,
+        =(@letter.body).html_safe
+      .letter-author
+        %p
+          Signed,
+          %br
+          =User.find(@letter.user_id).username
+    %aside
+      = render 'reactions', letter: @letter
+.letter-new
+  = link_to 'Write a Letter', new_letter_path

@@ -1,0 +1,22 @@
+.cell.header
+  {{view Ember.TextField valueBinding="keyword" placeholder="search" class="search"}}
+.body.results
+  = hb 'if keyword' do
+    %ul
+      = hb 'each org in searchContent' do
+        %div{bind:{class: 'org.is_selected:selected :row'}}
+          .select{_action: 'selectOne org'}
+          %li{_action: 'select org target="controller"'} {{org.name}}
+    = hb 'else'
+    %p{style:'font-style:italic;font-size:0.9em;'} No search results
+.footer
+  .subsection
+    {{view Ember.Select contentBinding="org_types" optionLabelPath="content.name" optionValuePath="content" selectionBinding="orgTypeFilter" prompt="All Types"}}
+    {{view Ember.Select contentBinding="states" optionLabelPath="content" prompt="All States" valueBinding="stateFilter"}}
+  = hb 'if keyword' do
+    .check
+      {{view Ember.Checkbox checkedBinding="selectedAll"}}
+      .label
+        {{searchContent.length}} organizations matched your search.
+    .cell
+      %a.btn{_action: 'goToWriteEmail'} Email {{selectedOrgs.length}} organizations
