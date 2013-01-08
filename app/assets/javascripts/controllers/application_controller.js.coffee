@@ -1,4 +1,9 @@
-CollegeDesis.ApplicationController = Ember.Controller.extend()
+CollegeDesis.ApplicationController = Ember.Controller.extend
+  needs: 'session'
+  
+  loggedIn: (->
+    @controllerFor('session').get('isLoggedIn')
+  ).property('sessionController.isLoggedIn')
 
   # currentRouteTitle: (->
   #   path = CollegeDesis.router.get('currentState.path').split('.')[1]
