@@ -1,12 +1,19 @@
 <div class="main">
-  {{#each bulletin in controller}}
-    <div class="bulletin">
-      <div class="preview" {{action goToBulletin bulletin}}>
-        <span class="title"> {{bulletin.title}}</span>
-        <span class="preview"> {{bulletin.preview}}</span>
+  {{#if hasBulletins }}
+    {{#each bulletin in controller}}
+      <div class="bulletin">
+        <div class="preview" {{action goToBulletin bulletin}}>
+          <span class="title"> {{bulletin.title}}</span>
+          <span class="preview"> {{bulletin.preview}}</span>
+        </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  {{else}}
+    No bulletins have been written. Want to 
+    {{#linkTo newBulletin}}
+      write one?
+    {{/linkTo}}
+  {{/if}}
 </div>
 <aside>
   <h4> About</h4>
@@ -16,11 +23,10 @@
   <p> 
     We'll use them as blog posts, open letters, announcements, and more.
   </p>
-  <!--
+  
   <p>
-    {{#linkTo bulletins}}
-      <span class="button">Write a Bulletin</span>
+    {{#linkTo newBulletin}}
+      Write a Bulletin
     {{/linkTo}}
   </p>
-  -->
 </aside>

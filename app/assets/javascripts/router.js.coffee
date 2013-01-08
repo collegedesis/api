@@ -2,16 +2,26 @@ CollegeDesis.Router = Ember.Router.extend()
 
 CollegeDesis.Router.map (match) ->
   match('/').to('home')
-  match('/bulletins').to('bulletins')
   match('/calendar').to('calendar')
   match('/store').to('store')
   match('/takeAction').to('takeAction')
+  match("/bulletins").to "bulletins"
+    # match("/").to "bulletinIndex"
+  match("/bulletins/new").to "newBulletin"
 
 CollegeDesis.HomeRoute = Ember.Route.extend
   name: 'home'
+
 CollegeDesis.BulletinsRoute = Ember.Route.extend
+  model: -> CollegeDesis.Bulletin.find()
+  
+CollegeDesis.NewBulletinRoute = Ember.Route.extend
   model: ->
-    CollegeDesis.Bulletin.find()
+    CollegeDesis.Bulletin.createRecord()
+
+# CollegeDesis.BulletinsRoute = Ember.Route.extend
+#   model: ->
+#     CollegeDesis.Bulletin.find()
   # root: Ember.Route.extend
   #   goToBulletins: Ember.Route.transitionTo('bulletins.index')
   #   goToCalendar: Ember.Route.transitionTo('calendar')
