@@ -30,12 +30,10 @@ CollegeDesis.BulletinRoute = Ember.Route.extend
     name = params[0]
     object[name] = Em.String.dasherize model.get('title')
     return object
-  # setupController: (controller) ->
-  #   controller.set('content', CollegeDesis.Bulletin.find({title: title}))
 
   deserialize: (params) ->
     slug = params['bulletin_slug']
-    title = slug.replace('-', ' ')
+    title = slug.split('-').join(' ')
     bulletins = CollegeDesis.Bulletin.find({title: title})
     
     bulletins.one "didLoad", ->
