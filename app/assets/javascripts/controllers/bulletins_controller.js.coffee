@@ -1,5 +1,5 @@
 CollegeDesis.BulletinsController = Ember.ArrayController.extend
 
   hasBulletins: (->
-    true if @get('content.lengt') > 0
-  ).property('@')
+    true if @get('length') > 0
+  ).property('@each')
