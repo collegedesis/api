@@ -5,3 +5,7 @@ CollegeDesis.Bulletin = DS.Model.extend
   preview: (->
     return "#{@get('body').slice(0, 20)}..."
   ).property('body')
+
+  slug: (->
+    Em.String.dasherize @get('title')
+  ).property('title')

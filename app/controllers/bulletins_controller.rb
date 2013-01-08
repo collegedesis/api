@@ -1,7 +1,7 @@
 class BulletinsController < ApplicationController
   respond_to :json
   def index
-    @bulletins = Bulletin.all
+    @bulletins = params[:title] ? Bulletin.find_by_title(params[:title]) : Bulletin.all
     render json: @bulletins
   end
 
