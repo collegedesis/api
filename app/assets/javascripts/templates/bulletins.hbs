@@ -1,8 +1,8 @@
 <div class="main">
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
-      <div class="bulletin">
-        <div class="preview" {{action goToBulletin bulletin}}>
+      <div class="bulletin"  {{action goToBulletin bulletin}}>
+        <div class="preview">
           <span class="title"> {{bulletin.title}}</span>
           <span class="preview"> {{bulletin.preview}}</span>
         </div>
