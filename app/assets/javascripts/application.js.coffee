@@ -2,6 +2,7 @@
 #= require blankwin
 #= require markdown
 #= require ga-analytics
+#= require dateFormatter
 
 #= require jquery
 #= require jquery_ujs
