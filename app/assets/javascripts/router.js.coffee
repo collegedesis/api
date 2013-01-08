@@ -9,6 +9,7 @@ CollegeDesis.Router.map (match) ->
     # match("/").to "bulletinIndex"
   match("/bulletins/new").to "newBulletin"
   match('/bulletins/:bulletin_slug').to "bulletin"
+  match('/logIn').to "logIn"
 
 CollegeDesis.HomeRoute = Ember.Route.extend
   name: 'home'
@@ -19,9 +20,26 @@ CollegeDesis.BulletinsRoute = Ember.Route.extend
     goToBulletin: (bulletin) ->
       @transitionTo('bulletin', bulletin)
 
+CollegeDesis.LogInRoute = Ember.Route.extend
+  renderTemplate: (controller, model) ->
+    @render 'logIn',
+      controller: 'session'
+
 CollegeDesis.NewBulletinRoute = Ember.Route.extend
   model:  ->
     CollegeDesis.Bulletin.createRecord()
+
+  renderTemplate: (controller, model) ->
+    if @controllerFor('application').get('loggedIn')
+      @_super()
+    else
+      @transitionTo('logIn')
+
+  exit: ->
+    newBulletin = @controllerFor("newBulletin")
+    if !newBulletin.get("id")
+      newBulletin.get('content').deleteRecord() if newBulletin.get('content')
+
 
 CollegeDesis.BulletinRoute = Ember.Route.extend
 
