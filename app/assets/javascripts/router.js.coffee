@@ -8,16 +8,40 @@ CollegeDesis.Router.map (match) ->
   match("/bulletins").to "bulletins"
     # match("/").to "bulletinIndex"
   match("/bulletins/new").to "newBulletin"
+  match('/bulletins/:bulletin_slug').to "bulletin"
 
 CollegeDesis.HomeRoute = Ember.Route.extend
   name: 'home'
 
 CollegeDesis.BulletinsRoute = Ember.Route.extend
   model: -> CollegeDesis.Bulletin.find()
-  
+  events: 
+    goToBulletin: (bulletin) ->
+      @transitionTo('bulletin', bulletin)
+
 CollegeDesis.NewBulletinRoute = Ember.Route.extend
-  model: ->
+  model:  ->
     CollegeDesis.Bulletin.createRecord()
+
+CollegeDesis.BulletinRoute = Ember.Route.extend
+
+  serialize: (model, params) ->
+    object = {}
+    name = params[0]
+    object[name] = Em.String.dasherize model.get('title')
+    return object
+  # setupController: (controller) ->
+  #   controller.set('content', CollegeDesis.Bulletin.find({title: title}))
+
+  deserialize: (params) ->
+    slug = params['bulletin_slug']
+    title = slug.replace('-', ' ')
+    bulletins = CollegeDesis.Bulletin.find({title: title})
+    
+    bulletins.one "didLoad", ->
+      bulletins.resolve(bulletins.get("firstObject"))
+
+    @currentModel = bulletins
 
 # CollegeDesis.BulletinsRoute = Ember.Route.extend
 #   model: ->
