@@ -10,7 +10,7 @@ Collegedesis::Application.configure do
   config.action_mailer.default_url_options = { :host => 'smtp.mailgun.org' }
   config.action_mailer.delivery_method = :smtp
   
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = true
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
