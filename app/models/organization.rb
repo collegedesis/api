@@ -1,8 +1,8 @@
 class Organization < ActiveRecord::Base
-  validates_presence_of :name, :university, :state, :organization_type_id
+  validates_presence_of :name, :university_id, :organization_type_id
   validates_uniqueness_of :email, allow_nil: true
   after_create :send_welcome_email
-  # after_update :send_update_notification
+  after_update :send_update_notification
   attr_accessible :name, :university_id, :organization_type_id, :email, :website
 
   belongs_to :organization_type
