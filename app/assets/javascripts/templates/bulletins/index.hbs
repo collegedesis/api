@@ -1,0 +1,30 @@
+{{#if hasBulletins }}
+  {{#each bulletin in controller}}
+    <div class="bulletin"  {{action goToBulletin bulletin}}>
+      <div class="preview">
+        <span class="title"> {{bulletin.title}}</span>
+        <span class="preview"> {{bulletin.preview}}</span>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  No bulletins have been written. Want to 
+  {{#linkTo "bulletins.new"}}
+    write one?
+  {{/linkTo}}
+{{/if}}
+<aside>
+  <h4> About</h4>
+  <p>
+    Bulletins are the new easy way to spread the word among the CollegeDesis community.
+  </p>
+  <p> 
+    We'll use them as blog posts, open letters, announcements, and more.
+  </p>
+  
+  <p>
+    {{#linkTo "bulletins.new"}}
+      Post a Bulletin
+    {{/linkTo}}
+  </p>
+</aside>
