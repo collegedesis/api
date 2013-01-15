@@ -1,0 +1,1 @@
+CollegeDesis.ApplicationController = Ember.Controller.extend()
