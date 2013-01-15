@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="section">
+    <div class="label">Title</div>
+    <div class="element">
+      {{view Ember.TextField valueBinding="title"}}
+    </div>
+  </div>
+  <div class="label">Body</div>
+  <div class="element">
+    {{view Ember.TextArea valueBinding="body"}}
+  </div>
+  <a {{action submit}}>Submit</a>
+</div>
+<aside>
+  <h1>Control Panel</h1>
+  <a {{action showPreview}}>Preview</a>
+</aside>

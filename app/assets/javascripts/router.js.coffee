@@ -2,4 +2,5 @@ CollegeDesis.Router.map ->
   @route("bulletins")
   @route("store")
   @route("calendar")
-  @resource("bulletins")
+  @resource "bulletins", ->
+    @route "new"
