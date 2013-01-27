@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226004211) do
+ActiveRecord::Schema.define(:version => 20130127044151) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20121226004211) do
     t.boolean  "test",       :default => true
     t.string   "from_name"
     t.string   "from_email"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "recipient_email"
+    t.integer  "bulletin_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "organization_types", :force => true do |t|
@@ -95,11 +102,12 @@ ActiveRecord::Schema.define(:version => 20121226004211) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "password_salt"
+    t.string   "password_hash"
+    t.string   "full_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

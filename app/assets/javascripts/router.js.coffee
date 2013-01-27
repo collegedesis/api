@@ -5,7 +5,7 @@ CollegeDesis.Router.map ->
   @resource "bulletins", ->
     @route "new"
     @route "show", {path: ':bulletin_slug'}
-
+  @route "newUser", {path: 'signup'}
 
 CollegeDesis.BulletinsIndexRoute = Ember.Route.extend
   events: 
@@ -25,3 +25,6 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
     slug = params['bulletin_slug']
     title = slug.split('-').join(' ')
     bulletins = CollegeDesis.Bulletin.find({title: title})
+
+CollegeDesis.NewUserRoute = Ember.Route.extend
+  model: -> CollegeDesis.User.createRecord()

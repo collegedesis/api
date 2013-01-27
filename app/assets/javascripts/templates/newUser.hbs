@@ -1,0 +1,11 @@
+<h2>Register</h2>
+Full Name:
+{{view Ember.TextField valueBinding="full_name"}}
+Email:
+{{view Ember.TextField type="email" valueBinding="email"}}
+Password:
+{{view Ember.TextField type="password" valueBinding="password"}}
+Password Confirmation
+{{view Ember.TextField type="password" valueBinding="password_confirmation"}}
+
+<button {{action createNewUser}}>Login</button>

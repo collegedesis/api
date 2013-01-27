@@ -17,7 +17,7 @@ group :development, :test do
 end
 
 gem 'pg'
-
+gem 'bcrypt-ruby', require: 'bcrypt'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
