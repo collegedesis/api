@@ -1,8 +1,8 @@
 class CreateNotifications < ActiveRecord::Migration
   def change
     create_table :notifications do |t|
-      t.recipient_email :integer
-      t.bulletin_id :integer
+      t.integer :recipient_email
+      t.integer :bulletin_id
       t.timestamps
     end
   end
