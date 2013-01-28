@@ -7,6 +7,11 @@ CollegeDesis.Router.map ->
     @route "show", {path: ':bulletin_slug'}
   @route "newUser", {path: 'signup'}
 
+CollegeDesis.ApplicationRoute = Ember.Route.extend
+  setupController: (controller) ->
+    user = CollegeDesis.User.find(CollegeDesis.session.get('currentUserId'))
+    controller.set('currentUser', user)
+    
 CollegeDesis.BulletinsIndexRoute = Ember.Route.extend
   events: 
     goToBulletin: (bulletin) ->
