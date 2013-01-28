@@ -6,11 +6,13 @@ CollegeDesis.Router.map ->
     @route "new"
     @route "show", {path: ':bulletin_slug'}
   @route "newUser", {path: 'signup'}
+  @route 'login', {path: 'login'}
 
 CollegeDesis.ApplicationRoute = Ember.Route.extend
   setupController: (controller) ->
-    user = CollegeDesis.User.find(CollegeDesis.session.get('currentUserId'))
-    controller.set('currentUser', user)
+    if CollegeDesis.session
+      user = CollegeDesis.User.find(CollegeDesis.session.get('currentUserId'))
+      controller.set('currentUser', user)
     
 CollegeDesis.BulletinsIndexRoute = Ember.Route.extend
   events: 
@@ -33,3 +35,6 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
 
 CollegeDesis.NewUserRoute = Ember.Route.extend
   model: -> CollegeDesis.User.createRecord()
+
+CollegeDesis.LoginRoute = Ember.Route.extend
+  model: -> CollegeDesis.Session.createRecord()
