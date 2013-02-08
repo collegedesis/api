@@ -1,6 +1,7 @@
 Collegedesis::Application.routes.draw do
   root to: "site#home"
   
+  resources :sessions,            only: [:create, :destroy]
   # Used as API
   resources :organizations,       only: [:index, :show, :create, :update]
   resources :organization_types,  only: [:index, :show]

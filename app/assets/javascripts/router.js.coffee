@@ -35,6 +35,3 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
 
 CollegeDesis.NewUserRoute = Ember.Route.extend
   model: -> CollegeDesis.User.createRecord()
-
-CollegeDesis.LoginRoute = Ember.Route.extend
-  model: -> CollegeDesis.Session.createRecord()
