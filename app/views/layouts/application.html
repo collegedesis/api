@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", "https://js.stripe.com/v1/" %>
     <%= tag :meta, name: 'stripe-key', content: STRIPE_PUBLIC_KEY %>
+    <%= csrf_meta_tag %> 
     <% if session[:user_id] %>
       <script>
         CollegeDesis.session = Ember.Object.create({

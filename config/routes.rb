@@ -18,7 +18,7 @@ Collegedesis::Application.routes.draw do
     
   # Non REST conventions
   match '/verifications/verify', to: 'verifications#verify'
-  
+
   resources :messages do 
     collection do 
       post 'tests' 

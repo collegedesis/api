@@ -13,6 +13,14 @@ CollegeDesis.ApplicationRoute = Ember.Route.extend
     if CollegeDesis.session
       user = CollegeDesis.User.find(CollegeDesis.session.get('currentUserId'))
       controller.set('currentUser', user)
+
+  events:
+    logout: ->
+      id = CollegeDesis.session.get('currentUserId')
+      $.ajax "/sessions/#{id}",
+        type: 'DELETE'
+        success: (result) =>
+          window.location.reload()
     
 CollegeDesis.BulletinsIndexRoute = Ember.Route.extend
   events: 
