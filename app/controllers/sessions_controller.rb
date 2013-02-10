@@ -15,4 +15,9 @@ class SessionsController < ApplicationController
 
     render :json => {error: "User not found"}
   end
+
+  def destroy
+    session[:user_id] = nil
+    render nothing: true, status: 204
+  end
 end
