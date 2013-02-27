@@ -30,3 +30,4 @@ end
 gem 'jquery-rails'
 gem 'stripe'
 gem 'aws-s3'
+gem 'rack-ssl-enforcer'

@@ -20,7 +20,7 @@ class Organization < ActiveRecord::Base
   end
 
   def url
-    "http://collegedesis.com/directory#/#{self.id}"  
+    "//collegedesis.com/directory#/#{self.id}"  
   end
 
   def display_name
