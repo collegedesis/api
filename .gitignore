@@ -19,3 +19,5 @@
 *.dump
 *.swp
 config/initializers/secrets.rb
+*.crt
+*.key
