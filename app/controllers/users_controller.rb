@@ -11,11 +11,10 @@ class UsersController < ApplicationController
 
   def create
     # Get a user object
-    _user = User.find_or_create_by_email(params[:user][:email])
+    @user = User.find_or_create_by_email(params[:user])
     # Authenticate the user with the password they sent.
-    @user = User.authenticate(_user.email, params[:user][:password])
+    if @user.confirm_password?(params[:user][:password])
     # Set the user's id in the session variable
-    if @user
       session[:user_id] = @user.id
       render json: @user
     else
