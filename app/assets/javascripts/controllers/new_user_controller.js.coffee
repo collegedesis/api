@@ -11,3 +11,10 @@ CollegeDesis.NewUserController = Ember.ObjectController.extend
     user.removeObserver('id', this, '_userCreated')
     @set("controllers.application.currentUser", user)
     @transitionToRoute('index')
+
+  organizations: (->
+    if CollegeDesis.Organization.all().length > 1
+      return CollegeDesis.Organization.all()
+    else
+      return CollegeDesis.Organization.find()
+  ).property()

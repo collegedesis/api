@@ -1,11 +1,30 @@
 <h2>Register</h2>
-Full Name:
-{{view Ember.TextField valueBinding="full_name"}}
-Email:
-{{view Ember.TextField type="email" valueBinding="email"}}
-Password:
-{{view Ember.TextField type="password" valueBinding="password"}}
-Password Confirmation
-{{view Ember.TextField type="password" valueBinding="password_confirmation"}}
-
-<button {{action createNewUser}}>Login</button>
+<p>
+  Full Name*
+  {{view Ember.TextField valueBinding="full_name"}}
+</p>
+<p>
+  Email*
+  {{view Ember.TextField type="email" valueBinding="email"}}
+</p>
+<p>
+  Password*
+  {{view Ember.TextField type="password" valueBinding="password"}}
+</p>
+<p>
+  Password Confirmation*
+  {{view Ember.TextField type="password" valueBinding="password_confirmation"}}
+</p>
+<p>
+  Organization*
+  {{#each membership in memberships}}
+    {{view Ember.Select contentBinding="organizations" optionLabelPath="content.displayName" selectionBinding="membership.organization" prompt=" "}}
+  {{/each}}
+</p>
+<p>You can't be multiple organizations for now, just pick one. We'll add in that feature soon.</p>
+{{#if memberships.firstObject.organization}}
+  <p>An email will be sent to {{#each memberships}}{{this.organization.displayName}} {{/each}} so they can verify that you're actually a member.</p>
+  <button {{action createNewUser}}>Sign Up</button>
+{{else}}
+<p>Select an organization to sign up!</p>
+{{/if}}

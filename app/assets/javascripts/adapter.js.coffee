@@ -17,3 +17,6 @@ CollegeDesis.Adapter = DS.RESTAdapter.extend
           window.location.reload()
       else
         @_super.apply(this, arguments)
+
+CollegeDesis.Adapter.configure "plurals",
+  university: "universities"

@@ -43,3 +43,7 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
 
 CollegeDesis.NewUserRoute = Ember.Route.extend
   model: -> CollegeDesis.User.createRecord()
+
+  setupController: (controller) ->
+    user = controller.get('content')
+    user.get('memberships').createRecord()
