@@ -9,7 +9,7 @@ CollegeDesis.NewUserController = Ember.ObjectController.extend
   _userCreated: ->
     user = @get('content')
     user.removeObserver('id', this, '_userCreated')
-    @set("controllers.application.currentUser", user)
+    @_createSession(user)
     @transitionToRoute('index')
 
   organizations: (->
@@ -18,3 +18,8 @@ CollegeDesis.NewUserController = Ember.ObjectController.extend
     else
       return CollegeDesis.Organization.find()
   ).property()
+
+  _createSession: (user) ->
+    if !CollegeDesis.session
+      @set("controllers.application.currentUser", user)
+      @set("controllers.application.currentUserId", user.id)
