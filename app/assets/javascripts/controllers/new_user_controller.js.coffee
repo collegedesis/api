@@ -21,5 +21,8 @@ CollegeDesis.NewUserController = Ember.ObjectController.extend
 
   _createSession: (user) ->
     if !CollegeDesis.session
-      @set("controllers.application.currentUser", user)
-      @set("controllers.application.currentUserId", user.id)
+      CollegeDesis.session = Ember.Object.create
+        currentUserId: user.id
+        currentUser: user
+      @set 'controllers.application.currentUserId', CollegeDesis.session.get('currentUserId')
+      @set 'controllers.application.currentUser', CollegeDesis.session.get('currentUser')
