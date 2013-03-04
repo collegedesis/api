@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :full_name, :password, :password_confirmation
+  attr_accessible :email, :full_name, :password, :password_confirmation, :memberships_attributes
   attr_accessor :password
 
   validates_confirmation_of :password
@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates_presence_of :email
   validates_uniqueness_of :email
-  
-  before_save :encrypt_password
 
-  has_many :memberships
+  has_many :memberships, inverse_of: :user
+  accepts_nested_attributes_for :memberships, allow_destroy: true
+
+  before_save :encrypt_password
 
   def name
     "#{first_name} #{last_name}"

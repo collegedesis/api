@@ -1,4 +1,20 @@
+CollegeDesis.Serializer = DS.RESTSerializer.extend
+
+  # when creating a new User, we'll embed the memberships array
+  addHasMany: (data, record, attribute, relationshipDesc) ->
+    switch record.constructor
+      when CollegeDesis.User
+        if attribute == "memberships" and record.get('isNew')
+          data[attribute+"_attributes"] = Em.A([])
+          record.get(attribute).forEach (item) ->
+            data[attribute+"_attributes"].pushObject item.serialize({includeId: true})
+      else
+        @_super(data, record, attribute, relationshipDesc)
+
+
 CollegeDesis.Adapter = DS.RESTAdapter.extend
+  serializer: CollegeDesis.Serializer
+
   didError: (store, type, record, xhr) ->
     switch xhr.status
       # This was already part of ember-data so we'll use it
@@ -17,6 +33,16 @@ CollegeDesis.Adapter = DS.RESTAdapter.extend
           window.location.reload()
       else
         @_super.apply(this, arguments)
+
+  # We won't save membership records when they're created.
+  # We'll embed them into the User record when it's created.
+  # TODO we should use `embedded` api but might need an
+  # ember-data update on that.
+  shouldSave: (record) ->
+    switch record.constructor
+      when CollegeDesis.Membership
+        if record.get('isNew') then return false
+    return true
 
 CollegeDesis.Adapter.configure "plurals",
   university: "universities"
