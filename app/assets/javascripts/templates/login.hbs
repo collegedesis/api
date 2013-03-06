@@ -1,9 +1,11 @@
-<h2>Log In</h2>
-<form>
-  Email:
-  {{view Ember.TextField type="email" valueBinding="email"}}
-  Password:
-  {{view Ember.TextField type="password" valueBinding="password"}}
+<div class="main">
+  <h2>Log In</h2>
+  <form>
+    Email:
+    {{view Ember.TextField type="email" valueBinding="email"}}
+    Password:
+    {{view Ember.TextField type="password" valueBinding="password"}}
 
-  <a {{action login}}>Login</a>
-</form>
+    <a {{action login}}>Login</a>
+  </form>
+</div>
