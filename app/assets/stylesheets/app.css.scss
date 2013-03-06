@@ -55,21 +55,18 @@
   // h5 { @include header($brown2, 0%,  $font-size * 0.8); }
 
 .app-content {
-  & > div {
-    display:-webkit-box;
-    display:-moz-box;
-    display:box;
-    .main {
-      box-sizing:border-box;
-      width:60%;
-      padding-right: 10px;
-    }
-    aside {
-      box-sizing:border-box;
-      width:40%;
-      padding:0 20px;
-      border-left: solid 1px $brown2;
-    }
+  display: -webkit-box;
+  display:-moz-box;
+  display:box;
+  .main {
+    width:70%;
+    padding-right: 10px;
+    min-width:600px;
+  }
+  aside {
+    width:30%;
+    padding:0 20px;
+    border-left: solid 1px $brown2;
   }
   h4 {
     margin-bottom:10px;

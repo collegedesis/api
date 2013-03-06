@@ -2,16 +2,16 @@
   <h1>{{title}}</h1>
   <span>Posted at {{humanizedCreatedAt}}</span>
   <div class="body"> {{body}}</div>
+  <p>
+    {{#linkTo "bulletins.index"}}
+      &larr; Back
+    {{/linkTo}}
+  </p>
 </div>
 <aside>
   <h4>Stats</h4>
   <p>
     We'll build in like button or something here. 
-  </p>
-  <p>
-    {{#linkTo "bulletins.index"}}
-      &larr; Back
-    {{/linkTo}}
   </p>
   <p>
     {{#linkTo "bulletins.new"}}
