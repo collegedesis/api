@@ -1,19 +1,15 @@
 <div class="main">
-  <div>
-    <p>
-      Hello there{{#if currentUser}} {{currentUser.full_name}}{{/if}}.
-    </p>
-    <p>
-      Our mission is to create a community of South Asian students in the America. We work on national collaborative projects that are open to {{organizationCount}} South Asian student organizations from all around the country.
-    </p>
-    <p>
-      {{#unless currentUser}}
-      {{#linkTo 'newUser'}}Sign Up{{/linkTo}}
-      or
-      {{#linkTo 'login'}}Log In{{/linkTo}}
-      {{/unless}}
-    </p>
-  </div>
+  <p>
+    Hello there{{#if currentUser}} {{currentUser.full_name}}{{/if}}.
+  </p>
+  <p>
+    Our mission is to create a community of South Asian students in the America. We work on national collaborative projects that are open to {{organizationCount}} South Asian student organizations from all around the country.
+  </p>
+  <p>
+    {{#unless currentUser}}
+    {{#linkTo 'newUser'}}Sign Up{{/linkTo}}
+    or
+    {{#linkTo 'login'}}Log In{{/linkTo}}
+    {{/unless}}
+  </p>
 </div>
-<aside>
-</aside>
