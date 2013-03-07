@@ -1,5 +1,4 @@
 CollegeDesis.Router.map ->
-  @route("bulletins")
   @route("store")
   @route("calendar")
   @resource "bulletins", ->
@@ -40,6 +39,9 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
     slug = params['bulletin_slug']
     title = slug.split('-').join(' ')
     bulletins = CollegeDesis.Bulletin.find({title: title})
+
+CollegeDesis.BulletinsNewRoute = Ember.Route.extend
+  model: -> CollegeDesis.Bulletin.createRecord()
 
 CollegeDesis.NewUserRoute = Ember.Route.extend
   model: -> CollegeDesis.User.createRecord()
