@@ -2,7 +2,7 @@ CollegeDesis.Bulletin = DS.Model.extend
   title: DS.attr('string')
   body: DS.attr('string')
   url: DS.attr('string')
-  bulletin_type: DS.attr('integer')
+  bulletin_type: DS.attr('number')
   created_at: DS.attr('date')
 
   preview: (->
