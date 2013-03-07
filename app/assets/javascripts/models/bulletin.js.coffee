@@ -4,7 +4,8 @@ CollegeDesis.Bulletin = DS.Model.extend
   created_at: DS.attr('date')
 
   preview: (->
-    return "#{@get('body').slice(0, 20)}..."
+    if @get('body')
+      "#{@get('body').slice(0, 20)}..."
   ).property('body')
 
   slug: (->
