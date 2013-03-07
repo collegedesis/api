@@ -1,9 +1,9 @@
-CollegeDesis.Serializer = DS.RESTSerializer.extend
+App.Serializer = DS.RESTSerializer.extend
 
   # when creating a new User, we'll embed the memberships array
   addHasMany: (data, record, attribute, relationshipDesc) ->
     switch record.constructor
-      when CollegeDesis.User
+      when App.User
         if attribute == "memberships" and record.get('isNew')
           data[attribute+"_attributes"] = Em.A([])
           record.get(attribute).forEach (item) ->
@@ -12,8 +12,8 @@ CollegeDesis.Serializer = DS.RESTSerializer.extend
         @_super(data, record, attribute, relationshipDesc)
 
 
-CollegeDesis.Adapter = DS.RESTAdapter.extend
-  serializer: CollegeDesis.Serializer
+App.Adapter = DS.RESTAdapter.extend
+  serializer: App.Serializer
 
   didError: (store, type, record, xhr) ->
     switch xhr.status
@@ -29,7 +29,7 @@ CollegeDesis.Adapter = DS.RESTAdapter.extend
         It's a funky state, but we should be handling it better
         than we are now.
         ###
-        if record.constructor == CollegeDesis.User
+        if record.constructor == App.User
           window.location.reload()
       else
         @_super.apply(this, arguments)
@@ -40,9 +40,9 @@ CollegeDesis.Adapter = DS.RESTAdapter.extend
   # ember-data update on that.
   shouldSave: (record) ->
     switch record.constructor
-      when CollegeDesis.Membership
+      when App.Membership
         if record.get('isNew') then return false
     return true
 
-CollegeDesis.Adapter.configure "plurals",
+App.Adapter.configure "plurals",
   university: "universities"

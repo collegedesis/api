@@ -1,7 +1,7 @@
-CollegeDesis.User = DS.Model.extend
+App.User = DS.Model.extend
   full_name: DS.attr('string')
   email: DS.attr('string')
   password: DS.attr('string')
   password_confirmation: DS.attr('string')
 
-  memberships: DS.hasMany('CollegeDesis.Membership')
+  memberships: DS.hasMany('App.Membership')

@@ -1,4 +1,4 @@
-CollegeDesis.BulletinsIndexController = Ember.ArrayController.extend
+App.BulletinsIndexController = Ember.ArrayController.extend
 
   hasBulletins: (->
     true if @get('length') > 0

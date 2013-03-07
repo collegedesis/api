@@ -17,6 +17,6 @@
 #= require_self
 #= require collegedesis
 
-window.CollegeDesis = Ember.Application.create()
+window.App = Ember.Application.create()
 
 #= require _tree

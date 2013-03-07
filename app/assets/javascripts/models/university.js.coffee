@@ -1,3 +1,3 @@
-CollegeDesis.University = DS.Model.extend
+App.University = DS.Model.extend
   name: DS.attr('string')
-  organizations: DS.hasMany('CollegeDesis.Organization')
+  organizations: DS.hasMany('App.Organization')

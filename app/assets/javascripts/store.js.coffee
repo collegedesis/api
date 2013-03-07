@@ -1,3 +1,3 @@
-CollegeDesis.Store = DS.Store.extend
+App.Store = DS.Store.extend
   revision: 11
-  adapter: 'CollegeDesis.Adapter'
+  adapter: 'App.Adapter'

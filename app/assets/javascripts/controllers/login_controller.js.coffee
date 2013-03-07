@@ -1,4 +1,4 @@
-CollegeDesis.LoginController = Ember.Controller.extend
+App.LoginController = Ember.Controller.extend
 
   email: null
   password: null

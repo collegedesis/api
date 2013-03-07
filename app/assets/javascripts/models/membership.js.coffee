@@ -1,3 +1,3 @@
-CollegeDesis.Membership = DS.Model.extend
-  user: DS.belongsTo('CollegeDesis.User')
-  organization: DS.belongsTo('CollegeDesis.Organization')
+App.Membership = DS.Model.extend
+  user: DS.belongsTo('App.User')
+  organization: DS.belongsTo('App.Organization')
