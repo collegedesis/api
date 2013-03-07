@@ -1,4 +1,4 @@
-CollegeDesis.Router.map ->
+App.Router.map ->
   @route("store")
   @route("calendar")
   @resource "bulletins", ->
@@ -7,28 +7,28 @@ CollegeDesis.Router.map ->
   @route "newUser", {path: 'signup'}
   @route 'login', {path: 'login'}
 
-CollegeDesis.ApplicationRoute = Ember.Route.extend
+App.ApplicationRoute = Ember.Route.extend
   setupController: (controller) ->
-    if CollegeDesis.session
-      user = CollegeDesis.User.find(CollegeDesis.session.get('currentUserId'))
+    if App.session
+      user = App.User.find(App.session.get('currentUserId'))
       controller.set('currentUser', user)
 
   events:
     logout: ->
-      id = CollegeDesis.session.get('currentUserId')
+      id = App.session.get('currentUserId')
       $.ajax "/sessions/#{id}",
         type: 'DELETE'
         success: (result) =>
           window.location.reload()
     
-CollegeDesis.BulletinsIndexRoute = Ember.Route.extend
+App.BulletinsIndexRoute = Ember.Route.extend
   events: 
     goToBulletin: (bulletin) ->
       @transitionTo('bulletins.show', bulletin)
   model: ->
-    return CollegeDesis.Bulletin.find()
+    return App.Bulletin.find()
 
-CollegeDesis.BulletinsShowRoute = Ember.Route.extend
+App.BulletinsShowRoute = Ember.Route.extend
   serialize: (model, params) ->
     object = {}
     name = params[0]
@@ -38,16 +38,16 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
   deserialize: (params) ->
     slug = params['bulletin_slug']
     title = slug.split('-').join(' ')
-    bulletins = CollegeDesis.Bulletin.find({title: title})
+    bulletins = App.Bulletin.find({title: title})
 
-CollegeDesis.BulletinsNewRoute = Ember.Route.extend
+App.BulletinsNewRoute = Ember.Route.extend
   redirect: ->
-    if !CollegeDesis.session
+    if !App.session
       @transitionTo('login')
-  model: -> CollegeDesis.Bulletin.createRecord()
+  model: -> App.Bulletin.createRecord()
 
-CollegeDesis.NewUserRoute = Ember.Route.extend
-  model: -> CollegeDesis.User.createRecord()
+App.NewUserRoute = Ember.Route.extend
+  model: -> App.User.createRecord()
 
   setupController: (controller) ->
     user = controller.get('content')

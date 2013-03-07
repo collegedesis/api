@@ -1,4 +1,4 @@
-CollegeDesis.Bulletin = DS.Model.extend
+App.Bulletin = DS.Model.extend
   title: DS.attr('string')
   body: DS.attr('string')
   url: DS.attr('string')

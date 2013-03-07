@@ -1,7 +1,7 @@
-CollegeDesis.Organization = DS.Model.extend
-  memberships: DS.hasMany('CollegeDesis.Membership')
+App.Organization = DS.Model.extend
+  memberships: DS.hasMany('App.Membership')
   name: DS.attr('string')
-  university: DS.belongsTo('CollegeDesis.University')
+  university: DS.belongsTo('App.University')
   
   universityName: (-> @get("university.name")).property('university.name')
   

@@ -1,4 +1,4 @@
-CollegeDesis.BulletinsNewController = Ember.ObjectController.extend
+App.BulletinsNewController = Ember.ObjectController.extend
 
   submit: ->
     @get("store").commit()

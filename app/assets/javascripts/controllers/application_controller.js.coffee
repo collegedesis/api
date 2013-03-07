@@ -1,4 +1,4 @@
-CollegeDesis.ApplicationController = Ember.Controller.extend
+App.ApplicationController = Ember.Controller.extend
   # We'll set this property when someone signs in or signs up successfully
   currentUser: null
 
