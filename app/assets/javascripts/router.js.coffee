@@ -41,6 +41,9 @@ CollegeDesis.BulletinsShowRoute = Ember.Route.extend
     bulletins = CollegeDesis.Bulletin.find({title: title})
 
 CollegeDesis.BulletinsNewRoute = Ember.Route.extend
+  redirect: ->
+    if !CollegeDesis.session
+      @transitionTo('login')
   model: -> CollegeDesis.Bulletin.createRecord()
 
 CollegeDesis.NewUserRoute = Ember.Route.extend
