@@ -8,7 +8,7 @@
     <%= csrf_meta_tag %> 
     <% if session[:user_id] %>
       <script>
-        CollegeDesis.session = Ember.Object.create({
+        App.session = Ember.Object.create({
           currentUserId: <%= session[:user_id] %>,
           currentUser: null
         });
