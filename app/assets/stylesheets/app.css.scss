@@ -43,16 +43,6 @@
   bottom:0;
   text-align:center;
 }
-  // @mixin header($color, $lighten, $size) {
-  //   color: lighten($color, $lighten);
-  //   font-size: $size;
-  //   margin-bottom: 15px;
-  // }
-
-  // h2 { @include header($brown4, 15%, $font-size * 1.1); }
-  // h3 { @include header($brown4, 15%, $font-size * 1.0); }
-  // h4 { @include header($brown2, 0%,  $font-size * 1.0); }
-  // h5 { @include header($brown2, 0%,  $font-size * 0.8); }
 
 .app-content {
   display: -webkit-box;
@@ -66,7 +56,6 @@
   aside {
     width:30%;
     padding:0 20px;
-    border-left: solid 1px $brown2;
   }
   h4 {
     margin-bottom:10px;
