@@ -3,7 +3,7 @@ App.Router.map ->
   @route("calendar")
   @resource "bulletins", ->
     @route "new"
-    @route "show", {path: ':bulletin_slug'}
+    @route "show", {path: ':slug'}
   @route "newUser", {path: 'signup'}
   @route 'login', {path: 'login'}
 
@@ -36,9 +36,14 @@ App.BulletinsShowRoute = Ember.Route.extend
     return object
 
   deserialize: (params) ->
-    slug = params['bulletin_slug']
-    title = slug.split('-').join(' ')
+    slug = params.slug
+    title = slug.split('-').join(' ') if slug
     bulletins = App.Bulletin.find({title: title})
+
+    bulletins.one "didLoad", ->
+      bulletins.resolve(bulletins.get("firstObject"))
+
+    @currentModel = bulletins
 
 App.BulletinsNewRoute = Ember.Route.extend
   redirect: ->
