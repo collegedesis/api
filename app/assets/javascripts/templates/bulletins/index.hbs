@@ -1,12 +1,20 @@
 <div class="main">
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
+      {{#if bulletin.isPost}}
       <div class="bulletin"  {{action goToBulletin bulletin}}>
+      {{else}}
+      <a class="bulletin" {{bindAttr href="bulletin.url"}}>
+      {{/if}}
         <div class="preview">
           <span class="title"> {{bulletin.title}}</span>
           <span class="preview"> {{bulletin.preview}}</span>
         </div>
+      {{#if bulletin.isPost}}
       </div>
+      {{else}}
+      </a>
+      {{/if}}
     {{/each}}
   {{else}}
     No bulletins have been written. Want to {{#linkTo "bulletins.new"}}write one?{{/linkTo}}

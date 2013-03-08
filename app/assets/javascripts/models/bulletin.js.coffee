@@ -24,3 +24,6 @@ App.Bulletin = DS.Model.extend
       html = convert @get('body')
       return html.htmlSafe()
   ).property('body')
+
+  isPost: (-> @get('bulletin_type') == 1 ).property('bulletin_type')
+  isLink: (-> @get('bulletin_type') == 2 ).property('bulletin_type')
