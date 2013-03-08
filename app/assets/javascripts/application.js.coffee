@@ -1,7 +1,8 @@
 # Venor libs
 #= require md5
 #= require blankwin
-#= require markdown
+#= require showdown
+#= require showdown-sanitizer
 #= require ga-analytics
 #= require dateFormatter
 #= require jquery

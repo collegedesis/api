@@ -17,3 +17,10 @@ App.Bulletin = DS.Model.extend
   humanizedCreatedAt: (->
     strftime(@get('created_at'),"%b %d, %Y at %I:%M%p") if @get('created_at')?
   ).property("created_at")
+
+  htmlBody: (->
+    convert = new Markdown.getSanitizingConverter().makeHtml;
+    if @get('body')?
+      html = convert @get('body')
+      return html.htmlSafe()
+  ).property('body')
