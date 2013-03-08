@@ -51,6 +51,10 @@ App.BulletinsNewRoute = Ember.Route.extend
       @transitionTo('login')
   model: -> App.Bulletin.createRecord()
 
+  exit: ->
+    if @get('controller.content.isNew')
+      @get('controller.content').deleteRecord()
+
 App.NewUserRoute = Ember.Route.extend
   model: -> App.User.createRecord()
 
