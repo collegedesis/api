@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307061317) do
+ActiveRecord::Schema.define(:version => 20130317013304) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -113,5 +113,14 @@ ActiveRecord::Schema.define(:version => 20130307061317) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "votable_id"
+    t.string   "submitted_by_ip"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "votable_type"
+  end
 
 end

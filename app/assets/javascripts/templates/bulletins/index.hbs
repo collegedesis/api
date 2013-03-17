@@ -1,8 +1,11 @@
 <div class="main">
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
+      {{#unless hasBeenVotedOn}}
+        <button style="float:left;" {{action voteOnBulletin bulletin}}>Vote</button>
+      {{/unless}}
       {{#if bulletin.isPost}}
-      <div class="bulletin"  {{action goToBulletin bulletin}}>
+        <div class="bulletin"  {{action goToBulletin bulletin}}>
       {{else}}
       <a class="bulletin" {{bindAttr href="bulletin.url"}}>
       {{/if}}

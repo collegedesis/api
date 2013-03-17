@@ -5,6 +5,8 @@ App.Bulletin = DS.Model.extend
   bulletin_type: DS.attr('number')
   created_at: DS.attr('date')
 
+  votes: DS.hasMany('App.Vote')
+
   preview: (->
     if @get('body')
       "#{@get('body').slice(0, 20)}..."
