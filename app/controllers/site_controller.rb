@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_filter :require_login, only: [:home]
+  # before_filter :require_login, only: [:home]
 
   def blog
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
