@@ -15,7 +15,7 @@ Collegedesis::Application.routes.draw do
   # Resources
   resources :products,            only: [:index, :show]
   resources :purchases,           only: [:create, :show]
-    
+  resources :votes,               only: [:index]
   # Non REST conventions
   match '/verifications/verify', to: 'verifications#verify'
 
