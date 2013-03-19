@@ -1,6 +1,5 @@
 # Venor libs
 #= require md5
-#= require blankwin
 #= require showdown
 #= require showdown-sanitizer
 #= require ga-analytics

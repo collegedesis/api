@@ -9,7 +9,7 @@ App.Router.map ->
 
 App.ApplicationRoute = Ember.Route.extend
   setupController: (controller) ->
-    if App.session
+    if App.session.get("currentUserId")
       user = App.User.find(App.session.get('currentUserId'))
       controller.set('currentUser', user)
 

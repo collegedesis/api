@@ -14,7 +14,6 @@ class VotesController < ApplicationController
     # checking for a votable is some insurance. We'll do some client side validations too
     if @votable
       @vote = @votable.votes.find_by_submitted_by_ip(request.remote_ip)
-
       # if there's a user signed in
       if current_user
 
@@ -47,10 +46,15 @@ class VotesController < ApplicationController
       # if we don't have a vote and no one is signed in
       # we'll create a new vote and assign the IP to it
       if !@vote && !current_user
-        @vote = @votable.votes.create(params[:vote])
+        @vote = @votable.votes.create
         @vote.update_attributes(submitted_by_ip: request.remote_ip)
       end
 
+      # we'll tell the session about this vote
+      session[:votedBulletinIds] = [] if !session[:votedBulletinIds]
+      session[:votedBulletinIds].push(@votable.id) if !session[:votedBulletinIds].include? @votable.id
+
+      # render the vote back to ember
       render json: @vote
     end
   end

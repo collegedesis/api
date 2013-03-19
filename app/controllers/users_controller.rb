@@ -12,13 +12,19 @@ class UsersController < ApplicationController
   def create
     # Get a user object
     @user = User.find_or_create_by_email(params[:user])
-    # Authenticate the user with the password they sent.
-    if @user.confirm_password?(params[:user][:password])
-    # Set the user's id in the session variable
-      session[:user_id] = @user.id
-      render json: @user
+
+    # If the user was successfully created and is not new anymore
+    if !@user.new_record?
+      # Authenticate the user with the password they sent.
+      if @user.confirm_password?(params[:user][:password])
+      # Set the user's id in the session variable
+        session[:user_id] = @user.id
+        render json: @user
+      else
+        render json: { errors: ['Authentication failed'] }, status: 401
+      end
     else
-      render json: { errors: ['Authentication failed'] }, status: 401
+      render json: {errors: @user.errors}, status: 422
     end
   end
 end

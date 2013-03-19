@@ -21,6 +21,13 @@ div.preview {
   }
 }
 
+.bulletin-wrapper {
+  button { cursor: pointer; }
+  & > * {display: inline-block;}
+  .vote { width: 30px;}
+  .bulletin { width: 600px;}
+  a { color: $brown2 !important;}
+}
 .bulletin {
   .bulletin-header {
     border-bottom: dotted 1px $brown2;
