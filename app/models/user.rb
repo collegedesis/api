@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  def name
-    "#{first_name} #{last_name}"
-  end
-
   def confirm_password?(password)
     return false unless self.password_hash && self.password_salt
     self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)

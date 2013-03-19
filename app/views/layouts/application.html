@@ -6,15 +6,20 @@
     <%= javascript_include_tag "application", "https://js.stripe.com/v1/" %>
     <%= tag :meta, name: 'stripe-key', content: STRIPE_PUBLIC_KEY %>
     <%= csrf_meta_tag %> 
+    <script>
+      App.session = Ember.Object.create()
+    </script>
     <% if session[:user_id] %>
       <script>
-        App.session = Ember.Object.create({
-          currentUserId: <%= session[:user_id] %>,
-          currentUser: null
-        });
+        App.session.set("currentUserId", <%= session[:user_id].html_safe %> );
+        App.session.set("currentUser", null )
       </script>
     <% end %>
-  </script>
+    <% if session[:votedBulletinIds] %>
+      <script>
+        App.session.set("votedBulletinIds", <%= session[:votedBulletinIds] %> )
+      </script>
+    <% end %>
   </head>
   <body></body>
 </html>
