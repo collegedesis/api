@@ -1,14 +1,13 @@
 App.LoginController = Ember.Controller.extend
 
-  email: null
-  password: null
+  session: Ember.Object.create({email: null, password: null})
 
   # state indicator
   loggingIn: false
 
-  login: ->
-    if @get("email")? && @get('password')?
-      $.post("/sessions", email: @get('email'), password: @get('password'))
+  submit: ->
+    if @get("session.email")? && @get('session.password')?
+      $.post("/sessions", email: @get('session.email'), password: @get('session.password'))
         .success (result) =>
           if result.error
             @set('loggingIn', false)
