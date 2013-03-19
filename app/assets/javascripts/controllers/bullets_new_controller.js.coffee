@@ -1,7 +1,11 @@
 App.BulletinsNewController = Ember.ObjectController.extend
 
   submit: ->
+    @get('content').addObserver('id', this, '_createdBulletin')
     @get("store").commit()
+
+  _createdBulletin: ->
+    @get("content").removeObserver('id', this, '_createdBulletin')
     @transitionToRoute("bulletins.index")
 
   bulletinTypes: (->
