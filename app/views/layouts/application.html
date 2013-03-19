@@ -11,7 +11,7 @@
     </script>
     <% if session[:user_id] %>
       <script>
-        App.session.set("currentUserId", <%= session[:user_id].html_safe %> );
+        App.session.set("currentUserId", <%= session[:user_id] %> );
         App.session.set("currentUser", null )
       </script>
     <% end %>
