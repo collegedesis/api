@@ -11,6 +11,8 @@
     <li> {{#linkTo store}} Store {{/linkTo}}</li>
     {{#if currentUser}}
       <li {{action logout}}>Sign Out</li>
+    {{else}}
+      <li>{{#linkTo login}}Log in{{/linkTo}}</li>
     {{/if}}
   </ul>
 </div>
