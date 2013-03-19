@@ -5,5 +5,4 @@ class Bulletin < ActiveRecord::Base
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title)
   end
-
 end
