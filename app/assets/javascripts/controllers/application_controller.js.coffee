@@ -4,4 +4,5 @@ App.ApplicationController = Ember.Controller.extend
 
   # returns bool if the current controller exists.
   isSignedIn: (-> @get("currentUser") != null ).property('currentUser')
+
   votedBulletinIds: (-> App.session.get("votedBulletinIds")).property('App.session.votes')

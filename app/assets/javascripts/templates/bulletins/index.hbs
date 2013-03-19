@@ -1,25 +1,25 @@
 <div class="main">
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
-      {{#if hasBeenVotedOn}}
-        {{bulletin.votes.length}}
-      {{else}}
-        <button {{action voteOnBulletin bulletin}}>Vote</button>
-      {{/if}}
-      {{#if bulletin.isPost}}
-        <div class="bulletin"  {{action goToBulletin bulletin}}>
-      {{else}}
-      <a class="bulletin" {{bindAttr href="bulletin.url"}}>
-      {{/if}}
-        <div class="preview">
-          <span class="title"> {{bulletin.title}}</span>
-          <span class="preview"> {{bulletin.preview}}</span>
+      <div class="bulletin-wrapper">
+        <div class="vote">
+          {{#if hasBeenVotedOn}}{{bulletin.votes.length}}{{else}}<button {{action voteOnBulletin bulletin}}>Vote</button>{{/if}}
         </div>
-      {{#if bulletin.isPost}}
+        {{#if bulletin.isPost}}
+          <div class="bulletin"  {{action goToBulletin bulletin}}>
+            <div class="preview">
+              <span class="title"> {{bulletin.title}}</span>
+              <span class="preview"> {{bulletin.preview}}</span>
+            </div>
+          </div>
+        {{else}}
+          <a class="bulletin" {{bindAttr href="bulletin.url"}}>
+            <div class="preview">
+              <span class="title"> {{bulletin.title}}</span>
+            </div>
+          </a>
+        {{/if}}
       </div>
-      {{else}}
-      </a>
-      {{/if}}
     {{/each}}
   {{else}}
     No bulletins have been written. Want to {{#linkTo "bulletins.new"}}write one?{{/linkTo}}
