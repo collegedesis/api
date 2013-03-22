@@ -1,12 +1,9 @@
-div.preview {
+.bulletin-wrapper .preview {
   margin-bottom: 10px;
   border-bottom: solid 3px $brown2;
   background-color:lighten($brown2, 10%);
   padding:10px;
-  &:hover{
-    background: $brown2;
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 .bulletin .preview {
@@ -22,7 +19,14 @@ div.preview {
 }
 
 .bulletin-wrapper {
-  button { cursor: pointer; }
+  button {
+    cursor: pointer;
+    background-color: transparentize($brown2, 0.9);
+    margin: 10px 0;
+    padding: 3px;
+    font-size:14px;
+    border: 1px solid #b2ae73;
+  }
   & > * {display: inline-block;}
   .vote { width: 30px;}
   .bulletin { width: 600px;}
@@ -46,7 +50,15 @@ div.preview {
 }
 
 .bulletin-new {
-  textarea {
-    min-height: 400px;
+  input, textarea {
+    font-size: 20px;
+    margin-bottom:10px;
+  }
+  textarea { min-height: 400px;}
+  input[type='submit'] {
+    width: 200px;
+    margin: 10px 0;
+    display: block;
+    border: 1px solid $brown2;
   }
 }

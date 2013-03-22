@@ -33,7 +33,7 @@ class VotesController < ApplicationController
         # if we have a vote and it doesn't have a user
         # we'll assign the current user
         if @vote && !@vote.user
-          @vote.update_attributes(user: current_user)
+          @vote.update_attributes(user_id: current_user.id)
         end
 
         # if we don't have a vote, we'll find or create it by the current user

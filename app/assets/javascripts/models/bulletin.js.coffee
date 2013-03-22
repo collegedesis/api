@@ -4,6 +4,7 @@ App.Bulletin = DS.Model.extend
   url: DS.attr('string')
   bulletin_type: DS.attr('number')
   created_at: DS.attr('date')
+  errors: []
 
   votes: DS.hasMany('App.Vote')
 
@@ -25,6 +26,8 @@ App.Bulletin = DS.Model.extend
     if @get('body')?
       html = convert @get('body')
       return html.htmlSafe()
+    else
+      return "No body"
   ).property('body')
 
   isPost: (-> @get('bulletin_type') == 1 ).property('bulletin_type')
