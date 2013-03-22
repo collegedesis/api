@@ -3,7 +3,7 @@
     {{#each bulletin in controller}}
       <div class="bulletin-wrapper">
         <div class="vote">
-          {{#if hasBeenVotedOn}}{{bulletin.votes.length}}{{else}}<button {{action voteOnBulletin bulletin}}>Vote</button>{{/if}}
+          {{#unless hasBeenVotedOn}}<button {{action voteOnBulletin bulletin}}>&uarr;</button>{{/unless}}
         </div>
         {{#if bulletin.isPost}}
           <div class="bulletin"  {{action goToBulletin bulletin}}>

@@ -3,10 +3,7 @@
   border-bottom: solid 3px $brown2;
   background-color:lighten($brown2, 10%);
   padding:10px;
-  &:hover{
-    background: $brown2;
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 .bulletin .preview {
@@ -22,7 +19,14 @@
 }
 
 .bulletin-wrapper {
-  button { cursor: pointer; }
+  button {
+    cursor: pointer;
+    background-color: transparentize($brown2, 0.9);
+    margin: 10px 0;
+    padding: 3px;
+    font-size:14px;
+    border: 1px solid #b2ae73;
+  }
   & > * {display: inline-block;}
   .vote { width: 30px;}
   .bulletin { width: 600px;}
