@@ -31,5 +31,9 @@
     Bulletins are the easiest way to spread the word among the CollegeDesis community.
   </p>
   <p>Post a link or write a blog post. If enough people vote it up, we'll automatically <a href="//twitter.com/collegedesis">tweet</a> it out.</p>
-  <button {{action write}}>Post</button>
+  {{#if controllers.application.currentUser}}
+    <button {{action write}}>Post</button>
+  {{else}}
+    {{#linkTo login}}Log in{{/linkTo}} to post.
+  {{/if}}
 </aside>
