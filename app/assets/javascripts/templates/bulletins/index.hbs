@@ -15,7 +15,7 @@
         {{else}}
           <a class="bulletin" {{bindAttr href="bulletin.url"}}>
             <div class="preview">
-              <span class="title"> {{bulletin.title}}</span>
+              <span class="title">{{bulletin.title}}</span>
             </div>
           </a>
         {{/if}}
@@ -30,13 +30,6 @@
   <p>
     Bulletins are the easiest way to spread the word among the CollegeDesis community.
   </p>
-  <p> 
-    Log in to comment.
-  </p>
-  
-  <p>
-    {{#linkTo "bulletins.new"}}
-      Post a Bulletin
-    {{/linkTo}}
-  </p>
+  <p>Post a link or write a blog post. If enough people vote it up, we'll automatically <a href="//twitter.com/collegedesis">tweet</a> it out.</p>
+  <button {{action write}}>Post</button>
 </aside>

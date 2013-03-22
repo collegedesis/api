@@ -3,7 +3,7 @@ App.NewUserController = Ember.ObjectController.extend
 
   submit: ->
     @get('content').addObserver('id', this, '_userCreated')
-    if @get('password') == @get('password_confirmation')
+    if !@get('errors')
       @store.commit()
 
   _userCreated: ->
