@@ -59,4 +59,10 @@
 
 .bulletin-new {
   textarea { min-height: 200px;}
+  ol, ul {
+    margin-left: 40px;
+  }
+  & > * {
+    margin-bottom: 10px;
+  }
 }
