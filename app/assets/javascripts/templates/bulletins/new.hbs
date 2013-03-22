@@ -1,14 +1,39 @@
 <div class="main">
-  {{#if isLink }}
-    {{partial "bulletins/link_form"}}
-  {{/if}}
+  <div class="bulletin-new">
+  {{#formFor content}}
+    {{#unless controller.showingPreview}}
+      {{input title}}
+    {{/unless}}
+    {{#if isLink }}
+      {{input url placeholder="Start with http:// or https://"}}
+    {{/if}}
 
-  {{#if isPost}}
-    {{partial "bulletins/post_form"}}
-  {{/if}}
-  <a {{action submit}}>Submit</a>
+    {{#if isPost}}
+      {{#if controller.showingPreview}}
+        <div class="preview">
+            <h2>{{#if title}}{{title}}{{else}}No title{{/if}}</h2>
+            <div class="bulletin-body">{{htmlBody}}</div>
+          </div>
+      {{else}}
+        {{input body as="text"}}
+      {{/if}}
+    {{/if}}
+    {{#unless controller.errors}}
+      {{submit}}
+    {{else}}
+      {{#if isLink}}
+        <p>Enter a valid link and title to submit!</p>
+      {{else}}
+        <p>Write something to submit!</p>
+      {{/if}}
+    {{/unless}}
+  {{/formFor}}
+  </div>
 </div>
 <aside>
   <h1>Control Panel</h1>
   {{view Ember.Select contentBinding="bulletinTypes" valueBinding="bulletin_type" optionLabelPath="content.name" optionValuePath="content.value"}}
+  {{#if isPost}}
+    <button {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>
+  {{/if}}
 </aside>
