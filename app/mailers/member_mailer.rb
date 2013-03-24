@@ -1,10 +1,9 @@
 class MemberMailer < ActionMailer::Base
-  default from: "brownkids@collegedesis.com"
+  default from: "CollegeDeiss <brownkids@collegedesis.com>"
   def welcome_email(membership)
-    @membership = membership
     @member = membership.user
     @org = membership.organization
-    mail(to: @member.email, subject: "Thanks for joining #{@org.name}") 
+    mail(to: @member.email, subject: "You've joined #{@org.name}!")
   end
 
   def purchase_receipt(purchase)
