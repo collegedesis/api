@@ -1,6 +1,6 @@
 App.BulletinsIndexController = Ember.ArrayController.extend
   itemController: 'bulletin'
-
+  needs: ['application']
   hasBulletins: (->
     true if @get('length') > 0
   ).property('@each')

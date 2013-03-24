@@ -1,13 +1,10 @@
 <div class="main">
   <h2>Register</h2>
   {{#formFor content}}
-    {{input full_name}}
-    {{input email}}
-    {{#input password}}
-      {{labelField password text="Password (at least 6 characters)"}}
-      {{inputField password}}
-    {{/input}}
-    {{input password_confirmation}}
+    {{input full_name placeholder="Use a name your organization will recognize"}}
+    {{input email placeholder="user@email.com"}}
+    {{input password placeholder="at least 6 characters"}}
+    {{input password_confirmation placeholder="again"}}
     <div>Organization
       {{#each membership in memberships}}
         {{view Ember.Select contentBinding="organizations" optionLabelPath="content.displayName" selectionBinding="membership.organization" prompt=" "}}
@@ -24,8 +21,13 @@
       <p>Select an organization to sign up!</p>
     {{/if}}
     {{#if controller.errors}}
+      <p style="color:red;">Something isn't right in the form</p>
     {{else}}
-      {{submit "Sign up"}}
+      {{#if controller.working}}
+        Working...
+      {{else}}
+        {{submit "Sign up"}}
+      {{/if}}
     {{/if}}
   {{/formFor}}
   </form>

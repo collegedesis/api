@@ -23,7 +23,7 @@ App.Bulletin = DS.Model.extend
 
   htmlBody: (->
     convert = new Markdown.getSanitizingConverter().makeHtml;
-    if @get('body')?
+    if @get('body')
       html = convert @get('body')
       return html.htmlSafe()
     else
