@@ -1,5 +1,5 @@
 class OrganizationMailer < ActionMailer::Base
-  default from: "brownkids@collegedesis.com"
+  default from: "CollegeDesis <brownkids@collegedesis.com>"
 
   def welcome(org)
     @org = org
@@ -17,9 +17,9 @@ class OrganizationMailer < ActionMailer::Base
     mail(to: @org.email, subject: 'You\'re hosting #DesiBeatsSunday!')
   end
 
-  def new_member_notification(member, org)
-    @member = member
-    @org = org
+  def new_member(membership)
+    @member = membership.user
+    @org = membership.organization
     mail(to: @org.email, subject:'You have a new member!')
   end
 
