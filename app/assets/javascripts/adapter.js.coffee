@@ -4,35 +4,41 @@ App.Serializer = DS.RESTSerializer.extend
   addHasMany: (data, record, attribute, relationshipDesc) ->
     switch record.constructor
       when App.User
-        if attribute == "memberships" and record.get('isNew')
-          data[attribute+"_attributes"] = Em.A([])
-          record.get(attribute).forEach (item) ->
-            data[attribute+"_attributes"].pushObject item.serialize({includeId: true})
+        # !!! TODO Please upgrade Ember data and figure out embedded associations
+        if attribute == "membership_ids" and record.get('isNew')
+          key = attribute.split("_")[0] + "s"
+          embedded = data[key+"_attributes"] = Em.A([])
+          record.get(key).forEach (item) ->
+            if item.get('organization')
+              embedded.pushObject item.serialize({includeId: true})
       else
         @_super(data, record, attribute, relationshipDesc)
 
-
 App.Adapter = DS.RESTAdapter.extend
   serializer: App.Serializer
-
   didError: (store, type, record, xhr) ->
-    switch xhr.status
-      # This was already part of ember-data so we'll use it
-      when 422
-        data = JSON.parse(xhr.responseText)
-        store.recordWasError(record, data['errors'])
-        record.set("errors", data["errors"])
-      when 401
-        ###
-        If we hit this code it means that someone tried 
-        to create a user with an email address that already 
-        exists but they entered the wrong password. 
-        It's a funky state, and we should be handling it better.
-        ###
-        if record.constructor == App.User
-          window.location.reload()
-      else
-        @_super.apply(this, arguments)
+    if type == App.User
+      switch xhr.status
+        when 422 # validation error
+          if confirm("Looks like you either found a bug or tried to submit a form that fails validations. Let's reload the window and try again?")
+            window.location.reload()
+          else
+            alert("So you're not going to play nice eh? Sorry, we have to reload anyway.")
+            window.location.reload()
+        when 401
+          ###
+            If we hit this code it means that someone tried
+            to create a user with an email address that already
+            exists but they entered the wrong password.
+            It's a funky state, and we should be handling it better.
+          ###
+          if record.constructor == App.User
+            console.log 'Something bad happened'
+            # window.location.reload()
+        else
+          @_super.apply(this, arguments)
+    else
+      @_super.apply(this, arguments)
 
   # We won't save membership records when they're created.
   # We'll embed them into the User record when it's created.
