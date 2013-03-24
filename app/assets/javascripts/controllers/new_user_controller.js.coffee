@@ -9,8 +9,7 @@ App.NewUserController = Ember.ObjectController.extend
   _userCreated: ->
     user = @get('content')
     user.removeObserver('id', this, '_userCreated')
-    @_createSession(user)
-    @transitionToRoute('index')
+    @transitionToRoute('login')
 
   organizations: (->
     if App.Organization.all().length > 1

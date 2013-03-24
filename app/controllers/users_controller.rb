@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @users = params[:id] ? User.where(id: params[:id]) : User.all
     render json: @users
   end
+
   def show
     @user = User.find(params[:id])
     render json: @user
@@ -11,20 +12,15 @@ class UsersController < ApplicationController
 
   def create
     # Get a user object
-    @user = User.find_or_create_by_email(params[:user])
-
-    # If the user was successfully created and is not new anymore
-    if !@user.new_record?
-      # Authenticate the user with the password they sent.
-      if @user.confirm_password?(params[:user][:password])
-      # Set the user's id in the session variable
-        session[:user_id] = @user.id
-        render json: @user
-      else
-        render json: { errors: ['Authentication failed'] }, status: 401
+    @user = User.find_or_create_by_email(params[:user][:email])
+    # save and update params if the user is new
+    if @user.new_record?
+      params[:user][:memberships_attributes] = [] if !params[:user][:memberships_attributes]
+      if !@user.update_attributes(params[:user])
+        render json: @user.errors, status: 422
+        return
       end
-    else
-      render json: {errors: @user.errors}, status: 422
     end
+    render json: @user
   end
 end
