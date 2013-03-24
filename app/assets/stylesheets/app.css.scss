@@ -67,15 +67,22 @@
   }
 }
 
-select {
-  font-size:$font-size * 1.5;
-}
 input, textarea, select {
-  width:100%;
   padding:5px;
+  box-sizing:border-box;
+  font-size:$font-size * 1.1;
+  margin-bottom:10px;
+  display: block;
+  width: 500px;
 }
 input, textarea {
-  box-sizing:border-box;
-  font-size:$font-size * 2;
   background-color:transparentize($brown2, 0.9);
+}
+
+input[type='submit'] {
+  cursor: pointer;
+  width: 200px;
+  margin: 10px 0;
+  display: block;
+  border: 1px solid $brown2;
 }
