@@ -23,7 +23,11 @@
     {{#if controller.errors}}
       <p style="color:red;">Something isn't right in the form</p>
     {{else}}
-      {{submit "Sign up"}}
+      {{#if controller.working}}
+        Working...
+      {{else}}
+        {{submit "Sign up"}}
+      {{/if}}
     {{/if}}
   {{/formFor}}
   </form>

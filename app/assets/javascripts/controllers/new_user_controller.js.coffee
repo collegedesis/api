@@ -1,14 +1,18 @@
 App.NewUserController = Ember.ObjectController.extend
   needs: ['application']
 
+  working: false
+
   submit: ->
     @get('content').addObserver('id', this, '_userCreated')
     if !@get('errors')
+      @set('working', true)
       @store.commit()
 
   _userCreated: ->
     user = @get('content')
     user.removeObserver('id', this, '_userCreated')
+    @set('working', false)
     @transitionToRoute('login')
 
   organizations: (->
