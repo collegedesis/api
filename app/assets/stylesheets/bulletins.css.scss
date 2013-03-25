@@ -6,13 +6,17 @@
     float: left;
     margin-right: 10px;
     cursor: pointer;
-    display: block;
     width: 42px;
     height: 42px;
+  }
+  .vote a {
     background: url('upvote.png');
     background-size: 65%;
     background-position: center center;
     background-repeat: no-repeat;
+    display: block;
+    width: 42px;
+    height: 42px;
   }
   .bulletin-preview {
     margin-bottom: 10px;
