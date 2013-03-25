@@ -2,23 +2,19 @@
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
       <div class="bulletin-wrapper">
-        <div class="vote">
-          {{#unless hasBeenVotedOn}}<button {{action voteOnBulletin bulletin}}>&uarr;</button>{{/unless}}
+        <div class="bulletin-preview">
+          <span class="title"> {{bulletin.title}}</span>
+          {{#if bulletin.isPost}}
+            <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
+          {{else}}
+            <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
+          {{/if}}
         </div>
-        {{#if bulletin.isPost}}
-          <div class="bulletin"  {{action goToBulletin bulletin}}>
-            <div class="preview">
-              <span class="title"> {{bulletin.title}}</span>
-              <span class="preview"> {{bulletin.preview}}</span>
-            </div>
-          </div>
-        {{else}}
-          <a class="bulletin" {{bindAttr href="bulletin.url"}}>
-            <div class="preview">
-              <span class="title">{{bulletin.title}}</span>
-            </div>
-          </a>
-        {{/if}}
+        <div class="vote">
+        {{#unless hasBeenVotedOn}}
+          <a {{action voteOnBulletin bulletin}}></a>
+        </div>
+        {{/unless}}
       </div>
     {{/each}}
   {{else}}

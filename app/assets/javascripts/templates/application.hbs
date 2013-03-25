@@ -10,7 +10,7 @@
     <li> {{#linkTo bulletins}} Bulletins {{/linkTo}}</li>
     <li> {{#linkTo store}} Store {{/linkTo}}</li>
     {{#if currentUser}}
-      <li {{action logout}}>Sign Out</li>
+      <li> <a {{action logout}}>Sign Out</a></li>
     {{else}}
       <li>{{#linkTo login}}Log in{{/linkTo}}</li>
     {{/if}}
