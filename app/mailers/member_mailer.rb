@@ -1,5 +1,5 @@
 class MemberMailer < ActionMailer::Base
-  default from: "CollegeDeiss <brownkids@collegedesis.com>"
+  default from: "CollegeDesis <brownkids@collegedesis.com>"
   def welcome_email(membership)
     @member = membership.user
     @org = membership.organization
