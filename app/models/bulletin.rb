@@ -23,6 +23,14 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.sorted
-    Bulletin.all.sort_by{|x| x.votes.length }.reverse[0..9]
+    Bulletin.all.sort_by{|x| x.votes.length }.reverse[0..4]
+  end
+
+  def self.newest
+    Bulletin.all.sort_by(&:created_at).reverse[0..4]
+  end
+
+  def self.homepage
+    (Bulletin.sorted + Bulletin.newest).uniq
   end
 end
