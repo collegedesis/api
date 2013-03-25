@@ -3,7 +3,7 @@ class BulletinsController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:create]
   def index
-    @bulletins = params[:title] ? Bulletin.find_by_title(params[:title]) : Bulletin.all
+    @bulletins = params[:title] ? Bulletin.find_by_title(params[:title]) : Bulletin.sorted
     render json: @bulletins
   end
 

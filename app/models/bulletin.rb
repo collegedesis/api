@@ -21,4 +21,8 @@ class Bulletin < ActiveRecord::Base
   def is_post?
     bulletin_type == 1
   end
+
+  def self.sorted
+    Bulletin.all.sort_by{|x| x.votes.length }.reverse[0..9]
+  end
 end
