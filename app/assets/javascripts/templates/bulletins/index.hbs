@@ -1,3 +1,15 @@
+<aside>
+  <h4> About</h4>
+  <p>
+    Bulletins are the easiest way to spread the word among the CollegeDesis community.
+  </p>
+  <p>Post a link or write a blog post. If enough people vote it up, we'll automatically <a href="//twitter.com/collegedesis">tweet</a> it out.</p>
+  {{#if controllers.application.currentUser}}
+    <button {{action write}}>Post</button>
+  {{else}}
+    {{#linkTo login}}Log in{{/linkTo}} to post.
+  {{/if}}
+</aside>
 <div class="main">
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
@@ -21,15 +33,3 @@
     No bulletins have been written. Want to {{#linkTo "bulletins.new"}}write one?{{/linkTo}}
   {{/if}}
 </div>
-<aside>
-  <h4> About</h4>
-  <p>
-    Bulletins are the easiest way to spread the word among the CollegeDesis community.
-  </p>
-  <p>Post a link or write a blog post. If enough people vote it up, we'll automatically <a href="//twitter.com/collegedesis">tweet</a> it out.</p>
-  {{#if controllers.application.currentUser}}
-    <button {{action write}}>Post</button>
-  {{else}}
-    {{#linkTo login}}Log in{{/linkTo}} to post.
-  {{/if}}
-</aside>

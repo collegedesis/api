@@ -39,15 +39,13 @@
   }
 }
 .app-content {
-  display: -webkit-box;
-  display:-moz-box;
-  display:box;
   .main {
     width:70%;
     padding-right: 10px;
     min-width:600px;
   }
   aside {
+    float: right;
     width:30%;
     padding:0 20px;
   }
