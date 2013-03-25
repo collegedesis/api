@@ -5,9 +5,9 @@
         <div class="bulletin-preview">
           <span class="title"> {{bulletin.title}}</span>
           {{#if bulletin.isPost}}
-            <a class="link" {{action goToBulletin bulletin}}>Read</a>
+            <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
           {{else}}
-            <a class="link" {{bindAttr href="bulletin.url"}}>View</a>
+            <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
           {{/if}}
         </div>
         <div class="vote">
