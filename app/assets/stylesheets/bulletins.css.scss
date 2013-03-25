@@ -1,37 +1,37 @@
-.bulletin-wrapper .preview {
-  margin-bottom: 10px;
-  border-bottom: solid 3px $brown2;
-  background-color:lighten($brown2, 10%);
-  padding:10px;
-  cursor: pointer;
-}
-
-.bulletin .preview {
-  .title {
-    color: $brown3;
-    font-weight:bold;
-  }
-  .body {
-    color:darken($brown2, 30%);
-    font-size:$font-size*0.8;
-  }
-}
-
+// On the Bulletins Index page
 .bulletin-wrapper {
-  button {
-    cursor: pointer;
-    background-color: transparentize($brown2, 0.9);
-    margin: 10px 0;
-    padding: 3px;
-    font-size:14px;
-    border: 1px solid #b2ae73;
-  }
   & > * {display: inline-block;}
-  .vote { width: 30px;}
-  .bulletin { width: 600px;}
-  a { color: $brown2 !important;}
-
+  .bulletin-preview { width: 600px; }
+  .vote {
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: url('upvote.png');
+    background-size: 65%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .bulletin-preview {
+    margin-bottom: 10px;
+    border-bottom: solid 3px $brown2;
+    background-color:lighten($brown2, 10%);
+    padding:10px;
+    .title {
+      color: $brown3;
+      font-weight:bold;
+    }
+    .link {
+      float: right;
+      color: lighten($brown4, 10%);
+      text-decoration: underline;
+    }
+  } 
 }
+
+// Bulletin show page
 .bulletin {
   .bulletin-header {
     border-bottom: dotted 1px $brown2;
