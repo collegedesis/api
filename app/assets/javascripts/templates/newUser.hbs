@@ -5,23 +5,28 @@
     {{input email placeholder="user@email.com"}}
     {{input password placeholder="at least 6 characters"}}
     {{input password_confirmation placeholder="again"}}
-    <div>Organization
+    <div>
+      <p>Select an organization<span style="color:red;"> (takes a few seconds to load)</span></p>
       {{#each membership in memberships}}
-        {{view Ember.Select contentBinding="organizations" optionLabelPath="content.displayName" selectionBinding="membership.organization" prompt=" "}}
+        {{view Ember.Select contentBinding="organizations" optionLabelPath="content.displayName" selectionBinding="membership.organization" prompt="You can only sign up if you're in one"}}
       {{/each}}
       <p>If you're in multiple organizations, just pick one for now.</p>
     </div>
-    {{#if memberships.firstObject.organization}}
-      {{#if memberships.firstObject.organization.has_email}}
-        <p><strong>An email will be sent to {{memberships.firstObject.organization.displayName}} to verify your membership.</strong></p>
-      {{else}}
-        <p><strong>Sorry, {{memberships.firstObject.organization.displayName}} does not have a registered email address in our database. Please ask them to email us at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a> if you'd like to be a part of our community!</strong></p>
-      {{/if}}
+    {{#if memberships.firstObject.organization}}{{#if memberships.firstObject.organization.has_email}}
+      <p><strong>An email will be sent to {{memberships.firstObject.organization.displayName}} to verify your membership.</strong></p>
     {{else}}
-      <p>Select an organization to sign up!</p>
-    {{/if}}
+      <p><strong>Sorry, {{memberships.firstObject.organization.displayName}} does not have a registered email address in our database. If you'd like to be a part of this awesomeness, ask them to email us at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a>.</strong></p>
+    {{/if}}{{/if}}
     {{#if controller.errors}}
-      <p style="color:red;">Something isn't right in the form</p>
+      <p style="color:red;">Something isn't right:
+      <ul>
+        <li>Email address is legit?</li>
+        <li>Password is at least 6 characters?</li>
+        <li>Passwords match?</li>
+        <li>Selected an organization with an email address?</li>
+        <li>Email us at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a> </li>
+      </ul>
+      </p>
     {{else}}
       {{#if controller.working}}
         Working...
@@ -31,5 +36,5 @@
     {{/if}}
   {{/formFor}}
   </form>
-    Or {{#linkTo "login"}}login{{/linkTo}}
+    <p>Or {{#linkTo "login"}}login{{/linkTo}}</p>
 </div>
