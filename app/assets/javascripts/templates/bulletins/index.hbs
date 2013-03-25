@@ -10,8 +10,10 @@
             <a class="link" {{bindAttr href="bulletin.url"}}>View</a>
           {{/if}}
         </div>
+        <div class="vote">
         {{#unless hasBeenVotedOn}}
-          <a class="vote" {{action voteOnBulletin bulletin}}></a>
+          <a {{action voteOnBulletin bulletin}}></a>
+        </div>
         {{/unless}}
       </div>
     {{/each}}
