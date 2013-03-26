@@ -8,7 +8,7 @@ class OrganizationMailer < ActionMailer::Base
 
   def update_notification(org)
     @org = org
-    mail(to: org.email, subject: 'Your CollegeDesis directory info was updated')
+    mail(to: org.email, subject: 'Your info on CollegeDesis was updated')
   end
 
   def confirm_event_create(event)
