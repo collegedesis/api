@@ -34,4 +34,11 @@ class Bulletin < ActiveRecord::Base
   def self.homepage
     (Bulletin.sorted + Bulletin.newest).uniq
   end
+
+  def bulletin_url
+    # TODO when we add comments we probably want site urls to link bulletins too
+    domain = "https://collegedesis.com/#/"
+    route = "bulletins/"
+    url? ? url : domain + route + title.parameterize
+  end
 end
