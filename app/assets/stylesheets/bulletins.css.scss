@@ -35,8 +35,8 @@
   } 
 }
 
-// Bulletin show page
-.bulletin {
+// Bulletin show page and preview
+.bulletin, .bulletin-new .preview {
   .bulletin-header {
     border-bottom: dotted 1px $brown2;
     padding-bottom: 10px;
@@ -48,12 +48,19 @@
     }
   }
   .bulletin-body {
-    & > * {
-      margin-bottom: 10px;
-    }
     margin: 20px 0;
     min-height: 300px;
     width: 500px;
+    img {
+      max-width: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 315px;
+    }
+    & > * {
+      margin-bottom: 10px;
+    }
     ol, ul {
       margin-left: 40px;
     }
