@@ -17,6 +17,8 @@
         <div class="vote">
         {{#unless hasBeenVotedOn}}
           <a {{action voteOnBulletin bulletin}}></a>
+        {{else}}
+          <h3>{{bulletin.votes.length}}</h3>
         {{/unless}}
         </div>
         <div class="bulletin-preview">

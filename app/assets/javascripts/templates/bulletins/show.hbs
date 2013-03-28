@@ -1,6 +1,13 @@
 <aside>
-  <h4>Comments</h4>
-  <p>Coming soon.</p>
+  <div class="vote">
+    {{#unless hasBeenVotedOn}}
+      <a {{action voteOnBulletin}}></a>
+      <h4>Recommend</h4>
+    {{else}}
+      <h3>{{votes.length}}</h3>
+      <h4>Recommendations</h4>
+    {{/unless}}
+  </div>
 </aside>
 <div class="main">
   <div class="bulletin">
