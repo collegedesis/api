@@ -10,8 +10,8 @@
 # Ember libs
 
 #= require handlebars
-#= require ember
-#= require ember-data
+#= require ember-freeze
+#= require ember-data-freeze
 
 # Ember Application
 #= require_self
