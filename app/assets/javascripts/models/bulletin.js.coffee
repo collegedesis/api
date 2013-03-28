@@ -22,12 +22,8 @@ App.Bulletin = DS.Model.extend
   ).property("created_at")
 
   htmlBody: (->
-    convert = new Markdown.getSanitizingConverter().makeHtml;
-    if @get('body')
-      html = convert @get('body')
-      return html.htmlSafe()
-    else
-      return "No body"
+    converter = new Showdown.converter({ extensions: ['video'] })
+    new Ember.Handlebars.SafeString converter.makeHtml(@get('body')) if @get('body')
   ).property('body')
 
   isPost: (-> @get('bulletin_type') == 1 ).property('bulletin_type')

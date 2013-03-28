@@ -1,7 +1,7 @@
 # Venor libs
 #= require md5
 #= require showdown
-#= require showdown-sanitizer
+#= require showdown-youtube
 #= require ga-analytics
 #= require dateFormatter
 #= require jquery
