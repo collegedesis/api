@@ -20,8 +20,8 @@ class VotesController < ApplicationController
         # if we have a vote and the vote has a user and it's not the current user
         # we'll create a new vote and assign the current user to it
         if @vote && @vote.user && @vote.user != current_user
-          @vote = @votable.votes.create(params[:vote])
-          @vote.update_attributes(user: current_user)
+          @vote = @votable.votes.create
+          @vote.update_attributes(user_id: current_user.id)
         end
 
         # if we have a vote, and the vote has a user and it's the current_user
