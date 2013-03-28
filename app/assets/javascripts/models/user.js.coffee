@@ -5,5 +5,5 @@ App.User = DS.Model.extend
   password_confirmation: DS.attr('string')
 
   memberships: DS.hasMany('App.Membership')
-
+  bulletins: DS.hasMany('App.Bulletin')
   errors: []

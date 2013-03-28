@@ -32,6 +32,10 @@
       color: lighten($brown4, 10%);
       text-decoration: underline;
     }
+    .subtext {
+      color: lighten($brown4, 10%);
+      font-size: $font-size * 0.7;
+    }
   } 
 }
 

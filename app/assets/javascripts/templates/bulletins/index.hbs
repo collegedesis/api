@@ -14,6 +14,11 @@
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
       <div class="bulletin-wrapper">
+        <div class="vote">
+        {{#unless hasBeenVotedOn}}
+          <a {{action voteOnBulletin bulletin}}></a>
+        {{/unless}}
+        </div>
         <div class="bulletin-preview">
           <span class="title"> {{bulletin.title}}</span>
           {{#if bulletin.isPost}}
@@ -21,11 +26,11 @@
           {{else}}
             <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
           {{/if}}
-        </div>
-        <div class="vote">
-        {{#unless hasBeenVotedOn}}
-          <a {{action voteOnBulletin bulletin}}></a>
-        {{/unless}}
+          {{#if bulletin.user.memberships.firstObject.organization.name}}
+          <div class="subtext">
+            {{bulletin.user.memberships.firstObject.organization.name}}
+          </div>
+          {{/if}}
         </div>
       </div>
     {{/each}}
