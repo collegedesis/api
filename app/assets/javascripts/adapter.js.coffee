@@ -5,10 +5,9 @@ App.Serializer = DS.RESTSerializer.extend
     switch record.constructor
       when App.User
         # !!! TODO Please upgrade Ember data and figure out embedded associations
-        if attribute == "membership_ids" and record.get('isNew')
-          key = attribute.split("_")[0] + "s"
-          embedded = data[key+"_attributes"] = Em.A([])
-          record.get(key).forEach (item) ->
+        if attribute == "memberships" and record.get('isNew')
+          embedded = data[attribute+"_attributes"] = Em.A([])
+          record.get(attribute).forEach (item) ->
             if item.get('organization')
               embedded.pushObject item.serialize({includeId: true})
       else
