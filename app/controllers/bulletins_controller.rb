@@ -14,6 +14,7 @@ class BulletinsController < ApplicationController
 
   def create
     @bulletin = Bulletin.create(params[:bulletin])
+    @bulletin.update_attributes(user_id: current_user.id)
     render json: @bulletin
   end
 

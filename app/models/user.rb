@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :memberships, inverse_of: :user
   accepts_nested_attributes_for :memberships, allow_destroy: true
 
+  has_many :bulletins
   before_save :encrypt_password
 
   def confirm_password?(password)

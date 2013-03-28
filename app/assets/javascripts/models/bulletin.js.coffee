@@ -5,8 +5,8 @@ App.Bulletin = DS.Model.extend
   bulletin_type: DS.attr('number')
   created_at: DS.attr('date')
   errors: []
-
   votes: DS.hasMany('App.Vote')
+  user: DS.belongsTo('App.User')
 
   preview: (->
     if @get('body')

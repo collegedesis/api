@@ -1,7 +1,7 @@
 class Bulletin < ActiveRecord::Base
-  attr_accessible :body, :title, :url, :bulletin_type
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id
   has_many :votes, :as => :votable
-
+  belongs_to :user
   # bulletin_types:
   # post is 1
   # link is 2
@@ -9,6 +9,7 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :body, :if => :is_post?
   validates_presence_of :url, :if => :is_link?
+  validates_presence_of :user_id
 
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title)
