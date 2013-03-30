@@ -6,6 +6,11 @@ App.Router.map ->
     @route "show", {path: ':slug'}
   @route "newUser", {path: 'signup'}
   @route 'login', {path: 'login'}
+  @resource "organizations", ->
+    @route "show", {path: ':organization_id'}
+
+App.OrganizationsShowRoute = Ember.Route.extend
+  model: (params) -> return App.Organization.find(params.organization_id)
 
 App.ApplicationRoute = Ember.Route.extend
   setupController: (controller) ->
