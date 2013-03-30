@@ -27,8 +27,6 @@ class Organization < ActiveRecord::Base
 
 protected
   def send_welcome_email
-    if self.email?
-      OrganizationMailer.welcome(self).deliver
-    end
+    OrganizationMailer.welcome(self).deliver if self.email?
   end
 end
