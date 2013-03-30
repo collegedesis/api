@@ -26,6 +26,12 @@ class OrganizationMailer < ActionMailer::Base
   def earnings_notification(org, product)
     @org = org
     @product = product
-    mail(to: @org.email, subject: "#{@org.name} just earned $#{@product.beneficiary_payout.to_i}", )
+    mail(to: @org.email, subject: "#{@org.name} just earned $#{@product.beneficiary_payout.to_i}")
+  end
+
+  def bulletin_promotion(bulletin, org)
+    @bulletin = bulletin
+    @org = org
+    mail(to: @org.email, subject: "#{@bulletin.title} via CollegeDesis")
   end
 end

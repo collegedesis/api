@@ -1,0 +1,11 @@
+<p>
+  A Bulletin was posted on the CollegeDesis Bulletin Board and was promoted to <%=@org.name %>.
+</p>
+
+<h1>@bulletin.title</h1>
+<p><%= @bulletin.intro %></p>
+<p><%= link_to "Read the rest", @bulletin.bulletin_url %></p>
+
+<p>
+  Confused why you're getting this email? Read about the Bulletin Board <%= link_to "here", "https://collegedesis.com/#/bulletins/welcome-to-the-bulletin-board"%>. If you have any questions, just reply to this email.
+</p>

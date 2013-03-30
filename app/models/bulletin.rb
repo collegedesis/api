@@ -41,4 +41,16 @@ class Bulletin < ActiveRecord::Base
     route = "bulletins/"
     url? ? url : domain + route + title.parameterize
   end
+
+  def intro
+    self.body[0...50] + "..." if bulletin_type == 1
+  end
+
+  def promote(orgs=[])
+    if orgs.blank?
+      Organization.all.each { |org| OrganizationMailer.bulletin_promotion(self, org).deliver }
+    else
+      orgs.each { |org| OrganizationMailer.bulletin_promotion(self, org).deliver }
+    end
+  end
 end
