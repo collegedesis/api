@@ -2,7 +2,6 @@ class Organization < ActiveRecord::Base
   validates_presence_of :name, :university_id, :organization_type_id
   validates_uniqueness_of :email, allow_nil: true
   after_create :send_welcome_email
-  after_update :send_update_notification
   attr_accessible :name, :university_id, :organization_type_id, :email, :website, :public
 
   belongs_to :organization_type
@@ -64,15 +63,10 @@ def self.load_organizations(file)
 end
 
 
-  protected
+protected
   def send_welcome_email
     if self.email?
       OrganizationMailer.welcome(self).deliver
-    end
-  end
-  def send_update_notification
-    if self.email?
-      OrganizationMailer.update_notification(self).deliver
     end
   end
 end
