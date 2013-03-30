@@ -1,0 +1,13 @@
+<div class="main">
+  <h1>{{this.content.name}}</h1>
+  <h3>{{this.content.university.name}}</h3>
+
+  {{#if this.content.memberships.length}}
+    {{#each membership in this.content.memberships}}
+      {{membership.user.full_name}}
+    {{/each}}
+  {{else}}
+    <p>No members yet</p>
+    {{#linkTo 'newUser'}}Sign up?{{/linkTo}}
+  {{/if}}
+</div>
