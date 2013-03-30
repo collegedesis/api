@@ -1,14 +1,12 @@
 class OrganizationsController < ApplicationController
   respond_to :json
   def index
-    @organizations = params[:id] ? Organization.where(id: params[:id]) : Organization.all
-    # @organizations.unshift Organization.find_by_name("test") if Organization.find_by_name("test")
-    # render json: @organizations[0..30].sort_by(&:name)
-    render json: @organizations.sort_by(&:name)
+    @organizations = params[:id] ? Organization.where(id: params[:id]) : Organization.public
+    render json: @organizations
   end
 
   def show
-    @organization = Organization.find(params[:id])
+    @organization = Organization.where(id: params[:id]).first
     render json: @organization
   end
 
