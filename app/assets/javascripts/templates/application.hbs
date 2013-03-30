@@ -4,8 +4,8 @@
     Connecting all the #brownkids in America
   </div>
 </div>
-<div class="app-nav">
-  <ul>
+<div style="overflow:hidden;" class="app-nav">
+  <ul style="display:inline-block;">
     <li> {{#linkTo index}}Home{{/linkTo}}</li>
     <li> {{#linkTo bulletins}} Bulletins {{/linkTo}}</li>
     <li> {{#linkTo store}} Store {{/linkTo}}</li>
@@ -15,6 +15,11 @@
       <li>{{#linkTo login}}Log in/ Sign up{{/linkTo}}</li>
     {{/if}}
   </ul>
+  {{#if currentUser}}
+    <ul style="float:right;display:inline-block;">
+      <li>{{#linkTo 'users.show' currentUser }}Me{{/linkTo}}</li>
+    </ul>
+  {{/if}}
 </div>
 <div class="app-content">
   {{outlet}}
