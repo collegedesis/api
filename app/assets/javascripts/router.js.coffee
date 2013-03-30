@@ -61,3 +61,5 @@ App.NewUserRoute = Ember.Route.extend
   setupController: (controller) ->
     user = controller.get('content')
     user.get('memberships').createRecord()
+    if App.Organization.all().get('length') > 1 then orgs = App.Organization.all() else orgs = App.Organization.find()
+    @controllerFor('organizations').set('content', orgs)

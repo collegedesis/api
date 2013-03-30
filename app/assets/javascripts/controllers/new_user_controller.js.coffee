@@ -1,5 +1,5 @@
 App.NewUserController = Ember.ObjectController.extend
-  needs: ['application']
+  needs: ['application', 'organizations']
 
   working: false
 
@@ -16,11 +16,12 @@ App.NewUserController = Ember.ObjectController.extend
     @transitionToRoute('login')
 
   organizations: (->
-    if App.Organization.all().length > 1
-      return App.Organization.all()
-    else
-      return App.Organization.find()
-  ).property()
+    @get('controllers.organizations.publicOrgs')
+  ).property('controllers.organizations.publicOrgs')
+
+  loading: (->
+    if @get('organizations.length') > 1 then return false else return true
+  ).property('organizations.length')
 
   _createSession: (user) ->
     if !App.session

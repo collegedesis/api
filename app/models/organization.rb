@@ -11,7 +11,8 @@ class Organization < ActiveRecord::Base
   has_many :events
   has_many :memberships
 
-  default_scope where(:public => true).order('name ASC')
+  default_scope order('name ASC')
+  scope :public, where(:public => true)
 
   require 'csv'
 

@@ -6,9 +6,13 @@
     {{input password_confirmation placeholder="again"}}
     <div>
       <p>Select an organization<span style="color:red;"> (takes a few seconds to load)</span></p>
-      {{#each membership in memberships}}
-        {{view Ember.Select contentBinding="organizations" optionLabelPath="content.displayName" selectionBinding="membership.organization" prompt="You can only sign up if you're in one"}}
-      {{/each}}
+      {{#if loading}}
+        Loading organizations...
+      {{else}}
+        {{#each membership in memberships}}
+          {{view Ember.Select contentBinding="organizations" optionLabelPath="content.displayName" selectionBinding="membership.organization" prompt="You can only sign up if you're in one"}}
+        {{/each}}
+      {{/if}}
       <p>If you're in multiple organizations, just pick one for now.</p>
     </div>
     {{#if memberships.firstObject.organization}}{{#if memberships.firstObject.organization.has_email}}
