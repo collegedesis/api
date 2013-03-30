@@ -8,6 +8,17 @@ App.Router.map ->
   @route 'login', {path: 'login'}
   @resource "organizations", ->
     @route "show", {path: ':organization_id'}
+  @resource "users", ->
+    @route "show", {path: ':user_id'}
+
+App.UsersShowRoute = Ember.Route.extend
+  redirect: (params) ->
+    if App.session.get('currentUserId') != parseInt(params.id)
+      id = App.session.get('currentUserId')
+      user = App.User.find(id)
+      @transitionTo('users.show', user)
+
+  model: (params) -> return App.User.find(params.user_id)
 
 App.OrganizationsShowRoute = Ember.Route.extend
   model: (params) -> return App.Organization.find(params.organization_id)
