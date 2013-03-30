@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330191942) do
+ActiveRecord::Schema.define(:version => 20130330204635) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(:version => 20130330191942) do
     t.integer  "user_id"
     t.integer  "organization_id"
     t.integer  "membership_type_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.boolean  "approved",           :default => false
   end
 
   create_table "messages", :force => true do |t|
