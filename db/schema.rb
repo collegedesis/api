@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328120632) do
+ActiveRecord::Schema.define(:version => 20130330191942) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "bulletin_type", :default => 1
     t.string   "url"
     t.integer  "user_id"
+    t.boolean  "protected",     :default => false
   end
 
   create_table "emails", :force => true do |t|
@@ -71,10 +72,11 @@ ActiveRecord::Schema.define(:version => 20130328120632) do
     t.string   "youtube"
     t.string   "city"
     t.integer  "organization_type_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "email"
     t.integer  "university_id"
+    t.boolean  "public",               :default => true
   end
 
   create_table "products", :force => true do |t|
