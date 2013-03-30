@@ -17,10 +17,6 @@ class Organization < ActiveRecord::Base
     self.email? ? true : false
   end
 
-  def url
-    "//collegedesis.com/directory#/#{self.id}"  
-  end
-
   def display_name
     "#{name} (#{university.name})"
   end
