@@ -12,6 +12,7 @@ class Organization < ActiveRecord::Base
 
   default_scope order('name ASC')
   scope :public, where(:public => true)
+  scope :with_email, :conditions => "email IS NOT NULL"
 
   def has_email?
     self.email? ? true : false

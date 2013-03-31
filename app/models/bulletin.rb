@@ -47,10 +47,11 @@ class Bulletin < ActiveRecord::Base
   end
 
   def promote(orgs=[])
-    if orgs.blank?
-      Organization.all.each { |org| OrganizationMailer.bulletin_promotion(self, org).deliver }
-    else
-      orgs.each { |org| OrganizationMailer.bulletin_promotion(self, org).deliver }
+    # if we don't get an array of organizations, we'll get all of them.
+    # TODO figure out a way to map `orgs` to just those with email addresses upfront.
+    orgs.blank? ? orgs = Organization.with_email : orgs
+    orgs.each do |org|
+      OrganizationMailer.bulletin_promotion(self, org).deliver if org.has_email?
     end
   end
 end
