@@ -43,7 +43,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def intro
-    self.body[0...50] + "..." if bulletin_type == 1
+    self.body[0...100] + "..." if bulletin_type == 1
   end
 
   def promote(orgs=[])
