@@ -6753,7 +6753,7 @@ Ember.Error.prototype = Ember.create(Error.prototype);
 @submodule ember-runtime
 */
 
-var STRING_DASHERIZE_REGEXP = (/[ _]/g);
+var STRING_DASHERIZE_REGEXP = (/[^a-zA-Z0-9\-]+/g);
 var STRING_DASHERIZE_CACHE = {};
 var STRING_DECAMELIZE_REGEXP = (/([a-z])([A-Z])/g);
 var STRING_CAMELIZE_REGEXP = (/(\-|_|\.|\s)+(.)?/g);
@@ -6894,15 +6894,18 @@ Ember.String = {
     @return {String} the dasherized string.
   */
   dasherize: function(str) {
-    var cache = STRING_DASHERIZE_CACHE,
-        ret   = cache[str];
+    var ret = Ember.String.decamelize(str),
+        sep = '-';
 
-    if (ret) {
-      return ret;
-    } else {
-      ret = Ember.String.decamelize(str).replace(STRING_DASHERIZE_REGEXP,'-');
-      cache[str] = ret;
-    }
+    var ret = Ember.String.decamelize(str)
+    // replace all unwanted chars into the separator
+    ret = ret.replace(STRING_DASHERIZE_REGEXP, sep);
+    // No more than one separator in a row
+    var dupePatt = new RegExp(sep + '{2,}');
+    ret = ret.replace(dupePatt, sep);
+    // remove leading/trailing separator
+    var trimPatt = new RegExp('^' + sep + '|' + sep + '$');
+    ret = ret.replace(trimPatt, '');
 
     return ret;
   },

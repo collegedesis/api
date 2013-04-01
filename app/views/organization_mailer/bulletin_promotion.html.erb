@@ -1,0 +1,14 @@
+Hello!
+
+<p>
+  A Bulletin was posted on the <a href="http://collegedesis.com/#/bulletins">CollegeDesis Bulletin Board</a> and was promoted to <%=@org.name %>.
+</p>
+
+<h3><%= @bulletin.title %></h3>
+<p><%= @bulletin.intro %><%= link_to "Read more", @bulletin.bulletin_url %></p>
+
+<p>In case the link above doesn't work, paste this into your browser: <%= @bulletin.bulletin_url %></p>
+<hr>
+<p>
+  Confused why you're getting this email? Read about the Bulletin Board <%= link_to "here", "https://collegedesis.com/#/bulletins/welcome-to-the-bulletin-board"%>. If you have any questions, just reply to this email.
+</p>

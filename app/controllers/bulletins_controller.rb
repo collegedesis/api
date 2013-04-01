@@ -1,14 +1,14 @@
 class BulletinsController < ApplicationController
   respond_to :json
-
   before_filter :authenticate_user!, :only => [:create]
+
   def index
     @bulletins = params[:title] ? Bulletin.find_by_title(params[:title]) : Bulletin.homepage
     render json: @bulletins
   end
 
   def show
-    @bulletin = Bulletin.find(params[:id])
+    @bulletin = Bulletin.find_by_slug(params[:id])
     render json: @bulletin
   end
 
