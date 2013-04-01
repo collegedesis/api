@@ -1,13 +1,11 @@
 // On the Bulletins Index page
 .bulletin-wrapper {
   & > * {display: inline-block;}
-  .bulletin-preview { width: 600px; }
+  .bulletin-preview { width: 615px; }
   .vote {
-    float: left;
-    margin-right: 10px;
+    float: right;
+    margin-left: 10px;
     cursor: pointer;
-    width: 42px;
-    height: 42px;
   }
   .vote a {
     background: url('upvote.png');
@@ -95,6 +93,17 @@
   }
 }
 
+aside .vote-count {
+  color: lighten($brown4, 60%);
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: $brown4;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+  text-align: center;
+}
 aside .vote {
   margin: 0 auto;
   text-align: center;
