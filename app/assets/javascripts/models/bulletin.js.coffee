@@ -7,15 +7,12 @@ App.Bulletin = DS.Model.extend
   errors: []
   votes: DS.hasMany('App.Vote')
   user: DS.belongsTo('App.User')
+  slug: DS.attr('string')
 
   preview: (->
     if @get('body')
       "#{@get('body').slice(0, 20)}..."
   ).property('body')
-
-  slug: (->
-    Em.String.dasherize @get('title')
-  ).property('title')
 
   humanizedCreatedAt: (->
     strftime(@get('created_at'),"%b %d, %Y at %I:%M%p") if @get('created_at')?

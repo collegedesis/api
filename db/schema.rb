@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330204635) do
+ActiveRecord::Schema.define(:version => 20130401025221) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130330204635) do
     t.string   "url"
     t.integer  "user_id"
     t.boolean  "protected",     :default => false
+    t.string   "slug"
   end
 
   create_table "emails", :force => true do |t|

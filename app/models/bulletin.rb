@@ -1,5 +1,7 @@
 class Bulletin < ActiveRecord::Base
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug
+  after_create :create_slug
+
   has_many :votes, :as => :votable
   belongs_to :user
   # bulletin_types:
@@ -12,7 +14,7 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :user_id
 
   def self.find_by_title(title)
-    Bulletin.where("lower(title) = lower(:title)", :title => title)
+    Bulletin.where("lower(title) = lower(:title)", :title => title).first
   end
 
   def is_link?
@@ -39,7 +41,7 @@ class Bulletin < ActiveRecord::Base
     # TODO when we add comments we probably want site urls to link bulletins too
     domain = "https://collegedesis.com/#/"
     route = "bulletins/"
-    url? ? url : domain + route + title.parameterize
+    url? ? url : domain + route + slug
   end
 
   def intro
@@ -53,5 +55,8 @@ class Bulletin < ActiveRecord::Base
     orgs.each do |org|
       OrganizationMailer.bulletin_promotion(self, org).deliver if org.has_email?
     end
+  end
+  def create_slug
+    self.update_attributes(slug: title.parameterize)
   end
 end
