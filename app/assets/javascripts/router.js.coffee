@@ -37,18 +37,10 @@ App.BulletinsShowRoute = Ember.Route.extend
   serialize: (model, params) ->
     object = {}
     name = params[0]
-    object[name] = Em.String.dasherize model.get('title')
+    object[name] = model.get('slug')
     return object
 
-  deserialize: (params) ->
-    slug = params.slug
-    title = slug.split('-').join(' ') if slug
-    bulletins = App.Bulletin.find({title: title})
-
-    bulletins.one "didLoad", ->
-      bulletins.resolve(bulletins.get("firstObject"))
-
-    @currentModel = bulletins
+  model: (params) -> App.Bulletin.find(params.slug)
 
 App.BulletinsNewRoute = Ember.Route.extend
   redirect: ->
