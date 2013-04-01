@@ -1,8 +1,9 @@
-<h1>{{this.content.full_name}}</h1>
-
-<h3>Memberships</h3>
-<ul>
-{{#each this.content.memberships}}
-  <li>{{this.organization.name}} at {{this.organization.university.name}}</li>
-{{/each}}
-</ul>
+<div class="main profile-page">
+  <h1>{{this.content.full_name}}</h1>
+  <h3>Memberships</h3>
+  <ul>
+    {{#each this.content.memberships}}
+      <li>{{this.organization.name}} at {{this.organization.university.name}}</li>
+    {{/each}}
+  </ul>
+</div>
