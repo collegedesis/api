@@ -13,12 +13,15 @@ App.Router.map ->
 
 App.UsersShowRoute = Ember.Route.extend
   redirect: (params) ->
-    if App.session.get('currentUserId') != parseInt(params.id)
-      id = App.session.get('currentUserId')
-      user = App.User.find(id)
-      @transitionTo('users.show', user)
+    if App.session.get("currentUserId")
+      if App.session.get('currentUserId') != parseInt(params.id)
+        id = App.session.get('currentUserId')
+        user = App.User.find(id)
+        @transitionTo('index')
+    else
+      @transitionTo('index')
 
-  model: (params) -> return App.User.find(params.user_id)
+  model: (params) -> App.User.find(params.user_id)
 
 App.OrganizationsShowRoute = Ember.Route.extend
   model: (params) -> return App.Organization.find(params.organization_id)
@@ -36,7 +39,7 @@ App.ApplicationRoute = Ember.Route.extend
         type: 'DELETE'
         success: (result) =>
           window.location.reload()
-    
+
 App.BulletinsIndexRoute = Ember.Route.extend
   events: 
     goToBulletin: (bulletin) ->
