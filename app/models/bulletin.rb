@@ -13,6 +13,10 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :url, :if => :is_link?
   validates_presence_of :user_id
 
+  def author
+    user.memberships.first.organization.name if user
+  end
+
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
   end
