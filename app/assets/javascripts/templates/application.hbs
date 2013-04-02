@@ -9,19 +9,17 @@
     <li> {{#linkTo index}}Home{{/linkTo}}</li>
     <li> {{#linkTo bulletins}} Bulletins {{/linkTo}}</li>
     <li> {{#linkTo store}} Store {{/linkTo}}</li>
+  </ul>
+  <ul class="account">
     {{#if currentUser}}
-      <li> <a {{action logout}}>Sign Out</a></li>
+      <li>
+        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Account{{/linkTo}}
+      </li><li>
+      <a {{action logout}}>Sign out</a></li>
     {{else}}
       <li>{{#linkTo login}}Log in/ Sign up{{/linkTo}}</li>
     {{/if}}
   </ul>
-  {{#if currentUser}}
-    <ul class="account">
-      <li>
-        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Account{{/linkTo}}
-      </li>
-    </ul>
-  {{/if}}
 </div>
 <div class="app-content">
   {{outlet}}
