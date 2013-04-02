@@ -5,7 +5,7 @@
   </div>
 </div>
 <div style="overflow:hidden;" class="app-nav">
-  <ul style="display:inline-block;">
+  <ul>
     <li> {{#linkTo index}}Home{{/linkTo}}</li>
     <li> {{#linkTo bulletins}} Bulletins {{/linkTo}}</li>
     <li> {{#linkTo store}} Store {{/linkTo}}</li>
@@ -16,10 +16,9 @@
     {{/if}}
   </ul>
   {{#if currentUser}}
-    <ul style="float:right;display:inline-block;">
+    <ul class="account">
       <li>
-        <img {{bindAttr src="currentUser.avatar_url"}} />
-        {{#linkTo 'users.show' currentUser }}Me{{/linkTo}}
+        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Account{{/linkTo}}
       </li>
     </ul>
   {{/if}}

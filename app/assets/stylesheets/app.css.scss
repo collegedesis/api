@@ -22,22 +22,7 @@
     font-weight:600;
   }
 }
-.app-nav {
-  margin-bottom: 10px;
-  border-bottom:solid 3px transparentize($brown2, 0.5);
-  li { 
-    height:30px;
-    display: inline-block;
-    cursor: pointer;
-    padding:5px;
-    box-sizing:padding-box;
-    margin: 0 5px;
-    a, a:visited, a:hover { color: $brown4; }
-    a:hover {border-bottom:solid 3px $brown2;}
-    .active { border-bottom:solid 3px $brown2; }
-    &:first-child{ margin-left:0; padding-left: 0;}
-  }
-}
+
 .app-content {
   .main {
     width:70%;
