@@ -1,4 +1,4 @@
 class BulletinSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :created_at, :url, :bulletin_type, :user_id, :slug
+  attributes :id, :title, :body, :created_at, :url, :bulletin_type, :user_id, :slug, :author
   attribute :vote_ids, key: :votes
 end

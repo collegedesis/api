@@ -8,6 +8,7 @@ App.Bulletin = DS.Model.extend
   votes: DS.hasMany('App.Vote')
   user: DS.belongsTo('App.User')
   slug: DS.attr('string')
+  author: DS.attr('string')
 
   preview: (->
     if @get('body')

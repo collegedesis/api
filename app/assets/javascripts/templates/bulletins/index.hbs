@@ -28,10 +28,8 @@
           {{else}}
             <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
           {{/if}}
-          {{#if bulletin.user.memberships.firstObject.organization.name}}
-          <div class="subtext">
-            {{bulletin.user.memberships.firstObject.organization.name}}
-          </div>
+          {{#if bulletin.author}}
+          <div class="subtext">{{bulletin.author}}</div>
           {{/if}}
         </div>
       </div>
