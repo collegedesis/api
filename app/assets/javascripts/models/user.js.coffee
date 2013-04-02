@@ -3,6 +3,7 @@ App.User = DS.Model.extend
   email: DS.attr('string')
   password: DS.attr('string')
   password_confirmation: DS.attr('string')
+  avatar_url: DS.attr('string')
 
   memberships: DS.hasMany('App.Membership')
   bulletins: DS.hasMany('App.Bulletin')
