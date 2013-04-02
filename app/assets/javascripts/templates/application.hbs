@@ -17,7 +17,10 @@
   </ul>
   {{#if currentUser}}
     <ul style="float:right;display:inline-block;">
-      <li>{{#linkTo 'users.show' currentUser }}Me{{/linkTo}}</li>
+      <li>
+        <img {{bindAttr src="currentUser.avatar_url"}} />
+        {{#linkTo 'users.show' currentUser }}Me{{/linkTo}}
+      </li>
     </ul>
   {{/if}}
 </div>

@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :bulletins
   before_save :encrypt_password
 
+  require 'digest/md5'
+
   def confirm_password?(password)
     return false unless self.password_hash && self.password_salt
     self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
@@ -26,5 +28,10 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def avatar_url
+   hash = Digest::MD5.hexdigest(email.downcase)
+   "http://www.gravatar.com/avatar/#{hash}"
   end
 end
