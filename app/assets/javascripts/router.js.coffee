@@ -1,6 +1,7 @@
 App.Router.map ->
   @route("store")
   @route("calendar")
+  @route("about")
   @resource "bulletins", ->
     @route "new"
     @route "show", {path: ':slug'}
