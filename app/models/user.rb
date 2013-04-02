@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar_url
-   hash = Digest::MD5.hexdigest(email.downcase)
-   "http://www.gravatar.com/avatar/#{hash}"
+    hash = Digest::MD5.hexdigest(email.downcase)
+    "http://www.gravatar.com/avatar/#{hash}"
   end
 end
