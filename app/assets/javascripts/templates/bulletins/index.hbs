@@ -14,23 +14,23 @@
   {{#if hasBulletins }}
     {{#each bulletin in controller}}
       <div class="bulletin-wrapper">
-        <div class="vote">
-        {{#unless hasBeenVotedOn}}
-          <a {{action voteOnBulletin bulletin}}></a>
-        {{else}}
-          <h3>{{bulletin.votes.length}}</h3>
-        {{/unless}}
-        </div>
         <div class="bulletin-preview">
-          <span class="title"> {{bulletin.title}}</span>
-          {{#if bulletin.isPost}}
-            <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
-          {{else}}
-            <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
-          {{/if}}
-          {{#if bulletin.author}}
           <div class="subtext">{{bulletin.author}}</div>
-          {{/if}}
+          <div class="title">{{bulletin.title}}</div>
+          <div class="link">
+            {{#if bulletin.isPost}}
+              <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
+            {{else}}
+              <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
+            {{/if}}
+          </div>
+          <div class="vote">
+            {{#unless hasBeenVotedOn}}
+              <a {{action voteOnBulletin bulletin}}></a>
+            {{else}}
+              <h3>{{bulletin.votes.length}}</h3>
+            {{/unless}}
+          </div>
         </div>
       </div>
     {{/each}}
