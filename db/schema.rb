@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401025221) do
+ActiveRecord::Schema.define(:version => 20130403235143) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20130401025221) do
     t.datetime "updated_at",                             :null => false
     t.string   "email"
     t.integer  "university_id"
-    t.boolean  "public",               :default => true
+    t.boolean  "exposed",              :default => true
   end
 
   create_table "products", :force => true do |t|
