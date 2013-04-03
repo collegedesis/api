@@ -1,51 +1,64 @@
 // On the Bulletins Index page
 .bulletin-wrapper {
-  & > * {display: inline-block;}
-  .bulletin-preview { width: 615px; }
-  .vote {
-    float: right;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  .vote a {
-    background: url('upvote.png');
-    background-size: 65%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: block;
-    width: 42px;
-    height: 42px;
-  }
-  .vote h3 {
-    color: lighten($brown4, 60%);
+  & > * {
+    display: inline-block;
     line-height: 28px;
-    font-size: $font-size * 0.9;
-    margin: 7px auto;
-    border-radius: 50%;
-    background: $brown4;
-    height: 28px;
-    width: 28px;
-    text-align: center;
   }
   .bulletin-preview {
+    width: 100%;
     margin-bottom: 10px;
     border-bottom: solid 3px $brown2;
     background-color:lighten($brown2, 10%);
     padding:10px;
+    & > * {
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
+    .subtext, .link {
+      color: lighten($brown4, 10%);
+      font-size: $font-size * 0.7;
+    }
+    .subtext {
+      margin-left: 0;
+      width: 75px;
+    }
     .title {
+      width: 440px;
       color: $brown3;
       font-weight:500;
     }
     .link {
-      float: right;
       color: lighten($brown4, 10%);
       text-decoration: underline;
     }
-    .subtext {
-      color: lighten($brown4, 10%);
-      font-size: $font-size * 0.7;
+    .vote {
+      float: right;
+      cursor: pointer;
+      height: 28px;
+      width: 28px;
+      & > * {
+        height: 28px;
+        width: 28px;
+        line-height: 28px;
+      }
+      a {
+        display: block;
+        background: url('upvote.png') no-repeat center;
+        background-size: 90%;
+      }
+      h3 {
+        color: lighten($brown4, 60%);
+        font-size: $font-size * 0.9;
+        margin: 0px auto;
+        border-radius: 50%;
+        background: $brown4;
+        text-align: center;
+      }
     }
-  } 
+  }
 }
 
 // Bulletin show page and preview
