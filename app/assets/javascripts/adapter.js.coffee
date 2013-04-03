@@ -1,4 +1,13 @@
 App.Serializer = DS.RESTSerializer.extend
+  addAttributes: (data, record) ->
+    # TODO: _addAttribute is private, should resort to using public apis
+    # Add attribute to serialized object if it's not supposed to be excluded
+    switch record.constructor
+      when App.Bulletin
+        record.eachAttribute (name, attribute) =>
+          @_addAttribute(data, record, name, attribute.type) if name != "author"
+      else
+        @_super(data,record)
 
   # when creating a new User, we'll embed the memberships array
   addHasMany: (data, record, attribute, relationshipDesc) ->
