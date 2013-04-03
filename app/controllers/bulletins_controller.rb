@@ -8,7 +8,7 @@ class BulletinsController < ApplicationController
   end
 
   def show
-    @bulletin = Bulletin.find_by_slug(params[:id])
+    @bulletin = Bulletin.find_by_slug(params[:id]) || Bulletin.first
     render json: @bulletin
   end
 
