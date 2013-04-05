@@ -29,16 +29,12 @@ class Bulletin < ActiveRecord::Base
     bulletin_type == 1
   end
 
-  def self.sorted
-    Bulletin.all.sort_by{|x| x.votes.length }.reverse[0..4]
-  end
-
-  def self.newest
-    Bulletin.all.sort_by(&:created_at).reverse[0..4]
+  def score
+    recency_score * popularity_score * user_reputation * affiliation_reputation
   end
 
   def self.homepage
-    (Bulletin.sorted + Bulletin.newest).uniq
+    Bulletin.all.sort_by{|x| x.score }.reverse[0..9]
   end
 
   def bulletin_url
@@ -63,4 +59,28 @@ class Bulletin < ActiveRecord::Base
   def create_slug
     self.update_attributes(slug: title.parameterize)
   end
+
+  def recency_score
+    # the older the bulletin, the larger the number
+    raw = (Time.now - created_at)
+    # so we'll inverse it
+    inverse = 1/raw
+    # and then multiple by some outlandish large number to make it human readable
+    inverse * 1000000
+  end
+
+  def popularity_score
+    votes.length
+  end
+
+  def user_reputation
+    # TODO
+    1
+  end
+
+  def affiliation_reputation
+    # TODO
+    1
+  end
+
 end
