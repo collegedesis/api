@@ -12,6 +12,14 @@ App.Router.map ->
   @resource "users", ->
     @route "show", {path: ':user_id'}
 
+
+App.IndexRoute = Ember.Route.extend
+  events:
+    goToBulletin: (bulletin) ->
+      @transitionTo('bulletins.show', bulletin)
+  setupController: (controller) ->
+    @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
+
 App.UsersShowRoute = Ember.Route.extend
   redirect: (params) ->
     if App.session.get("currentUserId")
@@ -42,11 +50,7 @@ App.ApplicationRoute = Ember.Route.extend
           window.location.reload()
 
 App.BulletinsIndexRoute = Ember.Route.extend
-  events: 
-    goToBulletin: (bulletin) ->
-      @transitionTo('bulletins.show', bulletin)
-  model: ->
-    return App.Bulletin.find()
+  redirect: -> @transitionTo('index')
 
 App.BulletinsShowRoute = Ember.Route.extend
   serialize: (model, params) ->
