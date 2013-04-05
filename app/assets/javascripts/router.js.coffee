@@ -12,6 +12,15 @@ App.Router.map ->
   @resource "users", ->
     @route "show", {path: ':user_id'}
 
+
+App.IndexRoute = Ember.Route.extend
+  events:
+    goToBulletin: (bulletin) -> @transitionTo('bulletins.show', bulletin)
+    write: -> @transitionTo('bulletins.new')
+
+  setupController: (controller) ->
+    @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
+
 App.UsersShowRoute = Ember.Route.extend
   redirect: (params) ->
     if App.session.get("currentUserId")
@@ -42,11 +51,7 @@ App.ApplicationRoute = Ember.Route.extend
           window.location.reload()
 
 App.BulletinsIndexRoute = Ember.Route.extend
-  events: 
-    goToBulletin: (bulletin) ->
-      @transitionTo('bulletins.show', bulletin)
-  model: ->
-    return App.Bulletin.find()
+  redirect: -> @transitionTo('index')
 
 App.BulletinsShowRoute = Ember.Route.extend
   serialize: (model, params) ->
@@ -58,14 +63,9 @@ App.BulletinsShowRoute = Ember.Route.extend
   model: (params) -> App.Bulletin.find(params.slug)
 
 App.BulletinsNewRoute = Ember.Route.extend
-  redirect: ->
-    if !App.session.get('currentUserId')
-      @transitionTo('login')
+  redirect: -> @transitionTo('login') if !App.session.get('currentUserId')
   model: -> App.Bulletin.createRecord()
-
-  exit: ->
-    if @get('controller.content.isNew')
-      @get('controller.content').deleteRecord()
+  exit: -> @get('controller.content').deleteRecord() if @get('controller.content.isNew')
 
 App.NewUserRoute = Ember.Route.extend
   model: -> App.User.createRecord()

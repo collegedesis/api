@@ -1,15 +1,40 @@
+<aside>
+  <p>
+    Hello there{{#if currentUser}} {{currentUser.full_name}}{{/if}}!
+  </p>
+  <p>
+    We're working on creating a community of South Asian students in America. Write a post or share a link to share with the community!
+  </p>
+  <p>Bulletins are the easiest way to spread the word among our community. <a href="/#/bulletins/welcome-to-the-bulletin-board">Read more</a></p>
+  <p>Post a link or write a blog post.</p>
+  <p>We'll <a href="//twitter.com/collegedesis">tweet</a> it out every <span class="vote-count">5</span> thumbs-ups it gets.</p>
+  <button {{action write}}>{{#if controllers.application.currentUser}}Post{{else}}Login to Post{{/if}}</button>
+</aside>
 <div class="main">
-  <p>
-    Hello there{{#if currentUser}} {{currentUser.full_name}}{{/if}}.
-  </p>
-  <p>
-    Our mission is to create a community of South Asian students in the America. We work on national collaborative projects that are open to {{organizationCount}} South Asian student organizations from all around the country.
-  </p>
-  <p>
-    {{#unless currentUser}}
-    {{#linkTo 'newUser'}}Sign Up{{/linkTo}}
-    or
-    {{#linkTo 'login'}}Log In{{/linkTo}}
-    {{/unless}}
-  </p>
+  {{#if controllers.bulletinsIndex.hasBulletins}}
+    {{#each bulletin in controllers.bulletinsIndex}}
+      <div class="bulletin-wrapper">
+        <div class="bulletin-preview">
+          <div class="subtext">{{bulletin.author}}</div>
+          <div class="title">{{bulletin.title}}</div>
+          <div class="link">
+            {{#if bulletin.isPost}}
+              <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
+            {{else}}
+              <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
+            {{/if}}
+          </div>
+          <div class="vote">
+            {{#if hasBeenVotedOn}}
+              <h3>{{bulletin.votes.length}}</h3>
+            {{else}}
+              <a {{action voteOnBulletin bulletin}}></a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    No bulletins have been written. Want to {{#linkTo "bulletins.new"}}write one?{{/linkTo}}
+  {{/if}}
 </div>
