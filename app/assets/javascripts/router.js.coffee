@@ -15,8 +15,9 @@ App.Router.map ->
 
 App.IndexRoute = Ember.Route.extend
   events:
-    goToBulletin: (bulletin) ->
-      @transitionTo('bulletins.show', bulletin)
+    goToBulletin: (bulletin) -> @transitionTo('bulletins.show', bulletin)
+    write: -> @transitionTo('bulletins.new')
+
   setupController: (controller) ->
     @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
 
@@ -62,14 +63,9 @@ App.BulletinsShowRoute = Ember.Route.extend
   model: (params) -> App.Bulletin.find(params.slug)
 
 App.BulletinsNewRoute = Ember.Route.extend
-  redirect: ->
-    if !App.session.get('currentUserId')
-      @transitionTo('login')
+  redirect: -> @transitionTo('login') if !App.session.get('currentUserId')
   model: -> App.Bulletin.createRecord()
-
-  exit: ->
-    if @get('controller.content.isNew')
-      @get('controller.content').deleteRecord()
+  exit: -> @get('controller.content').deleteRecord() if @get('controller.content.isNew')
 
 App.NewUserRoute = Ember.Route.extend
   model: -> App.User.createRecord()
