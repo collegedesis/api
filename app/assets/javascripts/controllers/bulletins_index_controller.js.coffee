@@ -1,9 +1,8 @@
 App.BulletinsIndexController = Ember.ArrayController.extend
   itemController: 'bulletin'
   needs: ['application']
-  hasBulletins: (->
-    true if @get('length') > 0
-  ).property('@each')
+
+  hasBulletins: (-> true if @get('length') > 1 ).property('@each')
 
   voteOnBulletin: (bulletin) ->
     vote = bulletin.get('votes').createRecord()
@@ -16,8 +15,8 @@ App.BulletinsIndexController = Ember.ArrayController.extend
     App.session.get('votedBulletinIds').pushObject parseInt(votedBulletinId)
     vote.removeObserver('id', this, '_voted')
 
-  write: ->
-    @transitionToRoute('bulletins.new')
+  write: -> @transitionToRoute('bulletins.new')
+
 App.BulletinController = Ember.ObjectController.extend
   needs: ['application']
 
