@@ -1,4 +1,4 @@
-<div class="main">
+<aside>
   <p>
     Hello there{{#if currentUser}} {{currentUser.full_name}}{{/if}}.
   </p>
@@ -12,4 +12,32 @@
     {{#linkTo 'login'}}Log In{{/linkTo}}
     {{/unless}}
   </p>
+</aside>
+<div class="main">
+  {{#if controllers.bulletinsIndex.hasBulletins}}
+    {{#each bulletin in controllers.bulletinsIndex}}
+      <div class="bulletin-wrapper">
+        <div class="bulletin-preview">
+          <div class="subtext">{{bulletin.author}}</div>
+          <div class="title">{{bulletin.title}}</div>
+          <div class="link">
+            {{#if bulletin.isPost}}
+              <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
+            {{else}}
+              <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
+            {{/if}}
+          </div>
+          <div class="vote">
+            {{#if hasBeenVotedOn}}
+              <h3>{{bulletin.votes.length}}</h3>
+            {{else}}
+              <a {{action voteOnBulletin bulletin}}></a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    No bulletins have been written. Want to {{#linkTo "bulletins.new"}}write one?{{/linkTo}}
+  {{/if}}
 </div>
