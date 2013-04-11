@@ -12,6 +12,9 @@ App.Router.map ->
   @resource "users", ->
     @route "show", {path: ':user_id'}
 
+App.LoginRoute = Ember.Route.extend
+  deactivate: ->
+    App.session.set("messages", null)
 
 App.IndexRoute = Ember.Route.extend
   events:
@@ -41,6 +44,7 @@ App.ApplicationRoute = Ember.Route.extend
     if App.session.get("currentUserId")
       user = App.User.find(App.session.get('currentUserId'))
       controller.set('currentUser', user)
+      controller.set('currentUserId', user.get('id'))
 
   events:
     logout: ->
