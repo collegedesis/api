@@ -19,10 +19,11 @@ App.LoginRoute = Ember.Route.extend
 App.IndexRoute = Ember.Route.extend
   events:
     goToBulletin: (bulletin) ->
-      if bulletin.get('isPost')
-        @transitionTo('bulletins.show', bulletin)
-      else
-        window.open(bulletin.get('url'))
+      @transitionTo('bulletins.show', bulletin)
+      # if bulletin.get('isPost')
+      #   @transitionTo('bulletins.show', bulletin)
+      # else
+      #   window.open(bulletin.get('url'))
     write: -> @transitionTo('bulletins.new')
 
   setupController: (controller) ->
