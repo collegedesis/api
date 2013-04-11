@@ -6,21 +6,11 @@ App.Serializer = DS.RESTSerializer.extend
       when App.Bulletin
         record.eachAttribute (name, attribute) =>
           @_addAttribute(data, record, name, attribute.type) if name != "author"
+      when App.User
+        record.eachAttribute (name, attribute) =>
+          @_addAttribute(data, record, name, attribute.type) if name != "avatar_url"
       else
         @_super(data,record)
-
-  # when creating a new User, we'll embed the memberships array
-  addHasMany: (data, record, attribute, relationshipDesc) ->
-    switch record.constructor
-      when App.User
-        # !!! TODO Please upgrade Ember data and figure out embedded associations
-        if attribute == "memberships" and record.get('isNew')
-          embedded = data[attribute+"_attributes"] = Em.A([])
-          record.get(attribute).forEach (item) ->
-            if item.get('organization')
-              embedded.pushObject item.serialize({includeId: true})
-      else
-        @_super(data, record, attribute, relationshipDesc)
 
 App.Adapter = DS.RESTAdapter.extend
   serializer: App.Serializer

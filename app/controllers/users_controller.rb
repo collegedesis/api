@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     @user = User.find_or_create_by_email(params[:user][:email])
     # save and update params if the user is new
     if @user.new_record?
-      params[:user][:memberships_attributes] = [] if !params[:user][:memberships_attributes]
       if !@user.update_attributes(params[:user])
         render json: @user.errors, status: 422
         return
