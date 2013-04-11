@@ -1,32 +1,19 @@
+<aside>
+  <h3>Note</h3>
+  <p>Anyone can create an account, but to post a bulletin you'll have to add a membership to one of the organizations in our Directory.</p>
+</aside>
 <div class="main">
   {{#formFor content}}
     {{input full_name placeholder="Use a name your organization will recognize"}}
     {{input email placeholder="user@email.com"}}
     {{input password placeholder="at least 6 characters"}}
     {{input password_confirmation placeholder="again"}}
-    <div>
-      <p>Select an organization<span style="color:red;"> (takes a few seconds to load)</span></p>
-      {{#if loading}}
-        Loading organizations...
-      {{else}}
-        {{#each membership in memberships}}
-          {{view Ember.Select contentBinding="organizations" optionLabelPath="content.display_name" selectionBinding="membership.organization" prompt="You can only sign up if you're in one"}}
-        {{/each}}
-      {{/if}}
-      <p>If you're in multiple organizations, just pick one for now.</p>
-    </div>
-    {{#if memberships.firstObject.organization}}{{#if memberships.firstObject.organization.has_email}}
-      <p><strong>An email will be sent to {{memberships.firstObject.organization.display_name}} to verify your membership.</strong></p>
-    {{else}}
-      <p><strong>Sorry, {{memberships.firstObject.organization.display_name}} does not have a registered email address in our database. If you'd like to be a part of this awesomeness, ask them to email us at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a>.</strong></p>
-    {{/if}}{{/if}}
     {{#if controller.errors}}
       <p style="color:red;">Something isn't right:
       <ul>
         <li>Email address is legit?</li>
         <li>Password is at least 6 characters?</li>
         <li>Passwords match?</li>
-        <li>Selected an organization with an email address?</li>
         <li>Email us at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a> </li>
       </ul>
       </p>

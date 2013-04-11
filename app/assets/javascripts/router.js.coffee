@@ -73,8 +73,3 @@ App.BulletinsNewRoute = Ember.Route.extend
 
 App.NewUserRoute = Ember.Route.extend
   model: -> App.User.createRecord()
-
-  setupController: (controller) ->
-    user = controller.get('content')
-    user.get('memberships').createRecord()
-    @controllerFor('organizations').set('content', App.Organization.find())
