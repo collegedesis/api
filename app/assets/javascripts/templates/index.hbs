@@ -14,16 +14,9 @@
   {{#if controllers.bulletinsIndex.hasBulletins}}
     {{#each bulletin in controllers.bulletinsIndex}}
       <div class="bulletin-wrapper">
-        <div class="bulletin-preview">
+        <div class="bulletin-preview" {{action goToBulletin bulletin}}>
           <div class="subtext">{{bulletin.author}}</div>
           <div class="title">{{bulletin.title}}</div>
-          <div class="link">
-            {{#if bulletin.isPost}}
-              <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
-            {{else}}
-              <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
-            {{/if}}
-          </div>
           <div class="vote">
             {{#if hasBeenVotedOn}}
               <h3>{{bulletin.votes.length}}</h3>

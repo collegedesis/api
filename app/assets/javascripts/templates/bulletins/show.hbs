@@ -12,7 +12,13 @@
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
-      <h1>{{title}}</h1>
+      <h1>
+        {{#if isLink}}
+          <a {{bindAttr href="url"}} target="_blank">{{title}}</a>
+        {{else}}
+          {{title}}
+        {{/if}}
+      </h1>
       <span class="date">Posted at {{humanizedCreatedAt}}</span>
     </div>
     <div class="bulletin-body"> {{htmlBody}}</div>
