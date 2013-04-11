@@ -1,7 +1,12 @@
 <aside>
-  <h1>Select Link/Post</h1>
-  {{view Ember.Select contentBinding="bulletinTypes" valueBinding="bulletin_type" optionLabelPath="content.name" optionValuePath="content.value"}}
+  <h1>
+    Write
+    <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Post</a>
+    or
+    <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Link</a>
+  </h1>
   {{#if isPost}}
+    <h3>Formatting</h3>
     <p>Blank lines make new paragraphs</p>
     <p>[url](link text) creates a hyperlink</p>
     <p>![image](image_url) displays an image</p>

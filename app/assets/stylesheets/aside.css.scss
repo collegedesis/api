@@ -14,4 +14,9 @@ aside {
   select {
     width: 200px;
   }
+  h1 a {
+    &:hover, &.selected {
+      border-bottom:solid 3px $brown2;
+    }
+  }
 }
