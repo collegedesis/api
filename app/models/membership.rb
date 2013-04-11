@@ -7,6 +7,9 @@ class Membership < ActiveRecord::Base
   belongs_to :user, inverse_of: :memberships
   belongs_to :organization, inverse_of: :memberships
 
+  def display_name
+    "#{organization.name} at #{organization.university.name}"
+  end
   protected
 
   def notify

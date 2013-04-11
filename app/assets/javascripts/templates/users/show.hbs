@@ -6,10 +6,17 @@
   <div class="info">
     <h3>Memberships</h3>
     <ul>
-      {{#each memberships}}
-        <li>- {{this.organization.name}} at {{this.organization.university.name}}</li>
-        <li style="font-style:italic;font-size:10px;">- Ability to add memberships coming soon!</li>
+      {{#each mem in memberships}}
+        {{#if mem.isNew}}
+          <li>{{view Ember.Select contentBinding="organizations" optionLabelPath="content.display_name" selectionBinding="mem.organization"}}</li>
+        {{else}}
+          <li>- {{mem.display_name}}</li>
+        {{/if}}
       {{/each}}
+      <a {{action addMembership}}>Add Membership</a>
     </ul>
+    {{#if dirtyRecords}}
+      <button {{action submit}}>Save</button>
+    {{/if}}
   </div>
 </div>

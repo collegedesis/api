@@ -40,6 +40,10 @@ App.UsersShowRoute = Ember.Route.extend
 
   model: (params) -> App.User.find(params.user_id)
 
+  setupController: (controller) ->
+    user = controller.get('content')
+    @controllerFor('organizations').set('content', App.Organization.find())
+
 App.OrganizationsShowRoute = Ember.Route.extend
   model: (params) -> return App.Organization.find(params.organization_id)
 
