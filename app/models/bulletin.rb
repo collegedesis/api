@@ -39,9 +39,12 @@ class Bulletin < ActiveRecord::Base
 
   def bulletin_url
     # TODO when we add comments we probably want site urls to link bulletins too
-    domain = "https://collegedesis.com/#/"
-    route = "bulletins/"
-    url? ? url : domain + route + slug
+    if Rails.env.production?
+      base_route = "https://collegedesis.com/#/bulletins/"
+    else
+      base_route = "http://localhost:3000/#/bulletins/"
+    end
+    url? ? url : base_route + slug
   end
 
   def intro
