@@ -15,10 +15,6 @@ App.NewUserController = Ember.ObjectController.extend
     @set('working', false)
     @transitionToRoute('login')
 
-  # organizations: (->
-  #   @get('controllers.organizations.publicOrgs')
-  # ).property('controllers.organizations.publicOrgs')
-
   loading: (->
     if @get('organizations.length') > 1 then return false else return true
   ).property('organizations.length')
@@ -52,10 +48,3 @@ App.NewUserController = Ember.ObjectController.extend
   passwordMatch: (->
     @get('password') == @get("password_confirmation") && @get("password.length") >= 6
   ).property('password', 'password_confirmation')
-
-  # valid membership is to an organization that has an email address.
-  # also have to make sure an organization is selected.
-  # validMembership: (->
-  #   org = @get('memberships.firstObject.organization')
-  #   org? && org.get('has_email')
-  # ).property('memberships.firstObject.organization.has_email')
