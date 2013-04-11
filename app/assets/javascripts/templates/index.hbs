@@ -17,13 +17,13 @@
         <div class="bulletin-preview" {{action goToBulletin bulletin}}>
           <div class="subtext">{{bulletin.author}}</div>
           <div class="title">{{bulletin.title}}</div>
-          <div class="vote">
-            {{#if hasBeenVotedOn}}
-              <h3>{{bulletin.votes.length}}</h3>
-            {{else}}
-              <a {{action voteOnBulletin bulletin}}></a>
-            {{/if}}
-          </div>
+        </div>
+        <div class="vote">
+          {{#if hasBeenVotedOn}}
+            <h3>{{bulletin.votes.length}}</h3>
+          {{else}}
+            <a {{action voteOnBulletin bulletin}}></a>
+          {{/if}}
         </div>
       </div>
     {{/each}}
