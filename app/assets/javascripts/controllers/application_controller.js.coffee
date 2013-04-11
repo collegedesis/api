@@ -6,3 +6,9 @@ App.ApplicationController = Ember.Controller.extend
   isSignedIn: (-> @get("currentUser") != null ).property('currentUser')
 
   votedBulletinIds: (-> App.session.get("votedBulletinIds")).property('App.session.votes')
+
+  routeChanged: ( ->
+    return unless window._gaq
+    Em.run.next ->
+      _gaq.push(['_trackPageview'])
+  ).observes('currentPath')
