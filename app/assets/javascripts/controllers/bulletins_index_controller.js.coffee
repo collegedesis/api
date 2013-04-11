@@ -5,9 +5,13 @@ App.BulletinsIndexController = Ember.ArrayController.extend
   hasBulletins: (-> true if @get('length') > 1 ).property('@each')
 
   voteOnBulletin: (bulletin) ->
-    vote = bulletin.get('votes').createRecord()
-    vote.addObserver('id', this, '_voted')
-    @store.commit()
+    if @get('controllers.application.currentUserId')
+      vote = bulletin.get('votes').createRecord()
+      vote.addObserver('id', this, '_voted')
+      @store.commit()
+    else
+      App.session.set('messages', 'You need to be logged in to vote!')
+      @transitionToRoute('login')
 
   _voted: (vote) ->
     App.session.set('votedBulletinIds', []) if !App.session.get('votedBulletinIds')
