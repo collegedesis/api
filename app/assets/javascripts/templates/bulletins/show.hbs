@@ -24,4 +24,22 @@
     <div class="bulletin-body"> {{htmlBody}}</div>
     <p>{{#linkTo "bulletins.index"}}&larr; Back{{/linkTo}}</p>
   </div>
+  <div class="bulletin-comments">
+    {{#if controllers.application.currentUser}}
+      {{view Ember.TextArea valueBinding="comment"}}
+      <button {{action submitComment}}>Submit</button>
+    {{/if}}
+    {{#if comments}}
+      <ul>
+      {{#each comment in comments}}
+        <li>
+          <p>{{comment.body}}</p>
+          {{comment.author}}
+        </li>
+      {{/each}}
+      </ul>
+    {{else}}
+      No comments
+    {{/if}}
+  </div>
 </div>

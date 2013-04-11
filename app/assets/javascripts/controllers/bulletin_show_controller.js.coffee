@@ -1,5 +1,15 @@
 App.BulletinsShowController = Ember.ObjectController.extend
   needs: ['application']
+  comment: null
+
+  submitComment: ->
+    if @get('controllers.application.currentUserId')
+      @get('comments').createRecord({body: @get('comment')})
+      @store.commit()
+      @set('comment', null)
+    else
+      App.session.set('messages', 'You need to be logged in to comment!')
+      @transitionToRoute('login')
 
   voteOnBulletin: ->
     if @get('controllers.application.currentUserId')

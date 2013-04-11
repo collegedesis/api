@@ -1,4 +1,6 @@
 Collegedesis::Application.routes.draw do
+  get "comments/create"
+
   root to: "site#home"
   
   resources :sessions,            only: [:create, :destroy]
@@ -11,7 +13,7 @@ Collegedesis::Application.routes.draw do
   resources :memberships
   resources :universities,        only: [:index, :show]
   resources :bulletins,           only: [:index, :show, :create]
-  
+  resources :comments,            only: [:index, :create]
   # Resources
   resources :products,            only: [:index, :show]
   resources :purchases,           only: [:create, :show]
