@@ -15,13 +15,6 @@ App.BulletinsNewController = Ember.ObjectController.extend
     @get("content").removeObserver('id', this, '_createdBulletin')
     @transitionToRoute("bulletins.index")
 
-  bulletinTypes: (->
-    return [
-      Ember.Object.create({name: "Link", value: 2}),
-      Ember.Object.create({name: "Post", value: 1}),
-    ]
-  ).property()
-
   errors: (->
     val = true
     if @get('bulletin_type') == 2
@@ -34,3 +27,6 @@ App.BulletinsNewController = Ember.ObjectController.extend
   validUrl: (->
     @get('url').match(/^https?:\/\/.+\..+/) if @get('url')?
   ).property('url')
+
+  setPost: -> @set('bulletin_type', 1)
+  setLink: -> @set('bulletin_type', 2)

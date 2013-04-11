@@ -68,7 +68,7 @@ App.BulletinsShowRoute = Ember.Route.extend
 
 App.BulletinsNewRoute = Ember.Route.extend
   redirect: -> @transitionTo('login') if !App.session.get('currentUserId')
-  model: -> App.Bulletin.createRecord()
+  model: -> App.Bulletin.createRecord({bulletin_type: 1})
   exit: -> @get('controller.content').deleteRecord() if @get('controller.content.isNew')
 
 App.NewUserRoute = Ember.Route.extend
