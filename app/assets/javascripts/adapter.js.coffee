@@ -9,6 +9,9 @@ App.Serializer = DS.RESTSerializer.extend
       when App.User
         record.eachAttribute (name, attribute) =>
           @_addAttribute(data, record, name, attribute.type) if name != "avatar_url"
+      when App.Membership
+        record.eachAttribute (name, attribute) =>
+          @_addAttribute(data, record, name, attribute.type) if name != "display_name"
       else
         @_super(data,record)
 
@@ -37,16 +40,6 @@ App.Adapter = DS.RESTAdapter.extend
           @_super.apply(this, arguments)
     else
       @_super.apply(this, arguments)
-
-  # We won't save membership records when they're created.
-  # We'll embed them into the User record when it's created.
-  # TODO we should use `embedded` api but might need an
-  # ember-data update on that.
-  shouldSave: (record) ->
-    switch record.constructor
-      when App.Membership
-        if record.get('isNew') then return false
-    return true
 
 App.Adapter.configure "plurals",
   university: "universities"
