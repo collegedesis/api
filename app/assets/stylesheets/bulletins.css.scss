@@ -1,15 +1,38 @@
-// On the Bulletins Index page
+// list of bulletins
 .bulletin-wrapper {
+  border-bottom: solid 3px $brown2;
+  background-color:lighten($brown2, 10%);
+  padding: 5px;
+  cursor: pointer;
+  &:hover {background-color: $brown2;}
   & > * {
-    display: inline-block;
     line-height: 28px;
+    display: inline-block;
+  }
+  .vote {
+    float: right;
+    height: 28px;
+    width: 28px;
+    & > * {
+      height: 28px;
+      width: 28px;
+      line-height: 28px;
+    }
+    a {
+      display: block;
+      background: url('upvote.png') no-repeat center;
+      background-size: 90%;
+    }
+    h3 {
+      color: lighten($brown4, 60%);
+      font-size: $font-size * 0.9;
+      margin: 0px auto;
+      border-radius: 50%;
+      background: $brown4;
+      text-align: center;
+    }
   }
   .bulletin-preview {
-    width: 100%;
-    margin-bottom: 10px;
-    border-bottom: solid 3px $brown2;
-    background-color:lighten($brown2, 10%);
-    padding:10px;
     & > * {
       display: inline-block;
       text-overflow: ellipsis;
@@ -17,49 +40,20 @@
       white-space: nowrap;
       margin-left: 10px;
     }
-    .subtext, .link {
+    .subtext {
+      width: 75px;
       color: lighten($brown4, 10%);
       font-size: $font-size * 0.7;
-    }
-    .subtext {
       margin-left: 0;
-      width: 75px;
     }
     .title {
-      width: 440px;
+      width: 450px;
       color: $brown3;
       font-weight:500;
     }
-    .link {
-      color: lighten($brown4, 10%);
-      text-decoration: underline;
-    }
-    .vote {
-      float: right;
-      cursor: pointer;
-      height: 28px;
-      width: 28px;
-      & > * {
-        height: 28px;
-        width: 28px;
-        line-height: 28px;
-      }
-      a {
-        display: block;
-        background: url('upvote.png') no-repeat center;
-        background-size: 90%;
-      }
-      h3 {
-        color: lighten($brown4, 60%);
-        font-size: $font-size * 0.9;
-        margin: 0px auto;
-        border-radius: 50%;
-        background: $brown4;
-        text-align: center;
-      }
-    }
   }
 }
+
 
 // Bulletin show page and preview
 .bulletin, .bulletin-new .preview {
