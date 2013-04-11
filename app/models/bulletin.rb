@@ -3,6 +3,8 @@ class Bulletin < ActiveRecord::Base
   after_create :create_slug
 
   has_many :votes, :as => :votable, :dependent => :delete_all
+  has_many :comments, :as => :commentable, :dependent => :delete_all
+
   belongs_to :user
   # bulletin_types:
   # post is 1

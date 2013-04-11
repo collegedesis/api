@@ -6,6 +6,7 @@ App.Bulletin = DS.Model.extend
   created_at: DS.attr('date')
   errors: []
   votes: DS.hasMany('App.Vote')
+  comments: DS.hasMany('App.Comment')
   user: DS.belongsTo('App.User')
   slug: DS.attr('string')
   author: DS.attr('string')
