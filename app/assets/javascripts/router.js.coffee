@@ -1,4 +1,5 @@
 App.Router.map ->
+  @route('features', {path: 'upcoming'})
   @route("store")
   @route("calendar")
   @route("about")
@@ -12,6 +13,17 @@ App.Router.map ->
   @resource "users", ->
     @route "show", {path: ':user_id'}
 
+App.FeaturesRoute = Ember.Route.extend
+  model: ->
+    url = "https://api.github.com/repos/collegedesis/collegedesis.com/issues?labels=feature"
+    content = Em.A()
+    $.getJSON url, (data) ->
+      $(data).each (index, item) -> content.pushObject(item)
+    return content
+
+App.LoginRoute = Ember.Route.extend
+  deactivate: ->
+    App.session.set("messages", null)
 
 App.IndexRoute = Ember.Route.extend
   events:
