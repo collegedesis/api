@@ -70,7 +70,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def popularity_score
-    votes.length
+    votes.length > 0 ? votes.length : 1
   end
 
   def user_reputation
