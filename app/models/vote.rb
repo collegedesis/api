@@ -6,6 +6,6 @@ class Vote < ActiveRecord::Base
   validates_presence_of :votable
 
   def bulletin_id
-    votable.id if votable_type == "Bulletin"
+    votable_id if votable_type == "Bulletin"
   end
 end
