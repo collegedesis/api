@@ -14,6 +14,7 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :body, :if => :is_post?
   validates_presence_of :url, :if => :is_link?
   validates_presence_of :user_id
+  validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
   def author
     user.memberships.first.organization.name if user
@@ -88,4 +89,7 @@ class Bulletin < ActiveRecord::Base
     1
   end
 
+  def voted_by_user?(user)
+    votes.map(&:user_id).include? user.id
+  end
 end
