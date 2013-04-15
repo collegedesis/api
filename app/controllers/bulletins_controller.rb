@@ -3,7 +3,8 @@ class BulletinsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create]
 
   def index
-    render json: Bulletin.homepage
+    @bulletins = params[:slug] ? Bulletin.where(slug: params[:slug]) : Bulletin.homepage
+    render json: @bulletins
   end
 
   def show
