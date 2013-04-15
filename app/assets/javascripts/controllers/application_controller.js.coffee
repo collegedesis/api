@@ -13,3 +13,8 @@ App.ApplicationController = Ember.Controller.extend
       page = if window.location.hash.length > 0 then window.location.hash.substring(1) else window.location.pathname
       _gaq.push(['_trackPage', page])
   ).observes('currentPath')
+
+  approvedMember: (->
+    false
+    # if @get('currentUser') && @get('currentUser.memberships.length') > 0 then true else false
+  ).property('currentUser.memberships.length')
