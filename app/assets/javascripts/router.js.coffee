@@ -82,7 +82,9 @@ App.BulletinsShowRoute = Ember.Route.extend
     object[name] = model.get('slug')
     return object
 
-  model: (params) -> App.Bulletin.find(params.slug)
+  model: (params) ->
+    @get('store').findQuery(App.Bulletin, {slug: params.slug}).then (data) ->
+      return data.get('firstObject')
 
 App.BulletinsNewRoute = Ember.Route.extend
   redirect: -> @transitionTo('login') if !App.session.get('currentUserId')
