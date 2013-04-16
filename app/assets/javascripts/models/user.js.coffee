@@ -4,6 +4,7 @@ App.User = DS.Model.extend
   password: DS.attr('string')
   password_confirmation: DS.attr('string')
   avatar_url: DS.attr('string')
+  approved: DS.attr('boolean')
 
   memberships: DS.hasMany('App.Membership')
   bulletins: DS.hasMany('App.Bulletin')

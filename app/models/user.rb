@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
     hash = Digest::MD5.hexdigest(email.downcase)
     "http://www.gravatar.com/avatar/#{hash}"
   end
+
+  def approved
+    memberships.map(&:approved).length >= 1
+  end
 end
