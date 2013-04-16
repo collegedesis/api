@@ -2,8 +2,8 @@ class Bulletin < ActiveRecord::Base
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug
   after_create :create_slug
 
-  has_many :votes, :as => :votable, :dependent => :delete_all
-  has_many :comments, :as => :commentable, :dependent => :delete_all
+  has_many :votes, :as => :votable, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
 
   belongs_to :user
   # bulletin_types:
