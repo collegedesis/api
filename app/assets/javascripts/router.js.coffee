@@ -53,6 +53,7 @@ App.UsersShowRoute = Ember.Route.extend
   setupController: (controller) ->
     user = controller.get('content')
     @controllerFor('organizations').set('content', App.Organization.find())
+  deactivate: -> App.session.set('messages', null)
 
 App.OrganizationsShowRoute = Ember.Route.extend
   model: (params) -> return App.Organization.find(params.organization_id)
@@ -87,8 +88,18 @@ App.BulletinsShowRoute = Ember.Route.extend
       return data.get('firstObject')
 
 App.BulletinsNewRoute = Ember.Route.extend
-  redirect: -> @transitionTo('login') if !App.session.get('currentUserId')
+  redirect: (model) ->
+    user = @controllerFor('application').get('currentUser')
+    if user
+     if !user.get('approved')
+      App.session.set('messages', 'Add a Membership to post!')
+      @transitionTo('users.show', user)
+      model.deleteRecord() if model.get('isNew')
+    else
+      @transitionTo('login')
+
   model: -> App.Bulletin.createRecord({bulletin_type: 1})
+
   exit: -> @get('controller.content').deleteRecord() if @get('controller.content.isNew')
 
 App.NewUserRoute = Ember.Route.extend
