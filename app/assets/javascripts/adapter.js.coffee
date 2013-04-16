@@ -8,7 +8,7 @@ App.Serializer = DS.RESTSerializer.extend
           @_addAttribute(data, record, name, attribute.type) if name != "author"
       when App.User
         record.eachAttribute (name, attribute) =>
-          @_addAttribute(data, record, name, attribute.type) if name != "avatar_url"
+          @_addAttribute(data, record, name, attribute.type) if ["avatar_url", "approved"].indexOf(name) == -1
       when App.Membership
         record.eachAttribute (name, attribute) =>
           @_addAttribute(data, record, name, attribute.type) if name != "display_name"
