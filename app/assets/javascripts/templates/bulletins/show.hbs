@@ -25,7 +25,7 @@
     <div class="bulletin-body">{{htmlBody}}</div>
     <div class="bulletin-comments">
       <h4>Comments</h4>
-      {{#if controllers.application.approvedMember}}
+      {{#if controllers.application.currentUser.approved}}
         {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
         <button {{action submitComment}}>Submit</button>
       {{/if}}
