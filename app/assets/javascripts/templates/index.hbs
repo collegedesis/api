@@ -8,7 +8,15 @@
   <p>Bulletins are the easiest way to spread the word among our community. <a href="/#/bulletins/welcome-to-the-bulletin-board">Read more</a></p>
   <p>Post a link or write a blog post.</p>
   <p>We'll <a href="//twitter.com/collegedesis">tweet</a> it out every <span class="vote-count">5</span> thumbs-ups it gets.</p>
-  <button {{action write}}>{{#if controllers.application.currentUser}}Post{{else}}Login to Post{{/if}}</button>
+  {{#if controllers.application.currentUser}}
+    {{#if controllers.application.currentUser.approved}}
+      <button {{action write}}>Post</button>
+    {{else}}
+      <p>{{#linkTo 'users.show' currentUser}}Add a membership{{/linkTo}} to post.</p>
+    {{/if}}
+  {{else}}
+    Login to Post
+  {{/if}}
 </aside>
 <div class="main">
   {{#if controllers.bulletinsIndex.hasBulletins}}
