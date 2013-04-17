@@ -47,7 +47,7 @@ class Bulletin < ActiveRecord::Base
     else
       base_route = "http://localhost:3000/#/bulletins/"
     end
-    url? ? url : base_route + slug
+    base_route + slug
   end
 
   def intro
