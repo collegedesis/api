@@ -144,4 +144,19 @@ aside .vote {
 
 .bulletin-comments {
   h3 {margin-bottom: 10px;}
+  .new-comment {
+    & > * {
+      display:inline-block;
+      vertical-align: top;
+    }
+    textarea {
+      width: 500px;
+      height: 75px;
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 0;
+      width: 100px;
+    }
+  }
 }
