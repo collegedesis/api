@@ -1,5 +1,5 @@
+<p>{{#linkTo "bulletins.index"}}&larr; Back{{/linkTo}}</p>
 <aside>
-  <p>{{#linkTo "bulletins.index"}}&larr; Back{{/linkTo}}</p>
   <div class="vote">
     {{#unless hasBeenVotedOn}}
       <a {{action voteOnBulletin}}></a>
@@ -13,21 +13,20 @@
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
-      <h1>
-        {{#if isLink}}
-          <a {{bindAttr href="url"}} target="_blank">{{title}}</a>
-        {{else}}
-          {{title}}
-        {{/if}}
-      </h1>
+      <h1>{{title}}</h1>
       <span class="date">Posted on {{humanizedCreatedAt}}</span>
     </div>
-    <div class="bulletin-body">{{htmlBody}}</div>
+    <div class="bulletin-body">
+      {{htmlBody}}
+      {{#if isLink}}<a {{bindAttr href="url"}} target="_blank">Visit Link</a>{{/if}}
+    </div>
     <div class="bulletin-comments">
       <h4>Comments</h4>
       {{#if controllers.application.currentUser.approved}}
-        {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
-        <button {{action submitComment}}>Submit</button>
+        <div class="new-comment">
+          {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
+          <button {{action submitComment}}>Submit</button>
+        </div>
       {{/if}}
       {{#if comments}}
         <ul>
