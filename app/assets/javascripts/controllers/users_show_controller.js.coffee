@@ -7,7 +7,11 @@ App.UsersShowController = Ember.ObjectController.extend
     @get('controllers.organizations.publicOrgs')
   ).property('controllers.organizations.publicOrgs')
 
-  submit: -> @store.commit()
+  submit: ->
+    @get('memberships').forEach (item) ->
+      item.one "didCreate", this, ->
+        item.get('user').reload()
+    @store.commit()
 
   dirtyRecords: (->
     @get('memberships').filterProperty('isNew', true).get('length') > 0
