@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   def avatar_url
     hash = Digest::MD5.hexdigest(email.downcase)
-    "http://www.gravatar.com/avatar/#{hash}"
+    "//www.gravatar.com/avatar/#{hash}"
   end
 
   def approved
