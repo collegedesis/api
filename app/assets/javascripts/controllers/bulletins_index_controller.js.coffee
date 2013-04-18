@@ -2,7 +2,7 @@ App.BulletinsIndexController = Ember.ArrayController.extend
   itemController: 'bulletin'
   needs: ['application']
 
-  hasBulletins: (-> true if @get('length') > 1 ).property('@each')
+  hasBulletins: (-> true if @get('length') >= 1 ).property('@each')
 
   voteOnBulletin: (bulletin) ->
     if @get('controllers.application.currentUserId')
