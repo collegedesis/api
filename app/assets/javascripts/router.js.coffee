@@ -36,6 +36,10 @@ App.IndexRoute = Ember.Route.extend
     write: -> @transitionTo('bulletins.new')
 
   setupController: (controller) ->
+    xhr = $.get '/info', (data) ->
+      return data
+    xhr.done (data) ->
+      controller.set('numOfOrganizations', data.orgs)
     @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
 
 App.UsersShowRoute = Ember.Route.extend
