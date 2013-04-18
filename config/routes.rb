@@ -2,7 +2,7 @@ Collegedesis::Application.routes.draw do
   get "comments/create"
 
   root to: "site#home"
-  
+
   resources :sessions,            only: [:create, :destroy]
   # Used as API
   resources :organizations,       only: [:index, :show, :create, :update]
@@ -20,11 +20,11 @@ Collegedesis::Application.routes.draw do
   resources :votes,               only: [:index]
   # Non REST conventions
   match '/verifications/verify', to: 'verifications#verify'
-
-  resources :messages do 
-    collection do 
-      post 'tests' 
-    end 
+  match 'info', to: 'site#info'
+  resources :messages do
+    collection do
+      post 'tests'
+    end
   end
 
   # render Ember apps
