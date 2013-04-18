@@ -1,13 +1,13 @@
 <aside>
   <p>
-    Hello there{{#if currentUser}} {{currentUser.full_name}}{{/if}}!
+    Connecting {{numOfOrganizations}} South Asian organizations around the country.
   </p>
+  <hr>
   <p>
-    We're working on creating a community of South Asian students in America. Write a post or share a link to share with the community!
+    Our goal is to make it easier for the South Asian student community to <strong>share experiences, talk about issues, and collaborate</strong>.
   </p>
-  <p>Bulletins are the easiest way to spread the word among our community. <a href="/#/bulletins/welcome-to-the-bulletin-board">Read more</a></p>
-  <p>Post a link or write a blog post.</p>
-  <p>We'll <a href="//twitter.com/collegedesis">tweet</a> it out every <span class="vote-count">5</span> thumbs-ups it gets.</p>
+  <hr>
+  <p><a href="/#/bulletins/welcome-to-the-bulletin-board">Read more</a> about the Bulletin Board</p>
   {{#if controllers.application.currentUser}}
     {{#if controllers.application.currentUser.approved}}
       <button {{action write}}>Post</button>
@@ -15,7 +15,7 @@
       <p>{{#linkTo 'users.show' currentUser}}Add a membership{{/linkTo}} to post.</p>
     {{/if}}
   {{else}}
-    Login to Post
+    {{#linkTo 'login'}}Login{{/linkTo}} to write a Post or Share a Link
   {{/if}}
 </aside>
 <div class="main">
