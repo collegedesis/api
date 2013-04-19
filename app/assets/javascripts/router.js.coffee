@@ -48,6 +48,10 @@ App.IndexRoute = Ember.Route.extend
     write: -> @transitionTo('bulletins.new')
 
   setupController: (controller) ->
+    xhr = $.get '/info', (data) ->
+      return data
+    xhr.done (data) ->
+      controller.set('numOfOrganizations', data.orgs)
     @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
 
 App.UsersShowRoute = Ember.Route.extend
@@ -65,7 +69,10 @@ App.UsersShowRoute = Ember.Route.extend
   setupController: (controller) ->
     user = controller.get('content')
     @controllerFor('organizations').set('content', App.Organization.find())
-  deactivate: -> App.session.set('messages', null)
+  deactivate: ->
+    App.session.set('messages', null)
+    @get('controller.content.memberships').forEach (item) ->
+      item.deleteRecord() if item.get('isNew')
 
 App.OrganizationsShowRoute = Ember.Route.extend
   model: (params) -> return App.Organization.find(params.organization_id)
