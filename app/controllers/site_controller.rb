@@ -5,9 +5,14 @@ class SiteController < ApplicationController
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
-  def home    
+  def home
   end
-  
+
+  def info
+    orgs = Organization.count
+    render json: {orgs: orgs}
+  end
+
   private
   def require_login
     authenticate_or_request_with_http_basic('Administration') do |username, password|
