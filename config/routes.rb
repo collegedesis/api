@@ -29,6 +29,7 @@ Collegedesis::Application.routes.draw do
 
   # render Ember apps
   match "/store" => redirect("/#/store")
+  match "/party" => redirect("/#/party")
   match "/press" => redirect("/#/")
   # not being used currently
   resources :letters
