@@ -8,15 +8,7 @@
   </p>
   <hr>
   <p><a href="/#/bulletins/welcome-to-the-bulletin-board">Read more</a> about the Bulletin Board</p>
-  {{#if controllers.application.currentUser}}
-    {{#if controllers.application.currentUser.approved}}
-      <button {{action write}}>Post</button>
-    {{else}}
-      <p>{{#linkTo 'users.show' currentUser}}Add a membership{{/linkTo}} to post.</p>
-    {{/if}}
-  {{else}}
-    {{#linkTo 'login'}}Login{{/linkTo}} to write a Post or Share a Link
-  {{/if}}
+  <button {{action write}}>Post</button>
 </aside>
 <div class="main">
   {{#if controllers.bulletinsIndex.hasBulletins}}
