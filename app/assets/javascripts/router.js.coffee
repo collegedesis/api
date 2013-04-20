@@ -104,7 +104,9 @@ App.BulletinsNewRoute = Ember.Route.extend
       @transitionTo('users.show', user)
       model.deleteRecord() if model.get('isNew')
     else
+      App.session.set('messages', 'You need to be logged in to post!')
       @transitionTo('login')
+      model.deleteRecord() if model.get('isNew')
 
   model: -> App.Bulletin.createRecord({bulletin_type: 1})
 
