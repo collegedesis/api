@@ -1,1 +1,11 @@
-Hello.
+<h3>{{groupInfo.name}}</h3>
+<h4>{{groupInfo.track_count}} tracks by {{groupInfo.contributors_count}} DJs</h4>
+{{#if readyToPlay}}
+  <h5>No pause button. Oops.</h5>
+  <button {{action nextSong}}>Next</button>
+{{/if}}
+<div id="party">
+  {{#unless readyToPlay}}
+    Loading...
+  {{/unless}}
+</div>
