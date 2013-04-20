@@ -14,17 +14,6 @@ App.Router.map ->
     @route "show", {path: ':user_id'}
   @route('party')
 
-App.PartyRoute = Ember.Route.extend
-  activate: ->
-    SC.initialize
-      client_id: '49620079b9efba53d4ae479266b35ad9',
-      redirect_uri: '//collegedesis.com'
-    SC.connect ->
-      SC.get "/me", (me) ->
-        alert "Hello, " + me.username
-
-
-
 App.FeaturesRoute = Ember.Route.extend
   model: ->
     url = "https://api.github.com/repos/collegedesis/collegedesis.com/issues?labels=feature"
