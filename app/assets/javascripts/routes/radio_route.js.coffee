@@ -1,4 +1,4 @@
-App.PartyRoute = Ember.Route.extend
+App.RadioRoute = Ember.Route.extend
 
   activate: ->
     SC.initialize({client_id: '49620079b9efba53d4ae479266b35ad9'})

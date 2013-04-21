@@ -12,7 +12,7 @@ App.Router.map ->
     @route "show", {path: ':organization_id'}
   @resource "users", ->
     @route "show", {path: ':user_id'}
-  @route('party')
+  @route('radio')
 
 App.FeaturesRoute = Ember.Route.extend
   model: ->
