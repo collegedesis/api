@@ -16,40 +16,44 @@
     {{/if}}
   {{/unless}}
   {{#if collegedesis}}
-    {{#if applied}}
-      <h5>Thank you!</h5>
-      <p>An email was sent to you and to us with your application. If you didn't get an email, we probably didn't either. In that case, can you please <a target="_blank" href="//twitter.com/collegedesis">tweet us</a>, <a target="_blank" href="//facebook.com/collegedesis">message us</a>, or <a target="_blank" href="mailto:brownkids@collegedesis.com">email us</a>?</p>
-    {{else}}
-      <h5>Apply to be a CollegeDesis Regional Rep</h5>
-      <p>
-        <h5>Name</h5>
-        {{controllers.application.currentUser.full_name}}
-      </p>
-      <p>
-        <h5>Where are you located? (during and not during school)</h5>
-        {{view Ember.TextArea valueBinding="location"}}
-      </p>
-      <p>
-        <h5>What are you currently obsessed with?</h5>
-        {{view Ember.TextArea valueBinding="obsession"}}
-      </p>
-      <p>
-        <h5>What's the fastest way to hear back from you? (email, twitter, telepathy)</h5>
-        {{view Ember.TextField valueBinding="communication"}}
-      </p>
-      <p>
-        <h5>What is the largest group chat you've been a part of?</h5>
-        {{view Ember.TextField valueBinding="largestChat"}}
-      </p>
-      <p>
-        <h5>Why are you applying?</h5>
-        {{view Ember.TextArea valueBinding="why"}}
-      </p>
-      {{#unless working}}
-        <button {{action apply}}>Apply</button>
+    {{#if controllers.application.currentUser}}
+      {{#if applied}}
+        <h5>Thank you!</h5>
+        <p>An email was sent to you and to us with your application. If you didn't get an email, we probably didn't either. In that case, can you please <a target="_blank" href="//twitter.com/collegedesis">tweet us</a>, <a target="_blank" href="//facebook.com/collegedesis">message us</a>, or <a target="_blank" href="mailto:brownkids@collegedesis.com">email us</a>?</p>
       {{else}}
-        Sending...
-      {{/unless}}
+        <h5>Apply to be a CollegeDesis Regional Rep</h5>
+        <p>
+          <h5>Name</h5>
+          {{controllers.application.currentUser.full_name}}
+        </p>
+        <p>
+          <h5>Where are you located? (during and not during school)</h5>
+          {{view Ember.TextArea valueBinding="location"}}
+        </p>
+        <p>
+          <h5>What are you currently obsessed with?</h5>
+          {{view Ember.TextArea valueBinding="obsession"}}
+        </p>
+        <p>
+          <h5>What's the fastest way to hear back from you? (email, twitter, telepathy)</h5>
+          {{view Ember.TextField valueBinding="communication"}}
+        </p>
+        <p>
+          <h5>What is the largest group chat you've been a part of?</h5>
+          {{view Ember.TextField valueBinding="largestChat"}}
+        </p>
+        <p>
+          <h5>Why are you applying?</h5>
+          {{view Ember.TextArea valueBinding="why"}}
+        </p>
+        {{#unless working}}
+          <button {{action apply}}>Apply</button>
+        {{else}}
+          Sending...
+        {{/unless}}
+      {{/if}}
+    {{else}}
+      <p>{{#linkTo 'login'}}Login{{/linkTo}} to apply to apply to be a Regional representative!</p>
     {{/if}}
   {{/if}}
 </div>
