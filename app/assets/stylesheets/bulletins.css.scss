@@ -37,6 +37,9 @@
     width: 75px;
     font-size: $font-size * 0.7;
     margin-left: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     a {
       color: lighten($brown4, 10%);
       &:hover {
