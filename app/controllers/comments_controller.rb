@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create]
 
   def index
-    @comments = params[:id] ? Comment.find(params[:id]) : Comment.all
+    @comments = params[:ids] ? Comment.where(id: params[:ids]) : Comment.all
     render json: @comments
   end
 
