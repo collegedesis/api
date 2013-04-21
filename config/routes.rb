@@ -32,6 +32,7 @@ Collegedesis::Application.routes.draw do
   match "/party" => redirect("/#/radio")
   match "/radio" => redirect("/#/radio")
   match "/press" => redirect("/#/")
+  match "/organizations/:id/apply", to: 'organizations#apply'
   # not being used currently
   resources :letters
   resources :stories

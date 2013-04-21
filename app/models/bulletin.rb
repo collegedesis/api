@@ -16,8 +16,8 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :user_id
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
-  def author
-    user.memberships.first.organization.name if user
+  def author_id
+    user.memberships.first.organization.id if user
   end
 
   def self.find_by_title(title)

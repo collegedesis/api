@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   respond_to :json
   def index
-    @organizations = params[:id] ? Organization.where(id: params[:id]) : Organization.exposed
+    @organizations = params[:slug] ? Organization.where(slug: params[:slug]) : Organization.exposed
     render json: @organizations
   end
 
@@ -22,6 +22,13 @@ class OrganizationsController < ApplicationController
   def update
     @org = Organization.find(params[:id])
     @org.update_attributes(params[:organization])
+  end
+
+  def apply
+    org = Organization.find_by_id(params[:id])
+    email1 = AdminMailer.application_notify(params[:application], current_user.email, current_user.full_name).deliver
+    email2 = AdminMailer.application_notify(params[:application], org.email, current_user.full_name).deliver
+    render nothing: true, status: 204
   end
 
   def verify

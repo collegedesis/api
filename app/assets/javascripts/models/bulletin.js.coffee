@@ -9,7 +9,7 @@ App.Bulletin = DS.Model.extend
   comments: DS.hasMany('App.Comment')
   user: DS.belongsTo('App.User')
   slug: DS.attr('string')
-  author: DS.attr('string')
+  author: DS.belongsTo('App.Organization')
 
   preview: (->
     if @get('body')

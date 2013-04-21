@@ -8,7 +8,7 @@
     <%= tag :meta, name: 'stripe-key', content: STRIPE_PUBLIC_KEY %>
     <%= csrf_meta_tag %>
     <script>
-      App.session = Ember.Object.create()
+      App.session = Ember.Object.create();
     </script>
     <% if session[:user_id] %>
       <script>
