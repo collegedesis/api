@@ -1,4 +1,4 @@
-App.PartyController = Ember.ArrayController.extend
+App.RadioController = Ember.ArrayController.extend
   content: null # an array of App.SoundCloudTrack objects
 
   currentTrack: null
