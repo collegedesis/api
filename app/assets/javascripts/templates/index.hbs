@@ -14,8 +14,8 @@
   {{#if controllers.bulletinsIndex.hasBulletins}}
     {{#each bulletin in controllers.bulletinsIndex}}
       <div class="bulletin-wrapper">
+        <div class="subtext">{{#linkTo 'organizations.show' bulletin.author}}{{bulletin.author.name}}{{/linkTo}}</div>
         <div class="bulletin-preview" {{action goToBulletin bulletin}}>
-          <div class="subtext">{{bulletin.author}}</div>
           <div class="title">{{bulletin.title}}</div>
         </div>
         <div class="vote">

@@ -9,10 +9,15 @@ App.Router.map ->
   @route "newUser", {path: 'signup'}
   @route 'login', {path: 'login'}
   @resource "organizations", ->
-    @route "show", {path: ':organization_id'}
+    @route "index"
+    @route "show", {path: ':slug'}
   @resource "users", ->
     @route "show", {path: ':user_id'}
   @route('radio')
+  @route('reps')
+
+App.RepsRoute = Ember.Route.extend
+  redirect: -> @transitionTo('organizations.show', App.Organization.find(275))
 
 App.FeaturesRoute = Ember.Route.extend
   model: ->
@@ -62,9 +67,6 @@ App.UsersShowRoute = Ember.Route.extend
     App.session.set('messages', null)
     @get('controller.content.memberships').forEach (item) ->
       item.deleteRecord() if item.get('isNew')
-
-App.OrganizationsShowRoute = Ember.Route.extend
-  model: (params) -> return App.Organization.find(params.organization_id)
 
 App.ApplicationRoute = Ember.Route.extend
   setupController: (controller) ->

@@ -1,5 +1,5 @@
-class OrganizationSerializer < ActiveModel::Serializer 
-  attributes :id, :name, :website, :exposed, :display_name
+class OrganizationSerializer < ActiveModel::Serializer
+  attributes :id, :name, :website, :exposed, :display_name, :location, :slug, :university_name
 
   attribute :has_email?, key: :has_email
   # Association

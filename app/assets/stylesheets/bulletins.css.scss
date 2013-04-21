@@ -2,12 +2,13 @@
 .bulletin-wrapper {
   border-bottom: solid 3px $brown2;
   background-color:lighten($brown2, 10%);
-  padding: 5px;
+  padding: 0 5px;
   cursor: pointer;
   &:hover {background-color: $brown2;}
   & > * {
     line-height: 28px;
     display: inline-block;
+    padding: 5px 0;
   }
   .vote {
     float: right;
@@ -32,6 +33,17 @@
       text-align: center;
     }
   }
+  .subtext {
+    width: 75px;
+    font-size: $font-size * 0.7;
+    margin-left: 0;
+    a {
+      color: lighten($brown4, 10%);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
   .bulletin-preview {
     & > * {
       display: inline-block;
@@ -39,12 +51,6 @@
       overflow: hidden;
       white-space: nowrap;
       margin-left: 10px;
-    }
-    .subtext {
-      width: 75px;
-      color: lighten($brown4, 10%);
-      font-size: $font-size * 0.7;
-      margin-left: 0;
     }
     .title {
       width: 450px;
