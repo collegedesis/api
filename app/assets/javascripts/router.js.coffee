@@ -17,7 +17,9 @@ App.Router.map ->
   @route('reps')
 
 App.RepsRoute = Ember.Route.extend
-  redirect: -> @transitionTo('organizations.show', App.Organization.find(275))
+  redirect: ->
+    App.Organization.find(275).then (data) =>
+      @transitionTo('organizations.show', data)
 
 App.FeaturesRoute = Ember.Route.extend
   model: ->
