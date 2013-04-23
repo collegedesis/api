@@ -1,6 +1,4 @@
 // = require_self
-@import url('//fonts.googleapis.com/css?family=Port+Lligat+Slab');
-@import url('//fonts.googleapis.com/css?family=Lato:400');
 @import 'imports.css.scss';
 @import 'app.css.scss';
 @import 'bulletins.css.scss';
@@ -10,7 +8,7 @@
 @import 'main.css.scss';
 
 html {height: 100%;}
-html, body { min-height: 100%;}
+body { min-height: 100%;}
 
 * {
   margin: 0; 
