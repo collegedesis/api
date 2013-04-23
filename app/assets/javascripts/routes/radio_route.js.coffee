@@ -4,10 +4,6 @@ App.RadioRoute = Ember.Route.extend
     SC.initialize({client_id: '49620079b9efba53d4ae479266b35ad9'})
 
   setupController: (controller) ->
-    # get group info
-    url = "http://soundcloud.com/groups/collegedesis"
-    SC.get "/resolve", url: url, (data) =>
-      controller.set('groupInfo', data)
 
     # get the tracks
     content = Em.A()

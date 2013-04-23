@@ -4,8 +4,6 @@ App.RadioController = Ember.ArrayController.extend
   currentTrack: null
   nextTrack: null
 
-  groupInfo: null
-
   readyToPlay: (->
     @get('currentTrack.isLoaded') && @get('nextTrack.isLoaded')
   ).property('currentTrack.isLoaded', 'nextTrack.isLoaded')
