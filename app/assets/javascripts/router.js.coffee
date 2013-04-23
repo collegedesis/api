@@ -1,6 +1,5 @@
 App.Router.map ->
   @route('features', {path: 'upcoming'})
-  @route("store")
   @route("calendar")
   @route("about")
   @resource "bulletins", ->
