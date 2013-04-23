@@ -1,4 +1,4 @@
-App.NewUserController = Ember.ObjectController.extend
+App.UsersNewController = Ember.ObjectController.extend
   needs: ['application', 'organizations']
 
   working: false
