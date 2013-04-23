@@ -11,7 +11,9 @@ class SiteController < ApplicationController
 
   def info
     orgs = Organization.count
-    render json: {orgs: orgs}
+    unis = University.count
+    states = University.all.map(&:state).uniq.count
+    render json: {orgsCount: orgs, universityCount: unis, stateCount: states}
   end
 
   private

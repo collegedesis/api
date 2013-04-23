@@ -3,3 +3,5 @@ App.IndexController = Ember.Controller.extend
   currentUserBinding: Ember.Binding.oneWay('controllers.application.currentUser')
 
   numOfOrganizations: null
+  numOfUniversities: null
+  numOfStates: null
