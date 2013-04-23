@@ -22,12 +22,10 @@
     </div>
     <div class="bulletin-comments">
       <h4>Comments</h4>
-      {{#if controllers.application.currentUser.approved}}
-        <div class="new-comment">
-          {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
-          <button {{action submitComment}}>Submit</button>
-        </div>
-      {{/if}}
+      <div class="new-comment">
+        {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
+        <button {{action submitComment}}>Submit</button>
+      </div>
       {{#if comments}}
         <ul>
         {{#each comment in comments}}
