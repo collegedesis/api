@@ -11,14 +11,14 @@
     <li>{{#linkTo about}}About{{/linkTo}}</li>
   </ul>
   <ul class="account">
-    {{#if currentUser}}
-      <li>
-        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Account{{/linkTo}}
-      </li><li>
-      <a {{action logout}}>Sign out</a></li>
-    {{else}}
-      <li>{{#linkTo login}}Log in/ Sign up{{/linkTo}}</li>
-    {{/if}}
+    <li class="account">
+      {{#if currentUser}}
+        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
+      {{else}}
+        {{#linkTo login}}Join the community{{/linkTo}}</li>
+      {{/if}}
+    </li>
+    {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
   </ul>
 </div>
 <div class="app-content">

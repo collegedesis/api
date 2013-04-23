@@ -4,27 +4,29 @@
   ul {
     display: inline-block;
     li {
-      height: 40px;
-      line-height: 40px;
       display: inline-block;
       cursor: pointer;
-      padding:5px;
+      padding: 5px;
       box-sizing:padding-box;
-      a, a:visited, a:hover { color: $brown4; }
       a:hover { border-bottom:solid 3px $brown2; }
+      a, a:visited, a:hover { color: $brown4; }
       .active { border-bottom:solid 3px $brown2; }
       &:first-child{ margin-left:0; padding-left: 0;}
     }
   }
 }
 
-.app-nav .account {
+.app-nav ul.account {
   float:right;
   li {
+    background-color:transparentize($brown2, 0.9);
+    border: 2px solid #b2ae73;
+    border-bottom: none;
+    padding-left:3px;
+    a:hover { border-bottom: none;}
     img {
-      height: 25px;
+      height: 15px;
       margin-right: 5px;
     }
-    a:hover { border-bottom:solid 3px $brown2; }
   }
 }
