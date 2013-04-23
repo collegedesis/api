@@ -36,17 +36,15 @@ App.IndexRoute = Ember.Route.extend
   events:
     goToBulletin: (bulletin) ->
       @transitionTo('bulletins.show', bulletin)
-      # if bulletin.get('isPost')
-      #   @transitionTo('bulletins.show', bulletin)
-      # else
-      #   window.open(bulletin.get('url'))
     write: -> @transitionTo('bulletins.new')
 
   setupController: (controller) ->
     xhr = $.get '/info', (data) ->
       return data
     xhr.done (data) ->
-      controller.set('numOfOrganizations', data.orgs)
+      controller.set('numOfOrganizations', data.orgsCount)
+      controller.set('numOfUniversities', data.universityCount)
+      controller.set('numOfStates', data.stateCount)
     @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
 
 App.UsersShowRoute = Ember.Route.extend
