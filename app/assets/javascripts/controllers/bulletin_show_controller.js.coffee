@@ -3,13 +3,20 @@ App.BulletinsShowController = Ember.ObjectController.extend
   comment: null
 
   submitComment: ->
-    if @get('controllers.application.currentUserId')
-      @get('comments').createRecord({body: @get('comment')})
-      @store.commit()
-      @set('comment', null)
+    user = @get('controllers.application.currentUser')
+    if user
+      if !user.get('approved')
+        App.session.set('messages', 'Add a Membership to comment!')
+        @transitionToRoute('users.show', user)
+        @set('comment', null)
+      else
+        @get('comments').createRecord({body: @get('comment')})
+        @store.commit()
+        @set('comment', null)
     else
       App.session.set('messages', 'You need to be logged in to comment!')
       @transitionToRoute('login')
+      @set('comment', null)
 
   voteOnBulletin: ->
     if @get('controllers.application.currentUserId')
