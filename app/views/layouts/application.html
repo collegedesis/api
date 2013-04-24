@@ -6,6 +6,9 @@
     <%= javascript_include_tag "application", "https://js.stripe.com/v1/" %>
     <%= javascript_include_tag "//connect.soundcloud.com/sdk.js", "//w.soundcloud.com/player/api.js" %>
     <%= tag :meta, name: 'stripe-key', content: STRIPE_PUBLIC_KEY %>
+    <meta og:image content="https://collegedesis.com/assets/logo.png">
+    <meta og:url content="https://www.collegedesis.com">
+    <meta og:description content="Connecting all the brownkids in America">
     <%= csrf_meta_tag %>
     <script>
       App.session = Ember.Object.create();
