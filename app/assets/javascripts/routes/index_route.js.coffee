@@ -12,3 +12,6 @@ App.IndexRoute = Ember.Route.extend
       controller.set('numOfUniversities', data.universityCount)
       controller.set('numOfStates', data.stateCount)
     @controllerFor('bulletinsIndex').set('content', App.Bulletin.find())
+
+  activate: ->
+    $(document).attr('title', 'CollegeDesis - News')
