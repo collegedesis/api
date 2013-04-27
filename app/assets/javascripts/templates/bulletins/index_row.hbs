@@ -1,0 +1,11 @@
+<div class="bulletin-wrapper">
+  <div class="subtext">{{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}}</div>
+  <div class="title" {{action goToBulletin this}}>{{title}}</div>
+  <div class="vote">
+    {{#if hasBeenVotedOn}}
+      <h3>{{votes.length}}</h3>
+    {{else}}
+      <a {{action voteOnBulletin this}}></a>
+    {{/if}}
+  </div>
+</div>

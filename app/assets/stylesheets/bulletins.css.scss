@@ -4,6 +4,7 @@
   background-color:lighten($brown2, 10%);
   padding: 0 5px;
   cursor: pointer;
+  width: 650px;
   &:hover {background-color: $brown2;}
   & > * {
     line-height: 28px;
