@@ -39,7 +39,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.homepage
-    Bulletin.alive.sort_by{|x| x.score }.reverse[0..9]
+    Bulletin.alive.sort_by{|x| x.score }.reverse
   end
 
   def bulletin_url
