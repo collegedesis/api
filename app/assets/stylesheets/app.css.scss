@@ -69,3 +69,11 @@ input[type='submit'], button {
   display: block;
   border: 1px solid $brown2;
 }
+
+.ember-list-view {
+  overflow: auto;
+  position: relative;
+}
+.ember-list-item-view {
+  position: absolute;
+}

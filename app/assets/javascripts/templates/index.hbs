@@ -4,19 +4,7 @@
 </aside>
 <div class="main">
   {{#if controllers.bulletinsIndex.hasBulletins}}
-    {{#each bulletin in controllers.bulletinsIndex}}
-      <div class="bulletin-wrapper">
-        <div class="subtext">{{#linkTo 'organizations.show' bulletin.author}}{{bulletin.author.name}}{{/linkTo}}</div>
-        <div class="title" {{action goToBulletin bulletin}}>{{bulletin.title}}</div>
-        <div class="vote">
-          {{#if hasBeenVotedOn}}
-            <h3>{{bulletin.votes.length}}</h3>
-          {{else}}
-            <a {{action voteOnBulletin bulletin}}></a>
-          {{/if}}
-        </div>
-      </div>
-    {{/each}}
+    {{view App.BulletinsIndexView contentBinding="controllers.bulletinsIndex"}}
   {{else}}
     Loading...
   {{/if}}
