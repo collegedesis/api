@@ -1,5 +1,5 @@
 class Bulletin < ActiveRecord::Base
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead
   after_create :create_slug
 
   has_many :votes, :as => :votable, :dependent => :destroy
@@ -15,6 +15,8 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :url, :if => :is_link?
   validates_presence_of :user_id
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
+
+  scope :alive, where(:is_dead => false)
 
   def author_id
     user.memberships.first.organization.id if user
@@ -37,7 +39,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.homepage
-    Bulletin.all.sort_by{|x| x.score }.reverse[0..9]
+    Bulletin.alive.sort_by{|x| x.score }.reverse
   end
 
   def bulletin_url
