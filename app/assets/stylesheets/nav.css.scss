@@ -1,6 +1,8 @@
 .app-nav {
-  margin-bottom: 10px;
-  border-bottom:solid 3px transparentize($brown2, 0.5);
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 12px 0px transparentize($brown2, 0.5) inset;
+  border-bottom: solid 2px lighten($brown2, 20%);
+  padding:8px;
   ul {
     display: inline-block;
     li {
@@ -8,9 +10,15 @@
       cursor: pointer;
       padding: 5px;
       box-sizing:padding-box;
-      a:hover { border-bottom:solid 3px $brown2; }
+      a {
+        display: inline-block;
+        padding: 0 3px;
+      }
+      a:hover {
+        border-bottom:solid 2px $brown2;
+      }
       a, a:visited, a:hover { color: $brown4; }
-      .active { border-bottom:solid 3px $brown2; }
+      .active { border-bottom:solid 2px $brown2; }
       &:first-child{ margin-left:0; padding-left: 0;}
     }
   }
@@ -19,11 +27,8 @@
 .app-nav ul.account {
   float:right;
   li {
-    background-color:transparentize($brown2, 0.9);
-    border: 2px solid #b2ae73;
     border-bottom: none;
     padding-left:3px;
-    a:hover { border-bottom: none;}
     img {
       height: 15px;
       margin-right: 5px;

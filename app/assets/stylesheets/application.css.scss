@@ -34,7 +34,6 @@ a.btn {
 
 /* Layout */
 body{
-  padding: 20px;
   width: 60%;
   min-width:1015px;
   margin:0 auto;
@@ -47,8 +46,6 @@ body {
   background-image: -moz-radial-gradient(center center, circle cover, $background, darken($background, 7%));
   -webkit-box-shadow: 0 0 5px 1px lighten($background, 5%);
   -moz-box-shadow: 0 0 5px 1px lighten($background, 5%);
-  box-shadow: 0 0 5px 1px lighten($background, 5%);
-  border: solid 1px lighten($background, 5%);
 }
 html {
   background-color:$brown3;

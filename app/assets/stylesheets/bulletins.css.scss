@@ -1,11 +1,10 @@
 // list of bulletins
 .bulletin-wrapper {
-  border-bottom: solid 3px $brown2;
-  background-color:lighten($brown2, 10%);
+  border-bottom: solid 1px $brown2;
   padding: 0 5px;
   cursor: pointer;
   width: 650px;
-  &:hover {background-color: $brown2;}
+  &:hover {background-color: transparentize($brown2, 0.5);}
   & > * {
     line-height: 28px;
     display: inline-block;
