@@ -23,15 +23,13 @@
 }
 
 .app-content {
+  .main, aside { float: left; }
   .main {
-    width:70%;
+    width: 600px;
     padding: 0 10px;
-    min-width:600px;
   }
   aside {
-    float: right;
-    width:30%;
-    padding:0 20px;
+    width: 300px;
   }
   h4 {
     margin-bottom:10px;
@@ -49,14 +47,15 @@
     margin-bottom:10px;
   }
 }
-
+input, textarea, select {
+  width: 500px;
+}
 input, textarea, select, button {
   padding:5px;
   box-sizing:border-box;
   font-size:$font-size * 1.1;
   margin-bottom:10px;
   display: block;
-  width: 500px;
 }
 input, textarea, button {
   background-color:transparentize($brown2, 0.9);
@@ -64,7 +63,7 @@ input, textarea, button {
 
 input[type='submit'], button {
   cursor: pointer;
-  width: 200px;
+  max-width: 200px;
   margin: 10px 0;
   display: block;
   border: 1px solid $brown2;
@@ -76,4 +75,10 @@ input[type='submit'], button {
 }
 .ember-list-item-view {
   position: absolute;
+}
+
+h4, h5 {
+  vertical-align: bottom;
+  color: $brown2;
+  font-family: $header-font;
 }

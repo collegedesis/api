@@ -1,43 +1,41 @@
-<p>{{#linkTo "bulletins.index"}}&larr; Back{{/linkTo}}</p>
-<aside>
-  <div class="vote">
-    {{#unless hasBeenVotedOn}}
-      <a {{action voteOnBulletin}}></a>
-      <h4>Recommend</h4>
-    {{else}}
-      <h3>{{votes.length}}</h3>
-      <h4>Recommendations</h4>
-    {{/unless}}
-  </div>
-</aside>
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
       <h1>{{title}}</h1>
-      <span class="date">Posted on {{humanizedCreatedAt}}</span>
+      <h5>Posted by {{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}} on {{humanizedCreatedAt}}</h5>
     </div>
     <div class="bulletin-body">
       {{htmlBody}}
       {{#if isLink}}This bulletin is a link. <a {{bindAttr href="url"}} target="_blank">Visit</a>.{{/if}}
     </div>
-    <div class="bulletin-comments">
-      <h4>Comments</h4>
-      <div class="new-comment">
-        {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
-        <button {{action submitComment}}>Submit</button>
-      </div>
-      {{#if comments}}
-        <ul>
-        {{#each comment in comments}}
-          <li>
-            <p>{{comment.body}}</p>
-            {{comment.author}}
-          </li>
-        {{/each}}
-        </ul>
-      {{else}}
-        No comments
-      {{/if}}
+    {{#if hasBeenVotedOn}}
+    <div class="voted">
+      <h3>{{votes.length}}</h3>
+      <span>Votes</span>
     </div>
+    {{else}}
+    <div class="vote">
+      <a {{action voteOnBulletin}}></a>
+    </div>
+    {{/if}}
   </div>
 </div>
+<aside>
+  <div class="bulletin-comments">
+    <h4>Leave a Comment</h4>
+    {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
+    <button {{action submitComment}}>Submit</button>
+    {{#if comments}}
+      <ul>
+      {{#each comment in comments}}
+        <li>
+          <h5>{{comment.author}}</h5>
+          <p>{{comment.body}}</p>
+        </li>
+      {{/each}}
+      </ul>
+    {{else}}
+      <p>Be the first to comment!</p>
+    {{/if}}
+  </div>
+</aside>

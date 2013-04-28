@@ -17,7 +17,10 @@ App.Bulletin = DS.Model.extend
   ).property('body')
 
   humanizedCreatedAt: (->
-    strftime(@get('created_at'),"%b %d, %Y at %I:%M%p") if @get('created_at')?
+    if @get('created_at')?
+      strftime(@get('created_at'),"%B %d, %Y")
+    else
+      "Date"
   ).property("created_at")
 
   htmlBody: (->
