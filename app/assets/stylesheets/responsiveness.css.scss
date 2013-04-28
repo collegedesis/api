@@ -3,7 +3,7 @@ body {
   margin:0 auto;
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 640px) {
   body, p, .app-header,
   .app-nav,
   .app-content, .app-content > *,
