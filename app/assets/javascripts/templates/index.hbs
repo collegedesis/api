@@ -4,7 +4,7 @@
 </aside>
 <div class="main">
   {{#if controllers.bulletinsIndex.hasBulletins}}
-    {{view App.BulletinsIndexView contentBinding="controllers.bulletinsIndex"}}
+    {{view App.BulletinsIndexView contentBinding="controllers.bulletinsIndex" controllerBinding="controllers.bulletinsIndex"}}
   {{else}}
     Loading...
   {{/if}}
