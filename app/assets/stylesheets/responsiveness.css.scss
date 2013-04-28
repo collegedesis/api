@@ -1,0 +1,18 @@
+body {
+  width: 940px;
+  margin:0 auto;
+}
+
+@media (max-width: 767px) {
+  body, p, .app-header,
+  .app-nav,
+  .app-content, .app-content > *,
+  .app-footer {
+    width: auto !important;
+  }
+  .app-content aside {
+    float: none;
+    text-align: center;
+    font-style: italic;
+  }
+}

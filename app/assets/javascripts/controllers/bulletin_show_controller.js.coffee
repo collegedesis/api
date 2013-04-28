@@ -50,3 +50,5 @@ App.BulletinsShowController = Ember.ObjectController.extend
     return val
 
   ).property('votes.@each.user.id', 'App.session.votedBulletinIds')
+
+  backToHome: -> @transitionToRoute('bulletins.index')

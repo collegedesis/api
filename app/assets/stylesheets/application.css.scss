@@ -2,42 +2,32 @@
 @import 'imports.css.scss';
 @import 'app.css.scss';
 @import 'bulletins.css.scss';
+@import 'bulletin.css.scss';
 @import 'aside.css.scss';
 @import 'users.css.scss';
 @import 'nav.css.scss';
 @import 'main.css.scss';
+@import 'responsiveness.css.scss';
 
 html {height: 100%;}
 body { min-height: 100%;}
 
 * {
-  margin: 0; 
+  margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box; 
-  -moz-box-sizing: border-box;   
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 0;
   zoom: 1;
   vertical-align: baseline;
 }
 
-p { 
+p {
   margin-bottom:10px;
-  max-width:500px;
 }
 
 ul li { list-style-type:none; }
-
-a.btn {
-  @include awesome-btn;
-}
-
-/* Layout */
-body{
-  width: 60%;
-  min-width:1015px;
-  margin:0 auto;
-}
 
 /* Backgrounds and Default Styles */
 body {

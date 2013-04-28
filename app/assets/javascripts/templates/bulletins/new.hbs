@@ -1,30 +1,3 @@
-<aside>
-  <h1>
-    Write
-    <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Post</a>
-    or
-    <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Link</a>
-  </h1>
-  {{#if isPost}}
-    <h3>Formatting</h3>
-    <p>Blank lines make new paragraphs</p>
-    <p>[url](link text) creates a hyperlink</p>
-    <p>![image](image_url) displays an image</p>
-    <p>**bold text**</p>
-    <p>_italic text_</p>
-    <p>
-      * bullets <br>
-      * bullets <br>
-      * bullets <br>
-    </p>
-    <p>
-      1. numbered list <br>
-      1. numbered list <br>
-      1. numbered list <br>
-    </p>
-    <button {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>
-  {{/if}}
-</aside>
 <div class="main">
   <div class="bulletin-new">
   {{#formFor content}}
@@ -57,3 +30,30 @@
   {{/formFor}}
   </div>
 </div>
+<aside>
+  <h1>
+    Write
+    <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Post</a>
+    or
+    <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Link</a>
+  </h1>
+  {{#if isPost}}
+    <h3>Formatting</h3>
+    <p>Blank lines make new paragraphs</p>
+    <p>[url](link text) creates a hyperlink</p>
+    <p>![image](image_url) displays an image</p>
+    <p>**bold text**</p>
+    <p>_italic text_</p>
+    <p>
+      * bullets <br>
+      * bullets <br>
+      * bullets <br>
+    </p>
+    <p>
+      1. numbered list <br>
+      1. numbered list <br>
+      1. numbered list <br>
+    </p>
+    <button {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>
+  {{/if}}
+</aside>
