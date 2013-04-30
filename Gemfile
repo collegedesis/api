@@ -32,3 +32,4 @@ gem 'stripe'
 gem 'aws-s3'
 gem 'rack-ssl-enforcer'
 gem 'twitter'
+gem 'whenever', require: false
