@@ -42,6 +42,10 @@ class Bulletin < ActiveRecord::Base
     Bulletin.alive.sort_by{|x| x.score }.reverse
   end
 
+  def self.top_five
+    Bulletin.homepage[0..4]
+  end
+
   def bulletin_url
     # TODO when we add comments we probably want site urls to link bulletins too
     if Rails.env.production?
@@ -93,5 +97,22 @@ class Bulletin < ActiveRecord::Base
 
   def voted_by_user?(user)
     votes.map(&:user_id).include? user.id
+  end
+
+  def tweet
+    begin
+      Twitter.update "#{self.title} #{self.bulletin_url}"
+    rescue
+      puts "Tweet send failed"
+    end
+  end
+
+  def is_popular?
+    votes.count > 1 && bulletin.votes.count % 5 == 0
+  end
+
+  def author_is_admin?
+    org = Organization.where(name: "CollegeDesis").first
+    user.memberships.map(&:organization_id).include?(org.id)
   end
 end
