@@ -1,10 +1,3 @@
-<div class="main">
-  <div id="party">
-    {{#unless readyToPlay}}
-      Loading...
-    {{/unless}}
-  </div>
-</div>
 <aside>
   {{#if readyToPlay}}
   <h3>Dance / Mashup Radio</h3>
@@ -12,3 +5,10 @@
   <button {{action nextSong}}>Next Song</button>
   {{/if}}
 </aside>
+<div class="main">
+  <div id="party">
+    {{#unless readyToPlay}}
+      Loading...
+    {{/unless}}
+  </div>
+</div>

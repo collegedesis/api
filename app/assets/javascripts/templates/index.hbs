@@ -1,3 +1,7 @@
+<aside>
+  <p>Publish to <strong>{{numOfOrganizations}}</strong> South Asian student organizations from <strong>{{numOfUniversities}}</strong> universities in <strong>{{numOfStates}}</strong> states.</p>
+  <button {{action write}}>Post</button>
+</aside>
 <div class="main">
   {{#if controllers.bulletinsIndex.hasBulletins}}
     {{view App.BulletinsIndexView contentBinding="controllers.bulletinsIndex" controllerBinding="controllers.bulletinsIndex"}}
@@ -5,7 +9,3 @@
     Loading...
   {{/if}}
 </div>
-<aside>
-  <p>Publish to <strong>{{numOfOrganizations}}</strong> South Asian student organizations from <strong>{{numOfUniversities}}</strong> universities in <strong>{{numOfStates}}</strong> states.</p>
-  <button {{action write}}>Post</button>
-</aside>
