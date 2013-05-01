@@ -1,0 +1,19 @@
+.controls {
+  margin: 10px 0;
+}
+.controls > * {
+  display: inline-block;
+  vertical-align: top;
+}
+.controls button {
+  font-size: $font-size;
+  margin-top: 0;
+}
+.controls .info {
+  width: 80%;
+}
+.controls .info h5 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

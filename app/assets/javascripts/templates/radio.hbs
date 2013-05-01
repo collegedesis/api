@@ -1,8 +1,14 @@
 <aside>
   {{#if readyToPlay}}
-  <h3>Dance / Mashup Radio</h3>
-  <h5>No pause button. Oops.</h5>
-  <button {{action nextSong}}>Next Song</button>
+  <h2>Mashup Radio</h2>
+  <div class="controls">
+    <button {{action nextSong}}>Next</button>
+    <div class="info">
+      <h5>{{nextTrack.json.title}}</h5>
+      <h5><a target="_blank" {{bindAttr href="nextTrack.json.user.permalink_url"}}>{{nextTrack.json.user.username}}</a></h5>
+    </div>
+  </div>
+  <p>Want to play your track here? Read <a href="/#/bulletins/get-your-dance-mixes-on-our-radio">this</a>.</p>
   {{/if}}
 </aside>
 <div class="main">
