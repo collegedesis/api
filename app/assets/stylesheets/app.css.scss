@@ -23,7 +23,7 @@
 }
 
 .app-content {
-  .main, aside { float: left; }
+  aside { float: right; }
   .main {
     width: 600px;
     margin: 0 20px;
@@ -81,4 +81,8 @@ h4, h5 {
   vertical-align: bottom;
   color: $brown2;
   font-family: $header-font;
+}
+
+.app-footer {
+  height: 20px;
 }
