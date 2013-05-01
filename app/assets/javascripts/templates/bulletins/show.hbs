@@ -1,3 +1,22 @@
+<aside>
+  <div class="bulletin-comments">
+    <h4>Leave a Comment</h4>
+    {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
+    <button {{action submitComment}}>Submit</button>
+    {{#if comments}}
+      <ul>
+      {{#each comment in comments}}
+        <li>
+          <h5>{{comment.author}}</h5>
+          <p>{{comment.body}}</p>
+        </li>
+      {{/each}}
+      </ul>
+    {{else}}
+      <p>Be the first to comment!</p>
+    {{/if}}
+  </div>
+</aside>
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
@@ -20,22 +39,3 @@
     {{/if}}
   </div>
 </div>
-<aside>
-  <div class="bulletin-comments">
-    <h4>Leave a Comment</h4>
-    {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
-    <button {{action submitComment}}>Submit</button>
-    {{#if comments}}
-      <ul>
-      {{#each comment in comments}}
-        <li>
-          <h5>{{comment.author}}</h5>
-          <p>{{comment.body}}</p>
-        </li>
-      {{/each}}
-      </ul>
-    {{else}}
-      <p>Be the first to comment!</p>
-    {{/if}}
-  </div>
-</aside>
