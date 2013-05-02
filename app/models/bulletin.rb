@@ -108,7 +108,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def is_popular?
-    votes.count > 1 && bulletin.votes.count % 5 == 0
+    votes.count > 1 && votes.count % 5 == 0
   end
 
   def author_is_admin?
