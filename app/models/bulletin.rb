@@ -42,10 +42,6 @@ class Bulletin < ActiveRecord::Base
     Bulletin.alive.sort_by{|x| x.score }.reverse
   end
 
-  def self.top_five
-    Bulletin.homepage[0..4]
-  end
-
   def bulletin_url
     # TODO when we add comments we probably want site urls to link bulletins too
     if Rails.env.production?
@@ -115,4 +111,13 @@ class Bulletin < ActiveRecord::Base
     org = Organization.where(name: "CollegeDesis").first
     user.memberships.map(&:organization_id).include?(org.id)
   end
+
+  def self.tweet_top_five
+    Bulletin.top_five.each { |b| b.tweet }
+  end
+
+  def self.top_five
+    Bulletin.homepage[0..4]
+  end
+
 end
