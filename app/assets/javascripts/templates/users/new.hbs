@@ -1,13 +1,10 @@
-<aside>
-  <h3>Note</h3>
-  <p>Anyone can create an account, but to post a bulletin you'll have to add a membership to one of the organizations in our Directory.</p>
-</aside>
 <div class="main">
+  <h4>Use your own name and email address. You'll be able to post as your organization without your name showing up anywhere!</h4>
   {{#formFor content}}
-    {{input full_name placeholder="Use a name your organization will recognize"}}
-    {{input email placeholder="user@email.com"}}
-    {{input password placeholder="at least 6 characters"}}
-    {{input password_confirmation placeholder="again"}}
+    {{input full_name}}
+    {{input email}}
+    {{input password}}
+    {{input password_confirmation}}
     {{#if controller.errors}}
       <p style="color:red;">Something isn't right:
       <ul>
