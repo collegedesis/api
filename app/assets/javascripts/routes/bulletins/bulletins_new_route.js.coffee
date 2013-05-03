@@ -11,6 +11,6 @@ App.BulletinsNewRoute = Ember.Route.extend
       @transitionTo('login')
       model.deleteRecord() if model.get('isNew')
 
-  model: -> App.Bulletin.createRecord({bulletin_type: 1})
+  model: -> App.Bulletin.createRecord({bulletin_type: 2})
 
   exit: -> @get('controller.content').deleteRecord() if @get('controller.content.isNew')

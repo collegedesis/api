@@ -86,3 +86,9 @@ h4, h5 {
 .app-footer {
   height: 20px;
 }
+h3.options {
+  margin-bottom: 15px;
+  a {
+    border-bottom:solid 3px $brown2;
+  }
+}
