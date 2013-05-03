@@ -1,10 +1,4 @@
 <aside>
-  <h1>
-    Write
-    <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Post</a>
-    or
-    <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Link</a>
-  </h1>
   {{#if isPost}}
     <h3>Formatting</h3>
     <p>Blank lines make new paragraphs</p>
@@ -26,6 +20,13 @@
   {{/if}}
 </aside>
 <div class="main">
+  <h3 class="options">
+    {{#if isPost}}
+      <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Submit a link</a> to another website or article instead.
+    {{else}}
+      <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Write</a> a blog post instead.
+    {{/if}}
+  </h3>
   <div class="bulletin-new">
   {{#formFor content}}
     {{#unless controller.showingPreview}}
