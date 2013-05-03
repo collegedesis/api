@@ -1,21 +1,11 @@
 <aside>
+  <h3>Resources</h3>
+  <ul>
+    <li><a href="/#/bulletins/welcome-to-the-bulletin-board">Why {{#if isPost}}write{{else}}submit{{/if}} a bulletin?</a></li>
+    <li><a href="/#/bulletins/want-a-retweet-here-s-something-better">How to get it tweeted</a></li>
+    {{#if isPost}}<li><a href="/#/bulletins/making-your-bulletins-look-pretty">Making your bulletins look pretty</a></li>{{/if}}
+  </ul>
   {{#if isPost}}
-    <h3>Formatting</h3>
-    <p>Blank lines make new paragraphs</p>
-    <p>[url](link text) creates a hyperlink</p>
-    <p>![image](image_url) displays an image</p>
-    <p>**bold text**</p>
-    <p>_italic text_</p>
-    <p>
-      * bullets <br>
-      * bullets <br>
-      * bullets <br>
-    </p>
-    <p>
-      1. numbered list <br>
-      1. numbered list <br>
-      1. numbered list <br>
-    </p>
     <button {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>
   {{/if}}
 </aside>

@@ -55,6 +55,16 @@
 // Bulletin show page and preview
 .bulletin, .bulletin-new .preview {
   .bulletin-body {
+    pre {
+      background-color: #bababa;
+      padding: 5px;
+      color: white;
+      width: 400px;
+      overflow: scroll;
+    }
+    hr {
+      border-bottom: solid 1px $brown2;
+    }
     p {
       width: auto;
       max-width: 600px;
