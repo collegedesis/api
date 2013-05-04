@@ -15,4 +15,10 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(params[:membership])
     render json: @membership.save ? @membership : @membership.errors
   end
+
+  def destroy
+    @membership = Membership.find(params[:id])
+    @membership.delete
+    render nothing: true, status: 204
+  end
 end
