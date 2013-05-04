@@ -1,4 +1,8 @@
 .profile-page {
+  .control button {
+    display: inline-block;
+    margin-right: 10px;
+  }
   .profile-head {
     overflow: hidden;
     margin-bottom: 10px;
@@ -18,5 +22,11 @@
   li {
     margin-bottom: 5px;
     text-transform: capitalize;
+  }
+  .memberships {
+    li > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 }

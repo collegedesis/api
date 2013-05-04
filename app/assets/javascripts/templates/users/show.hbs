@@ -6,18 +6,23 @@
   </div>
   <div class="info">
     <h3>Memberships</h3>
-    <ul>
+    <ul class="memberships">
       {{#each mem in memberships}}
         {{#if mem.isNew}}
           <li>{{view Ember.Select contentBinding="organizations" optionLabelPath="content.display_name" selectionBinding="mem.organization"}}</li>
         {{else}}
-          <li>- {{mem.display_name}}</li>
+          <li>
+            <button {{action deleteMembership mem}}>x</button> {{mem.display_name}}
+          </li>
         {{/if}}
       {{/each}}
       <a {{action addMembership}}>Add Membership</a>
     </ul>
+    <div class="control">
     {{#if dirtyRecords}}
       <button {{action submit}}>Save</button>
+      <button {{action cancel}}>Cancel</button>
     {{/if}}
+    </div>
   </div>
 </div>
