@@ -84,6 +84,9 @@
     ol, ul {
       margin-left: 40px;
     }
+    ul li {
+      list-style-type: square;
+    }
     blockquote {
       margin-left: 30px;
       border-left:solid 3px transparentize($brown2, 0.5);
