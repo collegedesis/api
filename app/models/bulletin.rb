@@ -52,6 +52,11 @@ class Bulletin < ActiveRecord::Base
     base_route + slug
   end
 
+  def shortened_url
+    client = Bitly.client
+    client.shorten(bulletin_url).jmp_url
+  end
+
   def intro
     self.body[0...100] + "..." if bulletin_type == 1
   end
