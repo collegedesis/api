@@ -1,5 +1,24 @@
-This is the [CollegeDesis website](http://collegedesis.com). It's built on [Rails](http://rubyonrails.org) and [Ember.js](http://emberjs.com). The application is hosted on Heroku and uses Postgres in both development and production. 
+This is the [CollegeDesis website](http://collegedesis.com).
 
-If you have any questions, tweet [@collegedesis](http://twitter.com/collegedesis) or email us at <brownkids@collegedesis.com>
+We provide collaboration, communication, and publication tools for South Asian student organizations in America.
 
-Feel free to file issues with feature suggestions too. 
+## Current Features
+
+* Bulletin Board
+* Organization Pages
+
+## Upcoming Features
+
+* Calendar
+* Open Chat
+
+## Technology
+
+* [Rails](http://rubyonrails.org) API
+* [Ember.js](http://emberjs.com) for client side UI and navigation
+* [Postgres](//www.postgresql.org) database
+* [Heroku](//heroku.com) hosted
+
+## Contributing
+
+If you're interested in contributing to an open source project for some experience, check out the [issues](//github.com/collegedesis/collegedesis.com) and feel free to open pull requests. You can also email us at <contribute@collegedesis.com> and we'll set up a time to walk you through the codebase so you can contribute. 
