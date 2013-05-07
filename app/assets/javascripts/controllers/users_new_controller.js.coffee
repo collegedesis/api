@@ -1,5 +1,4 @@
 App.UsersNewController = Ember.ObjectController.extend
-  needs: ['application', 'organizations']
 
   working: false
 
@@ -14,10 +13,6 @@ App.UsersNewController = Ember.ObjectController.extend
     user.removeObserver('id', this, '_userCreated')
     @set('working', false)
     @transitionToRoute('login')
-
-  loading: (->
-    if @get('organizations.length') > 1 then return false else return true
-  ).property('organizations.length')
 
   _createSession: (user) ->
     if !App.session
