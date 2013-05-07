@@ -56,8 +56,6 @@ class Bulletin < ActiveRecord::Base
     if Rails.env.production?
       client = Bitly.client
       client.shorten(bulletin_url).short_url
-    else
-      bulletin_url
     end
   end
 
@@ -105,8 +103,9 @@ class Bulletin < ActiveRecord::Base
   end
 
   def tweet
+    url = Rails.env.production? ? shortened_url : bulletin_url
     begin
-      Twitter.update "#{self.title} #{self.bulletin_url}"
+      Twitter.update "#{self.title} #{url}"
     rescue
       puts "Tweet send failed"
     end
