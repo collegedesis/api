@@ -13,8 +13,8 @@ class Organization < ActiveRecord::Base
   has_many :memberships
 
   default_scope order('name ASC')
-  scope :exposed, where(:exposed => true)
-  scope :with_email, :conditions => "email IS NOT NULL"
+  scope :reachable, conditions: 'email IS NOT NULL'
+  scope :exposed, conditions: 'exposed'
 
   def has_email?
     self.email? ? true : false
