@@ -53,8 +53,12 @@ class Bulletin < ActiveRecord::Base
   end
 
   def shortened_url
-    client = Bitly.client
-    client.shorten(bulletin_url).jmp_url
+    if Rails.env.production?
+      client = Bitly.client
+      client.shorten(bulletin_url).short_url
+    else
+      bulletin_url
+    end
   end
 
   def intro
