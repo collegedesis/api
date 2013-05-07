@@ -18,6 +18,6 @@
 *.sql
 *.dump
 *.swp
-config/initializers/secrets.rb
+config/initializers/00_secrets.rb
 *.crt
 *.key
