@@ -8,4 +8,4 @@ handler do |job|
   puts "Running #{job}"
 end
 
-every(6.hours, 'Tweeting top 5 bulletins') { Bulletin.tweet_top_five }
+every(3.hours, 'Tweeting top 5 bulletins') { Bulletin.tweet_top(3) }
