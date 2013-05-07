@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   respond_to :json
   def index
-    @organizations = params[:slug] ? Organization.where(slug: params[:slug]) : Organization.exposed
+    @organizations = params[:slug] ? Organization.where(slug: params[:slug]) : Organization.reachable.exposed
     render json: @organizations
   end
 

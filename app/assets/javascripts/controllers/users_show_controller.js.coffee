@@ -1,11 +1,7 @@
 App.UsersShowController = Ember.ObjectController.extend
-  needs: ['organizations']
+  needs: ['organizationsIndex']
 
   addMembership: -> @get('memberships').createRecord()
-
-  organizations: (->
-    @get('controllers.organizations.publicOrgs')
-  ).property('controllers.organizations.publicOrgs')
 
   submit: ->
     @get('memberships').forEach (item) ->
