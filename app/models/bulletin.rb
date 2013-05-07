@@ -112,12 +112,12 @@ class Bulletin < ActiveRecord::Base
     user.memberships.map(&:organization_id).include?(org.id)
   end
 
-  def self.tweet_top_five
-    Bulletin.top_five.each { |b| b.tweet }
+  def self.tweet_top(num)
+    Bulletin.top(num).each { |b| b.tweet }
   end
 
-  def self.top_five
-    Bulletin.homepage[0..4]
+  def self.top(num)
+    Bulletin.homepage[0..(num-1)]
   end
 
 end
