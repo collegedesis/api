@@ -6,10 +6,10 @@ Collegedesis::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.ember.variant = :development
-  
+
   config.action_mailer.default_url_options = { :host => 'smtp.mailgun.org' }
   config.action_mailer.delivery_method = :smtp
-  
+
   config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = true
   # Log error messages when you accidentally call methods on nil.
@@ -38,5 +38,5 @@ Collegedesis::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.active_record.observers = :membership_observer
+  config.active_record.observers = :membership_observer, :user_observer
 end
