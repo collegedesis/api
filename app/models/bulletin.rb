@@ -106,8 +106,8 @@ class Bulletin < ActiveRecord::Base
     url = Rails.env.production? ? shortened_url : bulletin_url
     begin
       Twitter.update "#{self.title} #{url}"
-    rescue
-      puts "Tweet send failed"
+    rescue => e
+      puts "Twitter update failed: #{e.inspect}"
     end
   end
 
