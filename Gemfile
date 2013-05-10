@@ -2,15 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "active_model_serializers", :git => "https://github.com/rails-api/active_model_serializers.git"
 gem 'thin'
-gem 'haml-rails'
+
 gem 'redcarpet'
 gem 'ember-rails', git: "https://github.com/emberjs/ember-rails.git"
-# Gems used only for assets and not required
-# in production environments by default.
+
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
@@ -28,8 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'stripe'
-gem 'aws-s3'
+
 gem 'rack-ssl-enforcer'
 gem 'twitter'
 gem 'clockwork'
