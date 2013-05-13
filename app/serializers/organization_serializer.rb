@@ -3,5 +3,5 @@ class OrganizationSerializer < ActiveModel::Serializer
 
   # Association
   attribute :organization_type_id, key: :org_type_id
-  attribute :membership_ids, key: :memberships
+  attribute :membership_ids
 end
