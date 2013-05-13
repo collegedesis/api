@@ -4,8 +4,12 @@
 </aside>
 <div class="main">
   {{#if controllers.bulletinsIndex.hasBulletins}}
-    {{view App.BulletinsIndexView contentBinding="controllers.bulletinsIndex" controllerBinding="controllers.bulletinsIndex"}}
+    {{#each controllers.bulletinsIndex}}
+      {{partial 'bulletins/index_row'}}
+    {{/each}}
   {{else}}
     Loading...
   {{/if}}
+  <a {{action previousPage}}>Previous</a>
+  <a {{action nextPage}}>Next</a>
 </div>
