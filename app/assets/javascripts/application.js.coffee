@@ -1,4 +1,4 @@
-# Venor libs
+# Vendor libs
 #= require md5
 #= require showdown
 #= require showdown-youtube

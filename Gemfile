@@ -4,10 +4,8 @@ gem 'rails', '3.2.11'
 
 gem "active_model_serializers", :git => "https://github.com/rails-api/active_model_serializers.git"
 gem 'thin'
-
 gem 'redcarpet'
-gem 'ember-rails', git: "https://github.com/emberjs/ember-rails.git"
-
+gem "ember-rails"
 
 group :development, :test do
   gem 'pry'
