@@ -8,11 +8,12 @@ development:
   password:
 
 test:
+  host: /var/pgsql_socket
   adapter: postgresql
   encoding: unicode
   database: college_desis_test
   pool: 5
-  username: college_desis
+  username:
   password:
 
 production:

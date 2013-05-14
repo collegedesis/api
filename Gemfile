@@ -8,10 +8,19 @@ gem 'redcarpet'
 gem "ember-rails"
 
 group :development, :test do
+  # debugging
   gem 'pry'
-  gem 'rspec-rails'
   gem 'pry-debugger'
   gem 'pry-stack_explorer'
+  gem 'awesome_print'
+
+  # Testing
+  gem 'rspec-rails', '~> 2.13.0'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'database_cleaner', '~> 0.9.1'
+  gem 'xpath', '~> 2.0.0'
+  gem 'selenium-webdriver', '~> 2.32.1'
+  gem 'faker'
 end
 
 gem 'pg'
