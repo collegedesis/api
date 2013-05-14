@@ -3,7 +3,7 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :email, allow_nil: true
   validates_uniqueness_of :slug, allow_nil: true
 
-  after_create :send_welcome_email
+  after_create :send_welcome_email, :assign_slug
   attr_accessible :name, :university_id, :organization_type_id, :email, :website, :exposed, :slug
 
   belongs_to :organization_type
@@ -35,6 +35,12 @@ class Organization < ActiveRecord::Base
   def university_name
     university.name if university
   end
+
+  def assign_slug
+    self.slug = self.display_name.parameterize
+    self.save(validate: false)
+  end
+
 protected
   def send_welcome_email
     OrganizationMailer.welcome(self).deliver if self.email?
