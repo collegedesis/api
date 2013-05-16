@@ -1,13 +1,16 @@
 <div class="main">
-  <h2>{{this.content.name}}</h2>
-  <h3>{{this.content.university_name}}</h3>
-  <hr>
+  <div class="header">
+    <h2>{{name}}</h2>
+    <h4>{{#if university_name}}{{university_name}}{{/if}}</h4>
+  </div>
   {{#unless collegedesis}}
-    {{#if this.content.memberships.length}}
-      <h4>Members</h4>
-      <ul>
-        {{#each membership in this.content.memberships}}
-          <li>{{membership.user.full_name}}</li>
+    {{#if memberships.length}}
+      <ul class="members">
+        {{#each membership in memberships}}
+          <li>
+            <img class="avatar" {{bindAttr src="membership.user.avatar_url"}}>
+            {{membership.user.full_name}}
+          </li>
         {{/each}}
       </ul>
     {{else}}
