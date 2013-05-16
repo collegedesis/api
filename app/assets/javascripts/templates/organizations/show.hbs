@@ -1,12 +1,16 @@
 <div class="main">
-  <h2>{{this.content.name}}</h2>
-  <h3>{{this.content.university_name}}</h3>
+  <h2>{{name}}</h2>
+  <h3>
+    {{#if university_name}}
+      {{university_name}}
+    {{/if}}
+  </h3>
   <hr>
   {{#unless collegedesis}}
-    {{#if this.content.memberships.length}}
+    {{#if memberships.length}}
       <h4>Members</h4>
       <ul>
-        {{#each membership in this.content.memberships}}
+        {{#each membership in memberships}}
           <li>{{membership.user.full_name}}</li>
         {{/each}}
       </ul>
