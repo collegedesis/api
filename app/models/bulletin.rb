@@ -1,4 +1,5 @@
 class Bulletin < ActiveRecord::Base
+  include Slugify
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead
   after_create :create_slug
 
@@ -70,9 +71,6 @@ class Bulletin < ActiveRecord::Base
     orgs.each do |org|
       OrganizationMailer.bulletin_promotion(self, org).deliver if org.has_email?
     end
-  end
-  def create_slug
-    self.update_attributes(slug: title.parameterize)
   end
 
   def recency_score
