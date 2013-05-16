@@ -1,17 +1,16 @@
 <div class="main">
-  <h2>{{name}}</h2>
-  <h3>
-    {{#if university_name}}
-      {{university_name}}
-    {{/if}}
-  </h3>
-  <hr>
+  <div class="header">
+    <h2>{{name}}</h2>
+    <h4>{{#if university_name}}{{university_name}}{{/if}}</h4>
+  </div>
   {{#unless collegedesis}}
     {{#if memberships.length}}
-      <h4>Members</h4>
-      <ul>
+      <ul class="members">
         {{#each membership in memberships}}
-          <li>{{membership.user.full_name}}</li>
+          <li>
+            <img class="avatar" {{bindAttr src="membership.user.avatar_url"}}>
+            {{membership.user.full_name}}
+          </li>
         {{/each}}
       </ul>
     {{else}}
