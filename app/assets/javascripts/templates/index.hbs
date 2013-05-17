@@ -10,6 +10,12 @@
   {{else}}
     Loading...
   {{/if}}
-  <a {{action previousPage}}>Previous</a>
-  <a {{action nextPage}}>Next</a>
+  <div class="page-nav">
+    {{#unless controllers.bulletinsIndex.firstPage}}
+      <button {{action previousPage target="controllers.bulletinsIndex"}}>Previous</button>
+    {{/unless}}
+    {{#unless controllers.bulletinsIndex.lastPage}}
+      <button {{action nextPage target="controllers.bulletinsIndex"}}>Next</button>
+    {{/unless}}
+  </div>
 </div>

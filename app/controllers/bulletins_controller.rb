@@ -5,7 +5,11 @@ class BulletinsController < ApplicationController
   def index
     ## TODO dead bulletins shouldn't show up when routing directly by slug.
     @bulletins = params[:slug] ? Bulletin.where(slug: params[:slug]) : Bulletin.homepage
-    render json: @bulletins
+    page_size = 10
+    page = params[:page]
+    first = (page.to_i - 1) * page_size
+    last = first + page_size
+    render json: @bulletins[first..last]
   end
 
   def show
