@@ -2,6 +2,9 @@ App.BulletinsIndexController = Ember.ArrayController.extend
   itemController: 'bulletin'
   needs: ['application']
 
+  currentPage: 1
+  numOfBulletins: 0
+
   hasBulletins: (-> true if @get('length') >= 1 ).property('@each')
 
   voteOnBulletin: (bulletin) ->
@@ -18,6 +21,38 @@ App.BulletinsIndexController = Ember.ArrayController.extend
     votedBulletinId = vote.get('bulletin.id')
     App.session.get('votedBulletinIds').pushObject parseInt(votedBulletinId)
     vote.removeObserver('id', this, '_voted')
+
+  transitionPage: (->
+    @transitionToRoute('index')
+  ).observes('page')
+
+  firstPage: (->
+    @get('currentPage') == 1
+  ).property('currentPage')
+
+  lastPage: (->
+    if @get('numOfBulletins')
+      true if @get('totalPages') == @get('currentPage')
+  ).property('currentPage', 'totalPages')
+
+  totalPages: (->
+    (@get('numOfBulletins') / 10) if @get('numOfBulletins')
+  ).property('numOfBulletins')
+
+  nextPage: ->
+    getPage = @get('currentPage') + 1
+    @loadBulletins(getPage)
+
+  previousPage: (controller) ->
+    getPage = @get('currentPage') - 1
+    @loadBulletins(getPage)
+
+  loadBulletins: (page) ->
+    page = page || 1
+    xhr = @store.findQuery(App.Bulletin, {page: page})
+    xhr.then (data) =>
+      @set('content', data)
+      @set('currentPage', page)
 
 App.BulletinController = Ember.ObjectController.extend
   needs: ['application']
