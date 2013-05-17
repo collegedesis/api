@@ -1,7 +1,6 @@
 #= require ./router
 #= require ./adapter
 #= require ./store
-#= require_tree ./libs
 #= require_tree ./models
 #= require_tree ./routes
 #= require_tree ./controllers

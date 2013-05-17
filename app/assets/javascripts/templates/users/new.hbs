@@ -1,10 +1,10 @@
 <div class="main">
   <h4>Use your own name and email address. You'll be able to post as your organization without your name showing up anywhere!</h4>
-  {{#formFor content}}
-    {{input full_name}}
-    {{input email}}
-    {{input password}}
-    {{input password_confirmation}}
+  <form>
+    Full Name {{input value=full_name}}
+    Email {{input value=email}}
+    Password {{input type=password value=password}}
+    Password (again) {{input type=password value=password_confirmation}}
     {{#if controller.errors}}
       <p style="color:red;">Something isn't right:
       <ul>
@@ -18,10 +18,9 @@
       {{#if controller.working}}
         Working...
       {{else}}
-        {{submit "Sign up"}}
+        <button {{action submit}}>Sign up</button>
       {{/if}}
     {{/if}}
-  {{/formFor}}
   </form>
-    <p>Or {{#linkTo "login"}}login{{/linkTo}}</p>
+  <p>Or {{#linkTo "login"}}login{{/linkTo}}</p>
 </div>

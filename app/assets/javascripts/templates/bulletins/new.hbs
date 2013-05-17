@@ -18,12 +18,12 @@
     {{/if}}
   </h3>
   <div class="bulletin-new">
-  {{#formFor content}}
+  <form>
     {{#unless controller.showingPreview}}
-      {{input title}}
+      Title {{input value=title}}
     {{/unless}}
     {{#if isLink }}
-      {{input url placeholder="Start with http:// or https://"}}
+      Url {{input value=url placeholder="Start with http:// or https://"}}
     {{/if}}
 
     {{#if isPost}}
@@ -33,11 +33,11 @@
             <div class="bulletin-body">{{htmlBody}}</div>
           </div>
       {{else}}
-        {{input body as="text"}}
+        Body {{textarea value=body}}
       {{/if}}
     {{/if}}
     {{#unless controller.errors}}
-      {{submit}}
+      <button {{action submit}}>Submit</button>
     {{else}}
       {{#if isLink}}
         <p>Enter a valid link and title to submit!</p>
@@ -45,6 +45,6 @@
         <p>Write something to submit!</p>
       {{/if}}
     {{/unless}}
-  {{/formFor}}
+  </form>
   </div>
 </div>

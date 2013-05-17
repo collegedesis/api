@@ -1,9 +1,9 @@
 <div class="main">
   {{App.session.messages}}
-  {{#formFor session}}
-    {{input email}}
-    {{input password}}
-    {{submit "Log in"}}
-  {{/formFor}}
+  <form>
+    Email {{input type=text value=session.email}}
+    Password {{input type=password value=session.password}}
+    <button {{action submit}}>Log in</button>
+    </form>
   Or {{#linkTo users.new}}Sign Up{{/linkTo}}
 </div>
