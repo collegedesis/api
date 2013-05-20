@@ -1,36 +1,40 @@
-App.RadioController = Ember.ArrayController.extend
-  content: null # an array of App.SoundCloudTrack objects
+App.RadioController = Ember.Controller.extend
+  needs: ['tracks', 'application']
 
-  currentTrack: null
-  nextTrack: null
+  hasTracks: (->
+    @get("controllers.tracks.hasTracks")
+  ).property('controllers.tracks.hasTracks')
 
   readyToPlay: (->
-    @get('currentTrack.isLoaded') && @get('nextTrack.isLoaded')
-  ).property('currentTrack.isLoaded', 'nextTrack.isLoaded')
+    @get 'controllers.tracks.readyToPlay'
+  ).property('controllers.tracks.readyToPlay')
 
-  createAndInsertWidget: (->
-    if @get('currentTrack.isLoaded') && !@get('currentTrack.inDom')
-      view = App.SoundCloudWidgetView.create(
-        template: Ember.Handlebars.compile @get('currentTrack.oEmbed.html')
-        track: @get('currentTrack')
-        controller: @
-      )
-      Em.run.next ->
-        view.prepend()
-      @set('currentTrack.inDom', true)
-  ).observes('readyToPlay')
+  loading: (->
+    @get('controllers.tracks.loading')
+  ).property('controllers.tracks.loading')
 
-  # when the next track is null, we load the next available track
-  # and set it as the next track
-  loadNewTrack: (->
-    if @get('nextTrack') == null
-      track = @get('content').objectAt(@get('currentTrack.id') + 1)
-      track.load()
-      @set('nextTrack', track)
-  ).observes('nextTrack')
+  nextTrack: (->
+    @get 'controllers.tracks.nextTrack'
+  ).property('controllers.tracks.nextTrack')
 
-  # triggered when the current track finishes
-  # or when the user hits next
-  nextSong: ->
-    @set('currentTrack', @get('nextTrack'))
-    @set('nextTrack', null)
+  currentTrack: (->
+    @get 'controllers.tracks.currentTrack'
+  ).property('controllers.tracks.currentTrack')
+
+  nextSong: -> @get('controllers.tracks').nextSong()
+
+  channel: (->
+    name = @get('controllers.application.currentPath').split('.')[1].capitalize()
+    if name == "Acappella" then return "A Cappella" else return name
+  ).property('controllers.application.currentPath')
+
+  groupURL: (->
+    url = "https://soundcloud.com/groups/"
+    switch @get("channel")
+      when "Bhangra"
+        url + "collegedesis"
+      when "Mashup"
+        url + "collegedesis-bhangra-radio"
+      when "A Cappella"
+        url + "south-asian-a-cappella-radio"
+  ).property('channel')

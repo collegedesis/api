@@ -17,3 +17,32 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.channel-nav {
+  width: 100%;
+  margin-bottom: 10px;
+  li {
+    width: 33%;
+    display: inline-block;
+    text-align: center;
+    a {
+      margin: 0 auto;
+      width: 50%;
+      display: block;
+      padding: 5px 0;
+      border-radius: 5px;
+      &, &:hover, &:visited {color: $brown4;}
+    }
+    .active {
+      background-color: $brown2;
+      &:hover{
+        border-bottom: none;
+        border-radius: 5px;
+      }
+    }
+    a:hover{
+      border-bottom:solid 2px $brown2;
+      border-radius: 0;
+    }
+  }
+}
