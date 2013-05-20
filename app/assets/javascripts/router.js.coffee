@@ -18,7 +18,11 @@ App.Router.map ->
 
   # using APIs
   @route('features', {path: 'upcoming'})
-  @route('radio')
+
+  @resource "radio", ->
+    @route "acappella"
+    @route "mashup"
+    @route "bhangra"
 
   # redirections
   @route('reps')

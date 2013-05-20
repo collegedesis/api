@@ -1,6 +1,7 @@
 <aside>
+  <h2>{{channel}} Radio</h2>
+  {{#unless loading}}
   {{#if readyToPlay}}
-  <h2>Mashup Radio</h2>
   <div class="controls">
     <button {{action nextSong}}>Next</button>
     <div class="info">
@@ -8,13 +9,18 @@
       <h5><a target="_blank" {{bindAttr href="nextTrack.json.user.permalink_url"}}>{{nextTrack.json.user.username}}</a></h5>
     </div>
   </div>
-  <p>Want to play your track here? Read <a href="/#/bulletins/get-your-dance-mixes-on-our-radio">this</a>.</p>
   {{/if}}
+  {{/unless}}
+  <p><a href="/#/bulletins/get-your-dance-mixes-on-our-radio">Add your music</a> to this radio.</p>
 </aside>
 <div class="main">
+  <ul class="channel-nav">
+    <li>{{#linkTo 'radio.bhangra' }}Bhangra{{/linkTo}}</li><li>{{#linkTo 'radio.mashup' }}Mashup{{/linkTo}}</li><li>{{#linkTo 'radio.acappella' }}A Cappella{{/linkTo}}</li>
+  </ul>
+  {{#if loading}}Loading {{channel}} channel...{{/if}}
   <div id="party">
-    {{#unless readyToPlay}}
-      Loading...
+    {{#unless hasTracks}}
+      The {{channel}} channel doesn't have any music. Tell your favorite team to add their tracks to <a {{bindAttr href="groupURL"}} target="_blank">this group</a>!
     {{/unless}}
   </div>
 </div>
