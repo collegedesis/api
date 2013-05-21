@@ -15,4 +15,9 @@ describe Bulletin do
     bulletin = FactoryGirl.create(:bulletin_post)
     bulletin.slug.should == bulletin.title.parameterize
   end
+
+  it "should return the url if bulletin is a link" do
+    bulletin = FactoryGirl.create(:bulletin_link, :url => "http://google.com")
+    bulletin.bulletin_url.should == "http://google.com"
+  end
 end
