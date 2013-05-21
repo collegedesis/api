@@ -7,15 +7,15 @@
     {{#each controllers.bulletinsIndex}}
       {{partial 'bulletins/index_row'}}
     {{/each}}
+    <div class="page-nav">
+      {{#unless controllers.bulletinsIndex.firstPage}}
+        <button {{action previousPage target="controllers.bulletinsIndex"}}>Previous</button>
+      {{/unless}}
+      {{#unless controllers.bulletinsIndex.lastPage}}
+        <button {{action nextPage target="controllers.bulletinsIndex"}}>Next</button>
+      {{/unless}}
+    </div>
   {{else}}
     Loading...
   {{/if}}
-  <div class="page-nav">
-    {{#unless controllers.bulletinsIndex.firstPage}}
-      <button {{action previousPage target="controllers.bulletinsIndex"}}>Previous</button>
-    {{/unless}}
-    {{#unless controllers.bulletinsIndex.lastPage}}
-      <button {{action nextPage target="controllers.bulletinsIndex"}}>Next</button>
-    {{/unless}}
-  </div>
 </div>
