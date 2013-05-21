@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425200247) do
+ActiveRecord::Schema.define(:version => 20130521122141) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130425200247) do
     t.integer  "bulletin_type", :default => 1
     t.string   "url"
     t.integer  "user_id"
+    t.boolean  "protected",     :default => false
     t.string   "slug"
     t.boolean  "is_dead",       :default => false
   end
@@ -51,12 +52,13 @@ ActiveRecord::Schema.define(:version => 20130425200247) do
   end
 
   create_table "messages", :force => true do |t|
-    t.string   "from_email"
-    t.string   "from_name"
     t.string   "subject"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "test",       :default => true
+    t.string   "from_name"
+    t.string   "from_email"
   end
 
   create_table "notifications", :force => true do |t|
@@ -72,22 +74,24 @@ ActiveRecord::Schema.define(:version => 20130425200247) do
     t.integer  "int_ref"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.string   "website"
-    t.string   "email"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "youtube"
     t.string   "city"
     t.integer  "organization_type_id"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "email"
     t.integer  "university_id"
-    t.boolean  "exposed",              :default => true
+    t.boolean  "exposed",                  :default => true
     t.string   "slug"
+    t.boolean  "auto_approve_memberships", :default => true
   end
 
   create_table "products", :force => true do |t|
@@ -125,6 +129,8 @@ ActiveRecord::Schema.define(:version => 20130425200247) do
     t.string   "password_hash"
     t.string   "full_name"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
   create_table "votes", :force => true do |t|
     t.integer  "votable_id"

@@ -1,8 +1,13 @@
 require 'spec_helper'
 
 describe Organization do
+  it "must have an auto approve attribute" do
+    org = FactoryGirl.create(:organization)
+    org.auto_approve_memberships.should_not eq nil
+  end
+
   it "can create a valid organization" do
-    org = Organization.create(name: 'Cool org', email: 'something@cool.com', university_id: 1, organization_type_id: 1)
+    org = FactoryGirl.create(:organization)
     org.valid?.should be_true
   end
 
