@@ -20,4 +20,14 @@ describe Bulletin do
     bulletin = FactoryGirl.create(:bulletin_link, :url => "http://google.com")
     bulletin.bulletin_url.should == "http://google.com"
   end
+
+  it "should properly capitalize bulletin titles in all caps" do
+    bulletin = FactoryGirl.create(:bulletin_post, title: "THIS IS AN OBNOXIOUS TITLE")
+    bulletin.title.should eq "This is an obnoxious title"
+  end
+
+  it "should properly capitalize a bulletin that is in all lowercase" do
+    bulletin = FactoryGirl.create(:bulletin_post, title: "this is a lame title")
+    bulletin.title.should eq "This is a lame title"
+  end
 end
