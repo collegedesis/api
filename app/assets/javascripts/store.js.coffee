@@ -1,3 +1,3 @@
 App.Store = DS.Store.extend
-  revision: 12
+  revision: 11
   adapter: 'App.Adapter'

@@ -10,13 +10,13 @@
 # Ember libs
 
 #= require handlebars
-#= require ember-freeze
-#= require ember-data-freeze
+#= require ember
+#= require ember-data
+
+
 
 # Ember Application
 #= require_self
 #= require collegedesis
 
 window.App = Ember.Application.create()
-
-#= require _tree
