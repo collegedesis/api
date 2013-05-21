@@ -1,6 +1,8 @@
 <aside>
   <div class="bulletin-comments">
-    <h4>Leave a Comment</h4>
+    <h4>
+      {{#if comments}}Leave a Comment{{else}}Be the first to comment{{/if}}
+    </h4>
     {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
     <button {{action submitComment}}>Submit</button>
     {{#if comments}}
@@ -12,8 +14,6 @@
         </li>
       {{/each}}
       </ul>
-    {{else}}
-      <p>Be the first to comment!</p>
     {{/if}}
   </div>
 </aside>
