@@ -1,6 +1,7 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead
+  before_save :normalize_title
   after_create :create_slug
 
   has_many :votes, :as => :votable, :dependent => :destroy
@@ -126,4 +127,7 @@ class Bulletin < ActiveRecord::Base
     Bulletin.homepage[0..(num-1)]
   end
 
+  def normalize_title
+    title.capitalize!
+  end
 end
