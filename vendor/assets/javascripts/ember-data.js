@@ -1,4 +1,4 @@
-// Last commit: 0ca17ff (2013-05-10 17:10:32 -0700)
+// Last commit: eb9098a (2013-05-20 14:17:16 -0700)
 
 
 (function() {
@@ -3856,7 +3856,7 @@ DS.Model = Ember.Object.extend(Ember.Evented, LoadPromise, {
     @private
 
   */
-  resolveWithEvent: function(successEvent) {
+  resolveOn: function(successEvent) {
     var model = this;
 
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -3884,7 +3884,7 @@ DS.Model = Ember.Object.extend(Ember.Evented, LoadPromise, {
   save: function() {
     this.get('store').scheduleSave(this);
 
-    return this.resolveWithEvent('didCommit');
+    return this.resolveOn('didCommit');
   },
 
   /**
@@ -3899,7 +3899,7 @@ DS.Model = Ember.Object.extend(Ember.Evented, LoadPromise, {
   reload: function() {
     this.send('reloadRecord');
 
-    return this.resolveWithEvent('didReload');
+    return this.resolveOn('didReload');
   },
 
   // FOR USE DURING COMMIT PROCESS
@@ -4459,7 +4459,7 @@ DS.RelationshipChange.prototype = {
   /**
     Get the name of the relationship on the belongsTo side.
 
-    @returns {String}
+    @return {String}
   */
   getFirstRecordName: function() {
     var name = this.firstRecordName;
@@ -4753,7 +4753,7 @@ DS.Model.reopen({
 
 
 (function() {
-var get = Ember.get, set = Ember.set, forEach = Ember.ArrayPolyfills.forEach;
+var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach;
 var hasRelationship = function(type, options) {
   options = options || {};
 
@@ -4794,18 +4794,19 @@ function clearUnmaterializedHasMany(record, relationship) {
 
   if (!references) { return; }
 
-  var inverseName = record.constructor.inverseFor(relationship.key).name;
+  var inverse = record.constructor.inverseFor(relationship.key);
 
+  if (inverse) {
+    forEach(references, function(reference) {
+      var childRecord;
 
-  forEach.call(references, function(reference) {
-    var childRecord;
-
-    if (childRecord = reference.record) {
-      record.suspendRelationshipObservers(function() {
-        set(childRecord, inverseName, null);
-      });
-    }
-  });
+      if (childRecord = reference.record) {
+        record.suspendRelationshipObservers(function() {
+          set(childRecord, inverse.name, null);
+        });
+      }
+    });
+  }
 }
 
 DS.Model.reopen({
@@ -5285,7 +5286,7 @@ DS.RecordArrayManager = Ember.Object.extend({
           recordArrays = this.filteredRecordArrays.get(type),
           filter;
 
-      recordArrays.forEach(function(array) {
+      forEach(recordArrays, function(array) {
         filter = get(array, 'filterFunction');
         this.updateRecordArray(array, filter, type, reference);
       }, this);
@@ -6752,7 +6753,7 @@ DS.Serializer = Ember.Object.extend({
 
 
 (function() {
-var none = Ember.isNone, empty = Ember.isEmpty;
+var isNone = Ember.isNone, isEmpty = Ember.isEmpty;
 
 /**
   @module data
@@ -6769,21 +6770,21 @@ var none = Ember.isNone, empty = Ember.isEmpty;
 DS.JSONTransforms = {
   string: {
     deserialize: function(serialized) {
-      return none(serialized) ? null : String(serialized);
+      return isNone(serialized) ? null : String(serialized);
     },
 
     serialize: function(deserialized) {
-      return none(deserialized) ? null : String(deserialized);
+      return isNone(deserialized) ? null : String(deserialized);
     }
   },
 
   number: {
     deserialize: function(serialized) {
-      return empty(serialized) ? null : Number(serialized);
+      return isEmpty(serialized) ? null : Number(serialized);
     },
 
     serialize: function(deserialized) {
-      return empty(deserialized) ? null : Number(deserialized);
+      return isEmpty(deserialized) ? null : Number(deserialized);
     }
   },
 
@@ -7190,7 +7191,7 @@ DS.JSONSerializer = DS.Serializer.extend({
 
     @param {String} name the association name to convert into a key
 
-    @returns {String} the key
+    @return {String} the key
   */
   keyForPolymorphicId: function(key){
     return key;
@@ -7202,7 +7203,7 @@ DS.JSONSerializer = DS.Serializer.extend({
 
     @param {String} name the association name to convert into a key
 
-    @returns {String} the key
+    @return {String} the key
   */
   keyForPolymorphicType: function(key){
     return this.keyForPolymorphicId(key) + '_type';
@@ -7212,9 +7213,9 @@ DS.JSONSerializer = DS.Serializer.extend({
     A hook you can use in your serializer subclass to customize
     the key used to store the type of a record of an embedded polymorphic association.
 
-    By default, this method returns 'type'.
+    By default, this method return 'type'.
 
-    @returns {String} the key
+    @return {String} the key
   */
   keyForEmbeddedType: function() {
     return 'type';
@@ -7232,7 +7233,7 @@ DS.JSONSerializer = DS.Serializer.extend({
     `user_group`.
 
     @param {DS.Model subclass} type
-    @returns {String} name of the root element
+    @return {String} name of the root element
   */
   rootForType: function(type) {
     var typeString = type.toString();
@@ -7251,7 +7252,7 @@ DS.JSONSerializer = DS.Serializer.extend({
     The default root name for a particular sideloaded type.
 
     @param {DS.Model subclass} type
-    @returns {String} name of the root element
+    @return {String} name of the root element
   */
   defaultSideloadRootForType: function(type) {
     return this.pluralize(this.rootForType(type));
@@ -8112,7 +8113,7 @@ DS.FixtureSerializer = DS.Serializer.extend({
 
   extractBelongsTo: function(type, hash, key) {
     var val = hash[key];
-    if (val !== null && val !== undefined) {
+    if (val != null) {
       val = val + '';
     }
     return val;
@@ -8721,7 +8722,7 @@ DS.RESTAdapter = DS.Adapter.extend({
 
     This method serializes a list of IDs using `serializeId`
 
-    @returns {Array} an array of serialized IDs
+    @return {Array} an array of serialized IDs
   */
   serializeIds: function(ids) {
     var serializer = get(this, 'serializer');
