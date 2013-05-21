@@ -6,8 +6,8 @@ gem "active_model_serializers", :git => "https://github.com/rails-api/active_mod
 gem 'thin'
 gem 'redcarpet'
 gem 'ember-rails', :git => "https://github.com/emberjs/ember-rails.git"
-gem 'ember-source', '1.0.0.rc3.3' # or the version you need
-gem 'handlebars-source', '1.0.0.rc3' # or the version you need
+gem 'ember-source', '1.0.0.rc3.4' # or the version you need
+gem 'handlebars-source', '1.0.0.rc4' # or the version you need
 
 group :development, :test do
   # debugging

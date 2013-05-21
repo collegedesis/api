@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/emberjs/ember-rails.git
-  revision: 30057d87a4614e8ff231a4123f3b3b2427f3196f
+  revision: b29050fea28d2893b221e186e2e4f1abf83ea12c
   specs:
     ember-rails (0.12.0)
       active_model_serializers
@@ -87,8 +87,8 @@ GEM
     diff-lcs (1.2.4)
     ember-data-source (0.0.5)
       ember-source
-    ember-source (1.0.0.rc3.3)
-      handlebars-source (>= 1.0.0.rc3, < 1.0.0.rc4)
+    ember-source (1.0.0.rc3.4)
+      handlebars-source (= 1.0.0.rc4)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -113,7 +113,7 @@ GEM
     guard-rspec (3.0.0)
       guard (>= 1.8)
       rspec (~> 2.13)
-    handlebars-source (1.0.0.rc3)
+    handlebars-source (1.0.0.rc4)
     hike (1.2.2)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -258,11 +258,11 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner (~> 0.9.1)
   ember-rails!
-  ember-source (= 1.0.0.rc3.3)
+  ember-source (= 1.0.0.rc3.4)
   factory_girl_rails (~> 4.2.1)
   faker
   guard-rspec
-  handlebars-source (= 1.0.0.rc3)
+  handlebars-source (= 1.0.0.rc4)
   jquery-rails
   pg
   pry
