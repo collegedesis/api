@@ -20,22 +20,27 @@
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
-      <h1>{{title}}</h1>
-      <h5>Posted by {{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}} on {{humanizedCreatedAt}}</h5>
+      <div class="vote">
+        {{#if hasBeenVotedOn}}
+        <div class="bulletin-voted">
+          <h3>{{votes.length}}</h3>
+          <span>votes</span>
+        </div>
+        {{else}}
+        <div class="bulletin-vote">
+          <a {{action voteOnBulletin}}></a>
+          <h3>{{#if votes}}{{votes.length}} votes{{else}}Vote{{/if}}</h3>
+        </div>
+        {{/if}}
+      </div>
+      <div class="bulletin-info">
+        <h1>{{title}}</h1>
+        <h5>Posted by {{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}} on {{humanizedCreatedAt}}</h5>
+      </div>
     </div>
     <div class="bulletin-body">
       {{htmlBody}}
       {{#if isLink}}This bulletin is a link. <a {{bindAttr href="url"}} target="_blank">Visit</a>.{{/if}}
     </div>
-    {{#if hasBeenVotedOn}}
-    <div class="voted">
-      <h3>{{votes.length}}</h3>
-      <span>Votes</span>
-    </div>
-    {{else}}
-    <div class="vote">
-      <a {{action voteOnBulletin}}></a>
-    </div>
-    {{/if}}
   </div>
 </div>
