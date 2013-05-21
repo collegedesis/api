@@ -50,7 +50,7 @@ class Bulletin < ActiveRecord::Base
     else
       base_route = "http://localhost:3000/#/bulletins/"
     end
-    base_route + slug
+    is_link? ? url : base_route + slug
   end
 
   def shortened_url
