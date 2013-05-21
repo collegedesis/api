@@ -1,21 +1,40 @@
-.controls {
-  margin: 10px 0;
+.info {
+  text-align: center;
+  margin: 0 auto 10px;
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
-.controls > * {
-  display: inline-block;
-  vertical-align: top;
-}
-.controls button {
+
+.info .forward {
+  margin: 0 auto;
   font-size: $font-size;
   margin-top: 0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: url('forward.svg') center no-repeat;
+  background-size: 105%;
+  cursor: pointer;
 }
-.controls .info {
-  width: 80%;
+
+.info h5 {
+  text-align: left;
+  span {
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 200px;
+  }
 }
-.controls .info h5 {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
+.channel-loading {
+  background: url('spinner.gif') center no-repeat;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
 }
 
 .channel-nav {

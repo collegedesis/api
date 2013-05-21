@@ -1,22 +1,22 @@
 <aside>
-  <h2>{{channel}} Radio</h2>
-  {{#unless loading}}
-  {{#if readyToPlay}}
-  <div class="controls">
-    <button {{action nextSong}}>Next</button>
-    <div class="info">
-      <h5>{{nextTrack.json.title}}</h5>
-      <h5><a target="_blank" {{bindAttr href="nextTrack.json.user.permalink_url"}}>{{nextTrack.json.user.username}}</a></h5>
-    </div>
-  </div>
-  {{/if}}
-  {{/unless}}
+  <h4>Radio</h4>
+  <p>This radio is a collaboration between South Asian DJs and producers from all around the country. Tune in any time.</p>
+  <h5>Mobile version coming soon.</h5>
 </aside>
 <div class="main">
   <ul class="channel-nav">
     <li>{{#linkTo 'radio.bhangra' }}Bhangra{{/linkTo}}</li><li>{{#linkTo 'radio.mashup' }}Mashup{{/linkTo}}</li><li>{{#linkTo 'radio.acappella' }}A Cappella{{/linkTo}}</li>
   </ul>
-  {{#if loading}}Loading {{channel}} channel...{{/if}}
+  {{#if loading}}<div class="channel-loading"></div>{{/if}}
+  {{#unless loading}}{{#if readyToPlay}}
+  <div class="info">
+    <div class="forward" {{action nextSong}}></div>
+    <h5>
+      <span>{{nextTrack.json.title}}</span> -
+      <a target="_blank" {{bindAttr href="nextTrack.json.user.permalink_url"}}>{{nextTrack.json.user.username}}</a>
+    </h5>
+  </div>
+  {{/if}}{{/unless}}
   <div id="party">
     {{#unless hasTracks}}
       The {{channel}} channel doesn't have any music. Tell your favorite team to add their tracks to <a {{bindAttr href="groupURL"}} target="_blank">this group</a>!
