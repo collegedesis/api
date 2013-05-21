@@ -1,7 +1,7 @@
 <div class="main">
   <div class="header">
     <h2>{{name}}</h2>
-    <h4>{{#if university_name}}{{university_name}}{{/if}}</h4>
+    {{#if university_name}}<h4>{{university_name}}</h4>{{/if}}
   </div>
   {{#unless collegedesis}}
     {{#if memberships.length}}
