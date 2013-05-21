@@ -7,4 +7,5 @@ App.OrganizationsShowRoute = Ember.Route.extend
 
   model: (params) ->
     @get('store').findQuery(App.Organization, {slug: params.slug}).then (data) ->
+      debugger
       return data.get('firstObject')
