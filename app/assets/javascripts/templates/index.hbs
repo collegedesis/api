@@ -2,7 +2,7 @@
   <p>Publish to <strong>{{numOfOrganizations}}</strong> South Asian student organizations from <strong>{{numOfUniversities}}</strong> universities in <strong>{{numOfStates}}</strong> states.</p>
   <button {{action write}}>Post</button>
 </aside>
-<div class="main">
+<div {{bindAttr class="controllers.bulletinsIndex.loading :main"}}>
   {{#if controllers.bulletinsIndex.hasBulletins}}
     {{#each controllers.bulletinsIndex}}
       {{partial 'bulletins/index_row'}}

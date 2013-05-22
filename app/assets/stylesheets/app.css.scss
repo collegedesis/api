@@ -40,6 +40,11 @@
   }
 }
 
+.main.loading {
+  background: url("spinner.gif") no-repeat center center;
+  & > * { display: none !important;}
+  height:500px !important;
+}
 .main {
   .label {
     color: $brown3;
