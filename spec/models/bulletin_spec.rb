@@ -30,4 +30,23 @@ describe Bulletin do
     bulletin = FactoryGirl.create(:bulletin_post, title: "this is a lame title")
     bulletin.title.should eq "This is a lame title"
   end
+
+  describe "Destroying bulletins" do
+    before(:each) do
+      @bulletin = FactoryGirl.create(:bulletin_post)
+    end
+    it "should delete all associated comments on destroy" do
+      @bulletin.comments.create(body: "Some text")
+      comments = @bulletin.comments
+      @bulletin.destroy
+      comments.should eq []
+    end
+
+    it "should delete all associated votes on destroy" do
+      @bulletin.votes.create
+      votes = @bulletin.votes
+      @bulletin.destroy
+      votes.should eq []
+    end
+  end
 end
