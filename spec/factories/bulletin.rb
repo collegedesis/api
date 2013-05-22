@@ -1,11 +1,4 @@
 FactoryGirl.define do
-
-  factory :user do
-    full_name "valid name"
-    email Faker::Internet.email
-    password "somepass"
-  end
-
   factory :bulletin_post, class: Bulletin do
     bulletin_type 1
     title "Some cool title"

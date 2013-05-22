@@ -8,11 +8,10 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  has_many :memberships, inverse_of: :user
-  accepts_nested_attributes_for :memberships, allow_destroy: true
-
-  has_many :bulletins
-  has_many :comments
+  has_many :memberships, :dependent => :destroy
+  has_many :bulletins, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
 
   before_save :encrypt_password
 
