@@ -4,6 +4,7 @@ App.BulletinsIndexController = Ember.ArrayController.extend
 
   currentPage: 1
   numOfBulletins: 0
+  loading: false
 
   hasBulletins: (-> true if @get('length') >= 1 ).property('@each')
 
@@ -48,11 +49,13 @@ App.BulletinsIndexController = Ember.ArrayController.extend
     @loadBulletins(getPage)
 
   loadBulletins: (page) ->
+    @set('loading', true)
     page = page || 1
     xhr = @store.findQuery(App.Bulletin, {page: page})
     xhr.then (data) =>
       @set('content', data)
       @set('currentPage', page)
+      @set('loading', false)
 
 App.BulletinController = Ember.ObjectController.extend
   needs: ['application']
