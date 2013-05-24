@@ -1,6 +1,8 @@
 
 Undeployed
 
+Version 2.1.7 - May 24, 2013
+
 * Fix capitalization bug for new bulletins
 * Bug fix: link type bulletins do not save body attribute
 * Bug fix: cannot create the same membership twice
