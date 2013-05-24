@@ -12,7 +12,8 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    @membership = Membership.new(params[:membership])
+    conditions = params[:membership]
+    @membership = Membership.find(:first, conditions: conditions) || Membership.new(conditions)
     render json: @membership.save ? @membership : @membership.errors
   end
 
