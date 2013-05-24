@@ -10,21 +10,19 @@ gem 'ember-source', '1.0.0.rc3.4' # or the version you need
 gem 'handlebars-source', '1.0.0.rc4' # or the version you need
 
 group :development, :test do
-  # debugging
   gem 'pry'
   gem 'pry-debugger'
   gem 'pry-stack_explorer'
-  gem 'awesome_print'
-  gem 'rspec-rails', '~> 2.13.0'
+  gem 'rspec-rails', '~> 2.13.2'
 end
 
 group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner', '~> 0.9.1'
-  gem 'xpath', '~> 2.0.0'
-  gem 'selenium-webdriver', '~> 2.32.1'
   gem 'faker'
   gem 'guard-rspec'
+  gem 'zeus'
+  gem 'rb-fsevent'
 end
 
 gem 'pg'
