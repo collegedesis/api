@@ -2,6 +2,7 @@ class Bulletin < ActiveRecord::Base
   include Slugify
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead
   before_save :normalize_title
+  before_save :nullify_body, :if => :is_link?
   after_create :create_slug
 
   has_many :votes, :as => :votable, :dependent => :destroy
@@ -131,5 +132,10 @@ class Bulletin < ActiveRecord::Base
     if title == title.upcase || title == title.downcase
       self.title = title.split.map(&:capitalize).join(' ')
     end
+  end
+
+  # this is run as a before save callback for link type bulletins
+  def nullify_body
+    self.body = nil
   end
 end
