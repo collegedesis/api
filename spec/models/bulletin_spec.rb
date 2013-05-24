@@ -21,14 +21,21 @@ describe Bulletin do
     bulletin.bulletin_url.should == "http://google.com"
   end
 
-  it "should properly capitalize bulletin titles in all caps" do
-    bulletin = FactoryGirl.create(:bulletin_post, title: "THIS IS AN OBNOXIOUS TITLE")
-    bulletin.title.should eq "This is an obnoxious title"
-  end
+  describe "Saving Bulletins" do
+    it "should normalize titles that are are in all caps" do
+      bulletin = FactoryGirl.create(:bulletin_post, title: "ALL CAPITAL OBNOXIOUS LETTERS")
+      bulletin.title.should eq "All Capital Obnoxious Letters"
+    end
 
-  it "should properly capitalize a bulletin that is in all lowercase" do
-    bulletin = FactoryGirl.create(:bulletin_post, title: "this is a lame title")
-    bulletin.title.should eq "This is a lame title"
+    it "should normalize titles that are not in all lowercase" do
+      bulletin = FactoryGirl.create(:bulletin_post, title: "bulletin title in all lowercase")
+      bulletin.title.should eq "Bulletin Title In All Lowercase"
+    end
+
+    it "should not normalize titles that are weirdly cased" do
+      bulletin = FactoryGirl.create(:bulletin_post, title: "Bulletin title in all lowercase")
+      bulletin.title.should eq "Bulletin title in all lowercase"
+    end
   end
 
   describe "Destroying bulletins" do

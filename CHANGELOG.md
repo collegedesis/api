@@ -1,6 +1,8 @@
 
 Undeployed
 
+* Fix capitalization bug for new bulletins
+
 Version 2.1.6 - May 23, 2013
 
 * Index slugs in database
