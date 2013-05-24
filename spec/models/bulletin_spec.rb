@@ -1,19 +1,31 @@
 require 'spec_helper'
 
 describe Bulletin do
-  it "can create a valid post bulletin" do
-    bulletin = FactoryGirl.create(:bulletin_post)
-    bulletin.is_post?.should be_true
-  end
 
-  it "can create a valid link bulletin" do
-    bulletin = FactoryGirl.create(:bulletin_link)
-    bulletin.is_link?.should be_true
-  end
+  describe "Creating bulletins" do
+    it "can create a valid post bulletin" do
+      bulletin = FactoryGirl.create(:bulletin_post)
+      bulletin.is_post?.should be_true
+    end
 
-  it "should create a slug after creating an bulletin" do
-    bulletin = FactoryGirl.create(:bulletin_post)
-    bulletin.slug.should == bulletin.title.parameterize
+    it "can create a valid link bulletin" do
+      bulletin = FactoryGirl.create(:bulletin_link)
+      bulletin.is_link?.should be_true
+    end
+    it "should create a slug after creating an bulletin" do
+      bulletin = FactoryGirl.create(:bulletin_post)
+      bulletin.slug.should == bulletin.title.parameterize
+    end
+
+    it "should nullify body if bulletin is post" do
+      bulletin = FactoryGirl.create(:bulletin_link, body: "Some text that should be nullified")
+      bulletin.body.should be_nil
+    end
+
+    it "should not nullify body if bulletin is post" do
+      bulletin = FactoryGirl.create(:bulletin_post, body: "Some text that should NOT be nullified")
+      bulletin.body.should_not be_nil
+    end
   end
 
   it "should return the url if bulletin is a link" do
