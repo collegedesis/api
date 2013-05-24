@@ -128,6 +128,8 @@ class Bulletin < ActiveRecord::Base
   end
 
   def normalize_title
-    title.capitalize!
+    if title == title.upcase || title == title.downcase
+      self.title = title.split.map(&:capitalize).join(' ')
+    end
   end
 end
