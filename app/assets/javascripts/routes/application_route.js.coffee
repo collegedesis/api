@@ -5,6 +5,12 @@ App.ApplicationRoute = Ember.Route.extend
       controller.set('currentUser', user)
       controller.set('currentUserId', user.get('id'))
 
+    $.get '/info', (data) =>
+      controller.set('numOfOrganizations', data.orgsCount)
+      controller.set('numOfUniversities', data.universityCount)
+      controller.set('numOfStates', data.stateCount)
+      @controllerFor('bulletinsIndex').set('numOfBulletins', data.bulletinsCount)
+
   events:
     goHome: -> @transitionTo('index')
     logout: ->

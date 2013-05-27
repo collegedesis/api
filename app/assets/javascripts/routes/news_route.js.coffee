@@ -7,12 +7,6 @@ App.NewsRoute = Ember.Route.extend
     write: -> @transitionTo('bulletins.new')
 
   setupController: (controller, params) ->
-    $.get '/info', (data) =>
-      controller.set('numOfOrganizations', data.orgsCount)
-      controller.set('numOfUniversities', data.universityCount)
-      controller.set('numOfStates', data.stateCount)
-      @controllerFor('bulletinsIndex').set('numOfBulletins', data.bulletinsCount)
-
     @loadBulletins(params.page)
 
   activate: ->
