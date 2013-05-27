@@ -3,6 +3,8 @@ App.Router.map ->
     @route "new"
     @route "show", {path: ':slug'}
 
+  @route 'news'
+
   # simple pages
   @resource 'about', ->
     @route('index')

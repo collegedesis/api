@@ -11,3 +11,5 @@ App.HeightView = Ember.View.extend
 App.IndexView = App.HeightView.extend()
 App.RadioView = App.HeightView.extend()
 App.AboutView = App.HeightView.extend()
+App.BulletinsIndexView = App.HeightView.extend()
+App.BulletinsShowView = App.HeightView.extend()
