@@ -1,0 +1,19 @@
+<h1 {{action goHome}}><span>College</span>Desis</h1>
+<div class="subtitle">Connecting all the #brownkids in America</div>
+<div class="app-nav">
+  <ul>
+    <li>{{#linkTo index}}News{{/linkTo}}</li>
+    <li>{{#linkTo radio}}Radio{{/linkTo}}</li>
+    <li>{{#linkTo about.index}}About{{/linkTo}}</li>
+  </ul>
+  <ul class="account">
+    <li class="account">
+      {{#if currentUser}}
+        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
+      {{else}}
+        {{#linkTo login}}Join the community{{/linkTo}}</li>
+      {{/if}}
+    </li>
+    {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
+  </ul>
+</div>
