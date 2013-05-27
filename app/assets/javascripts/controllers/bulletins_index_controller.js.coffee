@@ -6,8 +6,6 @@ App.BulletinsIndexController = Ember.ArrayController.extend
   numOfBulletins: 0
   loading: false
 
-  hasBulletins: (-> true if @get('length') >= 1 ).property('@each')
-
   voteOnBulletin: (bulletin) ->
     if @get('controllers.application.currentUserId')
       vote = bulletin.get('votes').createRecord()

@@ -3,19 +3,15 @@
   <button {{action write}}>Post</button>
 </aside>
 <div {{bindAttr class="controllers.bulletinsIndex.loading :main"}}>
-  {{#if controllers.bulletinsIndex.hasBulletins}}
-    {{#each controllers.bulletinsIndex}}
-      {{partial 'bulletins/index_row'}}
-    {{/each}}
-    <div class="page-nav">
-      {{#unless controllers.bulletinsIndex.firstPage}}
-        <button {{action previousPage target="controllers.bulletinsIndex"}}>Previous</button>
-      {{/unless}}
-      {{#unless controllers.bulletinsIndex.lastPage}}
-        <button {{action nextPage target="controllers.bulletinsIndex"}}>Next</button>
-      {{/unless}}
-    </div>
-  {{else}}
-    Loading...
-  {{/if}}
+  {{#each controllers.bulletinsIndex}}
+    {{partial 'bulletins/index_row'}}
+  {{/each}}
+  <div class="page-nav">
+    {{#unless controllers.bulletinsIndex.firstPage}}
+      <button {{action previousPage target="controllers.bulletinsIndex"}}>Previous</button>
+    {{/unless}}
+    {{#unless controllers.bulletinsIndex.lastPage}}
+      <button {{action nextPage target="controllers.bulletinsIndex"}}>Next</button>
+    {{/unless}}
+  </div>
 </div>
