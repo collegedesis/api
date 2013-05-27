@@ -7,7 +7,6 @@ App.Router.map ->
 
   # simple pages
   @resource 'about', ->
-    @route('index')
     @route('contact')
 
   @route 'login', {path: 'login'}
