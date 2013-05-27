@@ -1,0 +1,17 @@
+<aside>
+  <p>Publish to <strong>{{numOfOrganizations}}</strong> South Asian student organizations from <strong>{{numOfUniversities}}</strong> universities in <strong>{{numOfStates}}</strong> states.</p>
+  <button {{action write}}>Post</button>
+</aside>
+<div {{bindAttr class="controllers.bulletinsIndex.loading :main"}}>
+  {{#each controllers.bulletinsIndex}}
+    {{partial 'bulletins/index_row'}}
+  {{/each}}
+  <div class="page-nav">
+    {{#unless controllers.bulletinsIndex.firstPage}}
+      <button {{action previousPage target="controllers.bulletinsIndex"}}>Previous</button>
+    {{/unless}}
+    {{#unless controllers.bulletinsIndex.lastPage}}
+      <button {{action nextPage target="controllers.bulletinsIndex"}}>Next</button>
+    {{/unless}}
+  </div>
+</div>

@@ -1,38 +1,17 @@
 <aside>
-  <p>Bulletins are the easiest way to spread the word among our community. <a href="/#/bulletins/welcome-to-the-bulletin-board">Read more</a></p>
-  <p>Post a link or write a blog post.</p>
-  <p>We'll <a href="//twitter.com/collegedesis">tweet</a> it out every <span class="vote-count">5</span> thumbs-ups it gets.</p>
-  {{#if controllers.application.currentUser}}
-    <button {{action write}}>Post</button>
-  {{else}}
-    {{#linkTo login}}Log in{{/linkTo}} to post.
-  {{/if}}
+  <p>Publish to <strong>{{numOfOrganizations}}</strong> South Asian student organizations from <strong>{{numOfUniversities}}</strong> universities in <strong>{{numOfStates}}</strong> states.</p>
+  <button {{action write}}>Post</button>
 </aside>
-<div class="main">
-  {{#if hasBulletins }}
-    {{#each bulletin in controller}}
-      <div class="bulletin-wrapper">
-        <div class="bulletin-preview">
-          <div class="subtext">{{bulletin.author}}</div>
-          <div class="title">{{bulletin.title}}</div>
-          <div class="link">
-            {{#if bulletin.isPost}}
-              <a class="link" {{action goToBulletin bulletin}}>Read Post</a>
-            {{else}}
-              <a class="link" target="_blank" {{bindAttr href="bulletin.url"}}>Open Link</a>
-            {{/if}}
-          </div>
-          <div class="vote">
-            {{#unless hasBeenVotedOn}}
-              <a {{action voteOnBulletin bulletin}}></a>
-            {{else}}
-              <h3>{{bulletin.votes.length}}</h3>
-            {{/unless}}
-          </div>
-        </div>
-      </div>
-    {{/each}}
-  {{else}}
-    No bulletins have been written. Want to {{#linkTo "bulletins.new"}}write one?{{/linkTo}}
-  {{/if}}
+<div {{bindAttr class="loading :main"}}>
+  {{#each controller}}
+    {{partial 'bulletins/index_row'}}
+  {{/each}}
+  <div class="page-nav">
+    {{#unless firstPage}}
+      <button {{action previousPage}}>Previous</button>
+    {{/unless}}
+    {{#unless lastPage}}
+      <button {{action nextPage}}>Next</button>
+    {{/unless}}
+  </div>
 </div>

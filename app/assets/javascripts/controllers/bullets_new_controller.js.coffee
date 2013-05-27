@@ -12,8 +12,9 @@ App.BulletinsNewController = Ember.ObjectController.extend
       @get("store").commit()
 
   _createdBulletin: ->
-    @get("content").removeObserver('id', this, '_createdBulletin')
-    @transitionToRoute("bulletins.index")
+    bulletin = @get('content')
+    bulletin.removeObserver('id', this, '_createdBulletin')
+    @transitionToRoute("bulletins.show", bulletin)
 
   errors: (->
     val = true

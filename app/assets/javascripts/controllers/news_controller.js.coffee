@@ -1,4 +1,4 @@
-App.IndexController = Ember.Controller.extend
+App.NewsController = Ember.Controller.extend
   needs: ['application', 'bulletinsIndex']
   currentUserBinding: Ember.Binding.oneWay('controllers.application.currentUser')
 
