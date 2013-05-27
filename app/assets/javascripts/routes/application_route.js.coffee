@@ -6,6 +6,7 @@ App.ApplicationRoute = Ember.Route.extend
       controller.set('currentUserId', user.get('id'))
 
   events:
+    goHome: -> @transitionTo('index')
     logout: ->
       id = App.session.get('currentUserId')
       $.ajax "/sessions/#{id}",

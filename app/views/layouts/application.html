@@ -3,6 +3,11 @@
   <head>
     <title>CollegeDesis - Connect all the brown kids in America</title>
     <%= stylesheet_link_tag "application" %>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrap {display:table;height:100%}
+      </style>
+    <![endif]-->
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "//connect.soundcloud.com/sdk.js", "//w.soundcloud.com/player/api.js" %>
     <meta property="og:image" content="https://collegedesis.com/assets/logo.png">

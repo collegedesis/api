@@ -4,7 +4,9 @@ App.Router.map ->
     @route "show", {path: ':slug'}
 
   # simple pages
-  @route("about")
+  @resource 'about', ->
+    @route('index')
+    @route('contact')
 
   @route 'login', {path: 'login'}
 

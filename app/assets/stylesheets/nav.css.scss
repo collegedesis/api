@@ -1,5 +1,6 @@
+@import '_imports';
+
 .app-nav {
-  margin-bottom: 20px;
   box-shadow: 0px 0px 12px 0px transparentize($brown2, 0.5) inset;
   border-bottom: solid 2px lighten($brown2, 20%);
   padding:8px;

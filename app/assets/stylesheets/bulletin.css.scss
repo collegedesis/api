@@ -1,3 +1,5 @@
+@import '_imports';
+
 .page-nav {
   margin-top: 10px;
   & > button {
@@ -9,6 +11,11 @@
   margin-bottom: 24px;
 }
 
+// This is being used for the element that toggles post/link style bulletins
+h3.options {
+  margin-bottom: 15px;
+  a { border-bottom:solid 3px $brown2; }
+}
 
 .bulletin-comments {
   p { font-size: $font-size * 0.8;}

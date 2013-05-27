@@ -1,30 +1,9 @@
 <div class="app-header">
-  {{#linkTo index}}
-    <h1><span>College</span>Desis</h1>
-  {{/linkTo}}
-  <div class="subtitle">
-    Connecting all the #brownkids in America
-  </div>
-</div>
-<div style="overflow:hidden;" class="app-nav">
-  <ul>
-    <li>{{#linkTo index}}News{{/linkTo}}</li>
-    <li>{{#linkTo radio}}Radio{{/linkTo}}</li>
-    <li>{{#linkTo about}}About{{/linkTo}}</li>
-  </ul>
-  <ul class="account">
-    <li class="account">
-      {{#if currentUser}}
-        {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
-      {{else}}
-        {{#linkTo login}}Join the community{{/linkTo}}</li>
-      {{/if}}
-    </li>
-    {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
-  </ul>
+  {{partial 'header'}}
 </div>
 <div class="app-content">
   {{outlet}}
 </div>
-<div class="app-footer">
+<div id="footer">
+  {{partial "footer"}}
 </div>

@@ -1,14 +1,41 @@
-#app .is-updating {
-  background: url("/assets/spinner.gif") no-repeat center center;
-  & > * { display: none !important;}
-  width:100% !important;
-  height:500px !important;
+@import '_imports';
+
+p { margin-bottom:10px; }
+
+ul li { list-style-type:none; }
+
+/* Backgrounds and Default Styles */
+body {
+  background-color:darken($background, 7%);
+  background-image: -webkit-radial-gradient(center center, circle cover, $background, darken($background, 7%));
+  background-image: -moz-radial-gradient(center center, circle cover, $background, darken($background, 7%));
+  -webkit-box-shadow: 0 0 5px 1px lighten($background, 5%);
+  -moz-box-shadow: 0 0 5px 1px lighten($background, 5%);
+}
+
+html {
+  background-color:$brown3;
+  background-image: -webkit-radial-gradient(top left, circle cover, $brown3, darken($brown3, 7%));
+  background-image: -moz-radial-gradient(top left, circle cover, $brown3, darken($brown3, 7%));
+}
+
+/* Typography */
+
+body {
+  font-size:$font-size;
+  font-family: $font;
+  color: $brown4;
+  a, a:hover, a:visited {
+    text-decoration:none;
+    color: $link-color;
+    cursor:pointer;
+  }
 }
 
 .app-header {
-  text-align:center;
-  margin-bottom:6px;
-  h1, a {
+  h1 {
+    cursor: pointer;
+    text-align:center;
     color:$brown3;
     font-family: $logo-font;
     font-size:$font-size * 3.75;
@@ -17,27 +44,31 @@
     span { color: $brown2; }
   }
   .subtitle {
+    text-align:center;
     font-size:$font-size * 0.75;
     font-family:$header-font;
   }
+  .app-nav {
+    height: 52px;
+    margin-top: 6px;
+  }
+
 }
 
 .app-content {
-  aside { float: right; }
-  .main {
-    width: 600px;
-    margin: 0 20px;
-}
+  padding: 20px;
   aside {
     width: 300px;
+    float: right;
+  }
+  .main {
+    width: 600px;
   }
   h4 {
     margin-bottom:10px;
     font-size:$font-size*1.2;
   }
-  p {
-    line-height:$font-size*1.25;
-  }
+  p { line-height:$font-size*1.25; }
 }
 
 .main.loading {
@@ -45,13 +76,7 @@
   & > * { display: none !important;}
   height:500px !important;
 }
-.main {
-  .label {
-    color: $brown3;
-    font-weight:bold;
-    margin-bottom:10px;
-  }
-}
+
 input, textarea, select {
   width: 500px;
 }
@@ -74,26 +99,8 @@ input[type='submit'], button {
   border: 1px solid $brown2;
 }
 
-.ember-list-view {
-  overflow: auto;
-  position: relative;
-}
-.ember-list-item-view {
-  position: absolute;
-}
-
 h4, h5 {
   vertical-align: bottom;
   color: $brown2;
   font-family: $header-font;
-}
-
-.app-footer {
-  height: 20px;
-}
-h3.options {
-  margin-bottom: 15px;
-  a {
-    border-bottom:solid 3px $brown2;
-  }
 }
