@@ -1,6 +1,6 @@
 @import '_imports';
 
-.info {
+.radio-info {
   text-align: center;
   margin: 0 auto 10px;
   & > * {
@@ -9,7 +9,7 @@
   }
 }
 
-.info .forward {
+.radio-info .forward {
   margin: 0 auto;
   font-size: $font-size;
   margin-top: 0;
@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-.info h5 {
+.radio-info h5 {
   text-align: left;
   span {
     display: inline-block;
