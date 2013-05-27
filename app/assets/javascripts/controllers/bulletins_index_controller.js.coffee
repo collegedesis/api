@@ -31,29 +31,24 @@ App.BulletinsIndexController = Ember.ArrayController.extend
 
   lastPage: (->
     if @get('numOfBulletins')
-      true if @get('totalPages') == @get('currentPage')
+      @get('totalPages') == @get('currentPage')
   ).property('currentPage', 'totalPages')
 
   totalPages: (->
-    (@get('numOfBulletins') / 10) if @get('numOfBulletins')
+    if @get('numOfBulletins')
+      pages = @get('numOfBulletins') / 10
+      return Math.ceil(pages)
   ).property('numOfBulletins')
 
   nextPage: ->
-    getPage = @get('currentPage') + 1
-    @loadBulletins(getPage)
+    currentPage = parseInt(@get('currentPage'))
+    getPage = currentPage + 1
+    @transitionToRoute('news', {page: getPage })
 
   previousPage: (controller) ->
-    getPage = @get('currentPage') - 1
-    @loadBulletins(getPage)
-
-  loadBulletins: (page) ->
-    @set('loading', true)
-    page = page || 1
-    xhr = @store.findQuery(App.Bulletin, {page: page})
-    xhr.then (data) =>
-      @set('content', data)
-      @set('currentPage', page)
-      @set('loading', false)
+    currentPage = parseInt(@get('currentPage'))
+    getPage = currentPage - 1
+    @transitionToRoute('news', {page: getPage })
 
 App.BulletinController = Ember.ObjectController.extend
   needs: ['application']
