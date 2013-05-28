@@ -1,6 +1,6 @@
-Undeployed
+See [WIP](https://github.com/collegedesis/collegedesis.com/commits/wip) branch for undeployed changes
 
-Version 2.2.0 - May 28, 2013 - 008dd4b05d4f614438151251fa9e915653fefd8f
+### Version 2.2.0 - May 28, 2013
 
 * Embelish about pages
 * Rotating call to action on the home page
@@ -15,17 +15,17 @@ Version 2.2.0 - May 28, 2013 - 008dd4b05d4f614438151251fa9e915653fefd8f
 * remove old loading indicator
 * Sticky footer
 
-Version 2.1.7 - May 24, 2013
+### Version 2.1.7 - May 24, 2013
 
 * Fix capitalization bug for new bulletins
 * Bug fix: link type bulletins do not save body attribute
 * Bug fix: cannot create the same membership twice
 
-Version 2.1.6 - May 23, 2013
+### Version 2.1.6 - May 23, 2013
 
 * Index slugs in database
 
-Version 2.1.5 - May 22, 2013
+### Version 2.1.5 - May 22, 2013
 
 * Auto approve memberships based on settings
 * Loading indicator for Bulletins on pagination
