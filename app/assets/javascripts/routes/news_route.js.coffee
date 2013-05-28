@@ -2,7 +2,10 @@ App.NewsRoute = Ember.Route.extend
 
   events:
     goToBulletin: (bulletin) ->
-      @transitionTo('bulletins.show', bulletin)
+      if bulletin.get('isPost')
+        @transitionTo('bulletins.show', bulletin)
+      else
+        window.open bulletin.get('url')
 
     write: -> @transitionTo('bulletins.new')
 
