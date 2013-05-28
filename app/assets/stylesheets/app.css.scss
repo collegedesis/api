@@ -99,8 +99,12 @@ input[type='submit'], button {
   border: 1px solid $brown2;
 }
 
-h4, h5 {
-  vertical-align: bottom;
+@mixin heading {
   color: $brown2;
   font-family: $header-font;
+}
+
+h4, h5, span.heading {
+  vertical-align: bottom;
+  @include heading
 }
