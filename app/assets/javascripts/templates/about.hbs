@@ -1,7 +1,8 @@
 <aside>
-  <ul>
-    {{#linkTo 'about' tagName="li"}}About{{/linkTo}}
-    {{#linkTo 'about.contact' tagName="li"}}Contact{{/linkTo}}
+  <h4>About</h4>
+  <ul class="sub-nav">
+    <li>{{#linkTo 'about.intro'}}Intro{{/linkTo}}</li>
+    <li>{{#linkTo 'about.contact'}}Contact{{/linkTo}}</li>
   </ul>
 </aside>
 {{outlet}}
