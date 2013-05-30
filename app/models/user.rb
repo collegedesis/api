@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     "//www.gravatar.com/avatar/#{hash}"
   end
 
-  def approved
-    memberships.map(&:approved).length >= 1
+  def approved?
+    memberships.map(&:approved).include? true
   end
 end
