@@ -52,6 +52,9 @@ App.BulletinsIndexController = Ember.ArrayController.extend
 
 App.BulletinController = Ember.ObjectController.extend
   needs: ['application']
+  loading: (->
+    !@get('author.isLoaded')
+  ).property('author.isLoaded')
 
   hasBeenVotedOn: (->
     # by default bulletin hasn't been voted on

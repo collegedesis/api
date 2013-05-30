@@ -2,6 +2,11 @@
 
 // list of bulletins
 .bulletin-wrapper {
+  &.loading {
+    background: url('spinner.gif') no-repeat center left;
+    & > .subtext { visibility: hidden;}
+  }
+  height: 40px;
   border-bottom: solid 1px $brown2;
   padding: 0 5px;
   cursor: pointer;
