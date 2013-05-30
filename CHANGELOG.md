@@ -1,5 +1,13 @@
 See [WIP](https://github.com/collegedesis/collegedesis.com/commits/wip) branch for undeployed changes
 
+### Version 2.2.1 - May 29, 2013
+
+* bulletins posted without an approved membership assign author as the user
+* Fix approved status bug for users
+* classify some views as height views
+* reinstate loading indicator
+* Link  bulletins open in new window
+
 ### Version 2.2.0 - May 28, 2013
 
 * Embelish about pages
