@@ -22,7 +22,7 @@ App.NewsRoute = Ember.Route.extend
 
   loadBulletins: (page) ->
     controller = @controllerFor('bulletinsIndex')
-    @set('loading', true)
+    controller.set('loading', true)
     xhr = @store.findQuery(App.Bulletin, {page: page})
     xhr.then (data) =>
       controller.set('content', data)
