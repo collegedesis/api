@@ -22,7 +22,11 @@ class Bulletin < ActiveRecord::Base
   scope :alive, where(:is_dead => false)
 
   def author_id
-    user.memberships.first.organization.id if user
+    if user.approved?
+      user.memberships.first.organization.id
+    else
+      user.id
+    end
   end
 
   def self.find_by_title(title)
