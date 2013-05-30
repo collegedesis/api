@@ -32,4 +32,27 @@ describe User do
       bulletins.should eq []
     end
   end
+
+  describe "Approval status" do
+    it "should not be approved if they don't have any memberships" do
+      user = FactoryGirl.create(:user)
+      user.approved?.should_not be true
+    end
+
+    it "should not be approved if it does not have at least one approved membership" do
+      org = FactoryGirl.create(:organization)
+      user = FactoryGirl.create(:user)
+      membership = user.memberships.create(organization_id: org.id)
+      membership.stub(:approved) { false }
+      expect(user.approved?).to eq(false)
+    end
+
+    it "should be approved if it has at least one approved membership" do
+      org = FactoryGirl.create(:organization)
+      user = FactoryGirl.create(:user)
+      membership = user.memberships.create(organization_id: org.id)
+      membership.stub(:approved) { true }
+      expect(user.approved?).to eq(true)
+    end
+  end
 end
