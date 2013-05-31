@@ -68,4 +68,21 @@ describe Bulletin do
       votes.should eq []
     end
   end
+
+  describe "#approved" do
+    let(:user) { FactoryGirl.create(:user) }
+    subject(:bulletin) { FactoryGirl.build(:bulletin_post) }
+
+    it "is false if the user is not approved" do
+      bulletin.user_id = user.id
+      bulletin.user.stub(:approved?) { false }
+      expect(bulletin.approved?).to eq(false)
+    end
+
+    it "is true if the user is approved" do
+      bulletin.user_id = user.id
+      bulletin.user.stub(:approved?) { true }
+      expect(bulletin.approved?).to eq(true)
+    end
+  end
 end

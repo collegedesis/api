@@ -142,4 +142,8 @@ class Bulletin < ActiveRecord::Base
   def nullify_body
     self.body = nil
   end
+
+  def approved?
+    user.approved?
+  end
 end
