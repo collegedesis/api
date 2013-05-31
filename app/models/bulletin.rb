@@ -20,6 +20,7 @@ class Bulletin < ActiveRecord::Base
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
   scope :alive, where(:is_dead => false)
+  scope :has_author, conditions: 'user_id IS NOT NULL'
 
   def author_id
     if user.approved?
@@ -45,8 +46,13 @@ class Bulletin < ActiveRecord::Base
     recency_score * popularity_score * user_reputation * affiliation_reputation
   end
 
-  def self.homepage
-    Bulletin.alive.sort_by{|x| x.score }.reverse
+  def self.homepage(page)
+    page_size = 10
+    page = page.to_i
+    starting_index = (page.to_i - 1) * page_size
+    ending_index = starting_index + (page_size - 1)
+    bulletins = Bulletin.has_author.alive.sort_by{|x| x.score }.reverse
+    return bulletins[starting_index..ending_index]
   end
 
   def bulletin_url

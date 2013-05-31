@@ -85,4 +85,52 @@ describe Bulletin do
       expect(bulletin.approved?).to eq(true)
     end
   end
+
+  describe ".homepage" do
+    it "does not return more than 10 items" do
+      FactoryGirl.create_list(:bulletin_post, 11)
+      expect(Bulletin.homepage("1").length).to eq(10)
+    end
+    it "returns all the items when then are less than 10 items" do
+      FactoryGirl.create_list(:bulletin_post, 4)
+      expect(Bulletin.homepage("1").length).to eq(4)
+    end
+    it "does not return bulletins that are dead" do
+      FactoryGirl.create_list(:bulletin_post, 4, is_dead: true)
+      expect(Bulletin.homepage("1").length).to eq(0)
+    end
+
+    it "returns only bulletins that are not dead" do
+      alive_bulletins = FactoryGirl.create_list(:bulletin_post, 3, is_dead: false)
+      dead_bulletins = FactoryGirl.create_list(:bulletin_post, 3, is_dead: true)
+      random_alive_bulletin = alive_bulletins[rand(alive_bulletins.length - 1)]
+      random_dead_bulletin = dead_bulletins[rand(dead_bulletins.length - 1)]
+      Bulletin.homepage("1").should include(random_alive_bulletin)
+      Bulletin.homepage("1").should_not include(random_dead_bulletin)
+    end
+
+    it "does not return bulletins that don't have a user assigned" do
+      bulletin = FactoryGirl.build(:bulletin_post, user_id: nil)
+      bulletin.stub(:valid?) { true }
+      bulletin.save
+      Bulletin.homepage("1").should_not include(bulletin)
+    end
+
+    it "does not return bulletins that have unapproved users" do
+      bulletin = FactoryGirl.create(:bulletin_post)
+      bulletin.user.stub(:approve?) { false }
+      Bulletin.homepage("1").should_not include(bulletin)
+    end
+
+    it "sorts bulletins array by score" do
+      bulletin_one = FactoryGirl.create(:bulletin_post)
+      bulletin_two = FactoryGirl.create(:bulletin_post)
+      bulletin_one.stub(:score) { 10 }
+      bulletin_two.stub(:score) { 5 }
+      expect(Bulletin.homepage("1")[0]).to eq(bulletin_one)
+      expect(Bulletin.homepage("1")[1]).to eq(bulletin_two)
+    end
+
+    it "defaults to first page if it is not provided with one"
+  end
 end
