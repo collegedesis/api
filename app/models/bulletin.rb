@@ -75,25 +75,19 @@ class Bulletin < ActiveRecord::Base
     return bulletins_for_page
   end
 
-  def bulletin_url
-    # TODO when we add comments we probably want site urls to link bulletins too
-    if Rails.env.production?
-      base_route = "https://collegedesis.com/#/bulletins/"
-    else
-      base_route = "http://localhost:3000/#/bulletins/"
-    end
-    is_link? ? url : base_route + slug
+  def relative_local_url
+    url.present? ? url : "#/bulletins/#{slug}"
   end
 
   def shortened_url
     if Rails.env.production?
       client = Bitly.client
-      client.shorten(bulletin_url).short_url
+      client.shorten(relative_local_url).short_url
     end
   end
 
-  def intro
-    self.body[0...100] + "..." if bulletin_type == 1
+  def url_to_serialize
+    Rails.env.production? ? shortened_url : relative_local_url
   end
 
   def promote(orgs=[])
@@ -133,11 +127,14 @@ class Bulletin < ActiveRecord::Base
   end
 
   def tweet
-    url = Rails.env.production? ? shortened_url : bulletin_url
-    begin
-      Twitter.update "#{self.title} - #{url}"
-    rescue => e
-      puts "Twitter update failed: #{e.inspect}"
+    if Rails.env.production?
+      begin
+        Twitter.update "#{self.title} - #{shortened_url}"
+      rescue => e
+        puts "#{e.inspect} - #{self.title}"
+      end
+    else
+      puts "Tweeting #{self.title} in development"
     end
   end
 
