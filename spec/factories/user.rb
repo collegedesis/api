@@ -5,4 +5,9 @@ FactoryGirl.define do
     email
     password "somepass"
   end
+
+  factory :approved_user, parent: :user do
+    after(:create)  { |u| u.stub(:approved?).and_return true }
+    after(:build)   { |u| u.stub(:approved?).and_return true }
+  end
 end
