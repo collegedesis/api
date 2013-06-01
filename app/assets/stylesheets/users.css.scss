@@ -26,9 +26,23 @@
     text-transform: capitalize;
   }
   .memberships {
-    li > * {
-      display: inline-block;
-      vertical-align: middle;
+    li {
+      &.not-approved {}
+      & >*:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      background-color: lighten($brown2, 20%);
+      padding: 5px 10px;
+      .attention {
+        color: red;
+        font-size: $font-size * 0.7;
+      }
+      button {
+        float:left;
+        margin: 0 10px 0 0;
+        padding: 0;
+      }
     }
   }
 }
