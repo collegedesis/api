@@ -39,4 +39,18 @@ describe Membership do
       Membership.count.should eq 2
     end
   end
+  describe "deleting memberships" do
+    before(:each) do
+      @org = FactoryGirl.create(:organization)
+      @user = FactoryGirl.create(:user)
+      @membership = @org.memberships.create(user_id: @user.id)
+      @membership.destroy
+    end
+    it "sends an email to the user" do
+      MemberMailer.should_receive(:removed_membership).with(@membership)
+    end
+    it "sends an email to the organization" do
+      OrganizationMailer.should_receive(:removed_membership).with(@membership)
+    end
+  end
 end
