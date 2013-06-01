@@ -86,6 +86,38 @@ describe Bulletin do
     end
   end
 
+  it "sorts bulletins array in descending order by score" do
+    bulletin1 = FactoryGirl.create(:bulletin_post)
+    bulletin2 = FactoryGirl.create(:bulletin_post)
+    bulletin1.stub(:score) { 10 }
+    bulletin2.stub(:score) { 5 }
+
+    bulletins = [bulletin1, bulletin2]
+    sorted = Bulletin.sort_by_score(bulletins)
+    expect(sorted[0]).to eq(bulletin1)
+    expect(sorted[1]).to eq(bulletin2)
+  end
+
+  it "paginates by page size" do
+    bulletins = FactoryGirl.create_list(:approved_bulletin, 20)
+    page_size = 10
+    paginated_bulletins = Bulletin.paginate(bulletins, page_size)
+    expect(paginated_bulletins.length).to eq 2
+    expect(paginated_bulletins[0].length).to eq page_size
+    expect(paginated_bulletins[1].length).to eq page_size
+  end
+
+  describe ".alive" do
+    it "does return alive bulletins" do
+      bulletin = FactoryGirl.create(:bulletin_post, is_dead: false)
+      Bulletin.alive.include? bulletin
+    end
+    it "does not return dead bulletins" do
+      bulletin = FactoryGirl.create(:bulletin_post, is_dead: false)
+      !Bulletin.alive.include? bulletin
+    end
+  end
+
   describe ".homepage" do
     it "does not return more than 10 items" do
       FactoryGirl.create_list(:bulletin_post, 11)
@@ -100,15 +132,6 @@ describe Bulletin do
       expect(Bulletin.homepage("1").length).to eq(0)
     end
 
-    it "returns only bulletins that are not dead" do
-      alive_bulletins = FactoryGirl.create_list(:bulletin_post, 3, is_dead: false)
-      dead_bulletins = FactoryGirl.create_list(:bulletin_post, 3, is_dead: true)
-      random_alive_bulletin = alive_bulletins[rand(alive_bulletins.length - 1)]
-      random_dead_bulletin = dead_bulletins[rand(dead_bulletins.length - 1)]
-      Bulletin.homepage("1").should include(random_alive_bulletin)
-      Bulletin.homepage("1").should_not include(random_dead_bulletin)
-    end
-
     it "does not return bulletins that don't have a user assigned" do
       bulletin = FactoryGirl.build(:bulletin_post, user_id: nil)
       bulletin.stub(:valid?) { true }
@@ -118,17 +141,8 @@ describe Bulletin do
 
     it "does not return bulletins that have unapproved users" do
       bulletin = FactoryGirl.create(:bulletin_post)
-      bulletin.user.stub(:approve?) { false }
+      bulletin.user.stub(:approved?) { false }
       Bulletin.homepage("1").should_not include(bulletin)
-    end
-
-    it "sorts bulletins array by score" do
-      bulletin_one = FactoryGirl.create(:bulletin_post)
-      bulletin_two = FactoryGirl.create(:bulletin_post)
-      bulletin_one.stub(:score) { 10 }
-      bulletin_two.stub(:score) { 5 }
-      expect(Bulletin.homepage("1")[0]).to eq(bulletin_one)
-      expect(Bulletin.homepage("1")[1]).to eq(bulletin_two)
     end
 
     it "defaults to first page if it is not provided with one"

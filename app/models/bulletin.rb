@@ -46,13 +46,33 @@ class Bulletin < ActiveRecord::Base
     recency_score * popularity_score * user_reputation * affiliation_reputation
   end
 
+  def self.sort_by_score(bulletins)
+    return bulletins.sort_by{|x| x.score }.reverse
+  end
+
+  def self.paginate(bulletins, page_size=10)
+    page_size = page_size.to_f
+    num_of_pages = (bulletins.length / page_size).ceil
+
+    current_page = 0
+    paginated_bulletins = []
+
+    while current_page < num_of_pages do
+      range_start = current_page * page_size
+      range_end = range_start + (page_size - 1)
+      paginated_bulletins <<  bulletins[range_start..range_end]
+      current_page += 1
+    end
+
+    return paginated_bulletins
+  end
+
   def self.homepage(page)
-    page_size = 10
     page = page.to_i
-    starting_index = (page.to_i - 1) * page_size
-    ending_index = starting_index + (page_size - 1)
-    bulletins = Bulletin.has_author.alive.sort_by{|x| x.score }.reverse
-    return bulletins[starting_index..ending_index]
+    bulletins = Bulletin.has_author.alive
+    # bulletins = bulletins.map { |b| b if b.approved? }.compact
+    bulletins_for_page = Bulletin.paginate(bulletins)[page - 1] || []
+    return bulletins_for_page
   end
 
   def bulletin_url
