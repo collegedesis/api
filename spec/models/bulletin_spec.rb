@@ -119,12 +119,17 @@ describe Bulletin do
   end
 
   describe ".homepage" do
-    it "does not return more than 10 items" do
-      FactoryGirl.create_list(:bulletin_post, 11)
+    let(:user) { FactoryGirl.create(:user) }
+    let(:org) { FactoryGirl.create(:organization) }
+
+    it "does not return more than 10 items" , focus: true do
+      user.memberships.create(organization_id: org.id)
+      FactoryGirl.create_list(:bulletin_post, 11, user_id: user.id)
       expect(Bulletin.homepage("1").length).to eq(10)
     end
     it "returns all the items when then are less than 10 items" do
-      FactoryGirl.create_list(:bulletin_post, 4)
+      user.memberships.create(organization_id: org.id)
+      FactoryGirl.create_list(:bulletin_post, 4, user_id: user.id)
       expect(Bulletin.homepage("1").length).to eq(4)
     end
     it "does not return bulletins that are dead" do
