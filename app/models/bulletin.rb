@@ -70,7 +70,7 @@ class Bulletin < ActiveRecord::Base
   def self.homepage(page)
     page = page.to_i
     bulletins = Bulletin.has_author.alive
-    # bulletins = bulletins.map { |b| b if b.approved? }.compact
+    bulletins = bulletins.map { |b| b if b.approved? }.compact
     bulletins_for_page = Bulletin.paginate(bulletins)[page - 1] || []
     return bulletins_for_page
   end
