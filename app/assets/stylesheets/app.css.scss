@@ -108,3 +108,20 @@ h4, h5, span.heading {
   vertical-align: bottom;
   @include heading
 }
+
+
+#footer {
+  padding: 10px 0 20px;
+  min-height: 50px;
+  text-align: center;
+  font-size: $font-size * 0.9;
+  .footer-nav li {
+    margin-right: 10px;
+    display: inline-block;
+    color: $link-color;
+    cursor: pointer;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

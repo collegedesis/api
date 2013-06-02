@@ -17,3 +17,7 @@ App.ApplicationController = Ember.Controller.extend
   numOfOrganizations: null
   numOfUniversities: null
   numOfStates: null
+
+  currentYear: (->
+    (new Date).getFullYear()
+  ).property()
