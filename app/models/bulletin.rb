@@ -3,7 +3,7 @@ class Bulletin < ActiveRecord::Base
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
-  after_create :create_slug
+  before_create :create_slug, :shorten_url
 
   has_many :votes, :as => :votable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
@@ -77,13 +77,6 @@ class Bulletin < ActiveRecord::Base
 
   def relative_local_url
     url.present? ? url : "#/bulletins/#{slug}"
-  end
-
-  def shortened_url
-    if Rails.env.production?
-      client = Bitly.client
-      client.shorten(relative_local_url).short_url
-    end
   end
 
   def url_to_serialize
@@ -168,5 +161,13 @@ class Bulletin < ActiveRecord::Base
 
   def approved?
     user.approved?
+  end
+
+  # run as before_create callback
+  def shorten_url
+    if Rails.env.production?
+      client = Bitly.client
+      self.shortened_url = client.shorten(relative_local_url).short_url
+    end
   end
 end
