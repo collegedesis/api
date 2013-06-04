@@ -1,6 +1,10 @@
 <div {{bindAttr class=":bulletin-wrapper loading"}}>
   <div class="subtext">{{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}}</div>
-  <div class="title" {{action goToBulletin this}}>{{title}}</div>
+  {{#if this.isPost}}
+    <div class="title" {{action goToBulletin this}}>{{title}}</div>
+  {{else}}
+    <a class="title" {{bindAttr href="url"}} target="_blank">{{title}}</a>
+  {{/if}}
   <div class="vote">
     {{#if hasBeenVotedOn}}
       <h3>{{votes.length}}</h3>
