@@ -39,18 +39,22 @@ describe Membership do
       Membership.count.should eq 2
     end
   end
-  describe "deleting memberships" do
-    before(:each) do
-      @org = FactoryGirl.create(:organization)
-      @user = FactoryGirl.create(:user)
-      @membership = @org.memberships.create(user_id: @user.id)
-      @membership.destroy
-    end
+  describe "#reject" do
+    let(:org) { FactoryGirl.create(:organization) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:membership) { org.memberships.create(user_id: user.id) }
+
     it "sends an email to the user" do
-      MemberMailer.should_receive(:removed_membership).with(@membership)
+      mailer = mock(MemberMailer)
+      mailer.should_receive(:deliver)
+      MemberMailer.should_receive(:membership_rejected).with(membership).and_return(mailer)
+      membership.destroy
     end
     it "sends an email to the organization" do
-      OrganizationMailer.should_receive(:removed_membership).with(@membership)
+      mailer = mock(OrganizationMailer)
+      mailer.should_receive(:deliver)
+      OrganizationMailer.should_receive(:membership_rejected).with(membership).and_return(mailer)
+      membership.destroy
     end
   end
 end

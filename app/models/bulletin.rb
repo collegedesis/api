@@ -12,7 +12,6 @@ class Bulletin < ActiveRecord::Base
   # bulletin_types:
   # post is 1
   # link is 2
-
   validates_presence_of :title
   validates_presence_of :body, :if => :is_post?
   validates_presence_of :url, :if => :is_link?
@@ -137,7 +136,7 @@ class Bulletin < ActiveRecord::Base
 
   def author_is_admin?
     org = Organization.where(name: "CollegeDesis").first
-    user.memberships.map(&:organization_id).include?(org.id)
+    user.memberships.map(&:organization_id).include?(org.id) if org
   end
 
   def self.tweet_top(num)
