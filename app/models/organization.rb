@@ -3,8 +3,8 @@ class Organization < ActiveRecord::Base
   validates_presence_of :name, :university_id, :organization_type_id
   validates_uniqueness_of :email, allow_nil: true
   validates_uniqueness_of :slug, allow_nil: true
-
-  after_create :send_welcome_email, :create_slug
+  before_create :create_slug
+  after_create :send_welcome_email
   attr_accessible :name, :university_id, :organization_type_id, :email, :website, :exposed, :slug
 
   belongs_to :organization_type

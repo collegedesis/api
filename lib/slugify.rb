@@ -1,8 +1,6 @@
 module Slugify
   def create_slug
-    if slug_base
-      self.slug = self.send(slug_base).parameterize
-    end
+    self.slug = self.send(slug_base).parameterize if slug_base
   end
 
   def slug_base
