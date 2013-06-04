@@ -14,14 +14,16 @@
 
     <ul class="memberships">
       {{#each mem in memberships}}
-        <li {{bindAttr class="mem.notApproved"}}>
+        <li {{bindAttr class="mem.notApproved mem.loading:loading"}}>
           {{#if mem.isNew}}
           {{view Ember.Select contentBinding="controllers.organizationsIndex"
                               optionValuePath="content"
                               optionLabelPath="content.display_name"
                               selectionBinding="mem.organization"}}
            {{else}}
-          {{#linkTo 'organizations.show' mem.organization tagName='div'}}{{mem.display_name}}{{/linkTo}}
+          {{#linkTo 'organizations.show' mem.organization tagName='div'}}
+            {{mem.display_name}}
+          {{/linkTo}}
             <a class="attention" {{action deleteMembership mem}}>Delete</a>
           {{/if}}
         </li>

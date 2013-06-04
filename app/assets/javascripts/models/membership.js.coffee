@@ -5,3 +5,10 @@ App.Membership = DS.Model.extend
   display_name: DS.attr('string')
 
   notApproved: (-> !@get('approved')).property('approved')
+
+  loading: (->
+    if @get('isLoaded') && @get('organization.isLoaded')
+      return false
+    else
+      return true
+  ).property('isLoaded', 'organization.isLoaded')

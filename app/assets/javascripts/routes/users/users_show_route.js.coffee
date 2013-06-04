@@ -16,9 +16,7 @@ App.UsersShowRoute = Ember.Route.extend
     bulletins = App.Organization.find()
     bulletins.then (data) =>
       @controllerFor('organizationsIndex').set('content', data)
-      setTimeout =>
-        controller.set('loading', false)
-      , 2500
+      controller.set('loading', false)
 
   deactivate: ->
     App.session.set('messages', null)
