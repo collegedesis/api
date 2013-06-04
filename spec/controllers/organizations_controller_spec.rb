@@ -5,7 +5,6 @@ describe OrganizationsController, :type => :controller do
 
   it 'should return organizations in json' do
     organization.valid?
-
     get :index
     hash = {
       organizations: [{
