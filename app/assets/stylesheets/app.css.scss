@@ -71,12 +71,6 @@ body {
   p { line-height:$font-size*1.25; }
 }
 
-@mixin loader($min-height) {
-  background: url("spinner.gif") no-repeat center center;
-  height: $min-height;
-  & > * { display: none !important;}
-}
-
 .main.loading {
   @include loader(500px);
 }

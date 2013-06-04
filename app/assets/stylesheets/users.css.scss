@@ -27,6 +27,13 @@
   }
   .memberships {
     li {
+      &.loading {
+        background-image: url("spinner.gif");
+        background-repeat: no-repeat;
+        background-position: center left;
+        height: 55px;
+        & > * { display: none !important;}
+      }
       &.not-approved {}
       & > a:hover, & > div:hover {
         text-decoration: underline;
