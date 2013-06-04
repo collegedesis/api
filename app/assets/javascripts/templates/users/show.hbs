@@ -17,9 +17,9 @@
         <li {{bindAttr class="mem.notApproved"}}>
           {{#if mem.isNew}}
           {{view Ember.Select contentBinding="controllers.organizationsIndex"
-                              optionValuePath="content.id"
+                              optionValuePath="content"
                               optionLabelPath="content.display_name"
-                              valueBinding="mem.organization_id"}}
+                              selectionBinding="mem.organization"}}
            {{else}}
           {{#linkTo 'organizations.show' mem.organization tagName='div'}}{{mem.display_name}}{{/linkTo}}
             <a class="attention" {{action deleteMembership mem}}>Delete</a>
