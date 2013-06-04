@@ -1,6 +1,6 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
   before_create :create_slug, :shorten_url
