@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def create
     # Get a user object
-    @user = User.find_or_create_by_email(params[:user][:email])
+    @user = User.find_or_create_by_email(params[:user][:email].downcase)
     # save and update params if the user is new
     if @user.new_record?
       if !@user.update_attributes(params[:user])
