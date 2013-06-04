@@ -91,7 +91,6 @@ describe Bulletin do
     bulletin2 = FactoryGirl.create(:bulletin_post)
     bulletin1.stub(:score) { 10 }
     bulletin2.stub(:score) { 5 }
-
     bulletins = [bulletin1, bulletin2]
     sorted = Bulletin.sort_by_score(bulletins)
     expect(sorted[0]).to eq(bulletin1)
@@ -145,8 +144,9 @@ describe Bulletin do
     end
 
     it "does not return bulletins that have unapproved users" do
-      bulletin = FactoryGirl.create(:bulletin_post)
-      bulletin.user.stub(:approved?) { false }
+      user.memberships.create(organization_id: org.id)
+      user.memberships.first.update_attributes(approved: false)
+      bulletin = FactoryGirl.create(:bulletin_post, user_id: user.id)
       Bulletin.homepage("1").should_not include(bulletin)
     end
 

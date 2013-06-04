@@ -68,7 +68,9 @@ class Bulletin < ActiveRecord::Base
 
   def self.available_for_pagination
     bulletins = Bulletin.has_author.alive
+    bulletins = Bulletin.sort_by_score(bulletins)
     return bulletins.map { |b| b if b.approved? }.compact
+
   end
 
   def self.homepage(page)
