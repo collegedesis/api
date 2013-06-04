@@ -62,7 +62,7 @@ body {
     float: right;
   }
   .main {
-    width: 600px;
+    max-width: 600px;
   }
   h4 {
     margin-bottom:10px;
@@ -71,10 +71,18 @@ body {
   p { line-height:$font-size*1.25; }
 }
 
-.main.loading {
+@mixin loader($min-height) {
   background: url("spinner.gif") no-repeat center center;
+  height: $min-height;
   & > * { display: none !important;}
-  height:500px !important;
+}
+
+.main.loading {
+  @include loader(500px);
+}
+
+.info.loading {
+  @include loader(200px);
 }
 
 input, textarea, select {
