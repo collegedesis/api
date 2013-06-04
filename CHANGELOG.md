@@ -1,29 +1,25 @@
 See WIP branch for undeployed changes
 
-Version 2.3 - Jun 4, 2013
+### Version 2.3 - Jun 4, 2013
 
-create organization slug before create
-Add loading indicator for users show page.
-restrict pagination info to new scope.
-add the 404 image back. Fixes #108
-downcase email addresses on create. Fixes #109
-create the new bulletin reliably on ever enter. Fixes #110
-Send an email when memberships are destroyed
-postgres config for travis
-hello travis
-shortened url is stored in the db so we do not have to create them on every page load
-login view is a height view
-Add text and nav in footer
-Do not serialize bulletins that have unapproved users
-Serialize only shortened urls in production
-Add failing tests for membership destroy mailers
-WIP of revamping users profile page.
-missing end. no wonder we need tests
-Break down home_page method and add some tests
-write some tests for bulletins
-bulletin is not approved if the associated user is not approved
-loading indicators for all bulletins
-Delete unused assets
+* performance do not serialize user_id with bulletins
+* performance: store shortened_url in database 
+* performance: Delete unused assets
+* bugfix: create organization slug before create
+* bugfix: restrict pagination info to new scope.
+* bugfix: add the 404 image back. Fixes #108
+* bugfix: downcase email addresses on create
+* bugfix: create the new bulletin reliably on ever enter. Fixes #110
+* bugfix: Do not serialize bulletins that have unapproved users
+* bugfix: login view is a height view
+* enhancement: Send an email when memberships are destroyed
+* enhancehment: Add text and nav in footer
+* internal: begin work for continuous deployment 
+* internal: Serialize only shortened urls in production
+* internal: write some tests for bulletins
+* ux: loading indicators for all bulletins
+* ux: Add loading indicator for users show page.
+* ux: WIP of revamping users profile page.
 
 ### Version 2.2.1 - May 29, 2013
 
