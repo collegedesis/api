@@ -150,7 +150,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.top(num)
-    Bulletin.homepage[0..(num-1)]
+    Bulletin.homepage("1")[0..(num - 1)]
   end
 
   def normalize_title
