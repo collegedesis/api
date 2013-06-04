@@ -66,10 +66,14 @@ class Bulletin < ActiveRecord::Base
     return paginated_bulletins
   end
 
-  def self.homepage(page)
-    page = page.to_i
+  def self.available_for_pagination
     bulletins = Bulletin.has_author.alive
-    bulletins = bulletins.map { |b| b if b.approved? }.compact
+    return bulletins.map { |b| b if b.approved? }.compact
+  end
+
+  def self.homepage(page)
+    bulletins = Bulletin.available_for_pagination
+    page = page.to_i
     bulletins_for_page = Bulletin.paginate(bulletins)[page - 1] || []
     return bulletins_for_page
   end
