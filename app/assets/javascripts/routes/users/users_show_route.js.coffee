@@ -11,8 +11,14 @@ App.UsersShowRoute = Ember.Route.extend
   model: (params) -> App.User.find(params.user_id)
 
   setupController: (controller) ->
+    controller.set('loading', true)
     user = controller.get('content')
-    @controllerFor('organizationsIndex').set('content', App.Organization.find())
+    bulletins = App.Organization.find()
+    bulletins.then (data) =>
+      @controllerFor('organizationsIndex').set('content', data)
+      setTimeout =>
+        controller.set('loading', false)
+      , 2500
 
   deactivate: ->
     App.session.set('messages', null)

@@ -1,6 +1,8 @@
 App.UsersShowController = Ember.ObjectController.extend
   needs: ['organizationsIndex']
 
+  loading: false
+
   addMembership: -> @get('memberships').createRecord()
 
   submit: ->
@@ -10,8 +12,10 @@ App.UsersShowController = Ember.ObjectController.extend
     @store.commit()
 
   cancel: ->
+    @set('loading', true)
     @get('memberships').forEach (item) ->
       item.deleteRecord() if item.get('isNew')
+    @set('loading', false)
 
   deleteMembership: (mem) ->
     org = mem.get('organization.name')

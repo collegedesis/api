@@ -28,9 +28,14 @@
   .memberships {
     li {
       &.not-approved {}
-      & >*:hover {
+      & > a:hover, & > div:hover {
         text-decoration: underline;
         cursor: pointer;
+      }
+      select {
+        cursor: pointer;
+        max-width: 100%;
+        margin-bottom: 0;
       }
       background-color: lighten($brown2, 20%);
       padding: 5px 10px;

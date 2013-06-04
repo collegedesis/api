@@ -4,18 +4,26 @@
     <img class="avatar" {{bindAttr src="avatar_url"}}>
     <h1>{{full_name}}</h1>
   </div>
-  <div class="info">
-    <h3>Memberships</h3>
+  <h3>Memberships</h3>
+  {{#if loading}}loading...{{/if}}
+  <div {{bindAttr class=":info loading"}}>
     {{#unless memberships}}
       You haven't registered any memberships yet
     {{/unless}}
-    <p><a>Add a membership</a></p>
+    <a {{action addMembership}}>Add a membership</a></p>
 
     <ul class="memberships">
       {{#each mem in memberships}}
         <li {{bindAttr class="mem.notApproved"}}>
+          {{#if mem.isNew}}
+          {{view Ember.Select contentBinding="controllers.organizationsIndex"
+                              optionValuePath="content.id"
+                              optionLabelPath="content.display_name"
+                              valueBinding="mem.organization_id"}}
+           {{else}}
           {{#linkTo 'organizations.show' mem.organization tagName='div'}}{{mem.display_name}}{{/linkTo}}
-          <a class="attention" {{action deleteMembership mem}}>Delete</a>
+            <a class="attention" {{action deleteMembership mem}}>Delete</a>
+          {{/if}}
         </li>
       {{/each}}
     </ul>
