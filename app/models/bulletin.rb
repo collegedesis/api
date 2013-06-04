@@ -172,7 +172,12 @@ class Bulletin < ActiveRecord::Base
   def shorten_url
     if Rails.env.production?
       client = Bitly.client
-      self.shortened_url = client.shorten(relative_local_url).short_url
+      to_shorten = if self.is_post?
+        "https://collegedesis.com/" + relative_local_url
+      else
+        relative_local_url
+      end
+      self.shortened_url = client.shorten(to_shorten).short_url
     end
   end
 end
