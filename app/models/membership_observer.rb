@@ -8,4 +8,11 @@ class MembershipObserver < ActiveRecord::Observer
     # send an email to admin
     AdminMailer.notify(membership).deliver
   end
+
+  def after_destroy(membership)
+    member_email = MemberMailer.membership_rejected(membership)
+    org_email = OrganizationMailer.membership_rejected(membership)
+    member_email.deliver
+    org_email.deliver
+  end
 end

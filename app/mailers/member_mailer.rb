@@ -17,4 +17,10 @@ class MemberMailer < ActionMailer::Base
     @purchase = purchase
     mail(to: purchase.email, subject: "Thank you for purchasing #{@product.name}")
   end
+
+  def membership_rejected(membership)
+    @user = membership.user
+    @org = membership.organization
+    mail(to: @user.email, subject: "Your membership to #{@org.name} was removed")
+  end
 end

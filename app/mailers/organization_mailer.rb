@@ -34,4 +34,10 @@ class OrganizationMailer < ActionMailer::Base
     @org = org
     mail(to: @org.email, subject: "#{@bulletin.title} via CollegeDesis")
   end
+
+  def membership_rejected(membership)
+    @user = membership.user
+    @org = membership.organization
+    mail(to: @org.email, subject: "#{@user.full_name}'s membership to #{@org.name} was removed")
+  end
 end
