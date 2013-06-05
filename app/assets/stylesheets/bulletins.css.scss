@@ -7,10 +7,10 @@
     & > .subtext { visibility: hidden;}
   }
   height: 40px;
-  border-bottom: solid 1px $brown2;
+  box-shadow: 0 0 3px $brown2;
+  margin-bottom: 10px;
   padding: 0 5px;
   cursor: pointer;
-  width: 585px;
   &:hover {background-color: transparentize($brown2, 0.5);}
   & > * {
     line-height: 28px;
