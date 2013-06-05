@@ -44,10 +44,13 @@ App.SoundCloudRadioRoute = Ember.Route.extend
 App.RadioIndexRoute = Ember.Route.extend
   redirect: -> @transitionTo('radio.mashup')
 
-# TODO: Document how to retrieve these Group IDs
+# Follow the guide here to resolve a GroupID from the URL
+# http://developers.soundcloud.com/docs/api/guide#resolving
 App.RadioMashupRoute = App.SoundCloudRadioRoute.extend
-  groupID: "77839" # soundcloud.com/groups/collegedesis
+  groupID: "77839"  # soundcloud.com/groups/collegedesis
 App.RadioBhangraRoute = App.SoundCloudRadioRoute.extend
   groupID: "124626" # soundcloud.com/groups/collegedesis-bhangra-radio
 App.RadioAcappellaRoute = App.SoundCloudRadioRoute.extend
-  groupID: "124320" # soundcloud.com/groups/south-asian-a-cappella-radio/
+  groupID: "124320" # soundcloud.com/groups/south-asian-a-cappella-radio
+App.RadioIndependentRoute = App.SoundCloudRadioRoute.extend
+  groupID: "126422" # soundcloud.com/groups/collegedesis-independent
