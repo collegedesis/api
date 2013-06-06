@@ -1,5 +1,14 @@
 See WIP branch for undeployed changes
 
+### Version 2.3.2
+
+* design: bulletins list looks a little more airy
+* design: bulletin posts are easier to read
+
+### Version 2.3.1
+
+* Independent Radio Channel 
+
 ### Version 2.3 - Jun 4, 2013
 
 * performance do not serialize user_id with bulletins
