@@ -9,6 +9,7 @@
 }
 .bulletin-header {
   margin-bottom: 24px;
+  text-align: center;
 }
 
 // This is being used for the element that toggles post/link style bulletins
@@ -30,18 +31,14 @@ h3.options {
     width: auto;
   }
 }
-.bulletin-info {
-  width: 520px;
-}
+
 .bulletin-info, .vote {
-  display: inline-block;
+  margin: 0 auto;
   vertical-align: top;
 }
 
 .bulletin-header .vote {
   width: 58px;
-  margin-right: 10px;
-  margin-top: 7px;
   .bulletin-voted {
     width: 58px;
     height: 58px;
@@ -83,6 +80,7 @@ h3.options {
 // Bulletin show page and preview
 .bulletin, .bulletin-new .preview {
   .bulletin-body {
+    & > * { margin: 0 auto; }
     pre {
       background-color: #bababa;
       padding: 5px;
@@ -94,13 +92,17 @@ h3.options {
       border-bottom: solid 1px $brown2;
     }
     p {
-      width: auto;
+      width: 80%;
+      text-align: justify;
       max-width: 600px;
       line-height: $font-size * 1.5;
       margin-bottom: $font-size * 1.5;
     }
     img {
-      max-width: 100%;
+      max-width: 95%;
+      box-shadow: 0px 0px 3px #aaa;
+      display: block;
+      margin: 0 auto 10px;
     }
     iframe {
       width: 100%;

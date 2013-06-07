@@ -1,11 +1,17 @@
 <aside>
   <h4>Radio</h4>
-  <p>This radio is a collaboration between South Asian DJs and producers from all around the country. Tune in any time.</p>
-  <h5>Mobile version coming soon.</h5>
+  <p>
+    Showcasing student DJs, producers, singers, and rappers.
+  </p>
+  <div class="share">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="collegedesis.com/radio" data-via="collegedesis" data-hashtags="DesiRadio" data-dnt="true">Tweet</a>
+    <div class="fb-like" data-href="https://collegedesis.com/radio" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+  </div>
+  <h5>Mobile & embeddable versions coming soon.</h5>
 </aside>
 <div class="main">
   <ul class="channel-nav">
-    <li>{{#linkTo 'radio.bhangra' }}Bhangra{{/linkTo}}</li><li>{{#linkTo 'radio.mashup' }}Mashup{{/linkTo}}</li><li>{{#linkTo 'radio.acappella' }}A Cappella{{/linkTo}}</li>
+    <li>{{#linkTo 'radio.bhangra' }}Bhangra{{/linkTo}}</li><li>{{#linkTo 'radio.mashup' }}Mashup{{/linkTo}}</li><li>{{#linkTo 'radio.acappella' }}A Cappella{{/linkTo}}</li><li>{{#linkTo 'radio.independent'}}Independent{{/linkTo}}</li>
   </ul>
   {{#if loading}}<div class="channel-loading"></div>{{/if}}
   {{#unless loading}}{{#if readyToPlay}}
