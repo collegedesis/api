@@ -88,12 +88,10 @@ class Bulletin < ActiveRecord::Base
     Rails.env.production? ? shortened_url : relative_local_url
   end
 
-  def promote(orgs=[])
-    # if we don't get an array of organizations, we'll get all of them.
-    # TODO figure out a way to map `orgs` to just those with email addresses upfront.
-    orgs.blank? ? orgs = Organization.with_email : orgs
+  def promote
+    orgs = Organization.reachable
     orgs.each do |org|
-      OrganizationMailer.bulletin_promotion(self, org).deliver if org.has_email?
+      OrganizationMailer.bulletin_promotion(self, org).deliver
     end
   end
 

@@ -1,14 +1,20 @@
-Hello!
+<p>Hello!</p>
 
-<p>
-  A Bulletin was posted on the <a href="http://collegedesis.com/#/bulletins">CollegeDesis Bulletin Board</a> and was promoted to <%=@org.name %>.
-</p>
+<h3></h3>
 
-<h3><%= @bulletin.title %></h3>
-<p><%= @bulletin.intro %><%= link_to "Read more", @bulletin.bulletin_url %></p>
+<p>Someone promoted <b><%= @bulletin.title %></b> to <%= @org.name %></p>
 
-<p>In case the link above doesn't work, paste this into your browser: <%= @bulletin.bulletin_url %></p>
+<p><%= link_to "Read more", @bulletin.shortened_url %></p>
+
+<p>In case the link above doesn't work, paste this into your browser:</p>
+<p><%= @bulletin.shortened_url %></p>
 <hr>
 <p>
-  Confused why you're getting this email? Read about the Bulletin Board <%= link_to "here", "https://collegedesis.com/#/bulletins/welcome-to-the-bulletin-board"%>. If you have any questions, just reply to this email.
+  At CollegeDesis, we build tools to help organizations like <%= @org.name %> connect, collaborate, and share. We think by doing so, we can help students discover and share culture, work on meaningful projects, and in the process, make the world a better place.
+</p>
+<p>
+  Want to post on the Bulletin Board? Check out <%= link_to "this post", "https://collegedesis.com/#/bulletins/welcome-to-the-bulletin-board"%>. If you have any questions, just reply to this email!
+</p>
+<p>
+  <%= link_to "CollegeDesis", "https://collegedesis.com" %>
 </p>
