@@ -27,6 +27,7 @@ App.Router.map ->
     @route "acappella"
     @route "mashup"
     @route "bhangra"
+    @route "independent"
 
   # redirections
   @route('reps')
