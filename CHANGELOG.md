@@ -1,5 +1,19 @@
 See WIP branch for undeployed changes
 
+
+### Version 2.3.3 - Jun 9, 2013
+
+* Some better instructions for how to submit bulletins
+* Keep track of user approved status in users table. Fixes #122
+* If a tweet fails, tweet the next bulletin
+* clock task to update bulletin popularity scores. Fixes #117
+* update window title in bulletin show. Fixes #121
+* Update window title when the song changes
+* aside needed a little cleaning
+* update the welcome email
+* fix bulletin promotion method
+* fix twitter button
+
 ### Version 2.3.2
 
 * design: bulletins list looks a little more airy
