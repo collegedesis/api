@@ -26,6 +26,15 @@ App.BulletinsNewController = Ember.ObjectController.extend
   ).property('title', 'url', 'body', 'validUrl')
 
   validUrl: (->
+    @get('urlIncludesProtocol') && !@get('urlIsShortened')
+  ).property('url')
+
+  urlIsShortened: (->
+    # TODO
+    return false
+  ).property('url')
+
+  urlIncludesProtocol: (->
     @get('url').match(/^https?:\/\/.+\..+/) if @get('url')?
   ).property('url')
 

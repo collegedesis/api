@@ -10,41 +10,22 @@
   {{/if}}
 </aside>
 <div class="main">
-  <h3 class="options">
+  <div class="bulletin-new">
+    <form>
+      {{#if isPost}}
+        {{partial "bulletins/new_post"}}
+      {{/if}}
+      {{#if isLink}}
+        {{partial "bulletins/new_link"}}
+      {{/if}}
+      <button {{bindAttr disabled="controller.errors"}} {{action submit}}>Submit</button>
+    </form>
+  </div>
+  <p class="options">
     {{#if isPost}}
       <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Submit a link</a> to another website or article instead.
     {{else}}
       <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Write</a> a blog post instead.
     {{/if}}
-  </h3>
-  <div class="bulletin-new">
-  <form>
-    {{#unless controller.showingPreview}}
-      Title {{input value=title}}
-    {{/unless}}
-    {{#if isLink }}
-      Url {{input value=url placeholder="Start with http:// or https://"}}
-    {{/if}}
-
-    {{#if isPost}}
-      {{#if controller.showingPreview}}
-        <div class="preview">
-            <h2>{{#if title}}{{title}}{{else}}No title{{/if}}</h2>
-            <div class="bulletin-body">{{htmlBody}}</div>
-          </div>
-      {{else}}
-        Body {{textarea value=body}}
-      {{/if}}
-    {{/if}}
-    {{#unless controller.errors}}
-      <button {{action submit}}>Submit</button>
-    {{else}}
-      {{#if isLink}}
-        <p>Enter a valid link and title to submit!</p>
-      {{else}}
-        <p>Write something to submit!</p>
-      {{/if}}
-    {{/unless}}
-  </form>
-  </div>
+  </p>
 </div>

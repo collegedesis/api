@@ -90,7 +90,7 @@ input, textarea, select, button {
   display: block;
 }
 input, textarea, button {
-  background-color:transparentize($brown2, 0.9);
+  background-color: transparentize($brown2, 0.9);
 }
 
 input[type='submit'], button {
@@ -99,6 +99,7 @@ input[type='submit'], button {
   margin: 10px 0;
   display: block;
   border: 1px solid $brown2;
+  &[disabled] {}
 }
 
 @mixin heading {
@@ -126,4 +127,9 @@ h4, h5, span.heading {
       margin-right: 0;
     }
   }
+}
+
+.error {
+  color: red;
+  font-size: $font-size * 0.9;
 }
