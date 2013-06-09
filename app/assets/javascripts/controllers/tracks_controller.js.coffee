@@ -65,3 +65,8 @@ App.TracksController = Ember.ArrayController.extend
   # we clear views when moving into a new channel
   _clearViews: ->
     @get('viewObjects').forEach (view) -> view.remove()
+
+  currentTrackChanged: (->
+    title = @get("currentTrack.json.title")
+    $(document).attr('title', "#{title} - CollegeDesis Radio")
+  ).observes('currentTrack')
