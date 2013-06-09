@@ -117,18 +117,6 @@ class Bulletin < ActiveRecord::Base
     votes.map(&:user_id).include? user.id
   end
 
-  def tweet
-    if Rails.env.production?
-      begin
-        Twitter.update "#{self.title} - #{shortened_url}"
-      rescue => e
-        puts "#{e.inspect} - #{self.title}"
-      end
-    else
-      puts "Tweeting #{self.title} in development"
-    end
-  end
-
   def is_popular?
     votes.count > 1 && votes.count % 5 == 0
   end
@@ -138,8 +126,29 @@ class Bulletin < ActiveRecord::Base
     user.memberships.map(&:organization_id).include?(org.id) if org
   end
 
+  def tweet
+    # We return true or false values
+    # so that the wrapper `.tweet_top` method
+    # knows if the tweet successed or failed
+    begin
+      Twitter.update "#{self.title} - #{shortened_url}"
+      return true
+    rescue => e
+      puts "#{e.inspect} - #{self.title}"
+      return false
+    end
+  end
+
   def self.tweet_top(num)
-    Bulletin.top(num).each { |b| b.tweet }
+    # Tweet 3 bulletins.
+    # If one fails to tweet successfully
+    # go to the next one
+    bulletins = Bulletin.available_for_pagination
+    counter = 0
+    while counter < 3 do
+      response = bulletins[counter].tweet
+      counter += 1 if response
+    end
   end
 
   def self.top(num)
