@@ -1,34 +1,40 @@
 @import '_imports';
 
-// list of bulletins
 .bulletin-wrapper {
   &.loading {
     background: url('spinner.gif') no-repeat center left;
     & > .subtext { visibility: hidden;}
   }
-  height: 40px;
+}
+
+.bulletin-wrapper {
   box-shadow: 0 0 3px $brown2;
   margin-bottom: 10px;
-  padding: 0 5px;
+  padding: 3px 5px;
   cursor: pointer;
-  &:hover {background-color: transparentize($brown2, 0.5);}
-  & > * {
-    line-height: 28px;
+  height: 48px;
+  &:hover { background-color: transparentize($brown2, 0.5);}
+}
+.bulletin-wrapper {
+  .title, .subtext {
     display: inline-block;
-    padding: 5px 0;
-    vertical-align: middle;
+    width: 450px;
   }
+  .vote {
+    float:right;
+    width: 35px;
+    height: 35px;
+    margin-top: 2px;
+  }
+}
+
+.bulletin-wrapper {
   // text overflow
   .subtext, .title {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
   }
-
-  // width
-  .subtext { width: 75px; }
-  .title { width: 450px; }
-  .vote { width: 28px; }
 
   // fonts
   .subtext a {
@@ -43,11 +49,10 @@
   }
 
   .vote {
-    float: right;
     & > * {
-      height: 28px;
-      width: 28px;
-      line-height: 28px;
+      height: 35px;
+      width: 35px;
+      line-height: 35px;
     }
     a {
       display: block;
