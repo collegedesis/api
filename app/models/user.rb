@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     if memberships.map(&:approved).include? true
       self.update_attributes(approved: true)
     else
-      self.update_attributes(approved: true)
+      self.update_attributes(approved: false)
     end
   end
 end
