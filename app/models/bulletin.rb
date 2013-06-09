@@ -146,7 +146,7 @@ class Bulletin < ActiveRecord::Base
     bulletins = Bulletin.available_for_pagination
     counter = 0
     tweeted = 0
-    while counter < 3 do
+    while tweeted < 3 do
       response = bulletins[counter].tweet
       counter += 1
       tweeted += 1 if response
