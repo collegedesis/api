@@ -52,3 +52,8 @@ App.BulletinsShowController = Ember.ObjectController.extend
   ).property('votes.@each.user.id', 'App.session.votedBulletinIds')
 
   backToHome: -> @transitionToRoute('bulletins.index')
+
+  updateWindowTitle: (->
+    title = @get("content.title")
+    $(document).attr('title', "#{title} - CollegeDesis Radio")
+  ).observes('content')
