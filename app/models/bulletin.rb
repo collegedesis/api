@@ -1,6 +1,6 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :popularity_score
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
   before_create :create_slug, :shorten_url
@@ -70,7 +70,6 @@ class Bulletin < ActiveRecord::Base
     bulletins = Bulletin.has_author.alive
     bulletins = Bulletin.sort_by_score(bulletins)
     return bulletins.map { |b| b if b.approved? }.compact
-
   end
 
   def self.homepage(page)
@@ -102,10 +101,6 @@ class Bulletin < ActiveRecord::Base
     inverse = 1/raw
     # and then multiple by some outlandish large number to make it human readable
     inverse * 1000000
-  end
-
-  def popularity_score
-    votes.length > 0 ? votes.length : 1
   end
 
   def user_reputation
@@ -151,10 +146,21 @@ class Bulletin < ActiveRecord::Base
     Bulletin.homepage("1")[0..(num - 1)]
   end
 
+  def self.update_scores
+    Bulletin.available_for_pagination.each do |bulletin|
+      bulletin.update_popularity
+    end
+  end
+
   def normalize_title
     if title == title.upcase || title == title.downcase
       self.title = title.split.map(&:capitalize).join(' ')
     end
+  end
+
+  def update_popularity
+    self.update_attributes(popularity_score: votes.length)
+    # TODO use number of clicks from bit.ly
   end
 
   # this is run as a before save callback for link type bulletins
