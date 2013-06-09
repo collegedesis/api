@@ -3,13 +3,16 @@
 .main .header {
   margin-bottom: 10px;
 }
-.members {
+.main .members {
   li {
     display: inline-block;
-    text-align: center;
+    width: 49%;
+    margin-bottom: 25px;
     img {
       width: 100px;
       display: block;
+      float: left;
+      margin-right: 15px
     }
   }
 }
