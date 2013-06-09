@@ -1,9 +1,9 @@
 @import '_imports';
 
 .bulletin-wrapper {
-  &.loading {
+  & > .loading {
     background: url('spinner.gif') no-repeat center left;
-    & > .subtext { visibility: hidden;}
+    & > * { visibility: hidden;}
   }
 }
 

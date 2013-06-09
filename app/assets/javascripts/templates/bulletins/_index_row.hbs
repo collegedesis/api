@@ -1,5 +1,5 @@
-<div {{bindAttr class=":bulletin-wrapper loading"}}>
-  <div class="vote">
+<div class="bulletin-wrapper">
+  <div {{bindAttr class ="loading :vote"}}>
     {{#if hasBeenVotedOn}}
       <h3>{{votes.length}}</h3>
     {{else}}
