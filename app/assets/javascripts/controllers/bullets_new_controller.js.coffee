@@ -7,13 +7,13 @@ App.BulletinsNewController = Ember.ObjectController.extend
   showingPreview: (-> @get("showPreview")).property('showPreview')
 
   submit: ->
-    @get('content').addObserver('id', this, '_createdBulletin')
+    @get('content').addObserver('slug', this, '_createdBulletin')
     if !@get('errors')
       @get("store").commit()
 
   _createdBulletin: ->
     bulletin = @get('content')
-    bulletin.removeObserver('id', this, '_createdBulletin')
+    bulletin.removeObserver('slug', this, '_createdBulletin')
     @transitionToRoute("bulletins.show", bulletin)
 
   errors: (->
