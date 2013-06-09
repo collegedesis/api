@@ -1,62 +1,26 @@
+<aside>
+  {{organization.reputation}}
+  <h4>FAQs</h4>
+  <p>Update your picture by adding one to your profile on <a href="//gravatar.com">Gravatar.com</a></p>
+</aside>
 <div class="main">
   <div class="header">
     <h2>{{name}}</h2>
     {{#if university_name}}<h4>{{university_name}}</h4>{{/if}}
   </div>
-  {{#unless collegedesis}}
-    {{#if memberships.length}}
-      <ul class="members">
-        {{#each membership in memberships}}
-          <li>
-            <img class="avatar" {{bindAttr src="membership.user.avatar_url"}}>
-            {{membership.user.full_name}}
-          </li>
-        {{/each}}
-      </ul>
-    {{else}}
-      <p>No members yet</p>
-      {{#linkTo users.new}}Sign up?{{/linkTo}}
-    {{/if}}
-  {{/unless}}
-  {{#if collegedesis}}
-    {{#if controllers.application.currentUser}}
-      {{#if applied}}
-        <h5>Thank you!</h5>
-        <p>An email was sent to you and to us with your application. If you didn't get an email, we probably didn't either. In that case, can you please <a target="_blank" href="//twitter.com/collegedesis">tweet us</a>, <a target="_blank" href="//facebook.com/collegedesis">message us</a>, or <a target="_blank" href="mailto:brownkids@collegedesis.com">email us</a>?</p>
-      {{else}}
-        <h5>Apply to be a CollegeDesis Regional Rep</h5>
-        <p>
-          <h5>Name</h5>
-          {{controllers.application.currentUser.full_name}}
-        </p>
-        <p>
-          <h5>Where are you located? (during and not during school)</h5>
-          {{view Ember.TextArea valueBinding="location"}}
-        </p>
-        <p>
-          <h5>What are you currently obsessed with?</h5>
-          {{view Ember.TextArea valueBinding="obsession"}}
-        </p>
-        <p>
-          <h5>What's the fastest way to hear back from you? (email, twitter, telepathy)</h5>
-          {{view Ember.TextField valueBinding="communication"}}
-        </p>
-        <p>
-          <h5>What is the largest group chat you've been a part of?</h5>
-          {{view Ember.TextField valueBinding="largestChat"}}
-        </p>
-        <p>
-          <h5>Why are you applying?</h5>
-          {{view Ember.TextArea valueBinding="why"}}
-        </p>
-        {{#unless working}}
-          <button {{action apply}}>Apply</button>
-        {{else}}
-          Sending...
-        {{/unless}}
-      {{/if}}
-    {{else}}
-      <p>{{#linkTo 'login'}}Login{{/linkTo}} to apply to apply to be a Regional representative!</p>
-    {{/if}}
+  <ul class="members">
+    {{#each mem in memberships}}
+      <li>
+        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+        <h5>{{mem.user.full_name}}</h5>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{#unless registered}}
+      {{#linkTo users.show controllers.application.currentUser tagName="button"}}I'm a member{{/linkTo}}
+    {{/unless}}
+  {{else}}
+    {{#linkTo users.new tagName="button"}}Sign up{{/linkTo}} to become a member of {{name}}!
   {{/if}}
 </div>
