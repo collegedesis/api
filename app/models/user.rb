@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :full_name, :password, :password_confirmation, :memberships_attributes
+  attr_accessible :email, :full_name, :password, :password_confirmation, :memberships_attributes, :approved
   attr_accessor :password
 
   validates_confirmation_of :password
@@ -34,7 +34,12 @@ class User < ActiveRecord::Base
     "//www.gravatar.com/avatar/#{hash}"
   end
 
-  def approved?
-    memberships.map(&:approved).include? true
+  def update_approved_status
+    # TODO Write a unit test for this
+    if memberships.map(&:approved).include? true
+      self.update_attributes(approved: true)
+    else
+      self.update_attributes(approved: true)
+    end
   end
 end

@@ -7,12 +7,16 @@ class MembershipObserver < ActiveRecord::Observer
     OrganizationMailer.new_member(membership).deliver
     # send an email to admin
     AdminMailer.notify(membership).deliver
+    # update user status
+    membership.user.update_approved_status
   end
 
   def after_destroy(membership)
-    member_email = MemberMailer.membership_rejected(membership)
-    org_email = OrganizationMailer.membership_rejected(membership)
-    member_email.deliver
-    org_email.deliver
+    # send an email to the organization
+    MemberMailer.membership_rejected(membership).deliver
+    # send an email to the organization
+    OrganizationMailer.membership_rejected(membership).deliver
+    # update user status
+    membership.user.update_approved_status
   end
 end
