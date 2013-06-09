@@ -1,0 +1,19 @@
+<p>
+  Title
+  {{#unless title}}
+    <br>
+    <span class="error">Missing title</span>
+  {{/unless}}
+</p>
+{{input value=title}}
+
+<p>
+  Url
+  {{#unless urlIncludesProtocol}}
+    {{#if url}}
+      <br>
+      <p class="error">Make sure you include http or https at the beginning!</p>
+    {{/if}}
+  {{/unless}}
+</p>
+{{input value=url placeholder="http://"}}
