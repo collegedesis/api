@@ -1,0 +1,6 @@
+<a {{bindAttr href="url"}} target="_blank" class="clickable">
+  <span class="title">{{title}}</span>
+  <span class="subtext">
+    {{#linkTo 'organizations.show' author tagName="span"}}{{author.display_name}}{{/linkTo}}
+  </span>
+</a>
