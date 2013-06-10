@@ -122,13 +122,18 @@ class Bulletin < ActiveRecord::Base
     # Tweet 3 bulletins.
     # If one fails to tweet successfully
     # go to the next one
-    bulletins = Bulletin.available_for_pagination
+    bulletins = Bulletin.homepage[0]
     counter = 0
     tweeted = 0
     while tweeted < 3 do
-      response = bulletins[counter].tweet
-      counter += 1
-      tweeted += 1 if response
+      bulletin = bulletins[counter]
+      if bulletin
+        response = bulletin.tweet
+        counter += 1
+        tweeted += 1 if response
+      else
+        break
+      end
     end
   end
 
