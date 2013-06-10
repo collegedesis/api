@@ -176,7 +176,7 @@ class Bulletin < ActiveRecord::Base
     self.update_attributes(popularity_score: score)
   end
 
-  def get_clicks(url)
+  def get_clicks
     base = "https://api-ssl.bitly.com"
     token = ENV['BITLY_ACCESS_TOKEN']
     url = CGI::escape(url)
