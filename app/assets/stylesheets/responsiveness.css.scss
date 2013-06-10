@@ -16,5 +16,10 @@ body {
     float: none;
     text-align: center;
     font-style: italic;
+    padding: 0;
+    width: 90%;
+    button {
+      margin: 0 auto 10px;
+    }
   }
 }
