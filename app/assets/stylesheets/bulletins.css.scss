@@ -26,7 +26,8 @@
     display: inline-block;
   }
   .title {
-    width: 450px;
+    max-width: 450px;
+    width: 80%;
   }
   .vote {
     float:right;
