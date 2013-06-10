@@ -48,7 +48,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.recent
-    Bulletin.paginate(Bulletin.newest)
+    Bulletin.paginate(Bulletin.alive.newest)
   end
 
   def self.paginate(bulletins)
@@ -137,7 +137,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.update_scores
-    Bulletin.available_for_pagination.each do |bulletin|
+    Bulletin.alive.each do |bulletin|
       bulletin.update_popularity_score
       bulletin.update_recency_score
     end
