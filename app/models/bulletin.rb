@@ -1,6 +1,6 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :popularity_score
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :popularity_score, :recency_score
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
   before_create :create_slug, :shorten_url
@@ -20,13 +20,11 @@ class Bulletin < ActiveRecord::Base
 
   scope :alive, where(:is_dead => false)
   scope :has_author, conditions: 'user_id IS NOT NULL'
+  scope :popular, conditions: 'popularity_score > 1'
+  scope :newest, conditions: 'popularity_score = 1'
 
   def author_id
-    if user.approved?
-      user.memberships.first.organization.id
-    else
-      user.id
-    end
+    user.memberships.first.organization.id if user.approved?
   end
 
   def self.find_by_title(title)
@@ -41,45 +39,22 @@ class Bulletin < ActiveRecord::Base
     bulletin_type == 1
   end
 
-  def score
-    0.25 * recency_score +
-    0.25 * popularity_score +
-    0.25 * user_reputation +
-    0.25 * affiliation_reputation
-  end
-
   def self.sort_by_score(bulletins)
     return bulletins.sort_by{|x| x.score }.reverse
   end
 
-  def self.paginate(bulletins, page_size=10)
-    page_size = page_size.to_f
-    num_of_pages = (bulletins.length / page_size).ceil
-
-    current_page = 0
-    paginated_bulletins = []
-
-    while current_page < num_of_pages do
-      range_start = current_page * page_size
-      range_end = range_start + (page_size - 1)
-      paginated_bulletins <<  bulletins[range_start..range_end]
-      current_page += 1
-    end
-
-    return paginated_bulletins
+  def self.homepage
+    Bulletin.paginate(Bulletin.alive.popular)
   end
 
-  def self.available_for_pagination
-    bulletins = Bulletin.has_author.alive
-    bulletins = Bulletin.sort_by_score(bulletins)
-    return bulletins.map { |b| b if b.approved? }.compact
+  def self.recent
+    Bulletin.paginate(Bulletin.newest)
   end
 
-  def self.homepage(page)
-    bulletins = Bulletin.available_for_pagination
-    page = page.to_i
-    bulletins_for_page = Bulletin.paginate(bulletins)[page - 1] || []
-    return bulletins_for_page
+  def self.paginate(bulletins)
+    page_size = 10
+    bulletins.sort_by!(&:score).reverse!
+    bulletins.each_slice(page_size).to_a
   end
 
   def relative_local_url
@@ -97,13 +72,18 @@ class Bulletin < ActiveRecord::Base
     end
   end
 
-  def recency_score
-    # algorithm courtesy of kumavis
-    now = DateTime.now
-    birth = created_at.to_datetime
-    age = now - birth
-    score = 1.01 ** -(age)
-    return 100 * score # to normalize
+  def score
+    0.70 * recency_score + 0.10 * popularity_score + 0.10 * user_reputation + 0.10 * affiliation_reputation
+  end
+
+  def update_recency_score
+    score = Scorekeeper.calc_recency_score(self)
+    self.update_attributes(recency_score: score)
+  end
+
+  def update_popularity_score
+    score = Scorekeeper.calc_popularity_score(self)
+    self.update_attributes(popularity_score: score)
   end
 
   def user_reputation
@@ -118,10 +98,6 @@ class Bulletin < ActiveRecord::Base
 
   def voted_by_user?(user)
     votes.map(&:user_id).include? user.id
-  end
-
-  def is_popular?
-    votes.count > 1 && votes.count % 5 == 0
   end
 
   def author_is_admin?
@@ -162,7 +138,8 @@ class Bulletin < ActiveRecord::Base
 
   def self.update_scores
     Bulletin.available_for_pagination.each do |bulletin|
-      bulletin.update_popularity
+      bulletin.update_popularity_score
+      bulletin.update_recency_score
     end
   end
 
@@ -170,14 +147,6 @@ class Bulletin < ActiveRecord::Base
     if title == title.upcase || title == title.downcase
       self.title = title.split.map(&:capitalize).join(' ')
     end
-  end
-
-  def update_popularity
-    num_of_votes = votes.length
-    num_of_clicks = get_clicks
-    raw = (num_of_votes + num_of_clicks) / 2.0
-    score = Math.log(raw + 1) * 100
-    self.update_attributes(popularity_score: score)
   end
 
   def get_clicks

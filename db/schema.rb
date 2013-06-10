@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609112059) do
+ActiveRecord::Schema.define(:version => 20130610032922) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130609112059) do
     t.boolean  "is_dead",          :default => false
     t.string   "shortened_url"
     t.integer  "popularity_score", :default => 0
+    t.integer  "recency_score",    :default => 0
   end
 
   add_index "bulletins", ["slug"], :name => "index_bulletins_on_slug"
