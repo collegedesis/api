@@ -17,6 +17,10 @@ class Organization < ActiveRecord::Base
   scope :reachable, conditions: 'email IS NOT NULL'
   scope :exposed, conditions: 'exposed'
 
+  def approved_membership_ids
+    memberships.select {|m| m if m.approved? }.map(&:id)
+  end
+
   def has_email?
     self.email? ? true : false
   end
