@@ -2,7 +2,12 @@ class MembershipsController < ApplicationController
   respond_to :json
 
   def index
-    @mems = params[:id] ? Membership.where(id: params[:id]) : Membership.all
+    @mems = if params[:id]
+      Membership.where(id: params[:id])
+    else
+      Membership.all
+    end
+    @mems.select! {|m| m.approved? }
     render json: @mems
   end
 

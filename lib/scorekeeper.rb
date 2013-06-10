@@ -15,7 +15,7 @@ class Scorekeeper
     return 100 * score
   end
 
-  def get_clicks(short_url)
+  def self.get_clicks(short_url)
     begin
       token = ENV['BITLY_ACCESS_TOKEN']
       escaped_url = CGI::escape(short_url)
