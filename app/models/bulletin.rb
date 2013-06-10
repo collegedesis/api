@@ -170,8 +170,28 @@ class Bulletin < ActiveRecord::Base
   end
 
   def update_popularity
-    self.update_attributes(popularity_score: votes.length)
-    # TODO use number of clicks from bit.ly
+    num_of_votes = votes.length
+    num_of_clicks = get_clicks
+    score = num_of_votes + num_of_clicks
+    self.update_attributes(popularity_score: score)
+  end
+
+  def get_clicks(url)
+    base = "https://api-ssl.bitly.com"
+    token = ENV['BITLY_ACCESS_TOKEN']
+    url = CGI::escape(url)
+    request_url = base + "/v3/link/clicks?access_token=#{token}&link=#{url}"
+    uri = URI.parse(request_url)
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(uri.request_uri)
+
+    response = http.request(request)
+    hash = JSON.parse(response.body)
+    hash["data"]["link_clicks"]
   end
 
   # this is run as a before save callback for link type bulletins
