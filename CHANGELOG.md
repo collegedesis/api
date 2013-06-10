@@ -1,5 +1,9 @@
 See WIP branch for undeployed changes
 
+### Version 2.3.4 - Jun 9, 2013
+
+* Various performance improvements
+* Give more importance to organization display name
 
 ### Version 2.3.3 - Jun 9, 2013
 
