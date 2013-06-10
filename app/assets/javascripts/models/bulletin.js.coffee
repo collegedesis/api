@@ -10,6 +10,11 @@ App.Bulletin = DS.Model.extend
   user: DS.belongsTo('App.User')
   slug: DS.attr('string')
   author: DS.belongsTo('App.Organization')
+  score: DS.attr('number')
+
+  roundedScore: (->
+    parseInt @get('score')
+  ).property('score')
 
   preview: (->
     if @get('body')

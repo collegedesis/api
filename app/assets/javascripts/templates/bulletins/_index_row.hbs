@@ -1,7 +1,7 @@
 <div class="bulletin-wrapper">
   <div {{bindAttr class ="loading :vote"}}>
     {{#if hasBeenVotedOn}}
-      <h3>{{votes.length}}</h3>
+      <h3>{{roundedScore}}</h3>
     {{else}}
       <a {{action voteOnBulletin this}}></a>
     {{/if}}

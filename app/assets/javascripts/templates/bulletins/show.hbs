@@ -23,13 +23,12 @@
       <div class="vote">
         {{#if hasBeenVotedOn}}
         <div class="bulletin-voted">
-          <h3>{{votes.length}}</h3>
-          <span>votes</span>
+          <h3>{{roundedScore}}</h3>
         </div>
         {{else}}
         <div class="bulletin-vote">
           <a {{action voteOnBulletin}}></a>
-          <h3>{{#if votes}}{{votes.length}} votes{{else}}Vote{{/if}}</h3>
+          <h3>{{roundedScore}}</h3>
         </div>
         {{/if}}
       </div>

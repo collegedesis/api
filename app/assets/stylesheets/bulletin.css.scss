@@ -48,18 +48,6 @@
     text-align: center;
     border-radius: 50%;
     background: $brown4;
-    position: relative;
-    h3 {
-      position: relative;
-      bottom: 5px;
-    }
-    span {
-      font-size: $font-size * 0.7;
-      line-height: $font-size * 0.7;
-      position: absolute;
-      top: 38px;
-      left: 15px;
-    }
   }
   .bulletin-vote {
     a {
