@@ -42,7 +42,10 @@ class Bulletin < ActiveRecord::Base
   end
 
   def score
-    recency_score * popularity_score * user_reputation * affiliation_reputation
+    0.25 * recency_score +
+    0.25 * popularity_score +
+    0.25 * user_reputation +
+    0.25 * affiliation_reputation
   end
 
   def self.sort_by_score(bulletins)
@@ -95,12 +98,12 @@ class Bulletin < ActiveRecord::Base
   end
 
   def recency_score
-    # the older the bulletin, the larger the number
-    raw = (Time.now - created_at)
-    # so we'll inverse it
-    inverse = 1/raw
-    # and then multiple by some outlandish large number to make it human readable
-    inverse * 1000000
+    # algorithm courtesy of kumavis
+    now = DateTime.now
+    birth = created_at.to_datetime
+    age = now - birth
+    score = 1.01 ** -(age)
+    return 100 * score # to normalize
   end
 
   def user_reputation
@@ -172,26 +175,31 @@ class Bulletin < ActiveRecord::Base
   def update_popularity
     num_of_votes = votes.length
     num_of_clicks = get_clicks
-    score = num_of_votes + num_of_clicks
+    raw = (num_of_votes + num_of_clicks) / 2.0
+    score = Math.log(raw + 1) * 100
     self.update_attributes(popularity_score: score)
   end
 
   def get_clicks
-    base = "https://api-ssl.bitly.com"
-    token = ENV['BITLY_ACCESS_TOKEN']
-    url = CGI::escape(url)
-    request_url = base + "/v3/link/clicks?access_token=#{token}&link=#{url}"
-    uri = URI.parse(request_url)
+    begin
+      base = "https://api-ssl.bitly.com"
+      token = ENV['BITLY_ACCESS_TOKEN']
+      url = CGI::escape(shortened_url)
+      request_url = base + "/v3/link/clicks?access_token=#{token}&link=#{url}"
+      uri = URI.parse(request_url)
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    request = Net::HTTP::Get.new(uri.request_uri)
+      request = Net::HTTP::Get.new(uri.request_uri)
 
-    response = http.request(request)
-    hash = JSON.parse(response.body)
-    hash["data"]["link_clicks"]
+      response = http.request(request)
+      hash = JSON.parse(response.body)
+      hash["data"]["link_clicks"]
+    rescue
+      1
+    end
   end
 
   # this is run as a before save callback for link type bulletins
