@@ -15,6 +15,7 @@
   height: 48px;
   &:hover { background-color: transparentize($brown2, 0.5);}
 }
+
 .bulletin-wrapper {
   .clickable {
     height: 100%;
@@ -23,6 +24,8 @@
   }
   .title, .subtext {
     display: inline-block;
+  }
+  .title {
     width: 450px;
   }
   .vote {
