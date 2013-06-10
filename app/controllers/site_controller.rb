@@ -13,7 +13,7 @@ class SiteController < ApplicationController
     orgs = Organization.count
     unis = University.count
     states = University.all.map(&:state).uniq.count
-    bulletins = Bulletin.available_for_pagination.count
+    bulletins = Bulletin.popular.count
     render json: {
       orgsCount: orgs,
       universityCount: unis,

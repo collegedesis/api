@@ -7,7 +7,8 @@ class BulletinsController < ApplicationController
     if params[:slug]
       @bulletins = Bulletin.where(slug: params[:slug])
     elsif params[:page]
-      @bulletins = Bulletin.homepage(params[:page])
+      page = params[:page].to_i - 1
+      @bulletins = Bulletin.homepage[page]
     end
     render json: @bulletins
   end
