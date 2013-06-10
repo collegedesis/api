@@ -149,28 +149,6 @@ class Bulletin < ActiveRecord::Base
     end
   end
 
-  def get_clicks
-    begin
-      base = "https://api-ssl.bitly.com"
-      token = ENV['BITLY_ACCESS_TOKEN']
-      url = CGI::escape(shortened_url)
-      request_url = base + "/v3/link/clicks?access_token=#{token}&link=#{url}"
-      uri = URI.parse(request_url)
-
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      request = Net::HTTP::Get.new(uri.request_uri)
-
-      response = http.request(request)
-      hash = JSON.parse(response.body)
-      hash["data"]["link_clicks"]
-    rescue
-      1
-    end
-  end
-
   # this is run as a before save callback for link type bulletins
   def nullify_body
     self.body = nil
