@@ -9,4 +9,4 @@ handler do |job|
 end
 
 every(1.hours, 'Update popularity score') { Bulletin.update_scores }
-every(2.hours, 'Tweeting top 3 bulletins') { Bulletin.tweet_top(3) }
+# every(2.hours, 'Tweeting top 3 bulletins') { Bulletin.tweet_top(3) }
