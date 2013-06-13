@@ -38,6 +38,7 @@
 }
 
 .sub-nav {
+  margin-bottom: 10px;
   li {
     a {
       padding: 5px;
@@ -45,14 +46,6 @@
       border-radius: 5px;
       &, &:hover, &:visited {color: $brown4;}
     }
-    .active {
-      background-color: $brown2;
-      &:hover{
-        
-      }
-    }
-    a:hover{
-      
-    }
+    .active { background-color: $brown2; }
   }
 }
