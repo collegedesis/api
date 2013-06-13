@@ -64,10 +64,6 @@ body {
   .main {
     max-width: 600px;
   }
-  h4 {
-    margin-bottom:10px;
-    font-size:$font-size*1.2;
-  }
   p { line-height:$font-size*1.25; }
 }
 
@@ -105,9 +101,21 @@ input[type='submit'], button {
 @mixin heading {
   color: $brown2;
   font-family: $header-font;
+  margin-bottom: 10px;
 }
 
-h4, h5, span.heading {
+h3 {
+  font-size: $font-size * 1.2;
+}
+
+h4 {
+  font-size:$font-size*1.1;
+}
+h5 {
+  font-size: $font-size * 0.9;
+}
+
+h3, h4, h5, span.heading {
   vertical-align: bottom;
   @include heading
 }
