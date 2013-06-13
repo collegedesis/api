@@ -1,8 +1,8 @@
 <aside>
   <div class="bulletin-comments">
-    <h4>
+    <h3>
       {{#if comments}}Leave a Comment{{else}}Be the first to comment{{/if}}
-    </h4>
+    </h3>
     {{view Ember.TextArea valueBinding="comment" placeholder="Add a comment"}}
     <button {{action submitComment}}>Submit</button>
     {{#if comments}}
