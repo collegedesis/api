@@ -9,6 +9,8 @@ App.Router.map ->
   @resource 'about', ->
     @route('intro')
     @route('contact')
+    @route('website')
+    @route('goals')
 
   @route 'login', {path: 'login'}
 
