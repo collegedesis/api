@@ -1,5 +1,11 @@
 See WIP branch for undeployed changes
 
+
+### Version 2.3.5 - Jun 12, 2013
+
+* Disable tweeting
+* Some responsive design changes
+
 ### Version 2.3.4 - Jun 9, 2013
 
 * Various performance improvements
