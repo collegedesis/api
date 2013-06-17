@@ -5,9 +5,15 @@
   <div class="header">
     <h2>{{name}}</h2>
     {{#if university_name}}<h4>{{university_name}}</h4>{{/if}}
-    <h5>{{view App.ContenteditableView valueBinding="slug" tagName="p" contenteditableBinding="controller.currentUserIsAdmin"}}</h5>
+    {{view App.ContenteditableView
+            valueBinding="slug"
+            tagName="h5"
+            editableBinding="currentUserIsAdmin"}}
   </div>
-  {{view App.ContenteditableView valueBinding="about" tagName="p" contenteditableBinding="controller.currentUserIsAdmin"}}
+  {{view App.ContenteditableView
+        valueBinding="about"
+        tagName="p"
+        editableBinding="currentUserIsAdmin"}}
 
   {{#if isDirty}}
     <button {{action save}}>Save</button>
