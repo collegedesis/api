@@ -16,3 +16,8 @@
     }
   }
 }
+
+.reputation {
+  margin: 0 auto;
+  @include score(100px);
+}

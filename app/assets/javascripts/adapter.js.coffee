@@ -12,6 +12,11 @@ App.Serializer = DS.RESTSerializer.extend
       when App.Membership
         record.eachAttribute (name, attribute) =>
           @_addAttribute(data, record, name, attribute.type) if name != "display_name"
+      when App.Organization
+        record.eachAttribute (name, attribute) =>
+          readOnlyAttributesForOrganization = ["display_name", "location", "university_name", "reputation"]
+          if readOnlyAttributesForOrganization.indexOf(name) == -1
+            @_addAttribute(data, record, name, attribute.type)
       else
         @_super(data,record)
 

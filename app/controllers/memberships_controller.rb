@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
 
   def show
     @mem = Membership.find(params[:id])
-    render @mem
+    render json: @mem
   end
 
   def create

@@ -37,3 +37,6 @@ OrganizationType.create(category:"cultural",  name: 'A Cappella')
 OrganizationType.create(category:"cultural",  name: 'Classical')
 
 OrganizationType.create(category:"sport",     name: 'Cricket')
+
+MembershipType.create(name: "Member", internal_ref: MEMBERSHIP_TYPE_MEMBER)
+MembershipType.create(name: "Admin", internal_ref: MEMBERSHIP_TYPE_ADMIN)

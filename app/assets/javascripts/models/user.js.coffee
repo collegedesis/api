@@ -8,4 +8,11 @@ App.User = DS.Model.extend
 
   memberships: DS.hasMany('App.Membership')
   bulletins: DS.hasMany('App.Bulletin')
-  errors: []
+
+  adminMemberships: (->
+    t = App.MembershipType.find(2)
+    @get('memberships').filterProperty('membership_type', t)
+  ).property('memberships.@each.membership_type')
+
+  memberOf: (orgId) ->
+    @get('adminMemberships').mapProperty('organization.id').contains(orgId)

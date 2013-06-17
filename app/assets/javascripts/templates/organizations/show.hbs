@@ -1,13 +1,17 @@
 <aside>
-  {{organization.reputation}}
-  <h3>FAQs</h3>
-  <p>Update your picture by adding one to your profile on <a href="//gravatar.com">Gravatar.com</a></p>
+  <div class="reputation">{{reputation}}</div>
 </aside>
 <div class="main">
   <div class="header">
     <h2>{{name}}</h2>
     {{#if university_name}}<h4>{{university_name}}</h4>{{/if}}
+    <h5>{{view App.ContenteditableView valueBinding="slug" tagName="p" contenteditableBinding="controller.currentUserIsAdmin"}}</h5>
   </div>
+  {{view App.ContenteditableView valueBinding="about" tagName="p" contenteditableBinding="controller.currentUserIsAdmin"}}
+
+  {{#if isDirty}}
+    <button {{action save}}>Save</button>
+  {{/if}}
   <ul class="members">
     {{#each mem in memberships}}
       <li>
