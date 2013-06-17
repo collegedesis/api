@@ -1,0 +1,28 @@
+Logged in, member, but not admin
+<div class="header">
+  <h2>{{name}}</h2>
+  <h3>{{university_name}}</h3>
+  <p>{{#if about}}{{about}}{{else}}No description.{{/if}}</p>
+</div>
+<div class="memberships">
+  <ul>
+    {{#if memberships}}
+    {{#each mem in memberships}}
+      <li>
+        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+        <h5>{{mem.user.full_name}}</h5>
+      </li>
+    {{/each}}
+    {{else}}
+    No members have registered.
+    {{/if}}
+  </ul>
+   <a class="button" {{action becomeAdmin}}>Become</a> an admin!
+</div>
+<div class="activity">
+<ul>
+  {{#each bulletin in bulletins}}
+    <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
+  {{/each}}
+</ul>
+</div>

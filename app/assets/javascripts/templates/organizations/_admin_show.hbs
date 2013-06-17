@@ -1,0 +1,42 @@
+Logged in, member, admin
+<div class="header">
+  <h2>{{name}}</h2>
+  <h3>{{university_name}}</h3>
+  <p>
+    {{view App.ContenteditableView
+            valueBinding="slug"
+            tagName="h5"
+            editableBinding="currentUserIsAdmin"}}
+  </p>
+  <p>
+    {{view App.ContenteditableView
+          valueBinding="about"
+          tagName="p"
+          editableBinding="currentUserIsAdmin"}}
+  </p>
+  {{#if isDirty}}
+    <button {{action save}}>Save</button>
+  {{/if}}
+</div>
+<div class="memberships">
+  <ul>
+    {{#if memberships}}
+    {{#each mem in memberships}}
+      <li>
+        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+        <h5>{{mem.user.full_name}}</h5>
+      </li>
+    {{/each}}
+    {{else}}
+    No members have registered.
+    {{/if}}
+  </ul>
+  {{#linkTo 'users.show' currentUser tagName="button"}}Join{{/linkTo}}
+</div>
+<div class="activity">
+<ul>
+  {{#each bulletin in bulletins}}
+    <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
+  {{/each}}
+</ul>
+</div>
