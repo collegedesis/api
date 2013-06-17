@@ -5,7 +5,7 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :slug, allow_nil: true
   before_create :create_slug
   after_create :send_welcome_email
-  attr_accessible :name, :university_id, :organization_type_id, :email, :website, :exposed, :slug
+  attr_accessible :name, :university_id, :organization_type_id, :email, :website, :exposed, :slug, :about
 
   belongs_to :organization_type
   belongs_to :university
@@ -50,6 +50,9 @@ class Organization < ActiveRecord::Base
     return orgs
   end
 
+  def reputation
+    100
+  end
 
 protected
   def send_welcome_email

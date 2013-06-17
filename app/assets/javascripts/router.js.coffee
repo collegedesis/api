@@ -13,6 +13,7 @@ App.Router.map ->
     @route('contact')
     @route('website')
     @route('goals')
+    @route('reps')
 
   @route 'login', {path: 'login'}
 

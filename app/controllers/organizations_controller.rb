@@ -25,7 +25,11 @@ class OrganizationsController < ApplicationController
 
   def update
     @org = Organization.find(params[:id])
-    @org.update_attributes(params[:organization])
+    if @org.update_attributes(params[:organization])
+      render json: @org
+    else
+      render json: {errors: @org.errors}
+    end
   end
 
   def apply

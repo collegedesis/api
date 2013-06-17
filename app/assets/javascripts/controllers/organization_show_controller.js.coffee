@@ -1,9 +1,6 @@
 App.OrganizationsShowController = Ember.ObjectController.extend
   needs: ['application']
 
-  applied: false
-  working: false
-
   registered: (->
     ids = @get('registeredUsers').mapProperty('id')
     currentUserId = @get('currentUser.id')
@@ -17,3 +14,12 @@ App.OrganizationsShowController = Ember.ObjectController.extend
   registeredUsers: (->
     @get('memberships').mapProperty('user')
   ).property('memberships.@each.user')
+
+  currentUserIsAdmin: (->
+    orgId = @get('id')
+    bool = @get('currentUser').memberOf(orgId)
+    return bool
+  ).property('currentUser.memberships.@each.membership_type')
+
+  save: ->
+    @get('store').commit()

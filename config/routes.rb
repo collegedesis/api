@@ -11,6 +11,7 @@ Collegedesis::Application.routes.draw do
   resources :events,              only: [:index, :create]
   resources :users
   resources :memberships
+  resources :membership_types,    only: [:index, :show]
   resources :universities,        only: [:index, :show]
   resources :bulletins,           only: [:index, :show, :create]
   resources :comments,            only: [:index, :create]

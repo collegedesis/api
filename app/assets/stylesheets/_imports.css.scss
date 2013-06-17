@@ -36,6 +36,18 @@ $col: 42px;
   & > * { display: none !important;}
 }
 
+@mixin score($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  color: lighten($brown4, 60%);
+  font-size: $size / 3;
+  text-align: center;
+  border-radius: 50%;
+  background: $brown4;
+}
+
+
 @mixin awesome-btn {
   display: inline-block;
   *display: inline;
