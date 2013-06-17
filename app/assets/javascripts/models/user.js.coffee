@@ -14,5 +14,8 @@ App.User = DS.Model.extend
     @get('memberships').filterProperty('membership_type', t)
   ).property('memberships.@each.membership_type')
 
-  memberOf: (orgId) ->
+  adminOf: (orgId) ->
     @get('adminMemberships').mapProperty('organization.id').contains(orgId)
+
+  memberOf: (orgId) ->
+    @get('memberships').mapProperty('organization.id').contains(orgId)

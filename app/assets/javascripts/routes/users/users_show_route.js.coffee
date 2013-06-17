@@ -8,15 +8,8 @@ App.UsersShowRoute = Ember.Route.extend
     else
       @transitionTo('index')
 
-  model: (params) -> App.User.find(params.user_id)
-
-  setupController: (controller) ->
-    controller.set('loading', true)
-    user = controller.get('content')
-    bulletins = App.Organization.find()
-    bulletins.then (data) =>
-      @controllerFor('organizationsIndex').set('content', data)
-      controller.set('loading', false)
+  model: (params) ->
+    App.User.find(params.user_id)
 
   deactivate: ->
     App.session.set('messages', null)
