@@ -41,6 +41,16 @@ class Organization < ActiveRecord::Base
     university.name if university
   end
 
+  def self.filter_by_params(params)
+    orgs = Organization.reachable.exposed
+    if params[:type]
+      type = OrganizationType.where("lower(name) = ?", params[:type].downcase).first
+      orgs = orgs.where(organization_type_id: type.id)
+    end
+    return orgs
+  end
+
+
 protected
   def send_welcome_email
     OrganizationMailer.welcome(self).deliver if self.email?
