@@ -9,10 +9,11 @@
     <li>{{#linkTo radio}}Radio{{/linkTo}}</li>
     <li>{{#linkTo about}}About{{/linkTo}}</li>
   </ul>
-  <div class="account">
-    {{#if currentUser}}
+
+  {{#if currentUser}}
+    <div class="account">
       {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
-    {{/if}}
-    {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
-  </div>
+      {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
+    </div>
+  {{/if}}
 </nav>

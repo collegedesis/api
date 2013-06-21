@@ -28,3 +28,7 @@ aside h3 {
   background-color: $green;
   @include greenify;
 }
+
+aside ol {
+  margin-left: 23px;
+}
