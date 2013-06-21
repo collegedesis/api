@@ -134,18 +134,20 @@ h3, h4, h5, span.heading {
 
 .attn-wrapper {
   margin: 0 auto 20px;
+  max-width: 840px;
   attn {
     h3 {
       color: white;
       font-size: $font-size * 5;
     }
     height: 200px;
-    width: 33%;
-    min-width: 300px;
-    margin: 0 auto;
+    width: 30%;
+    min-width: 270px;
+    margin: 0 auto 10px;
+    margin-right: 10px;
     display: inline-block;
     text-align: center;
-    box-shadow: 0 0 1px;
+    box-shadow: 0 0 3px #88ae5f;
     padding-top: 25px;
     background-color: #A0CC6F;
   }
