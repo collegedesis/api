@@ -12,7 +12,7 @@
       {{#if currentUser}}
         {{#linkTo 'users.show' currentUser }}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
       {{else}}
-        {{#linkTo login}}Join the community{{/linkTo}}</li>
+        {{#linkTo login}}Log in{{/linkTo}}</li>
       {{/if}}
     </li>
     {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
