@@ -23,3 +23,8 @@ aside {
     margin-bottom: 10px;
   }
 }
+
+aside h3 {
+  background-color: $green;
+  @include greenify;
+}

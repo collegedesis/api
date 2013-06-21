@@ -25,27 +25,27 @@ nav {
   }
 }
 
-nav ul.account {
+nav .account {
   float:right;
-  li {
-    border-bottom: none;
-    padding-left:3px;
-    img {
-      height: 15px;
-      margin-right: 5px;
-    }
+  img {
+    height: 15px;
+    margin-right: 5px;
   }
 }
 
+body .sub-nav a {
+  color: $brown4;
+}
 .sub-nav {
   margin-bottom: 10px;
   li {
     a {
+      font-family: $header-font;
       padding: 5px;
       display: block;
-      border-radius: 5px;
-      &, &:hover, &:visited {color: $brown4;}
     }
-    .active { background-color: $brown2; }
+    .active {
+      border-left: 3px solid $green;
+    }
   }
 }

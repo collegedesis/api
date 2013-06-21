@@ -2,13 +2,13 @@
   <h3>About</h3>
   <ul class="sub-nav">
     <li>{{#linkTo 'about.intro'}}About Us{{/linkTo}}</li>
+    <li>{{#linkTo 'about.goals'}}Summer Goals{{/linkTo}}</li>
+    <li>{{#linkTo 'about.website'}}Programming{{/linkTo}}</li>
     <li>{{#linkTo 'about.contact'}}Contact{{/linkTo}}</li>
   </ul>
-  <h3>Get Involved</h3>
-  <ul class="sub-nav">
-    <li>{{#linkTo 'about.website'}}Programming{{/linkTo}}</li>
-    <li>{{#linkTo 'about.goals'}}Summer Goals{{/linkTo}}</li>
-  </ul>
+  {{#unless currentUser}}
+    <div class="cta">{{#linkTo 'users.new'}}Join{{/linkTo}}</div>
+  {{/unless}}
 </aside>
 <div class="main">
   {{outlet}}
