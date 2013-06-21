@@ -1,5 +1,9 @@
 See WIP branch for undeployed changes
 
+### Version 2.4 - Jun 20, 2013
+
+* Add home page
+* Changes to how home page is handled
 
 ### Version 2.3.5 - Jun 12, 2013
 
