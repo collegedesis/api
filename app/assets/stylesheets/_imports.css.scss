@@ -2,6 +2,8 @@
 @import url('//fonts.googleapis.com/css?family=Noto+Sans');
 @import url('//fonts.googleapis.com/css?family=Snippet');
 
+$green: #A0CC6F;
+$shadow-green: #88ae5f;
 $brown2: #B2AE73;
 $brown3: #40210D;
 $brown4: #4C4440;
@@ -14,6 +16,14 @@ $font: 'Noto Sans', sans-serif;
 $font-size:16px;
 
 $col: 42px;
+
+@mixin greenify {
+  box-shadow: 0 0 3px $shadow-green;
+  background-color: $green;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: white;
+}
 
 @mixin loader($min-height) {
   background: url("spinner.gif") no-repeat center center;
