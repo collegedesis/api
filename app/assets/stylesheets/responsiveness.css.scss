@@ -6,8 +6,7 @@ body {
 }
 
 @media only screen and (max-width: 640px) {
-  body, p, .app-header,
-  .app-nav,
+  body, p, .app-header, nav,
   .app-content, .app-content > *,
   .app-footer {
     width: auto !important;
@@ -22,4 +21,8 @@ body {
       margin: 0 auto 10px;
     }
   }
+  .attn-wrapper {
+    attn { display: block;}
+  }
+
 }

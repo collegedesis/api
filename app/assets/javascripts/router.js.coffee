@@ -1,9 +1,11 @@
 App.Router.map ->
   @resource "bulletins", ->
+    @route "index"
     @route "new"
     @route "show", {path: ':slug'}
 
-  @route 'news', {path: 'news/:page'}
+  @resource 'news', ->
+    @route 'page', {path: ':page'}
 
   # simple pages
   @resource 'about', ->

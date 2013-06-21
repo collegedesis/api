@@ -1,2 +1,1 @@
-App.IndexRoute = Ember.Route.extend
-  redirect: -> @transitionTo('news')
+App.IndexRoute = Ember.Route.extend()

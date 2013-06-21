@@ -1,8 +1,9 @@
 <h1 {{action goHome}}><span>College</span>Desis</h1>
-<div class="subtitle">Connect with <strong>{{numOfOrganizations}}</strong> South Asian student organizations from <strong>{{numOfUniversities}}</strong> universities in <strong>{{numOfStates}}</strong> states.</div>
-<div class="app-nav">
+<div class="subtitle">Connecting all the South Asian student organizations in America</div>
+<nav>
   <ul>
-    <li>{{#linkTo index}}News{{/linkTo}}</li>
+    <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
+    <li>{{#linkTo bulletins.index}}News{{/linkTo}}</li>
     <li>{{#linkTo radio}}Radio{{/linkTo}}</li>
     <li>{{#linkTo about}}About{{/linkTo}}</li>
   </ul>
@@ -16,4 +17,4 @@
     </li>
     {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
   </ul>
-</div>
+</nav>

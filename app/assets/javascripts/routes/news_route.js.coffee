@@ -1,4 +1,4 @@
-App.NewsRoute = Ember.Route.extend
+App.NewsPageRoute = Ember.Route.extend
 
   events:
     goToBulletin: (bulletin) ->

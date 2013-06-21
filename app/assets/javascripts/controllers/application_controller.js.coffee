@@ -21,3 +21,7 @@ App.ApplicationController = Ember.Controller.extend
   currentYear: (->
     (new Date).getFullYear()
   ).property()
+
+  firstPage: (->
+    {page: '1'}
+  ).property()

@@ -43,12 +43,12 @@ App.BulletinsIndexController = Ember.ArrayController.extend
   nextPage: ->
     currentPage = parseInt(@get('currentPage'))
     getPage = currentPage + 1
-    @transitionToRoute('news', {page: getPage })
+    @transitionToRoute('news.page', {page: getPage })
 
   previousPage: (controller) ->
     currentPage = parseInt(@get('currentPage'))
     getPage = currentPage - 1
-    @transitionToRoute('news', {page: getPage })
+    @transitionToRoute('news.page', {page: getPage })
 
 App.BulletinController = Ember.ObjectController.extend
   needs: ['application']
