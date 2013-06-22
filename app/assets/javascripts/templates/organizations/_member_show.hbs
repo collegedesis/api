@@ -1,10 +1,9 @@
-Logged in, member, but not admin
 <div class="header">
-  <h2>{{name}}</h2>
-  <h3>{{university_name}}</h3>
+  <h4>About</h4>
   <p>{{#if about}}{{about}}{{else}}No description.{{/if}}</p>
 </div>
 <div class="memberships">
+  <h4>Registered Members</h4>
   <ul>
     {{#if memberships}}
     {{#each mem in memberships}}
@@ -17,7 +16,6 @@ Logged in, member, but not admin
     No members have registered.
     {{/if}}
   </ul>
-   <a class="button" {{action becomeAdmin}}>Become</a> an admin!
 </div>
 <div class="activity">
 <ul>

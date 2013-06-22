@@ -32,3 +32,17 @@ aside h3 {
 aside ol {
   margin-left: 23px;
 }
+
+aside table {
+  margin-bottom: 20px;
+  tr {
+    td {
+      font-size: $font-size * 0.9;
+      padding: 3px;
+      &.heading {
+        @include heading;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
