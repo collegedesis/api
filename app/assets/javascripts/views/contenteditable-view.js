@@ -2,6 +2,7 @@ App.ContenteditableView = Em.View.extend({
   tagName: "div",
 
   attributeBindings: ['contenteditable'],
+  classNames: ['editable'],
 
   plaintext: false,
 

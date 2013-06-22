@@ -1,24 +1,69 @@
-Logged in, member, admin
 <div class="header">
-  <h2>{{name}}</h2>
-  <h3>{{university_name}}</h3>
-  <p>
-    {{view App.ContenteditableView
-            valueBinding="slug"
-            tagName="h5"
-            editableBinding="currentUserIsAdmin"}}
-  </p>
+  <p>You're an administrator. Edit any of these fields!</p>
+  <h4>About {{name}}</h4>
   <p>
     {{view App.ContenteditableView
           valueBinding="about"
-          tagName="p"
           editableBinding="currentUserIsAdmin"}}
   </p>
+
+  <h4>Links</h4>
+  <table class="left-heading">
+    <tr>
+      <td>Slug</td>
+      <td>collegedesis.com/#/organizations/{{view App.ContenteditableView
+            valueBinding="slug"
+            tagName="span"
+            classNames="heading"
+            editableBinding="currentUserIsAdmin"}}</td>
+    </tr>
+    <tr>
+      <td>Website</td>
+      <td>
+        {{view App.ContenteditableView
+          valueBinding="website"
+          tagName="span"
+          classNames="heading"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+    <tr>
+      <td>Twitter</td>
+      <td>
+        @{{view App.ContenteditableView
+          valueBinding="twitter"
+          tagName="span"
+          classNames="heading"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+    <tr>
+      <td>Facebook</td>
+      <td>
+        facebook.com/{{view App.ContenteditableView
+          valueBinding="facebook"
+          tagName="span"
+          classNames="heading"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+    <tr>
+      <td>YouTube</td>
+      <td>
+        youtube.com/{{view App.ContenteditableView
+          valueBinding="youtube"
+          tagName="span"
+          classNames="heading"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+  </table>
   {{#if isDirty}}
     <button {{action save}}>Save</button>
   {{/if}}
 </div>
 <div class="memberships">
+  <h4>Registered Members</h4>
   <ul>
     {{#if memberships}}
     {{#each mem in memberships}}
@@ -31,7 +76,6 @@ Logged in, member, admin
     No members have registered.
     {{/if}}
   </ul>
-  {{#linkTo 'users.show' currentUser tagName="button"}}Join{{/linkTo}}
 </div>
 <div class="activity">
 <ul>

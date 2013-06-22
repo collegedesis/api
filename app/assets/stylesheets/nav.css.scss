@@ -4,6 +4,9 @@ li:first-child {
   padding-left: 0 !important;
 }
 
+body nav > * {
+  display: inline-block;
+}
 body nav {
   height: 52px;
   margin-top: 6px;

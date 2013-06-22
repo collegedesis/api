@@ -8,3 +8,7 @@ App.Organization = DS.Model.extend
   about: DS.attr('string')
   bulletins: DS.hasMany('App.Bulletin')
   reputation: DS.attr('number')
+  twitter: DS.attr('string')
+  facebook: DS.attr('string')
+  youtube: DS.attr('string')
+  website: DS.attr('string')
