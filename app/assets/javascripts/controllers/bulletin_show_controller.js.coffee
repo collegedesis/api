@@ -20,9 +20,12 @@ App.BulletinsShowController = Ember.ObjectController.extend
 
   voteOnBulletin: ->
     if @get('controllers.application.currentUserId')
-      vote = @get('votes').createRecord()
-      vote.addObserver('id', this, '_voted')
-      @store.commit()
+      if @get('hasBeenVotedOn')
+        return undefined
+      else
+        vote = @get('votes').createRecord()
+        vote.addObserver('id', this, '_voted')
+        @store.commit()
     else
       App.session.set('messages', 'You need to be logged in to vote!')
       @transitionToRoute('login')
