@@ -17,6 +17,11 @@ $font-size:16px;
 
 $col: 42px;
 
+@mixin heading {
+  color: $brown2;
+  font-family: $header-font;
+}
+
 @mixin greenify {
   box-shadow: 0 0 3px $shadow-green;
   background-color: $green;
