@@ -38,6 +38,16 @@
 }
 
 .bulletin-header .vote {
+  margin-bottom: 10px;
+}
+.bulletin-info {
+  padding: 0 30px;
+}
+.bulletin-info h3 {
+  color: $brown4;
+}
+
+.bulletin-header .vote {
   width: 58px;
   .bulletin-voted {
     width: 58px;
@@ -80,9 +90,7 @@
       border-bottom: solid 1px $brown2;
     }
     p {
-      width: 80%;
-      text-align: justify;
-      max-width: 600px;
+      max-width: 500px;
       line-height: $font-size * 1.5;
       margin-bottom: $font-size * 1.5;
     }
