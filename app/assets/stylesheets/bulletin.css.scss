@@ -32,14 +32,11 @@
   }
 }
 
-.bulletin-info, .vote {
-  margin: 0 auto;
+.bulletin-header > * {
+  margin: 0 auto 10px;
   vertical-align: top;
 }
 
-.bulletin-header .vote {
-  margin-bottom: 10px;
-}
 .bulletin-info {
   padding: 0 30px;
 }
@@ -47,30 +44,61 @@
   color: $brown4;
 }
 
+.bulletin-header {
+  position: relative;
+}
+
+.bulletin-header {
+  color: lighten($brown4, 60%);
+}
+
 .bulletin-header .vote {
-  width: 58px;
-  .bulletin-voted {
-    width: 58px;
-    height: 58px;
-    line-height: 58px;
-    color: lighten($brown4, 60%);
-    font-size: $font-size * 1.3;
-    text-align: center;
-    border-radius: 50%;
-    background: $brown4;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ie-user-select: none;
+  cursor: pointer;
+  height: 40px;
+  text-align: center;
+  max-width: 150px;
+  margin: 0 auto 10px;
+  background-color: transparentize($brown2, 0.3);
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 1px 2px 2px $brown2;
+
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
   }
-  .bulletin-vote {
-    a {
-      cursor: pointer;
-      width: 58px;
-      height: 58px;
-      background: url('upvote.png') no-repeat center;
-      background-size: 75%;
-      display: block;
-    }
-    h3 {
-      font-size: $font-size * 0.7;
+
+  span {
+    color: $brown4;
+    line-height: 30px;
+    height: 30px;
+    position: relative;
+    top: 2px;
+  }
+  img {
+    position: relative;
+    bottom: 3px;
+  }
+
+  &.voted {
+    max-width: 100px;
+    cursor: auto;
+    span.heading {
+      color: $brown4;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
       text-align: center;
+      border-radius: 50%;
+      border: solid 1px $brown4;
+    }
+    &.vote span {
+      top: 0;
+      cursor: auto;
     }
   }
 }

@@ -20,16 +20,13 @@
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
-      <div class="vote">
+      <div {{bindAttr class="hasBeenVotedOn:voted :vote"}}>
         {{#if hasBeenVotedOn}}
-        <div class="bulletin-voted">
-          <h3>{{roundedScore}}</h3>
-        </div>
+          <span class="heading">{{roundedScore}}</span>
+          <span>Score</span>
         {{else}}
-        <div class="bulletin-vote">
-          <a {{action voteOnBulletin}}></a>
-          <h3>{{roundedScore}}</h3>
-        </div>
+          <img src="/assets/upvote.png" width="30px" height="30px">
+          <span {{action voteOnBulletin}}>Recommend</span>
         {{/if}}
       </div>
       <div class="bulletin-info">
