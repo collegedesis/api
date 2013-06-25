@@ -20,18 +20,18 @@
 <div class="main">
   <div class="bulletin">
     <div class="bulletin-header">
-      <div {{bindAttr class="hasBeenVotedOn:voted :vote"}}>
-        {{#if hasBeenVotedOn}}
-          <span class="heading">{{roundedScore}}</span>
-          <span>Score</span>
-        {{else}}
-          <img src="/assets/upvote.png" width="30px" height="30px">
-          <span {{action voteOnBulletin}}>Recommend</span>
-        {{/if}}
-      </div>
       <div class="bulletin-info">
         <h3>{{title}}</h3>
         <h5>Posted by {{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}} on {{humanizedCreatedAt}}</h5>
+      </div>
+      <div {{bindAttr class="hasBeenVotedOn:voted :vote"}}>
+        {{#if hasBeenVotedOn}}
+          <span>Score</span>
+          <span class="heading">{{roundedScore}}</span>
+        {{else}}
+          <img src="/assets/upvote.png" width="20px" height="20px">
+          <span {{action voteOnBulletin}}>Recommend</span>
+        {{/if}}
       </div>
     </div>
     <div class="bulletin-body">
