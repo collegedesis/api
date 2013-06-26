@@ -2,25 +2,21 @@
   <h4>About</h4>
   <p>{{#if about}}{{about}}{{else}}No description.{{/if}}</p>
 </div>
-<div class="memberships">
-  <h4>Registered Members</h4>
-  <ul>
-    {{#if memberships}}
-    {{#each mem in memberships}}
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-    {{/each}}
-    {{else}}
-    No members have registered.
-    {{/if}}
-  </ul>
-</div>
+{{partial 'organizations/member_list'}}
 <div class="activity">
 <ul>
-  {{#each bulletin in bulletins}}
-    <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
-  {{/each}}
+  <h4>Posted Bulletins</h4>
+  {{#if bulletins}}
+    {{#each bulletin in bulletins}}
+      <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
+    {{/each}}
+  {{else}}
+    <p>none</p>
+    {{#if currentUserIsMember}}
+      <div class="cta">
+        {{#linkTo 'bulletins.new'}}Post{{/linkTo}}
+      </div>
+    {{/if}}
+  {{/if}}
 </ul>
 </div>
