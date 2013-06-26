@@ -1,5 +1,4 @@
 <div class="header">
-  <p>You're an administrator. Edit any of these fields!</p>
   <h4>About {{name}}</h4>
   <p>
     {{view App.ContenteditableView
@@ -14,7 +13,6 @@
       <td>collegedesis.com/#/organizations/{{view App.ContenteditableView
             valueBinding="slug"
             tagName="span"
-            classNames="heading"
             editableBinding="currentUserIsAdmin"}}</td>
     </tr>
     <tr>
@@ -23,60 +21,39 @@
         {{view App.ContenteditableView
           valueBinding="website"
           tagName="span"
-          classNames="heading"
           editableBinding="currentUserIsAdmin"}}
       </td>
     </tr>
     <tr>
       <td>Twitter</td>
       <td>
-        @{{view App.ContenteditableView
+        <span class="prompt">@</span>{{view App.ContenteditableView
           valueBinding="twitter"
           tagName="span"
-          classNames="heading"
           editableBinding="currentUserIsAdmin"}}
       </td>
     </tr>
     <tr>
       <td>Facebook</td>
       <td>
-        facebook.com/{{view App.ContenteditableView
+        <span class="prompt">facebook.com/</spam>{{view App.ContenteditableView
           valueBinding="facebook"
           tagName="span"
-          classNames="heading"
           editableBinding="currentUserIsAdmin"}}
       </td>
     </tr>
     <tr>
       <td>YouTube</td>
       <td>
-        youtube.com/{{view App.ContenteditableView
+        <span class="prompt">youtube.com/</span>{{view App.ContenteditableView
           valueBinding="youtube"
           tagName="span"
-          classNames="heading"
           editableBinding="currentUserIsAdmin"}}
       </td>
     </tr>
   </table>
-  {{#if isDirty}}
-    <button {{action save}}>Save</button>
-  {{/if}}
 </div>
-<div class="memberships">
-  <h4>Registered Members</h4>
-  <ul>
-    {{#if memberships}}
-    {{#each mem in memberships}}
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-    {{/each}}
-    {{else}}
-    No members have registered.
-    {{/if}}
-  </ul>
-</div>
+{{partial 'organizations/member_list'}}
 <div class="activity">
 <ul>
   {{#each bulletin in bulletins}}

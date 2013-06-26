@@ -1,4 +1,5 @@
-App.OrganizationsShowController = Ember.ObjectController.extend
+App.OrganizationsSettingsController = Ember.ObjectController.extend
+
   needs: ['application']
 
   currentUser: (->
@@ -14,5 +15,3 @@ App.OrganizationsShowController = Ember.ObjectController.extend
     if @get('currentUser')
       @get('currentUser').memberOf @get('id')
   ).property('currentUser.memberships.@each.membership_type', 'id')
-
-  save: -> @get('store').commit()

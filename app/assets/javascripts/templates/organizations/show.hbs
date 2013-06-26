@@ -1,66 +1,13 @@
 <aside>
-  <h3>Quick Look</h3>
-  <table>
-    <tr>
-      <td class="heading">Name</td>
-      <td>{{name}}</td>
-    </tr>
-    <tr>
-      <td class="heading">University</td>
-      <td>{{university_name}}</td>
-    </tr>
-    <tr>
-      <td class="heading">Reputation</td>
-      <td>{{reputation}}</td>
-    </tr>
-    <tr>
-      <td class="heading">Members</td>
-      <td>{{memberships.length}}</td>
-    </tr>
-    {{#if currentUser}}
-      <tr>
-        <td class="heading">You</td>
-        <td>
-          {{#if currentUserIsMember}}
-            {{#if currentUserIsAdmin}}
-              Administrator
-            {{else}}
-              Member
-            {{/if}}
-          {{else}}
-            Not a member
-          {{/if}}
-        </td>
-      </tr>
-    {{/if}}
-  </table>
-  {{#if currentUser}}
-    {{#if currentUserIsMember}}
-      {{#if currentUserIsAdmin}}
-      {{else}}
-        <div class="cta">
-          <a href="#">Become Admin</a>
-        </div>
-      {{/if}}
-    {{else}}
-      <div class="cta">
-        {{#linkTo 'users.show' currentUser}}Register{{/linkTo}}
-      </div>
-    {{/if}}
-  {{else}}
-    <div class="cta">
-      {{#linkTo 'users.new'}}Sign up{{/linkTo}}
-    </div>
+  {{partial 'organizations/show_sidebar'}}
+  {{#if currentUserIsAdmin}}
+    {{#linkTo 'organizations.settings' this}}Admin Settings{{/linkTo}}
   {{/if}}
 </aside>
 <div class="main">
   {{#if currentUser}}
     {{#if currentUserIsMember}}
-      {{#if currentUserIsAdmin}}
-        {{partial 'organizations/admin_show'}}
-      {{else}}
-        {{partial 'organizations/member_show'}}
-      {{/if}}
+      {{partial 'organizations/member_show'}}
     {{else}}
       {{partial 'organizations/logged_in_user_show'}}
     {{/if}}

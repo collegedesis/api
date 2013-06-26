@@ -6,5 +6,5 @@ App.OrganizationsShowRoute = Ember.Route.extend
     return object
 
   model: (params) ->
-    @get('store').findQuery(App.Organization, {slug: params.slug}).then (data) ->
-      return data.get('firstObject')
+    xhr = @get('store').findQuery(App.Organization, {slug: params.slug})
+    xhr.then (data) -> return data.get('firstObject')

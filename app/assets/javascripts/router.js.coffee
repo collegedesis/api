@@ -20,6 +20,7 @@ App.Router.map ->
   @resource "organizations", ->
     @route "index"
     @route "show", {path: ':slug'}
+    @route "settings", {path: ":slug/settings"}
 
   @resource "users", ->
     @route "show", {path: ':user_id'}
