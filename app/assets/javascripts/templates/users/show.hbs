@@ -10,8 +10,6 @@
     {{#unless memberships}}
       You haven't registered any memberships yet
     {{/unless}}
-    <a {{action addMembership}}>Add a membership</a></p>
-
     <ul class="memberships">
       {{#each mem in memberships}}
         <li {{bindAttr class="mem.notApproved mem.loading:loading"}}>
@@ -29,11 +27,18 @@
         </li>
       {{/each}}
     </ul>
-    <div class="control">
+    <p class="cta">
+      <a {{action addMembership}}>Add membership</a>
+    </p>
+
     {{#if dirtyRecords}}
+    <div class="control">
       <button {{action submit}}>Save</button>
       <button {{action cancel}}>Cancel</button>
-    {{/if}}
     </div>
+    {{/if}}
+
+    <h3>Trouble?</h3>
+    <p><a href="#/bulletins/how-to-sign-up">Read this</a> if your organization isn't listed or {{#linkTo 'about.contact'}}contact us{{/linkTo}}.</p>
   </div>
 </div>
