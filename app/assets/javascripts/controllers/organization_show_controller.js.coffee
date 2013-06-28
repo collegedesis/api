@@ -15,4 +15,6 @@ App.OrganizationsShowController = Ember.ObjectController.extend
       @get('currentUser').memberOf @get('id')
   ).property('currentUser.memberships.@each.membership_type', 'id')
 
-  save: -> @get('store').commit()
+  save: ->
+    if !@get('errors')
+      @get('store').commit()

@@ -1,7 +1,10 @@
 <aside>
   {{partial 'organizations/show_sidebar'}}
   {{#if isDirty}}
-    <button {{action save target="controllers.organizationsShow"}}>Save</button>
+    <button {{action save}}>Save</button>
+  {{/if}}
+  {{#if errors}}
+    <p style="color: red;">Something is wrong</p>
   {{/if}}
   {{#linkTo 'organizations.show' this}}Back{{/linkTo}}
 </aside>
