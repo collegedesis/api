@@ -47,6 +47,11 @@ App.ContenteditableView = Em.View.extend({
   },
 
   setContent: function() {
-    return this.$().html(this.get("value"));
+    this.$().html(this.get("value"));
+
+    if (!this.get('value')) {
+      this.$().css('min-width', '100px');
+    };
+    return undefined;
   }
 });
