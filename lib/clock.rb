@@ -10,3 +10,4 @@ end
 
 every(1.hours, 'Update popularity score') { Bulletin.update_scores }
 every(4.hours, 'Tweeting top 3 bulletins') { BulletinTweeter.tweet_top(3) }
+every(1.day, 'expire bulletins', at: '23:59') { Bulletin.expire }

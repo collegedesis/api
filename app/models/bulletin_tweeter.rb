@@ -2,11 +2,14 @@ class BulletinTweeter
   attr_accessor :bulletin
 
   def self.tweet_top(num)
-    bulletins = Bulletin.homepage[0]
+    bulletins = Bulletin.homepage.flatten
     successful_tweets = 0
+
     bulletins.each do |b|
       if successful_tweets < 3
-        successful_tweets += 1 if b.tweet
+        if !b.expired
+          successful_tweets += 1 if b.tweet
+        end
       end
     end
   end

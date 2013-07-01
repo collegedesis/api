@@ -1,10 +1,10 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
 
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
-  before_create :create_slug, :create_shortened_url
+  before_create :create_slug, :create_shortened_url, :set_expiration_date
 
   has_many :votes, :as => :votable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
@@ -21,7 +21,8 @@ class Bulletin < ActiveRecord::Base
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
   # scope :alive, where(:is_dead => false)
-  scope :alive, conditions: 'score > 0', order: 'score DESC'
+  # scope :alive, conditions: 'score > 0', order: 'score DESC'
+  scope :alive, where(expired: false)
   scope :has_author, conditions: 'user_id IS NOT NULL'
 
   def author_id
@@ -30,6 +31,14 @@ class Bulletin < ActiveRecord::Base
 
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
+  end
+
+  def self.expire
+    Bulletin.alive.each do |bulletin|
+      if bulletin.expiration_date.to_date >= Date.current.to_date
+        bulletin.update_attributes(expired: true)
+      end
+    end
   end
 
   def is_link?
@@ -41,16 +50,12 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.homepage
-    Bulletin.paginate(Bulletin.alive)
+    Bulletin.where(is_dead: false).order("score DESC").each_slice(10).to_a
   end
 
+  # TODO this should be using an additional scope
   def self.recent
-    Bulletin.paginate(Bulletin.alive)
-  end
-
-  def self.paginate(bulletins)
-    page_size = 10
-    bulletins.each_slice(page_size).to_a
+    Bulletin.where(is_dead: false).order("score DESC").each_slice(10).to_a
   end
 
   def relative_local_url
@@ -115,5 +120,9 @@ class Bulletin < ActiveRecord::Base
     if title == title.upcase || title == title.downcase
       self.title = title.split.map(&:capitalize).join(' ')
     end
+  end
+
+  def set_expiration_date
+    self.expiration_date = Time.now + 2.days if !expiration_date
   end
 end
