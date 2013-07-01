@@ -8,7 +8,6 @@ development:
   password:
 
 test:
-  host: /var/pgsql_socket
   adapter: postgresql
   encoding: unicode
   database: cd_test
