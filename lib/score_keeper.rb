@@ -1,4 +1,4 @@
-class Scorekeeper
+class ScoreKeeper
   def self.calc_recency_score(bulletin)
     now = DateTime.now
     birth = bulletin.created_at.to_datetime
