@@ -1,7 +1,7 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
 
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :popularity_score, :recency_score
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
   before_create :create_slug, :create_shortened_url
@@ -20,10 +20,9 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :user_id
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
-  scope :alive, where(:is_dead => false)
+  # scope :alive, where(:is_dead => false)
+  scope :alive, conditions: 'score > 0', order: 'score DESC'
   scope :has_author, conditions: 'user_id IS NOT NULL'
-  scope :popular, conditions: 'popularity_score > 1'
-  scope :newest, conditions: 'popularity_score = 1'
 
   def author_id
     user.memberships.first.organization.id if user.approved?
@@ -42,16 +41,15 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.homepage
-    Bulletin.paginate(Bulletin.alive.popular)
+    Bulletin.paginate(Bulletin.alive)
   end
 
   def self.recent
-    Bulletin.paginate(Bulletin.alive.newest)
+    Bulletin.paginate(Bulletin.alive)
   end
 
   def self.paginate(bulletins)
     page_size = 10
-    bulletins.sort_by!(&:score).reverse!
     bulletins.each_slice(page_size).to_a
   end
 
@@ -68,23 +66,6 @@ class Bulletin < ActiveRecord::Base
     orgs.each do |org|
       OrganizationMailer.bulletin_promotion(self, org).deliver
     end
-  end
-
-  def score
-    0.70 * recency_score    +
-    0.10 * popularity_score +
-    0.10 * user_reputation  +
-    0.10 * affiliation_reputation
-  end
-
-  def user_reputation
-    # TODO
-    1
-  end
-
-  def affiliation_reputation
-    # TODO
-    1
   end
 
   def voted_by_user?(user)

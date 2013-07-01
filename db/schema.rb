@@ -11,22 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610032922) do
+ActiveRecord::Schema.define(:version => 20130701061954) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.integer  "bulletin_type",    :default => 1
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "bulletin_type", :default => 1
     t.string   "url"
     t.integer  "user_id"
-    t.boolean  "protected",        :default => false
+    t.boolean  "protected",     :default => false
     t.string   "slug"
-    t.boolean  "is_dead",          :default => false
+    t.boolean  "is_dead",       :default => false
     t.string   "shortened_url"
-    t.integer  "popularity_score", :default => 0
-    t.integer  "recency_score",    :default => 0
+    t.integer  "votes_count"
+    t.integer  "score",         :default => 0
+    t.integer  "high_score",    :default => 0
   end
 
   add_index "bulletins", ["slug"], :name => "index_bulletins_on_slug"
@@ -47,10 +48,17 @@ ActiveRecord::Schema.define(:version => 20130610032922) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "membership_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "internal_ref"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "organization_id"
-    t.integer  "membership_type_id"
+    t.integer  "membership_type_id", :default => 1
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
     t.boolean  "approved",           :default => false
@@ -97,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130610032922) do
     t.boolean  "exposed",                  :default => true
     t.string   "slug"
     t.boolean  "auto_approve_memberships", :default => true
+    t.text     "about"
   end
 
   add_index "organizations", ["slug"], :name => "index_organizations_on_slug"
