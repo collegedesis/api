@@ -77,16 +77,6 @@ class Bulletin < ActiveRecord::Base
     0.10 * affiliation_reputation
   end
 
-  def update_recency_score
-    score = ScoreKeeper.calc_recency_score(self)
-    self.update_attributes(recency_score: score)
-  end
-
-  def update_popularity_score
-    score = ScoreKeeper.calc_popularity_score(self)
-    self.update_attributes(popularity_score: score)
-  end
-
   def user_reputation
     # TODO
     1
@@ -113,8 +103,8 @@ class Bulletin < ActiveRecord::Base
 
   def self.update_scores
     Bulletin.alive.each do |bulletin|
-      bulletin.update_popularity_score
-      bulletin.update_recency_score
+      scorekeeper = BulletinScoreKeeper.new(bulletin)
+      scorekeeper.update_score
     end
   end
 
