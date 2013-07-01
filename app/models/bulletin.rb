@@ -1,9 +1,10 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
+
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :popularity_score, :recency_score
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
-  before_create :create_slug, :shorten_url
+  before_create :create_slug, :create_shortened_url
 
   has_many :votes, :as => :votable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
@@ -146,17 +147,17 @@ class Bulletin < ActiveRecord::Base
     end
   end
 
-  # this is run as a before save callback for link type bulletins
-  def nullify_body
-    self.body = nil
-  end
-
   def approved?
     user.approved?
   end
 
-  # run as before_create callback
-  def shorten_url
+  private
+
+  def nullify_body
+    self.body = nil
+  end
+
+  def create_shortened_url
     if Rails.env.production?
       client = Bitly.client
       to_shorten = if self.is_post?
