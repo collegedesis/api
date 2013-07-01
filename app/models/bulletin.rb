@@ -106,32 +106,8 @@ class Bulletin < ActiveRecord::Base
   end
 
   def tweet
-    # We return true or false values
-    # so that the wrapper `.tweet_top` method
-    # knows if the tweet successed or failed
-    begin
-      Twitter.update(tweet_text)
-      return true
-    rescue => e
-      puts "#{e.inspect} - #{self.title}"
-      return false
-    end
-  end
-
-  def tweet_text
-    total_length = 140
-    separater = " - "
-    chars_remaining_for_title = total_length - (shortened_url.length + separater.length)
-
-    # if the title is too long we will remove an extra 3 chars
-    # and add an ellipsis
-    if chars_remaining_for_title < title.length
-      short_title = title[0...(chars_remaining_for_title - 4)] + "..."
-    else
-      short_title = title[0...(chars_remaining_for_title - 1)]
-    end
-
-    return short_title + separater + shortened_url
+    tweeter = BulletinTweeter.new(self)
+    tweeter.tweet
   end
 
   def self.tweet_top(num)
