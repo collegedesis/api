@@ -13,6 +13,7 @@ class Bulletin < ActiveRecord::Base
   # bulletin_types:
   # post is 1
   # link is 2
+
   validates_presence_of :title
   validates_presence_of :body, :if => :is_post?
   validates_presence_of :url, :if => :is_link?
@@ -38,10 +39,6 @@ class Bulletin < ActiveRecord::Base
 
   def is_post?
     bulletin_type == 1
-  end
-
-  def self.sort_by_score(bulletins)
-    return bulletins.sort_by{|x| x.score }.reverse
   end
 
   def self.homepage
@@ -74,16 +71,19 @@ class Bulletin < ActiveRecord::Base
   end
 
   def score
-    0.70 * recency_score + 0.10 * popularity_score + 0.10 * user_reputation + 0.10 * affiliation_reputation
+    0.70 * recency_score    +
+    0.10 * popularity_score +
+    0.10 * user_reputation  +
+    0.10 * affiliation_reputation
   end
 
   def update_recency_score
-    score = Scorekeeper.calc_recency_score(self)
+    score = ScoreKeeper.calc_recency_score(self)
     self.update_attributes(recency_score: score)
   end
 
   def update_popularity_score
-    score = Scorekeeper.calc_popularity_score(self)
+    score = ScoreKeeper.calc_popularity_score(self)
     self.update_attributes(popularity_score: score)
   end
 
@@ -111,39 +111,10 @@ class Bulletin < ActiveRecord::Base
     tweeter.tweet
   end
 
-  def self.tweet_top(num)
-    # Tweet 3 bulletins.
-    # If one fails to tweet successfully
-    # go to the next one
-    bulletins = Bulletin.homepage[0]
-    counter = 0
-    tweeted = 0
-    while tweeted < 3 do
-      bulletin = bulletins[counter]
-      if bulletin
-        response = bulletin.tweet
-        counter += 1
-        tweeted += 1 if response
-      else
-        break
-      end
-    end
-  end
-
-  def self.top(num)
-    Bulletin.homepage("1")[0..(num - 1)]
-  end
-
   def self.update_scores
     Bulletin.alive.each do |bulletin|
       bulletin.update_popularity_score
       bulletin.update_recency_score
-    end
-  end
-
-  def normalize_title
-    if title == title.upcase || title == title.downcase
-      self.title = title.split.map(&:capitalize).join(' ')
     end
   end
 
@@ -166,6 +137,12 @@ class Bulletin < ActiveRecord::Base
         relative_local_url
       end
       self.shortened_url = client.shorten(to_shorten).short_url
+    end
+  end
+
+  def normalize_title
+    if title == title.upcase || title == title.downcase
+      self.title = title.split.map(&:capitalize).join(' ')
     end
   end
 end

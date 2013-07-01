@@ -1,6 +1,15 @@
 class BulletinTweeter
   attr_accessor :bulletin
-  @@TOTAL_TWEET_LENGTH = 140
+
+  def self.tweet_top(num)
+    bulletins = Bulletin.homepage[0]
+    successful_tweets = 0
+    bulletins.each do |b|
+      if successful_tweets < 3
+        successful_tweets += 1 if b.tweet
+      end
+    end
+  end
 
   def initialize(bulletin)
     @bulletin = bulletin
