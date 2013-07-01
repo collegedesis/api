@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Bulletin, focus: true do
 
-  describe "Creating bulletins" do
+  describe "#create" do
     it "can create a valid post bulletin" do
       bulletin = FactoryGirl.create(:bulletin_post)
       bulletin.is_post?.should be_true
@@ -26,7 +26,14 @@ describe Bulletin, focus: true do
       bulletin = FactoryGirl.create(:bulletin_post, body: "Some text that should NOT be nullified")
       bulletin.body.should_not be_nil
     end
+
+    it "sets expiration date to 2 days later if none is provided" do
+      bulletin = FactoryGirl.build(:bulletin_post)
+      bulletin.should_receive(:set_expiration_date).and_return(nil)
+      bulletin.save
+    end
   end
+
 
   describe "#relative_local_url" do
     it "should return the url if bulletin is a link"do
@@ -49,15 +56,6 @@ describe Bulletin, focus: true do
       bulletin.user_id = user.id
       bulletin.user.stub(:approved?) { true }
       expect(bulletin.approved?).to eq(true)
-    end
-  end
-
-  describe ".paginated_bulletins" do
-    # TODO this should probably be tested better
-    it "paginates by page size" do
-      bulletins = FactoryGirl.create_list(:approved_bulletin, 20)
-      paginated_bulletins = Bulletin.paginate(bulletins)
-      expect(paginated_bulletins.length).to eq 2
     end
   end
 
