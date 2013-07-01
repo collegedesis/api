@@ -14,36 +14,27 @@ describe BulletinScoreKeeper do
     let(:bulletin)  { FactoryGirl.create(:bulletin_post) }
     let(:scorekeep) { BulletinScoreKeeper.new(bulletin) }
 
-    it "should update the recency score" do
-      scorekeep.should_receive(:update_recency_score)
+    before(:each) { scorekeep.stub(:score) { 100 } }
+
+    it "should update the score" do
       scorekeep.update_score
+      expect(bulletin.score).to eq 100
     end
 
-    it "should update the popularity score" do
-      scorekeep.should_receive(:update_popularity_score)
-      scorekeep.update_score
+    context "new high score" do
+      it "should udpate the high score" do
+        expect(bulletin.high_score).to eq 0
+        scorekeep.update_score
+        expect(bulletin.high_score).to eq 100
+      end
     end
-  end
 
-  describe "#update_recency_score" do
-    let(:bulletin) { FactoryGirl.create(:bulletin_post) }
-    let(:scorekeep) { BulletinScoreKeeper.new(bulletin) }
-
-    it "should update the bulletin's recency score with the recency score" do
-      scorekeep.stub(:recency_score) { 100 }
-      scorekeep.update_recency_score
-      expect(bulletin.recency_score).to eq 100
-    end
-  end
-
-  describe "#update_popularity_score" do
-    let(:bulletin) { FactoryGirl.create(:bulletin_post) }
-    let(:scorekeep) { BulletinScoreKeeper.new(bulletin) }
-
-    it "should update the bulletin's recency score with the recency score" do
-      scorekeep.stub(:popularity_score) { 100 }
-      scorekeep.update_popularity_score
-      expect(bulletin.popularity_score).to eq 100
+    context "not a new high score" do
+      it "should not update the high score" do
+        bulletin.high_score = 200
+        scorekeep.update_score
+        expect(bulletin.high_score).to eq 200
+      end
     end
   end
 end

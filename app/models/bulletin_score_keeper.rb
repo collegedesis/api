@@ -6,18 +6,22 @@ class BulletinScoreKeeper
   end
 
   def update_score
-    update_recency_score
-    update_popularity_score
+    attrs = { score: score }
+    # if this score is a new high score, add it to attrs
+    attrs[:high_score] = score if score > bulletin.high_score
+    bulletin.update_attributes(attrs)
   end
 
-  def update_recency_score
-    bulletin.update_attributes(recency_score: recency_score)
+  def score
+    # TODO pull out weights into constants
+    0.70 * recency_score +
+    0.15 * popularity_score   +
+    0.15 * author_reputation
   end
 
-  def update_popularity_score
-    bulletin.update_attributes(popularity_score: popularity_score)
+  def author_reputation
+    1
   end
-
 
   # TODO Algorithm is not tested
   def recency_score
