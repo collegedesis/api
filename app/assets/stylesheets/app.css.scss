@@ -153,11 +153,34 @@ h3, h4, h5, span.heading {
   margin: 20px auto;
 }
 
+$red: red;
+$darkred: darken(red, 15%);
+$lightred: darken(red, 10%);
+
+@mixin red {
+  background-image: -moz-linear-gradient(top, $red, $darkred);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($red), to($darkred));
+  background-image: -webkit-linear-gradient(top, $red, $darkred);
+  background-image: -o-linear-gradient(top, $red, $darkred);
+  background-image: linear-gradient(to bottom, $red, $darkred);
+  box-shadow: 0 0 1px $darkred;
+}
+@mixin redhover {
+  background-image: -moz-linear-gradient(top, $red, $lightred);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($red), to($lightred));
+  background-image: -webkit-linear-gradient(top, $red, $lightred);
+  background-image: -o-linear-gradient(top, $red, $lightred);
+  background-image: linear-gradient(to bottom, $red, $lightred);
+  box-shadow: 0 0 1px $lightred;
+}
 .cta {
   padding: 5px;
   max-width: 125px;
-  background-color: red;
+  @include red;
   text-align: center;
+  &:hover {
+    @include redhover;
+  }
   a {
     display: block;
     color: white !important;
