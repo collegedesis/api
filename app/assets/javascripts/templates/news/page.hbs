@@ -2,7 +2,7 @@
   <h3>News</h3>
   <p>Promote your {{view App.RotatingView templatesBinding=incentives}}</p>
   <p>Your team/organization earns <span class="heading">reputation</span> when you share links or write a blog post!</p>
-  <button {{action write}}>Post</button>
+  <div class="cta" {{action write}}>Post</div>
 </aside>
 <div {{bindAttr class="controllers.bulletinsIndex.loading :main"}}>
   {{#each controllers.bulletinsIndex}}
