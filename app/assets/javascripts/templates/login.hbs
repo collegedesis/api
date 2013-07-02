@@ -1,9 +1,30 @@
+<aside>
+  <h3>Why</h3>
+  <ol style="margin-bottom:10px;">
+    <li>Join a national community</li>
+    <li>Earn reputation for your team</li>
+    <li>Fundraise</li>
+  </ol>
+  <a href="#/bulletins/how-to-sign-up">Learn More</a>
+</aside>
 <div class="main">
   {{App.session.messages}}
-  <form>
-    Email {{input type=text value=session.email}}
-    Password {{input type=password value=session.password}}
-    <div class="cta" {{action submit}}>Log in</div>
+  <form class="user-signup-form">
+    <h4>{{#linkTo users.new}}Sign Up{{/linkTo}} / Log in</h4>
+    <div class="row">
+      <div class="header">Email</div>
+      <div class="contents">
+        {{input type=text value=session.email}}
+        {{#unless validEmail}}<span class="error">that doesn't look like an email address?</span>{{/unless}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="header">Password</div>
+      <div class="contents">
+        {{input type=password value=session.password}}
+        {{#unless validPassword}}<span class="error">can't login without a password, silly</span>{{/unless}}
+      </div>
+    </div>
+    <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Log in</button>
   </form>
-  Or {{#linkTo users.new}}Sign Up{{/linkTo}}
 </div>
