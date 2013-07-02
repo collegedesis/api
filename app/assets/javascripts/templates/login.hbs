@@ -3,7 +3,7 @@
   <form>
     Email {{input type=text value=session.email}}
     Password {{input type=password value=session.password}}
-    <button {{action submit}}>Log in</button>
-    </form>
+    <div class="cta" {{action submit}}>Log in</div>
+  </form>
   Or {{#linkTo users.new}}Sign Up{{/linkTo}}
 </div>

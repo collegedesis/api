@@ -178,9 +178,9 @@ $lightred: darken(red, 10%);
   max-width: 125px;
   @include red;
   text-align: center;
-  &:hover {
-    @include redhover;
-  }
+  color: white !important;
+  cursor: pointer;
+  &:hover { @include redhover; }
   a {
     display: block;
     color: white !important;
