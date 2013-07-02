@@ -26,7 +26,7 @@ App.UsersNewController = Ember.ObjectController.extend
   # errors check for valid name and email, matching passwords,
   # and that an org with an email address is selected
   errors: (->
-    !(@get("validName") && @get('validEmail') && @get('passwordMatch'))
+    !(@get("validName") && @get('validEmail') && @get('validPassword') && @get('passwordMatch'))
   ).property('validName', 'validEmail', 'passwordMatch')
 
   # a valid name is anything that has is not null
@@ -38,8 +38,9 @@ App.UsersNewController = Ember.ObjectController.extend
       if @get('email').match(/^\S+@\S+$/) then true else false
   ).property('email')
 
-  # passwords match if passwords match.
-  # obvious statement is obvious.
+  # password is at least six characters
+  validPassword: (-> @get('password.length') >= 6 ).property('password')
+
   passwordMatch: (->
-    @get('password') == @get("password_confirmation") && @get("password.length") >= 6
+    @get('password') == @get("password_confirmation")
   ).property('password', 'password_confirmation')

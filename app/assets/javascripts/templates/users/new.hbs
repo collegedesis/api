@@ -1,35 +1,47 @@
 <aside>
-  <h3>Guidelines</h3>
-  <ol>
-    <li>Use your own name</li>
-    <li>Use your own email address</li>
-    <li>Register a membership to an organization</li>
-    <li><a href="#/bulletins/how-to-sign-up">Read this</a></li>
+  <h3>Why</h3>
+  <ol style="margin-bottom:10px;">
+    <li>Join a national community</li>
+    <li>Earn reputation for your team</li>
+    <li>Fundraise</li>
   </ol>
+  <a href="#/bulletins/how-to-sign-up">Learn More</a>
 </aside>
 <div class="main">
-  <h4>Sign up</h4>
-  <form>
-    Full Name {{input value=full_name}}
-    Email {{input value=email}}
-    Password {{input type=password value=password}}
-    Password (again) {{input type=password value=password_confirmation}}
-    {{#if controller.errors}}
-      <p style="color:red;">Something isn't right:
-      <ul>
-        <li>Email address is legit?</li>
-        <li>Password is at least 6 characters?</li>
-        <li>Passwords match?</li>
-        <li>Email us at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a> </li>
-      </ul>
-      </p>
+  <form class="user-signup-form">
+    <h4>Sign up / {{#linkTo "login"}}Log in{{/linkTo}}</h4>
+    <div class="row">
+      <div class="header">Full Name</div>
+      <div class="contents">
+        {{input value=full_name}}
+        <span class="error">Use your own name</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="header">Email</div>
+      <div class="contents">
+        {{input type=email value=email}}
+        {{#unless validEmail}}<span class="error">and your own email</span>{{/unless}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="header">Password</div>
+      <div class="contents">
+        {{input type=password value=password}}
+        {{#unless validPassword}}<span class="error">at least six characters</span>{{/unless}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="header">Confirmation</div>
+      <div class="contents">
+        {{input type=password value=password_confirmation}}
+        {{#unless passwordMatch}}<span class="error">does that match?</span>{{/unless}}
+      </div>
+    </div>
+    {{#if controller.working}}
+      Working...
     {{else}}
-      {{#if controller.working}}
-        Working...
-      {{else}}
-        <div class="cta" {{action submit}}>Sign up</div>
-      {{/if}}
+      <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Sign up</button>
     {{/if}}
   </form>
-  <p>Or {{#linkTo "login"}}login{{/linkTo}}</p>
 </div>
