@@ -1,20 +1,21 @@
 @import '_imports';
 
-.main .header {
-  margin-bottom: 10px;
+.main section {
+  margin-bottom: 20px;
 }
-.main .members {
-  li {
+
+.main .memberships {
+  margin-bottom: 10px;
+  ul li {
     display: inline-block;
     width: 49%;
-    margin-bottom: 25px;
     img {
-      width: 100px;
-      display: block;
       float: left;
-      margin-right: 15px
+      margin-right: 15px;
+      height: 40px;
     }
   }
+
 }
 
 @mixin editable {
@@ -34,16 +35,13 @@ div.editable {
 }
 
 table.left-heading {
-  // border: solid 1px $brown2;
   width: 100%;
-  box-shadow: 0 0 3px $brown2;
-
   tr {
     height: 30px;
     margin-bottom: 5px;
   }
   tr td {
-    box-shadow: 1px 0 1px $brown2;
+    box-shadow: 0 0 3px $brown2;
     padding: 5px 10px;
   }
   tr td:first-child {
@@ -66,15 +64,5 @@ table.left-heading {
   td .prompt {
     color: $brown4;
     font-family: $header-font;
-  }
-}
-
-.memberships ul li {
-  display: inline-block;
-  width: 49%;
-  img {
-    float: left;
-    margin-right: 10px;
-    height: 40px;
   }
 }
