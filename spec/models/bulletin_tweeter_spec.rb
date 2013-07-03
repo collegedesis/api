@@ -15,8 +15,7 @@ describe BulletinTweeter do
 
     it "returns the right number" do
       tweeter.stub(:url_to_tweet) { "lkjasda" }
-      tweeter.stub(:separator) { "---" }
-      available_length = tweeter.total_tweet_length - tweeter.url_to_tweet.length - tweeter.separator.length
+      available_length = BulletinTweeter::TOTAL_TWEET_LENGTH - tweeter.url_to_tweet.length - BulletinTweeter::SEPARATOR.length
       expect(tweeter.available_title_length).to eq available_length
     end
   end
@@ -76,8 +75,7 @@ describe BulletinTweeter do
     it "returns title, separator, and url in the right order" do
       tweeter.stub(:title_to_tweet) { "This thing" }
       tweeter.stub(:url_to_tweet) { "some url" }
-      tweeter.stub(:separator) { "blah blah" }
-      expect(tweeter.tweet_text).to eq "This thingblah blahsome url"
+      expect(tweeter.tweet_text).to eq "This thing - some url"
     end
   end
 
