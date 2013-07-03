@@ -21,11 +21,13 @@ App.OrganizationsSettingsController = Ember.ObjectController.extend
       @get('store').commit()
 
   errors: (->
-    if @get('slugisValid') && @get('twitterIsValid') && @get('facebookIsValid') && @get("youTubeIsValid")
-      true
-    else
-      false
-  ).observes('slugisValid', 'twitterIsValid', 'facebookIsValid', 'youTubeIsValid')
+    arr = Em.A()
+    arr.push('slug is invalid') if !@get('slugisValid')
+    arr.push('twitter is invalid') if !@get('twitterIsValid')
+    arr.push('facebook is invalid') if !@get('facebookIsValid')
+    arr.push('youtube is invalid') if !@get("youTubeIsValid")
+    return arr
+  ).property('slugisValid', 'twitterIsValid', 'facebookIsValid', 'youTubeIsValid')
 
   slugisValid: (->
     @get('slug') && !@_containsSpaces @get('slug')
@@ -48,10 +50,12 @@ App.OrganizationsSettingsController = Ember.ObjectController.extend
   youTubeIsValid: (->
     if @get('youtube')
       !@_containsSpaces @get('youtube')
+    else
+      true
   ).property('youtube')
 
   _containsSpaces: (str) ->
     if str
-      if str.match(/\s/) then true else false
+      if str.match(/\s+/) then true else false
     else
       false

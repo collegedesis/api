@@ -3,10 +3,4 @@
   <p>{{#if about}}{{about}}{{else}}No description.{{/if}}</p>
 </div>
 {{partial 'organizations/member_list'}}
-<div class="activity">
-<ul>
-  {{#each bulletin in bulletins}}
-    <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
-  {{/each}}
-</ul>
-</div>
+{{partial 'organizations/bulletins_list'}}

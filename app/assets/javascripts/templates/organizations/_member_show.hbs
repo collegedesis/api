@@ -3,20 +3,4 @@
   <p>{{#if about}}{{about}}{{else}}No description.{{/if}}</p>
 </div>
 {{partial 'organizations/member_list'}}
-<div class="activity">
-<ul>
-  <h4>Posted Bulletins</h4>
-  {{#if bulletins}}
-    {{#each bulletin in bulletins}}
-      <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
-    {{/each}}
-  {{else}}
-    <p>none</p>
-    {{#if currentUserIsMember}}
-      <div class="cta">
-        {{#linkTo 'bulletins.new'}}Post{{/linkTo}}
-      </div>
-    {{/if}}
-  {{/if}}
-</ul>
-</div>
+{{partial 'organizations/bulletins_list'}}

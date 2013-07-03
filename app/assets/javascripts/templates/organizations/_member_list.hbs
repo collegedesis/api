@@ -1,35 +1,35 @@
-<div class="memberships">
+<section class="memberships">
   <h4>Registered Members</h4>
-  <ul>
-    {{#if memberships}}
-    {{#each mem in memberships}}
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-      <li>
-        <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
-        <h5>{{mem.user.full_name}}</h5>
-      </li>
-    {{/each}}
-    {{else}}
+  {{#if memberships}}
+    <ul>
+      {{#each mem in memberships}}
+        <li>
+          <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+          <h5>{{mem.user.full_name}}</h5>
+        </li>
+        <li>
+          <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+          <h5>{{mem.user.full_name}}</h5>
+        </li>
+        <li>
+          <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+          <h5>{{mem.user.full_name}}</h5>
+        </li>
+        <li>
+          <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+          <h5>{{mem.user.full_name}}</h5>
+        </li>
+        <li>
+          <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+          <h5>{{mem.user.full_name}}</h5>
+        </li>
+        <li>
+          <img class="avatar" {{bindAttr src="mem.user.avatar_url"}}>
+          <h5>{{mem.user.full_name}}</h5>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
     No members have registered.
-    {{/if}}
-  </ul>
-</div>
+  {{/if}}
+</section>

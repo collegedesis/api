@@ -19,17 +19,7 @@
   {{#if currentUser}}
     <tr>
       <td class="heading">You</td>
-      <td>
-        {{#if currentUserIsMember}}
-          {{#if currentUserIsAdmin}}
-            Administrator
-          {{else}}
-            Member
-          {{/if}}
-        {{else}}
-          Not a member
-        {{/if}}
-      </td>
+      <td>{{currentUserStatus}}</td>
     </tr>
   {{/if}}
 </table>

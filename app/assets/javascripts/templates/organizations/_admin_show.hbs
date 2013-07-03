@@ -1,5 +1,5 @@
-<div class="header">
-  <h4>About {{name}}</h4>
+<section class="form">
+  <h4>About</h4>
   <p>
     {{view App.ContenteditableView
           valueBinding="about"
@@ -52,12 +52,6 @@
       </td>
     </tr>
   </table>
-</div>
+</section>
 {{partial 'organizations/member_list'}}
-<div class="activity">
-<ul>
-  {{#each bulletin in bulletins}}
-    <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
-  {{/each}}
-</ul>
-</div>
+{{partial 'organizations/bulletins_list'}}

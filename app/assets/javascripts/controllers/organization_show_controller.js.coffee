@@ -15,6 +15,16 @@ App.OrganizationsShowController = Ember.ObjectController.extend
       @get('currentUser').memberOf @get('id')
   ).property('currentUser.memberships.@each.membership_type', 'id')
 
+  currentUserStatus: (->
+    if @get('currentUserIsMember')
+      if @get('currentUserIsAdmin')
+        return "Administrator"
+      else
+        return "Member"
+    else
+      return "Not a member"
+  ).property('currentUserIsAdmin', 'currentUserIsMember')
+
   save: ->
     if !@get('errors')
       @get('store').commit()
