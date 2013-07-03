@@ -1,5 +1,7 @@
 class BulletinTweeter
   attr_accessor :bulletin
+  TOTAL_TWEET_LENGTH = 140
+  SEPARATOR = " - "
 
   def self.tweet_top(num)
     bulletins = Bulletin.homepage.flatten
@@ -29,11 +31,11 @@ class BulletinTweeter
   end
 
   def tweet_text
-    title_to_tweet + separator + url_to_tweet
+    title_to_tweet + SEPARATOR + url_to_tweet
   end
 
   def available_title_length
-    total_tweet_length - separator.length - url_to_tweet.length
+    TOTAL_TWEET_LENGTH - SEPARATOR.length - url_to_tweet.length
   end
 
   def title_to_tweet
@@ -50,15 +52,4 @@ class BulletinTweeter
     bulletin.shortened_url || "no_url_available"
   end
 
-  def separator
-    # TODO this should be a constant in this class.
-    # How do you define constants inside a class?
-    " - "
-  end
-
-  def total_tweet_length
-    # TODO this should be a constant in this class.
-    # How do you define constants inside a class?
-    140
-  end
 end
