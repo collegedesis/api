@@ -123,6 +123,12 @@ class Bulletin < ActiveRecord::Base
   end
 
   def set_expiration_date
-    self.expiration_date = Time.now + 2.days if !expiration_date
+    if !self.expiration_date
+      if self.created_at?
+        self.expiration_date = self.created_at + 2.days
+      else
+        self.expiration_date = Date.current + 2.days
+      end
+    end
   end
 end
