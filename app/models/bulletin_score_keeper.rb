@@ -1,4 +1,7 @@
 class BulletinScoreKeeper
+  RECENCY_WEIGHT    = 0.70
+  POPULARITY_WEIGHT = 0.15
+  AUTHOR_REP_WEIGHT = 0.15
   attr_accessor :bulletin
 
   def initialize(bulletin)
@@ -6,17 +9,15 @@ class BulletinScoreKeeper
   end
 
   def update_score
-    attrs = { score: score }
-    # if this score is a new high score, add it to attrs
-    attrs[:high_score] = score if score > bulletin.high_score
-    bulletin.update_attributes(attrs)
+    bulletin.score = score
+    update_high_score if score > bulletin.high_score
+    bulletin.save
   end
 
   def score
-    # TODO pull out weights into constants
-    0.70 * recency_score +
-    0.15 * popularity_score   +
-    0.15 * author_reputation
+    RECENCY_WEIGHT    * recency_score     +
+    POPULARITY_WEIGHT * popularity_score  +
+    AUTHOR_REP_WEIGHT * author_reputation
   end
 
   def author_reputation
@@ -29,7 +30,7 @@ class BulletinScoreKeeper
     birth = bulletin.created_at.to_datetime
     age = now - birth
     score = 2 ** -(age)
-    return 100 * score # to normalize
+    normalize(score)
   end
 
   # TODO algorithm is not tested
@@ -37,7 +38,7 @@ class BulletinScoreKeeper
     num_of_votes = bulletin.votes.length
     raw = (num_of_votes + num_of_clicks) / 2.0
     score = Math.log(raw + 1)
-    return 100 * score
+    normalize(score)
   end
 
   # TODO add specs for this
@@ -61,5 +62,15 @@ class BulletinScoreKeeper
     rescue
       1
     end
+  end
+
+  private
+
+  def update_high_score
+    bulletin.high_score = score
+  end
+
+  def normalize(score)
+    100 * score
   end
 end
