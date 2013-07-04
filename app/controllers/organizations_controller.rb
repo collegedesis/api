@@ -34,8 +34,8 @@ class OrganizationsController < ApplicationController
 
   def apply
     org = Organization.find_by_id(params[:id])
-    email1 = AdminMailer.application_notify(params[:application], current_user.email, current_user.full_name).deliver
-    email2 = AdminMailer.application_notify(params[:application], org.email, current_user.full_name).deliver
+    AdminMailer.application_notify(params[:application], current_user.email, current_user.full_name).deliver
+    AdminMailer.application_notify(params[:application], org.email, current_user.full_name).deliver
     render nothing: true, status: 204
   end
 
