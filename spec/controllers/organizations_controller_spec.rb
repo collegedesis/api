@@ -1,33 +1,78 @@
 require 'spec_helper'
 
 describe OrganizationsController, :type => :controller do
-  let(:organization) { FactoryGirl.create(:organization) }
 
-  it 'should return organizations in json' do
-    organization.valid?
-    get :index
-    hash = {
-      organizations: [{
-        id: organization.id,
-        name: organization.name,
-        website: organization.website,
-        display_name: "#{organization.name} (#{organization.university.name})",
-        location: organization.university.state,
-        slug: organization.display_name.parameterize,
-        university_name: organization.university.name,
-        org_type_id: organization.organization_type.id,
-        membership_ids: []
-      }]
-    }
-    response.body.should == hash.to_json
+  describe "index" do
+    let!(:organization) { FactoryGirl.create(:organization) }
+    it 'should return organizations in json' do
+      get :index
+      response.should be_success
+    end
+
+    describe "root key" do
+      it 'includes the root organizations key' do
+        get :index
+        response_json = JSON.parse(response.body)
+        expect(response_json.keys.include?("organizations")).to eq true
+      end
+
+      it "includes only one root key" do
+        get :index
+        response_json = JSON.parse(response.body)
+        expect(response_json.keys.length).to eq 1
+      end
+
+      it "includes an array under the organizations key" do
+        FactoryGirl.create(:organization)
+        get :index
+        response_json = JSON.parse(response.body)
+        expect(response_json["organizations"].class).to eq Array
+      end
+    end
+
+    describe "inside root key" do
+
+      before(:each) do
+        get :index
+        response_json = JSON.parse(response.body)
+        @orgs_json_keys = response_json["organizations"].first.keys
+      end
+
+      it "includes the organizations name" do
+        expect(@orgs_json_keys.include?("name")).to eq true
+      end
+
+      it "includes the about" do
+        expect(@orgs_json_keys.include?("about")).to eq true
+      end
+
+      it "includes the reputation" do
+        expect(@orgs_json_keys.include?("reputation")).to eq true
+      end
+
+      it "includes the website" do
+        expect(@orgs_json_keys.include?("website")).to eq true
+      end
+
+      it "includes the slug" do
+        expect(@orgs_json_keys.include?("slug")).to eq true
+      end
+
+      it "includes the twitter" do
+        expect(@orgs_json_keys.include?("twitter")).to eq true
+      end
+
+      it "includes the facebook" do
+        expect(@orgs_json_keys.include?("facebook")).to eq true
+      end
+
+      it "includes the university_name" do
+        expect(@orgs_json_keys.include?("university_name")).to eq true
+      end
+
+      it "includes the display_name" do
+        expect(@orgs_json_keys.include?("display_name")).to eq true
+      end
+    end
   end
-
-  it 'should return organization records with a root key'
-
-  it 'should not serialize the email field'
-
-  it 'should serialize name'
-  it 'should serialize university_id'
-  it 'should serialize organization_type_id'
-
 end
