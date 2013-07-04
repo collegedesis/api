@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :organization do
     name "Cool org"
-    email Faker::Internet.email
+    email { generate(:email) }
     association :university, :factory => :university
     association :organization_type, :factory => :organization_type
   end
