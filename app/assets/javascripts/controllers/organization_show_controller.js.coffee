@@ -24,7 +24,3 @@ App.OrganizationsShowController = Ember.ObjectController.extend
     else
       return "Not a member"
   ).property('currentUserIsAdmin', 'currentUserIsMember')
-
-  save: ->
-    if !@get('errors')
-      @get('store').commit()

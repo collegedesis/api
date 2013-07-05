@@ -12,3 +12,19 @@ App.Organization = DS.Model.extend
   facebook: DS.attr('string')
   youtube: DS.attr('string')
   website: DS.attr('string')
+
+  twitterUrl: (->
+    "http://twitter.com/" + @get('twitter')
+  ).property('twitter')
+
+  facebookUrl: (->
+    "http://facebook.com/" + @get('facebook')
+  ).property('facebook')
+
+  youtubeUrl: (->
+    "http://youtube.com/" + @get('youtube')
+  ).property('youtube')
+
+  websiteUrl: (->
+    "http://" + @get('website[')
+  ).property('website')

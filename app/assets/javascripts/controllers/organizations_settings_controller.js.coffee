@@ -54,6 +54,9 @@ App.OrganizationsSettingsController = Ember.ObjectController.extend
       true
   ).property('youtube')
 
+  save: ->
+    @get('store').commit() if !@get('errors.length')
+
   _containsSpaces: (str) ->
     if str
       if str.match(/\s+/) then true else false
