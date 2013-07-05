@@ -1,4 +1,5 @@
 #= require ./router
+#= require ./serializer
 #= require ./adapter
 #= require ./store
 #= require_tree ./models
