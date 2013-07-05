@@ -25,10 +25,14 @@ class OrganizationsController < ApplicationController
 
   def update
     @org = Organization.find(params[:id])
-    if @org.update_attributes(params[:organization])
-      render json: @org
+    if current_user && current_user.is_admin_of?(@org)
+      if @org.update_attributes(params[:organization])
+        render json: @org
+      else
+        render json: {errors: @org.errors}
+      end
     else
-      render json: {errors: @org.errors}
+      render json: {errors: "Unauthorized" }, status: 401
     end
   end
 

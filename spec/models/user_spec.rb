@@ -36,7 +36,7 @@ describe User do
   describe "#update_approved_status" do
     let(:user) { user = FactoryGirl.create(:user) }
     context "has_approved_membership" do
-      it "updates approved to false", focus: true do
+      it "updates approved to false" do
         user.stub(:has_approved_membership?) { false }
         user.update_approved_status
         expect(user.approved).to eq false
@@ -48,6 +48,26 @@ describe User do
         user.update_approved_status
         expect(user.approved).to eq true
       end
+    end
+  end
+
+  describe "#is_admin_of?" do
+    let(:org) { FactoryGirl.create(:organization) }
+    it "is true if user has an admin membership" do
+      user = FactoryGirl.create(:user)
+      user.memberships.create(organization_id: org.id, membership_type_id: MEMBERSHIP_TYPE_ADMIN)
+      expect(user.is_admin_of?(org)).to eq true
+    end
+
+    it "is false if user does not have an admin membership" do
+      user = FactoryGirl.create(:user)
+      user.memberships.create(organization_id: org.id, membership_type_id: MEMBERSHIP_TYPE_MEMBER)
+      expect(user.is_admin_of?(org)).to eq false
+    end
+
+    it "is false if user is not a member of org", focus: true do
+      user = FactoryGirl.create(:user)
+      expect(user.is_admin_of?(org)).to eq false
     end
   end
 end

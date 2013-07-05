@@ -39,7 +39,21 @@ class User < ActiveRecord::Base
     self.update_attributes(approved: val)
   end
 
+  def is_admin_of?(org)
+    membership = get_membership(org)
+    if membership && (membership.membership_type_id == MEMBERSHIP_TYPE_ADMIN)
+      true
+    else
+      false
+    end
+  end
+
   protected
+
+  def get_membership(org)
+    memberships.where(organization_id: org.id).first
+  end
+
   def has_approved_membership?
     memberships.map(&:approved).include? true
   end
