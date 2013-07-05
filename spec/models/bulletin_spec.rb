@@ -62,13 +62,13 @@ describe Bulletin, focus: true do
   describe ".alive" do
     let(:bulletin) { FactoryGirl.build(:bulletin_post, score: 1) }
     it "includes alive bulletins" do
-      bulletin.is_dead = false
+      bulletin.expired = false
       bulletin.save
       expect(Bulletin.alive.include? bulletin).to eq true
     end
 
     it "does not include dead bulletins" do
-      bulletin.is_dead = true
+      bulletin.expired = true
       bulletin.save
       expect(Bulletin.alive.include? bulletin).to eq false
     end
