@@ -35,11 +35,12 @@ class User < ActiveRecord::Base
   end
 
   def update_approved_status
-    # TODO Write a unit test for this
-    if memberships.map(&:approved).include? true
-      self.update_attributes(approved: true)
-    else
-      self.update_attributes(approved: false)
-    end
+    val = has_approved_membership? ? true : false
+    self.update_attributes(approved: val)
+  end
+
+  protected
+  def has_approved_membership?
+    memberships.map(&:approved).include? true
   end
 end

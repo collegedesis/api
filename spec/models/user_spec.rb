@@ -33,26 +33,21 @@ describe User do
     end
   end
 
-  describe "Approval status" do
-    it "should not be approved if they don't have any memberships" do
-      user = FactoryGirl.create(:user)
-      user.approved?.should_not be true
+  describe "#update_approved_status" do
+    let(:user) { user = FactoryGirl.create(:user) }
+    context "has_approved_membership" do
+      it "updates approved to false", focus: true do
+        user.stub(:has_approved_membership?) { false }
+        user.update_approved_status
+        expect(user.approved).to eq false
+      end
     end
-
-    it "should not be approved if it does not have at least one approved membership" do
-      org = FactoryGirl.create(:organization)
-      user = FactoryGirl.create(:user)
-      membership = user.memberships.create(organization_id: org.id)
-      membership.stub(:approved) { false }
-      expect(user.approved?).to eq(false)
-    end
-
-    it "should be approved if it has at least one approved membership" do
-      org = FactoryGirl.create(:organization)
-      user = FactoryGirl.create(:user)
-      membership = user.memberships.create(organization_id: org.id)
-      membership.stub(:approved) { true }
-      expect(user.approved?).to eq(true)
+    context "does not have approved membership" do
+      it "updates approved to true" do
+        user.stub(:has_approved_membership?) { true }
+        user.update_approved_status
+        expect(user.approved).to eq true
+      end
     end
   end
 end
