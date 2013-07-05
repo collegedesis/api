@@ -7,38 +7,24 @@ Collegedesis::Application.routes.draw do
   # Used as API
   resources :organizations,       only: [:index, :show, :create, :update]
   resources :organization_types,  only: [:index, :show]
-  resources :messages,            only: [:create]
-  resources :events,              only: [:index, :create]
   resources :users
   resources :memberships
+  resources :membership_applications, only: [:create]
   resources :membership_types,    only: [:index, :show]
   resources :universities,        only: [:index, :show]
   resources :bulletins,           only: [:index, :show, :create]
   resources :comments,            only: [:index, :create]
   # Resources
-  resources :products,            only: [:index, :show]
-  resources :purchases,           only: [:create, :show]
-  resources :votes,               only: [:index]
+
+  resources :votes,               only: [:index, :create]
+
   # Non REST conventions
-  match '/verifications/verify', to: 'verifications#verify'
   match 'info', to: 'site#info'
-  resources :messages do
-    collection do
-      post 'tests'
-    end
-  end
 
   # render Ember apps
-  match "/store" => redirect("/#/store")
+  match "/store" => redirect("/#/")
   match "/about" => redirect("/#/about")
-  match "/reps" => redirect("/#/reps")
   match "/party" => redirect("/#/radio")
   match "/radio" => redirect("/#/radio")
   match "/join" => redirect("/#/users/signup")
-  match "/press" => redirect("/#/")
-  match "/organizations/:id/apply", to: 'organizations#apply'
-  # not being used currently
-  resources :letters
-  resources :stories
-  resources :votes, only: [:create]
 end
