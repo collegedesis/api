@@ -5,7 +5,6 @@
     <h1>{{full_name}}</h1>
   </div>
   <h3>Memberships</h3>
-  {{#if loading}}loading...{{/if}}
   <div {{bindAttr class=":info loading"}}>
     {{#unless memberships}}
       You haven't registered any memberships yet
@@ -13,29 +12,33 @@
     <ul class="memberships">
       {{#each mem in memberships}}
         <li {{bindAttr class="mem.notApproved mem.loading:loading"}}>
-          {{#if mem.isNew}}
-          {{view Ember.Select contentBinding="controllers.organizationsIndex"
-                              optionValuePath="content"
-                              optionLabelPath="content.display_name"
-                              selectionBinding="mem.organization"}}
-           {{else}}
           {{#linkTo 'organizations.show' mem.organization tagName='div'}}
             {{mem.display_name}}
           {{/linkTo}}
-            <a class="attention" {{action deleteMembership mem}}>Delete</a>
-          {{/if}}
+          <a class="attention" {{action deleteMembership mem}}>Delete</a>
         </li>
       {{/each}}
     </ul>
-    <p class="cta">
-      <a {{action addMembership}}>Add membership</a>
-    </p>
-
-    {{#if dirtyRecords}}
+    <ul class="memberships">
+      {{#each app in pendingMembershipApplications}}
+      {{#if app.isNew}}
+        <li>{{view Ember.Select contentBinding="controllers.organizationsIndex"
+                                optionValuePath="content"
+                                optionLabelPath="content.display_name"
+                                selectionBinding="app.organization"}}
+        </li>
+      {{else}}
+        <li>Applied to {{app.organization.display_name}}</li>
+      {{/if}}
+      {{/each}}
+    </ul>
+    {{#if newApplications}}
     <div class="control">
-      <button {{action submit}}>Save</button>
+      <button class="cta" {{action submit}}>Save</button>
       <button {{action cancel}}>Cancel</button>
     </div>
+    {{else}}
+      <a class="cta" {{action newMembershipApplication}}>New</a>
     {{/if}}
 
     <h3>Trouble?</h3>

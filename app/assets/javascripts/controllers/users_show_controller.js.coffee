@@ -3,19 +3,21 @@ App.UsersShowController = Ember.ObjectController.extend
 
   loading: false
 
-  addMembership: -> @get('memberships').createRecord()
+  newMembershipApplication: ->
+    member_type = App.MembershipType.find(1) # Member (see constants.rb)
+    @get('membership_applications').createRecord
+      membership_type: member_type
+      application_status_id: 1
 
   submit: ->
-    @get('memberships').forEach (item) ->
+    @get('membership_applications').forEach (item) ->
       item.one "didCreate", this, ->
         item.get('user').reload()
     @store.commit()
 
   cancel: ->
-    @set('loading', true)
-    @get('memberships').forEach (item) ->
+    @get('membership_applications').forEach (item) ->
       item.deleteRecord() if item.get('isNew')
-    @set('loading', false)
 
   deleteMembership: (mem) ->
     org = mem.get('organization.name')
@@ -23,6 +25,6 @@ App.UsersShowController = Ember.ObjectController.extend
       mem.deleteRecord()
       @store.commit()
 
-  dirtyRecords: (->
-    @get('memberships').filterProperty('isNew', true).get('length') > 0
-  ).property('memberships.@each.isNew')
+  newApplications: (->
+    @get('membership_applications').filterProperty('isNew', true).get('length')
+  ).property('membership_applications.@each.isNew')

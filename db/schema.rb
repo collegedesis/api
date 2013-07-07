@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701152446) do
+ActiveRecord::Schema.define(:version => 20130706225919) do
+
   create_table "bulletins", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -47,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20130701152446) do
     t.integer  "message_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "membership_applications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "membership_type_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.integer  "application_status_id", :default => 1
+    t.integer  "organization_id"
+    t.string   "code"
   end
 
   create_table "membership_types", :force => true do |t|

@@ -7,13 +7,6 @@ class Membership < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :memberships
   belongs_to :organization, inverse_of: :memberships
-  before_create :auto_approve
   delegate :display_name, to: :organization
-
-  protected
-
-  def auto_approve
-    self.approved = organization.auto_approve_memberships
-  end
-
+  belongs_to :membership_type
 end

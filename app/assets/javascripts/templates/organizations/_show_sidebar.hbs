@@ -25,11 +25,11 @@
 </table>
 {{#if currentUser}}
   {{#if currentUserIsMember}}
-    {{#if currentUserIsAdmin}}
-    {{else}}
-      <div class="cta">
-        <a href="#">Become Admin</a>
-      </div>
+    {{#if canApplyForAdmin}}
+      <a {{action applyAdmin}} class="cta">Become Admin</a>
+    {{/if}}
+    {{#if pendingAdminApplication}}
+      <p>You applied to be an administrator. Awaiting verification!</p>
     {{/if}}
   {{else}}
     <div class="cta">
