@@ -11,6 +11,11 @@ App.UsersShowRoute = Ember.Route.extend
   model: (params) ->
     App.User.find(params.user_id)
 
+  setupController: (controller, model) ->
+    controller.set('content', model)
+    orgsController = @controllerFor('organizationsIndex')
+    orgsController.set('content', App.Organization.find())
+
   deactivate: ->
     App.session.set('messages', null)
     @get('controller.content.memberships').forEach (item) ->

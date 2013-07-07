@@ -150,6 +150,7 @@ h3, h4, h5, span.heading {
   line-height: 40px;
   font-size: $font-size * 1.5;
   margin: 20px auto;
+  display: block;
 }
 
 $red: red;
@@ -182,6 +183,7 @@ $lightgray: lighten(gray, 10%);
   cursor: pointer;
   margin: 10px 0;
   border: 0;
+  display: inline-block;
   &:hover { @include redhover; }
   a {
     display: block;

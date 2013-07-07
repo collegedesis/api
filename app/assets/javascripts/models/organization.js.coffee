@@ -12,6 +12,15 @@ App.Organization = DS.Model.extend
   facebook: DS.attr('string')
   youtube: DS.attr('string')
   website: DS.attr('string')
+  membership_applications: DS.hasMany('App.MembershipApplication')
+
+  adminMemberships: (->
+    @get('memberships').filterProperty('membership_type.id', 2)
+  ).property('memberships.@each.membership_type.id')
+
+  nonAdminMemberships: (->
+    @get('memberships').filterProperty('membership_type.id', 1)
+  ).property('memberships.@each.membership_type.id')
 
   twitterUrl: (->
     "http://twitter.com/" + @get('twitter')
@@ -28,3 +37,11 @@ App.Organization = DS.Model.extend
   websiteUrl: (->
     "http://" + @get('website[')
   ).property('website')
+
+  adminApplications: (->
+    @get('membership_applications').filterProperty('membership_type.id', 2)
+  ).property('membership_applications.@each.membership_type.id')
+
+  pendingAdminApplications: (->
+    @get('adminApplications').filterProperty('application_status_id', 1)
+  ).property('adminApplications.@each.application_status_id')
