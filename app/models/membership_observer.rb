@@ -1,6 +1,6 @@
 class MembershipObserver < ActiveRecord::Observer
 
-  def create(membership)
+  def after_create(membership)
     membership.user.update_approved_status
   end
 
