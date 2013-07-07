@@ -1,6 +1,6 @@
 This is the [CollegeDesis website](http://collegedesis.com).
 
-[![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com)
+[![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com) 
 
 We provide collaboration, communication, and publication tools for South Asian student organizations in America.
 
