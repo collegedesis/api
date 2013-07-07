@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :bulletins, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :votes, :dependent => :destroy
-
+  has_many :membership_applications, :dependent => :destroy
   before_save :encrypt_password
 
   require 'digest/md5'

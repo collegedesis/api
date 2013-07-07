@@ -7,6 +7,7 @@ App.User = DS.Model.extend
   approved: DS.attr('boolean')
 
   memberships: DS.hasMany('App.Membership')
+  membership_applications: DS.hasMany('App.MembershipApplication')
   bulletins: DS.hasMany('App.Bulletin')
 
   adminMemberships: (->
@@ -19,3 +20,7 @@ App.User = DS.Model.extend
 
   memberOf: (orgId) ->
     @get('memberships').mapProperty('organization.id').contains(orgId)
+
+  pendingMembershipApplications: (->
+    @get('membership_applications').filterProperty('application_status_id', 1)
+  ).property('membership_applications.@each.application_status_id')

@@ -12,6 +12,7 @@ class Organization < ActiveRecord::Base
   has_many :emails
   has_many :events
   has_many :memberships
+  has_many :membership_applications
 
   default_scope order('name ASC')
   scope :reachable, conditions: 'email IS NOT NULL'
@@ -52,6 +53,10 @@ class Organization < ActiveRecord::Base
 
   def reputation
     100
+  end
+
+  def send_new_member_notification(user)
+    OrganizationMailer.new_member(user, self).deliver
   end
 
 protected
