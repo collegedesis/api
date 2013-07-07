@@ -3,20 +3,21 @@ Collegedesis::Application.routes.draw do
 
   root to: "site#home"
 
-  resources :sessions,            only: [:create, :destroy]
+  resources :sessions,                only: [:create, :destroy]
   # Used as API
-  resources :organizations,       only: [:index, :show, :create, :update]
-  resources :organization_types,  only: [:index, :show]
+  resources :organizations,           only: [:index, :show, :create, :update]
+  resources :organization_types,      only: [:index, :show]
   resources :users
-  resources :memberships
-  resources :membership_applications, only: [:create]
-  resources :membership_types,    only: [:index, :show]
-  resources :universities,        only: [:index, :show]
-  resources :bulletins,           only: [:index, :show, :create]
-  resources :comments,            only: [:index, :create]
-  # Resources
+  resources :memberships,             only: [:index, :show, :destroy]
+  resources :membership_applications, only: [:index, :create, :show]
+  resources :membership_types,        only: [:index, :show]
+  resources :universities,            only: [:index, :show]
+  resources :bulletins,               only: [:index, :show, :create]
+  resources :comments,                only: [:index, :create]
+  resources :votes,                   only: [:index, :create]
 
-  resources :votes,               only: [:index, :create]
+  get '/application/:code/approve', to: 'membership_applications#approve'
+  get '/application/:code/reject', to: 'membership_applications#reject'
 
   # Non REST conventions
   match 'info', to: 'site#info'

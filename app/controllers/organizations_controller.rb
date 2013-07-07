@@ -35,22 +35,4 @@ class OrganizationsController < ApplicationController
       render json: {errors: "Unauthorized" }, status: 401
     end
   end
-
-  def apply
-    org = Organization.find_by_id(params[:id])
-    AdminMailer.application_notify(params[:application], current_user.email, current_user.full_name).deliver
-    AdminMailer.application_notify(params[:application], org.email, current_user.full_name).deliver
-    render nothing: true, status: 204
-  end
-
-  def verify
-    @org = Organization.find(params[:id])
-    code = rand(1000).to_s
-    if VerificationMailer.verify_organization(@org, code).deliver
-      encrypted_code = Digest::MD5.hexdigest(code)
-      render json: {org: @org, code: encrypted_code}
-    else
-      render json: {org: @org, code: nil}
-    end
-  end
 end

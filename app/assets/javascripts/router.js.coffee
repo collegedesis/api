@@ -37,3 +37,5 @@ App.Router.map ->
 
   # redirections
   @route('reps')
+
+  @route('applicationresponse', {path: 'application-response/:id'} )

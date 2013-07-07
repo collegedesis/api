@@ -6,27 +6,10 @@ class OrganizationMailer < ActionMailer::Base
     mail(to: org.email, subject: 'You\'re in the CollegeDesis directory!')
   end
 
-  def update_notification(org)
+  def new_member(member, org)
+    @member = member
     @org = org
-    mail(to: org.email, subject: 'Your info on CollegeDesis was updated')
-  end
-
-  def confirm_event_create(event)
-    @event = event
-    @org = event.organization
-    mail(to: @org.email, subject: 'You\'re hosting #DesiBeatsSunday!')
-  end
-
-  def new_member(membership)
-    @member = membership.user
-    @org = membership.organization
-    mail(to: @org.email, subject:'You have a new member!')
-  end
-
-  def earnings_notification(org, product)
-    @org = org
-    @product = product
-    mail(to: @org.email, subject: "#{@org.name} just earned $#{@product.beneficiary_payout.to_i}")
+    mail(to: @org.email, subject:"#{member.full_name} is a new member!")
   end
 
   def bulletin_promotion(bulletin, org)
@@ -35,9 +18,10 @@ class OrganizationMailer < ActionMailer::Base
     mail(to: @org.email, subject: "#{@bulletin.title} via CollegeDesis")
   end
 
-  def membership_rejected(membership)
-    @user = membership.user
-    @org = membership.organization
-    mail(to: @org.email, subject: "#{@user.full_name}'s membership to #{@org.name} was removed")
+  def send_application(application)
+    @user = application.user
+    @org = application.organization
+    @app = application
+    mail(to: @org.email, subject: "#{@user.full_name} applied to be #{@app.application_type}")
   end
 end

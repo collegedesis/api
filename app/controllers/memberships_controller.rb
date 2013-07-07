@@ -16,12 +16,6 @@ class MembershipsController < ApplicationController
     render json: @mem
   end
 
-  def create
-    conditions = params[:membership]
-    @membership = Membership.find(:first, conditions: conditions) || Membership.new(conditions)
-    render json: @membership.save ? @membership : @membership.errors
-  end
-
   def destroy
     @membership = Membership.find(params[:id])
     @membership.delete
