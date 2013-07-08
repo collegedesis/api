@@ -1,10 +1,6 @@
 class SiteController < ApplicationController
   # before_filter :require_login, only: [:home]
 
-  def blog
-    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-  end
-
   def home
     @google_maps_api_key = ENV['GOOGLE_MAPS_API_KEY']
   end
