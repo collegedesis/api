@@ -10,6 +10,7 @@ gem 'ember-source', '1.0.0.rc5' # or the version you need
 gem 'handlebars-source', '1.0.0.rc4' # or the version you need
 gem 'dalli'
 gem 'memcachier'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'pry'
