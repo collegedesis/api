@@ -8,6 +8,8 @@ gem 'redcarpet'
 gem 'ember-rails', :git => "https://github.com/emberjs/ember-rails.git"
 gem 'ember-source', '1.0.0.rc5' # or the version you need
 gem 'handlebars-source', '1.0.0.rc4' # or the version you need
+gem 'dalli'
+gem 'memcachier'
 
 group :development, :test do
   gem 'pry'
