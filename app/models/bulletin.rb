@@ -35,10 +35,13 @@ class Bulletin < ActiveRecord::Base
 
   def self.expire
     Bulletin.alive.each do |bulletin|
-      if bulletin.expiration_date.to_date >= Date.current.to_date
-        bulletin.update_attributes(expired: true)
-      end
+      val = bulletin.should_be_expired? ? true : false
+      bulletin.update_attributes(expired: val)
     end
+  end
+
+  def should_be_expired?
+    self.expiration_date.to_date <= Date.current.to_date
   end
 
   def is_link?
