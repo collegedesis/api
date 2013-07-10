@@ -3,7 +3,6 @@ class MembershipTypesController < ApplicationController
 
   def index
     @types = params[:ids] ? MembershipType.where(id: params[:ids]) : MembershipType.all
-    binding.pry
     render json: @types
   end
 
