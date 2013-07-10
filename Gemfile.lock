@@ -140,6 +140,7 @@ GEM
     multi_json (1.7.3)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.5.130)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -256,6 +257,7 @@ DEPENDENCIES
   handlebars-source (= 1.0.0.rc4)
   jquery-rails
   memcachier
+  newrelic_rpm
   pg
   pry
   pry-debugger
