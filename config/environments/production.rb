@@ -23,8 +23,9 @@ Collegedesis::Application.configure do
 
   #Mailer
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'smtp.mailgun.org' }
+  config.action_mailer.default_url_options = { :host => 'smtp.mandrillapp.org' }
   config.action_mailer.delivery_method = :smtp
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
