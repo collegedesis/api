@@ -20,8 +20,6 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :user_id
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
-  # scope :alive, where(:is_dead => false)
-  # scope :alive, conditions: 'score > 0', order: 'score DESC'
   scope :alive, where(expired: false)
   scope :has_author, conditions: 'user_id IS NOT NULL'
 
@@ -33,11 +31,14 @@ class Bulletin < ActiveRecord::Base
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
   end
 
-  def self.expire
-    Bulletin.alive.each do |bulletin|
-      val = bulletin.should_be_expired? ? true : false
-      bulletin.update_attributes(expired: val)
-    end
+  def expire
+    val = should_be_expired?
+    bulletin.update_attributes(expired: val)
+  end
+
+  def update_score
+    scorekeeper = BulletinScoreKeeper.new(self)
+    scorekeeper.update_score
   end
 
   def should_be_expired?
@@ -88,13 +89,6 @@ class Bulletin < ActiveRecord::Base
   def tweet
     tweeter = BulletinTweeter.new(self)
     tweeter.tweet
-  end
-
-  def self.update_scores
-    Bulletin.alive.each do |bulletin|
-      scorekeeper = BulletinScoreKeeper.new(bulletin)
-      scorekeeper.update_score
-    end
   end
 
   def approved?
