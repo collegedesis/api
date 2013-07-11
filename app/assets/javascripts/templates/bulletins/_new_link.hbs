@@ -9,11 +9,9 @@
 
 <p>
   Url
-  {{#unless urlIncludesProtocol}}
-    {{#if url}}
-      <br>
-      <p class="error">Make sure you include http or https at the beginning!</p>
-    {{/if}}
+  {{#unless validUrl}}
+    <br>
+    <p class="error">Make sure you include http or https at the beginning!</p>
   {{/unless}}
 </p>
 {{input value=url placeholder="http://"}}

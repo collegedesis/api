@@ -8,9 +8,8 @@ body nav > * {
   display: inline-block;
 }
 body nav {
-  height: 52px;
+  height: 55px;
   margin-top: 6px;
-  padding:8px 20px;
   ul {
     display: inline-block;
     li {
@@ -40,16 +39,11 @@ nav .account {
 body .sub-nav a {
   color: $brown4;
 }
+
 .sub-nav {
   margin-bottom: 10px;
   li {
-    a {
-      font-family: $header-font;
-      padding: 5px;
-      display: block;
-    }
-    .active {
-      border-left: 3px solid $green;
-    }
+    @include subnav;
+    a { height: 30px; }
   }
 }

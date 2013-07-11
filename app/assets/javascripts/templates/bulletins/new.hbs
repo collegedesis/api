@@ -1,13 +1,19 @@
 <aside>
   <h3>Resources</h3>
-  <ul>
-    <li><a href="/#/bulletins/welcome-to-the-bulletin-board">Why {{#if isPost}}write{{else}}submit{{/if}} a bulletin?</a></li>
-    <li><a href="/#/bulletins/want-a-retweet-here-s-something-better">How to get it tweeted</a></li>
+  <ul class="sub-nav">
+    <li><a href="/#/bulletins/welcome-to-the-bulletin-board">Why {{#if isPost}}write a post{{else}}share links{{/if}}?</a></li>
     {{#if isPost}}<li><a href="/#/bulletins/making-your-bulletins-look-pretty">Making your bulletins look pretty</a></li>{{/if}}
   </ul>
   {{#if isPost}}
-    <button {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>
+    <button class="cta" {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>
   {{/if}}
+  <p>
+    {{#if isPost}}
+      <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Submit a link</a> to another website or article instead.
+    {{else}}
+      <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Write</a> a blog post instead.
+    {{/if}}
+  </p>
 </aside>
 <div class="main">
   <div class="bulletin-new">
@@ -21,11 +27,4 @@
       <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Submit</button>
     </form>
   </div>
-  <p class="options">
-    {{#if isPost}}
-      <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Submit a link</a> to another website or article instead.
-    {{else}}
-      <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Write</a> a blog post instead.
-    {{/if}}
-  </p>
 </div>

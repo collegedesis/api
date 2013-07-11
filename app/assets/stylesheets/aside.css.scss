@@ -1,8 +1,9 @@
 @import '_imports';
 
 aside {
-  padding: 0 10px;
-  margin: 0 auto;
+  input {
+    width: 100%;
+  }
   button {
     cursor: pointer;
     max-width: 200px;
@@ -25,8 +26,13 @@ aside {
 }
 
 aside h3 {
-  background-color: $green;
   @include greenify;
+  margin-bottom: 1px;
+  a {
+    display: inline-block;
+    color: white;
+    width: 100%;
+  }
 }
 
 aside ol {

@@ -6,6 +6,7 @@ App.Router.map ->
 
   @resource 'news', ->
     @route 'page', {path: ':page'}
+    @route 'story', {path: ':slug'}
 
   # simple pages
   @resource 'about', ->
@@ -13,7 +14,6 @@ App.Router.map ->
     @route('contact')
     @route('website')
     @route('goals')
-    @route('reps')
 
   @route 'login', {path: 'login'}
 
@@ -26,16 +26,10 @@ App.Router.map ->
     @route "show", {path: ':user_id'}
     @route 'new', {path: 'signup'}
 
-  # using APIs
-  @route('features', {path: 'upcoming'})
-
   @resource "radio", ->
     @route "acappella"
     @route "mashup"
     @route "bhangra"
     @route "independent"
-
-  # redirections
-  @route('reps')
 
   @route('applicationresponse', {path: 'application-response/:id'} )
