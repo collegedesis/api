@@ -23,7 +23,7 @@ Collegedesis::Application.routes.draw do
   match 'info', to: 'site#info'
 
   # render Ember apps
-  match "/news" => redirect("/#/page/1")
+  match "/news" => redirect("/#/news/1")
   match "/contact" => redirect("/#/about/contact")
   match "/store" => redirect("/#/")
   match "/about" => redirect("/#/about")
