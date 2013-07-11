@@ -1,15 +1,6 @@
 <div class="bulletin-wrapper">
-  <div {{bindAttr class ="loading :vote"}}>
-    {{#if hasBeenVotedOn}}
-      <h3>{{roundedScore}}</h3>
-    {{else}}
-      <a {{action voteOnBulletin this}}></a>
-    {{/if}}
-  </div>
-  {{#if isPost}}
-    {{partial 'bulletins/post_show'}}
-  {{/if}}
-  {{#if isLink}}
-    {{partial 'bulletins/link_show'}}
-  {{/if}}
+	<a {{action goToBulletin this}} class="clickable">
+	  <span class="title">{{title}}</span>
+	  <span class="subtext">{{#linkTo 'organizations.show' author tagName="span"}}{{author.display_name}}{{/linkTo}}</span>
+	</a>
 </div>
