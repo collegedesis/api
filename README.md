@@ -1,18 +1,22 @@
-This is the [CollegeDesis website](http://collegedesis.com).
+# CollegeDesis
 
 [![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com) 
 
-We provide collaboration, communication, and publication tools for South Asian student organizations in America.
+We build tools to help South Asian student organizations connect, collaborate, and share.
+
+[Read more](//collegedesis.com/about) on our website.
 
 ## Current Features
 
-* Bulletin Board
+* News Board
+* Roster Management
+
+## Working on
+
 * Organization Pages
-
-## Upcoming Features
-
 * Calendar
-* Open Chat
+* Syndication Platform
+* Marketplace
 
 ## Technology
 
@@ -23,4 +27,4 @@ We provide collaboration, communication, and publication tools for South Asian s
 
 ## Contributing
 
-If you're interested in contributing to an open source project for some experience, check out the [issues](//github.com/collegedesis/collegedesis.com) and feel free to open pull requests. You can also email us at <contribute@collegedesis.com> and we'll set up a time to walk you through the codebase so you can contribute. 
+This project is moving fast. Want to help? [Contact us](//collegedesis.com/#/about/contact)!
