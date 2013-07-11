@@ -1,12 +1,14 @@
 App.HeightView = Ember.View.extend
   didInsertElement: ->
-    docHeight     = $(window).height()
+    bodyHeight    = $('body').height()
+    windowHeight  = $(window).height()
+    docHeight     = Math.max(bodyHeight, windowHeight)
     headerHeight  = $('.app-header').height()
-    footerHeight  = $('#footer').height()
+    footerHeight  = $('.footer').height()
 
     height = docHeight - headerHeight - footerHeight
 
-    $('.app-content').css('min-height', height)
+    # $('.app-content').css('min-height', height)
 
 App.IndexView = App.HeightView.extend()
 App.RadioView = App.HeightView.extend()

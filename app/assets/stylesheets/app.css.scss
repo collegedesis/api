@@ -1,20 +1,24 @@
 @import '_imports';
 
-p { margin-bottom:10px; }
-
-p.center {
-  text-align: center;
-  width: 80%;
-  margin: 0 auto 10px;
+p {
+  margin-bottom:10px;
+  line-height: $font-size*1.25;
+  &.center {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto 10px;
+  }
 }
 
-ul li { list-style-type:none; }
+ul li { list-style-type: none; }
 
 body {
+  width: $col * 23;
+  margin: 0 auto;
   background-color: transparentize($background, 0.3);
 }
-/* Typography */
 
+/* Typography */
 body {
   font-size:$font-size;
   font-family: $font;
@@ -42,19 +46,20 @@ body {
     font-size:$font-size * 0.75;
     font-family:$header-font;
   }
-
 }
 
 .app-content {
-  padding: 20px;
+  padding: 0 0 3px 3px;
+  overflow: hidden;
   aside {
-    width: 300px;
-    float: right;
+    width: $col * 8;
+    float: left;
   }
   .main {
-    max-width: 600px;
+    padding: 0 20px;
+    width: $col * 14;
+    float: left;
   }
-  p { line-height:$font-size*1.25; }
 }
 
 .main.loading {
@@ -67,6 +72,12 @@ body {
 
 input, textarea, select {
   width: 500px;
+}
+input, textarea {
+  &:focus {
+    box-shadow: 0 0 5px $green;
+    outline: none;
+  }
 }
 input, textarea, select, button {
   padding:5px;
@@ -103,7 +114,7 @@ h3, h4, h5, span.heading {
   @include heading;
 }
 
-#footer {
+.footer {
   padding: 10px 0 20px;
   min-height: 50px;
   text-align: center;
@@ -133,6 +144,7 @@ h3, h4, h5, span.heading {
       font-size: $font-size * 5;
     }
     @include greenify;
+    border-radius: 5px;
     color: $brown4;
     height: 200px;
     width: 30%;
@@ -192,10 +204,6 @@ form.user-signup-form {
   .row input {
     width: 300px;
     margin-bottom: 0;
-    &:focus {
-      box-shadow: 0 0 5px $green;
-      outline: none;
-    }
   }
   .row .header {
     @include heading;
@@ -203,5 +211,4 @@ form.user-signup-form {
     width: 100px;
     margin-right: 10px;
   }
-  .row .contents {}
 }

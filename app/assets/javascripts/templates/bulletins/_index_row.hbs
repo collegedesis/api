@@ -1,6 +1,4 @@
-<div class="bulletin-wrapper">
-	<a {{action goToBulletin this}} class="clickable">
-	  <span class="title">{{title}}</span>
-	  <span class="subtext">{{#linkTo 'organizations.show' author tagName="span"}}{{author.display_name}}{{/linkTo}}</span>
-	</a>
-</div>
+{{#linkTo 'news.story' this}}
+  <span class="title">{{title}}</span>
+  <span class="subtext">{{#linkTo 'organizations.show' author tagName="span"}}{{author.display_name}}{{/linkTo}}</span>
+{{/linkTo}}

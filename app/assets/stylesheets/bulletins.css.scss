@@ -8,16 +8,8 @@
 }
 
 .bulletin-wrapper {
-  padding: 3px 5px;
-  cursor: pointer;
-  height: 48px;
-  margin-left: 3px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 3px $brown2;
-  &:hover {
-    border-left: 3px solid $green;
-    margin-left: 0;
-  }
+  @include subnav;
+  a { height: 48px; }
 }
 
 .bulletin-wrapper {

@@ -1,1 +1,11 @@
-{{outlet}}
+<aside {{bindAttr class="controllers.bulletinsIndex.loading"}}>
+  <h3>{{#linkTo 'news'}}News{{/linkTo}}</h3>
+  {{#each controllers.bulletinsIndex}}
+    <div class="bulletin-wrapper">
+      {{partial 'bulletins/index_row'}}
+    </div>
+  {{/each}}
+</aside>
+<div class="main">
+  {{outlet}}
+</div>

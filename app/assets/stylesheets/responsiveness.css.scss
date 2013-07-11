@@ -1,25 +1,10 @@
 @import '_imports';
 
-body {
-  width: 940px;
-  margin:0 auto;
-}
-
 @media only screen and (max-width: 640px) {
   body, p, .app-header, nav,
   .app-content, .app-content > *,
   .app-footer {
     width: auto !important;
-  }
-  .app-content aside {
-    float: none;
-    text-align: center;
-    font-style: italic;
-    padding: 0;
-    width: 90%;
-    button {
-      margin: 0 auto 10px;
-    }
   }
   .attn-wrapper {
     attn { display: block;}
