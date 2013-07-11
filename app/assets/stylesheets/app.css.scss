@@ -153,29 +153,6 @@ h3, h4, h5, span.heading {
   display: block;
 }
 
-$red: red;
-$darkred: darken(red, 15%);
-$lightred: darken(red, 10%);
-$gray: gray;
-$lightgray: lighten(gray, 10%);
-
-@mixin red {
-  background-image: -moz-linear-gradient(top, $red, $darkred);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($red), to($darkred));
-  background-image: -webkit-linear-gradient(top, $red, $darkred);
-  background-image: -o-linear-gradient(top, $red, $darkred);
-  background-image: linear-gradient(to bottom, $red, $darkred);
-  box-shadow: 0 2px 0 1px $darkred;
-}
-@mixin redhover {
-  background-image: -moz-linear-gradient(top, $red, $lightred);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($red), to($lightred));
-  background-image: -webkit-linear-gradient(top, $red, $lightred);
-  background-image: -o-linear-gradient(top, $red, $lightred);
-  background-image: linear-gradient(to bottom, $red, $lightred);
-  box-shadow: 0 2px 0 1px $lightred;
-}
-
 .cta {
   @include red;
   padding: 5px 10px;
@@ -186,7 +163,6 @@ $lightgray: lighten(gray, 10%);
   margin: 10px 0;
   border: 0;
   display: inline-block;
-  border-radius: 5px;
   &:hover { @include redhover; }
   a {
     display: block;
@@ -202,9 +178,7 @@ $lightgray: lighten(gray, 10%);
   }
 }
 
-form h4 {
-  color: $brown4;
-}
+form h4 { color: $brown4; }
 
 form.user-signup-form {
   .row {
