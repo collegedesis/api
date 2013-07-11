@@ -9,6 +9,7 @@ describe Membership do
       mem = org.memberships.create(user_id: user.id)
       mem.approved.should eq true
     end
+
     it "should not approve memberships if the organization does not auto approve membership" do
       org = FactoryGirl.create(:organization, :auto_approve_memberships => false)
       mem = org.memberships.create(user_id: user.id)
@@ -53,12 +54,6 @@ describe Membership do
       mailer = mock(MemberMailer)
       mailer.should_receive(:deliver)
       MemberMailer.should_receive(:membership_rejected).with(membership).and_return(mailer)
-      membership.destroy
-    end
-    it "sends an email to the organization" do
-      mailer = mock(OrganizationMailer)
-      mailer.should_receive(:deliver)
-      OrganizationMailer.should_receive(:membership_rejected).with(membership).and_return(mailer)
       membership.destroy
     end
   end
