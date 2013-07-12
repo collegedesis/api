@@ -8,7 +8,7 @@ $brown2: #B2AE73;
 $brown3: #40210D;
 $brown4: #4C4440;
 $link-color: #08C;
-$background: #F5F5DC;
+$background: rgb(247, 247, 230);
 $red: red;
 $darkred: darken(red, 15%);
 $lightred: darken(red, 10%);
@@ -23,8 +23,6 @@ $col: 42px;
 @mixin subnav {
   & > * {
     display: block;
-    box-shadow: 0 0 3px 0px $green;
-    padding: 3px;
     cursor: pointer;
     &.active {
       background-color: transparentize($green, 0.6%);

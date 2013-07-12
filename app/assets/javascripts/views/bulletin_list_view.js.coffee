@@ -6,5 +6,6 @@ App.ListView = Ember.ListView.extend
 
   didInsertElement: ->
     asideHeight = $('aside').height()
-    @set('height', asideHeight)
+    footerHeight = parseInt($('.footer').css('height'))
+    @set('height', (asideHeight - footerHeight))
     @_super()

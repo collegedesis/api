@@ -1,42 +1,19 @@
 @import '_imports';
 
 aside {
-  input {
-    width: 100%;
-  }
-  button {
-    cursor: pointer;
-    max-width: 200px;
-    margin: 10px 0;
-    display: block;
-    border: 1px solid #b2ae73;
-    font-size: 20px;
-    background-color: transparentize($brown2, 0.9);
-  }
-  h1 {
-    margin-bottom: 10px;
-  }
-  select {
-    width: 200px;
-  }
-  hr {
-    border: solid 1px $brown2;
-    margin-bottom: 10px;
-  }
+  &.news  { border-bottom: solid 1px transparentize($green, 0.3); }
+  input   { width: 100%; }
+  ol      { margin-left: 23px; }
 }
 
 aside h3 {
   @include greenify;
-  margin-bottom: 1px;
+  margin-bottom: 0px;
   a {
     display: inline-block;
     color: white;
     width: 100%;
   }
-}
-
-aside ol {
-  margin-left: 23px;
 }
 
 aside table {

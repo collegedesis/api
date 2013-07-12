@@ -9,7 +9,15 @@
 
 .bulletin-wrapper {
   @include subnav;
-  a { height: 48px; }
+  margin-left: 1px;
+  padding-right: 1px;
+  display: block;
+  box-shadow: 0 0 3px 0px $green;
+  cursor: pointer;
+  a {
+    height: 48px;
+    padding: 5px;
+  }
 }
 
 .bulletin-wrapper {
