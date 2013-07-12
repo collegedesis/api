@@ -1,10 +1,13 @@
 App.NewsRoute = Ember.Route.extend
   setupController: (controller) ->
     @loadBulletins(1)
+
   events:
     goToBulletin: (bulletin) ->
       @transitionTo('news.story', bulletin)
 
+  # TODO remove bulletinsIndex controller and just use the
+  # newsController.
   loadBulletins: (page) ->
     controller = @controllerFor('bulletinsIndex')
     controller.set('loading', true)

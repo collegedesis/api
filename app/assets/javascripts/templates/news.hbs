@@ -1,10 +1,6 @@
 <aside {{bindAttr class="controllers.bulletinsIndex.loading"}}>
   <h3>{{#linkTo 'news'}}News{{/linkTo}}</h3>
-  {{#each controllers.bulletinsIndex}}
-    <div class="bulletin-wrapper">
-      {{partial 'bulletins/index_row'}}
-    </div>
-  {{/each}}
+  {{view App.ListView contentBinding="controllers.bulletinsIndex" numBinding="controllers.bulletinsIndex.length"}}
 </aside>
 <div class="main">
   {{outlet}}
