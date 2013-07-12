@@ -1,1 +1,7 @@
-{{outlet}}
+<aside class="news" {{bindAttr class="controllers.bulletinsIndex.loading"}}>
+  <h3>{{#linkTo 'news'}}Current News{{/linkTo}}</h3>
+  {{view App.ListView contentBinding="controllers.bulletinsIndex" numBinding="controllers.bulletinsIndex.length"}}
+</aside>
+<div class="main">
+  {{outlet}}
+</div>

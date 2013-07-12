@@ -1,5 +1,5 @@
-App.NewsController = Ember.ArrayController.extend
-  needs: ['application', 'bulletinsIndex']
+App.NewsIndexController = Ember.ArrayController.extend
+  needs: ['application']
   currentUserBinding: Ember.Binding.oneWay('controllers.application.currentUser')
 
   numOfOrganizationsBinding: Ember.Binding.oneWay('controllers.application.numOfOrganizations')

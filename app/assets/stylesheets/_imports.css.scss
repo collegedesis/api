@@ -8,7 +8,7 @@ $brown2: #B2AE73;
 $brown3: #40210D;
 $brown4: #4C4440;
 $link-color: #08C;
-$background: #F5F5DC;
+$background: rgb(247, 247, 230);
 $red: red;
 $darkred: darken(red, 15%);
 $lightred: darken(red, 10%);
@@ -20,16 +20,24 @@ $font-size:16px;
 
 $col: 42px;
 
+@mixin subnav {
+  & > * {
+    display: block;
+    cursor: pointer;
+    &.active {
+      background-color: transparentize($green, 0.6%);
+    }
+  }
+}
+
 @mixin heading {
   color: $brown2;
   font-family: $header-font;
 }
 
 @mixin greenify {
-  box-shadow: 0 1px 0 1px $shadow-green;
   background-color: $green;
   padding: 5px 10px;
-  border-radius: 5px;
   color: white;
 }
 
@@ -57,7 +65,7 @@ $col: 42px;
   background-image: -o-linear-gradient(top, $red, $darkred);
   background-image: linear-gradient(to bottom, $red, $darkred);
   box-shadow: 0 2px 0 1px $darkred;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 @mixin redhover {
   background-image: -moz-linear-gradient(top, $red, $lightred);
@@ -66,5 +74,5 @@ $col: 42px;
   background-image: -o-linear-gradient(top, $red, $lightred);
   background-image: linear-gradient(to bottom, $red, $lightred);
   box-shadow: 0 2px 0 1px $lightred;
-  border-radius: 5px;
+  border-radius: 3px;
 }

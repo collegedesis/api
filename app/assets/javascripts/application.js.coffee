@@ -12,6 +12,7 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require list-view
 
 
 

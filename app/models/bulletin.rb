@@ -54,7 +54,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.homepage
-    Bulletin.where(is_dead: false).order("score DESC").each_slice(10).to_a
+    Bulletin.where(is_dead: false).order("score DESC")
   end
 
   # TODO this should be using an additional scope
