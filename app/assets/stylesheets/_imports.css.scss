@@ -65,7 +65,7 @@ $col: 42px;
   background-image: -o-linear-gradient(top, $red, $darkred);
   background-image: linear-gradient(to bottom, $red, $darkred);
   box-shadow: 0 2px 0 1px $darkred;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 @mixin redhover {
   background-image: -moz-linear-gradient(top, $red, $lightred);
@@ -74,5 +74,5 @@ $col: 42px;
   background-image: -o-linear-gradient(top, $red, $lightred);
   background-image: linear-gradient(to bottom, $red, $lightred);
   box-shadow: 0 2px 0 1px $lightred;
-  border-radius: 5px;
+  border-radius: 3px;
 }
