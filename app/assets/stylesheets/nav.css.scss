@@ -36,14 +36,21 @@ nav .account {
   }
 }
 
-body .sub-nav a {
-  color: $brown4;
-}
-
-.sub-nav {
+body .sub-nav {
   margin-bottom: 10px;
   li {
     @include subnav;
-    a { height: 30px; }
+    margin-left: 1px;
+    padding-right: 1px;
+    display: block;
+    box-shadow: 0 0 3px 0px $green;
+    cursor: pointer;
+    a {
+      height: 30px;
+      color: $brown4;
+      padding: 5px;
+      height: 48px;
+      line-height: 48px;
+    }
   }
 }

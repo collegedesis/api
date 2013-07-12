@@ -15,7 +15,7 @@ ul li { list-style-type: none; }
 body {
   width: $col * 23;
   margin: 0 auto;
-  background-color: transparentize($background, 0.3);
+  background-color: $background;
 }
 
 /* Typography */
@@ -31,14 +31,19 @@ body {
 }
 
 .app-header {
+  position: fixed;
+  height: 140px;
+  width: 966px;
+  z-index: 999;
+  background-color: $background;
   h1 {
     cursor: pointer;
     text-align:center;
-    color:$brown3;
+    color: $brown3;
     font-family: $logo-font;
-    font-size:$font-size * 3.75;
-    line-height:$font-size * 3.75 *1.1;
-    font-weight:bold;
+    font-size: $font-size * 3.75;
+    line-height: $font-size * 3.75 * 1.1;
+    font-weight: bold;
     span { color: $brown2; }
   }
   .subtitle {
@@ -51,6 +56,8 @@ body {
 .app-content {
   padding: 0 0 3px 3px;
   overflow: hidden;
+  padding-top: 140px;
+  padding-bottom: 80px;
   aside {
     position: fixed;
     width: $col * 8;
@@ -118,8 +125,13 @@ h3, h4, h5, span.heading {
 }
 
 .footer {
+  border-top: solid 1px $green;
+  position: fixed;
+  bottom: 0;
+  background-color: $background;
+  width: $col * 23;
   padding: 10px 0 20px;
-  min-height: 50px;
+  height: 70px;
   text-align: center;
   font-size: $font-size * 0.9;
   .footer-nav li {

@@ -7,8 +7,8 @@ App.HeightView = Ember.View.extend
     footerHeight  = $('.footer').height()
 
     height = docHeight - headerHeight - footerHeight
-
-    # $('.app-content').css('min-height', height)
+    asideHeight = $('aside').height()
+    $('.app-content').css('min-height', (asideHeight + headerHeight))
 
 App.IndexView = App.HeightView.extend()
 App.RadioView = App.HeightView.extend()
