@@ -1,6 +1,6 @@
 @import '_imports';
 
-li:first-child {
+nav ul li:first-child {
   padding-left: 0 !important;
 }
 
@@ -38,19 +38,19 @@ nav .account {
 
 body .sub-nav {
   margin-bottom: 10px;
+  &.no-link {
+    li {
+      padding: 5px; }
+  }
   li {
     @include subnav;
-    margin-left: 1px;
-    padding-right: 1px;
     display: block;
-    box-shadow: 0 0 3px 0px $green;
-    cursor: pointer;
+    box-shadow: inset 0 0 3px 0px $green;
+    height: 48px;
+    line-height: 37px;
     a {
-      height: 30px;
       color: $brown4;
       padding: 5px;
-      height: 48px;
-      line-height: 48px;
     }
   }
 }

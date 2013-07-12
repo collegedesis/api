@@ -36,7 +36,6 @@ $col: 42px;
 }
 
 @mixin greenify {
-  box-shadow: 0 0px 0 1px $shadow-green;
   background-color: $green;
   padding: 5px 10px;
   color: white;
