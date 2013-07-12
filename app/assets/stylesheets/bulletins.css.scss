@@ -8,19 +8,18 @@
 }
 
 .bulletin-wrapper {
-  padding: 3px 5px;
+  @include subnav;
+  display: block;
+  box-shadow: inset 0 0 3px 0px $green;
   cursor: pointer;
-  height: 48px;
-  margin-left: 3px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 3px $brown2;
-  &:hover {
-    border-left: 3px solid $green;
-    margin-left: 0;
+  a {
+    height: 48px;
+    padding: 5px;
   }
 }
 
 .bulletin-wrapper {
+  width: $col * 8;
   .clickable {
     height: 100%;
     width: 100%;

@@ -22,10 +22,6 @@
     margin-right: 10px;
     font-size: $font-size * 0.8;
   }
-  button {
-    font-size: $font-size * 0.8;
-    width: auto;
-  }
 }
 
 .bulletin-header {
@@ -91,14 +87,6 @@
       cursor: auto;
     }
   }
-}
-
-// Bulletin show page and preview
-
-.bulletin {
-  box-shadow: 0 0 3px 1px #a0cc6f;
-  padding: 20px;
-  border-radius: 20px;
 }
 
 .bulletin, .bulletin-new .preview {

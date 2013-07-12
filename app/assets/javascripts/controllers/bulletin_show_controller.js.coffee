@@ -1,4 +1,4 @@
-App.BulletinsShowController = Ember.ObjectController.extend
+App.NewsStoryController = Ember.ObjectController.extend
   needs: ['application']
   comment: null
 
