@@ -52,10 +52,13 @@ body {
   padding: 0 0 3px 3px;
   overflow: hidden;
   aside {
+    position: fixed;
     width: $col * 8;
+    margin-bottom: 20px;
     float: left;
   }
   .main {
+    margin-left: $col * 8;
     padding: 0 20px;
     width: $col * 14;
     float: left;
@@ -211,4 +214,12 @@ form.user-signup-form {
     width: 100px;
     margin-right: 10px;
   }
+}
+
+.ember-list-view {
+  overflow: auto;
+  position: relative;
+}
+.ember-list-item-view {
+  position: absolute;
 }
