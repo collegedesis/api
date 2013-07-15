@@ -23,9 +23,9 @@ $col: 42px;
 @mixin subnav {
   & > * {
     display: block;
-    cursor: pointer;
-    &.active {
-      background-color: transparentize($green, 0.6%);
+    a {
+      cursor: pointer;
+      &.active { background-color: transparentize($green, 0.6%);}
     }
   }
 }
