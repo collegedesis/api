@@ -1,6 +1,9 @@
 <div class="bulletin-wrapper">
   {{#linkTo 'news.story' this}}
     <span class="title">{{title}}</span>
-    <span class="subtext">{{#linkTo 'organizations.show' author tagName="span"}}{{author.display_name}}{{/linkTo}}</span>
+    <span class="subtext">
+      {{#if authorIsOrganization}}{{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}}{{/if}}
+      {{#if authorIsUser}}{{author.full_name}}{{/if}}
+    </span>
   {{/linkTo}}
 </div>
