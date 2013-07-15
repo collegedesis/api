@@ -50,7 +50,6 @@ App.BulletinsNewController = Ember.ObjectController.extend
 
   submit: ->
     @_assignAuthor()
-    debugger
     @get('content').addObserver('slug', this, '_createdBulletin')
     if !@get('errors')
       @get("store").commit()
@@ -58,7 +57,7 @@ App.BulletinsNewController = Ember.ObjectController.extend
   _createdBulletin: ->
     bulletin = @get('content')
     bulletin.removeObserver('slug', this, '_createdBulletin')
-    @transitionToRoute("bulletins.show", bulletin)
+    @transitionToRoute("news.story", bulletin)
 
   errors: (->
     val = true
