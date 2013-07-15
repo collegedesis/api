@@ -52,12 +52,12 @@ class Bulletin < ActiveRecord::Base
   end
 
   def self.homepage
-    Bulletin.where(is_dead: false).order("score DESC")
+    Bulletin.has_author.where(is_dead: false).order("score DESC")
   end
 
   # TODO this should be using an additional scope
   def self.recent
-    Bulletin.where(is_dead: false).order("score DESC").each_slice(10).to_a
+    Bulletin.has_author.where(is_dead: false).order("score DESC").each_slice(10).to_a
   end
 
   def relative_local_url
