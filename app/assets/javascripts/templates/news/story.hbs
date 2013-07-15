@@ -2,7 +2,11 @@
   <div class="bulletin-header">
     <div class="bulletin-info">
       <h3>{{title}}</h3>
-      <h5>Posted by {{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}} on {{humanizedCreatedAt}}</h5>
+      <h5>Posted by
+        {{#if authorIsOrganization}}{{#linkTo 'organizations.show' author}}{{author.name}}{{/linkTo}}{{/if}}
+        {{#if authorIsUser}}{{author.full_name}}{{/if}}
+         on {{humanizedCreatedAt}}
+      </h5>
     </div>
     <div {{bindAttr class="hasBeenVotedOn:voted :vote"}}>
       {{#if hasBeenVotedOn}}

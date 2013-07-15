@@ -33,11 +33,29 @@ class BulletinsController < ApplicationController
       @bulletin.bulletin_type = params[:bulletin][:bulletin_type]
       @bulletin.user_id       = current_user.id
 
+      # assign author
+      # if author_type is User, verify that the id is the same as the current user's id
+      if params[:bulletin][:author_type] == 'User'
+        if params[:bulletin][:author_id] == current_user.id
+          @bulletin.author_id = current_user.id
+          @bulletin.author_type = params[:bulletin][:author_type]
+        end
+      # else if the author_type is an Organization
+      # make sure the current user is a member of that organization
+      # and then assign that organization as the author
+      elsif params[:bulletin][:author_type] == 'Organization'
+        organization = Organization.find(params[:bulletin][:author_id])
+        if organization && current_user.is_member_of?(organization)
+          @bulletin.author_id = organization.id
+          @bulletin.author_type = 'Organization'
+        end
+      end
+
       # save
       @bulletin.save
     end
 
-    # current signed in user votes on it
+    # current_user votes on it
     @bulletin.votes.create(user_id: current_user.id) if !@bulletin.voted_by_user?(current_user)
 
     session[:votedBulletinIds] = [] if !session[:votedBulletinIds]

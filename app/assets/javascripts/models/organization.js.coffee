@@ -6,7 +6,6 @@ App.Organization = DS.Model.extend
   slug: DS.attr('string')
   university_name: DS.attr('string')
   about: DS.attr('string')
-  bulletins: DS.hasMany('App.Bulletin')
   reputation: DS.attr('number')
   twitter: DS.attr('string')
   facebook: DS.attr('string')

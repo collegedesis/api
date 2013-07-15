@@ -24,3 +24,7 @@ App.User = DS.Model.extend
   pendingMembershipApplications: (->
     @get('membership_applications').filterProperty('application_status_id', 1)
   ).property('membership_applications.@each.application_status_id')
+
+  organizations: (->
+    @get('memberships').mapProperty('organization')
+  ).property('memberships.@each.organization')

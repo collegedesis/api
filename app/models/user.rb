@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :memberships, :dependent => :destroy
-  has_many :bulletins, :dependent => :destroy
+  has_many :bulletins, :as => :author, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :membership_applications, :dependent => :destroy
@@ -48,8 +48,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  protected
+  def is_member_of?(organization)
+    memberships.map(&:organization_id).include?(organization.id)
+  end
 
+  protected
   def get_membership(org)
     memberships.where(organization_id: org.id).first
   end

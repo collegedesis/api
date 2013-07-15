@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706225919) do
+ActiveRecord::Schema.define(:version => 20130715021220) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20130706225919) do
     t.integer  "high_score",      :default => 0
     t.datetime "expiration_date"
     t.boolean  "expired",         :default => false
+    t.integer  "author_id"
+    t.string   "author_type"
   end
 
   add_index "bulletins", ["slug"], :name => "index_bulletins_on_slug"

@@ -14,6 +14,7 @@ class Organization < ActiveRecord::Base
   has_many :memberships
   has_many :membership_applications
 
+  has_many :bulletins, :as => :author, :dependent => :destroy
   default_scope order('name ASC')
   scope :reachable, conditions: 'email IS NOT NULL'
   scope :exposed, conditions: 'exposed'

@@ -1,15 +1,16 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
 
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date, :author_id, :author_type
   before_save :normalize_title
   before_save :nullify_body, :if => :is_link?
   before_create :create_slug, :create_shortened_url, :set_expiration_date
 
   has_many :votes, :as => :votable, :dependent => :destroy
+
   has_many :comments, :as => :commentable, :dependent => :destroy
 
-  belongs_to :user
+  belongs_to :author, polymorphic: true
   # bulletin_types:
   # post is 1
   # link is 2
@@ -18,14 +19,11 @@ class Bulletin < ActiveRecord::Base
   validates_presence_of :body, :if => :is_post?
   validates_presence_of :url, :if => :is_link?
   validates_presence_of :user_id
+  validates_presence_of :author_id
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
   scope :alive, where(expired: false)
-  scope :has_author, conditions: 'user_id IS NOT NULL'
-
-  def author_id
-    user.memberships.first.organization.id if user.approved?
-  end
+  scope :has_author, conditions: 'author_id IS NOT NULL'
 
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
