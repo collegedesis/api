@@ -17,6 +17,11 @@
 </aside>
 <div class="main">
   <div class="bulletin-new">
+  {{view Ember.Select contentBinding="possibleAuthors"
+                      optionValuePath="content"
+                      optionLabelPath="content.name"
+                      selectionBinding="assignedAuthor"}}
+
     <form>
       {{#if isPost}}
         {{partial "bulletins/new_post"}}

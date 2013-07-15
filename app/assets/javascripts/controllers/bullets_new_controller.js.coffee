@@ -1,12 +1,56 @@
 App.BulletinsNewController = Ember.ObjectController.extend
+  needs: ['application']
+
+  currentUser: (->
+    @get('controllers.application.currentUser')
+  ).property('controllers.application.currentUser')
+
+
+  # properties and actions for previewing bulletin
   showPreview: false
-
-  preview: ->
-    @set('showPreview', !@get('showPreview'))
-
+  preview: -> @set('showPreview', !@get('showPreview'))
   showingPreview: (-> @get("showPreview")).property('showPreview')
 
+  ###
+    Properties and functions needed to assign
+    an author for a polymorphic relationship.
+  ###
+  possibleAuthors: (->
+    arr = Em.A()
+    currentUser = @get('currentUser')
+
+    # TODO Sort this array instead of relying on the order objects are pushed in
+    userObject = Ember.Object.create
+      id: currentUser.get('id')
+      name: currentUser.get('full_name')
+      type: 'User'
+
+    arr.pushObject(userObject)
+
+    orgs = currentUser.get('organizations')
+
+    orgs.forEach (item) ->
+      if item
+        orgObject = Ember.Object.create
+          id: item.get('id')
+          name: item.get('name')
+          type: 'Organization'
+
+        arr.pushObject(orgObject)
+
+    return arr
+  ).property('currentUser.organizations.@each.name')
+
+  assignedAuthor: null # bound to selectBox in view
+
+  _assignAuthor: ->
+    author = @get('assignedAuthor')
+    @set('content.author_id', author.get('id'))
+    @set('content.author_type', author.get('type'))
+
   submit: ->
+    @_assignAuthor()
+    debugger
     @get('content').addObserver('slug', this, '_createdBulletin')
     if !@get('errors')
       @get("store").commit()
