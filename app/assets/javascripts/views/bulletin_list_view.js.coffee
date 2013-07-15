@@ -1,6 +1,6 @@
 App.ListView = Ember.ListView.extend
   height: 500,
-  rowHeight: 50,
+  rowHeight: 60,
   width: 342,
   itemViewClass: Ember.ListItemView.extend({templateName: "bulletins/_index_row"})
 
