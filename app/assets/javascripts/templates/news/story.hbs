@@ -22,18 +22,18 @@
     {{htmlBody}}
     {{#if isLink}}This bulletin is a link. <a {{bindAttr href="url"}} target="_blank">Visit</a>.{{/if}}
   </div>
-</div>
-<div class="bulletin-comments">
-  {{view Ember.TextArea valueBinding="comment" placeholder="Be the first to comment"}}
-  <button class="cta" {{action submitComment}}>Comment</button>
-  {{#if comments}}
-    <ul>
-    {{#each comment in comments}}
-      <li>
-        <h5>{{comment.author}}</h5>
-        <p>{{comment.body}}</p>
-      </li>
-    {{/each}}
-    </ul>
-  {{/if}}
+  <div class="bulletin-comments">
+    {{view Ember.TextArea valueBinding="comment" placeholder="Be the first to comment"}}
+    <button class="cta" {{action submitComment}}>Comment</button>
+    {{#if comments}}
+      <ul>
+      {{#each comment in comments}}
+        <li>
+          <h5>{{comment.author}}</h5>
+          <p>{{comment.body}}</p>
+        </li>
+      {{/each}}
+      </ul>
+    {{/if}}
+  </div>
 </div>
