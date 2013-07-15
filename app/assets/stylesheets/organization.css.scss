@@ -15,7 +15,22 @@
       height: 40px;
     }
   }
+}
 
+.main .activity {
+  li {
+    a {
+      width: 100%;
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      color: $brown3;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 @mixin editable {

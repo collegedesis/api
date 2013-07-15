@@ -3,12 +3,11 @@
   {{#if bulletins}}
     <ul>
       {{#each bulletin in bulletins}}
-        <li><a {{bindAttr href="bulletin.shortened_url"}}>{{bulletin.title}}</a></li>
+      <li>{{#linkTo 'news.story' bulletin}}{{bulletin.title}}{{/linkTo}}</li>
       {{/each}}
     </ul>
-  {{else}}
-    {{#if currentUserIsMember}}
-      <div class="cta">{{#linkTo 'bulletins.new'}}Post{{/linkTo}}</div>
-    {{/if}}
+  {{/if}}
+  {{#if currentUserIsMember}}
+    <div class="cta">{{#linkTo 'bulletins.new'}}Post{{/linkTo}}</div>
   {{/if}}
 </section>
