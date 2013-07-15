@@ -9,7 +9,7 @@ class Bulletin < ActiveRecord::Base
   has_many :votes, :as => :votable, :dependent => :destroy
 
   has_many :comments, :as => :commentable, :dependent => :destroy
-
+  belongs_to :user
   belongs_to :author, polymorphic: true
   # bulletin_types:
   # post is 1
