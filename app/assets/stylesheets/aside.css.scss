@@ -4,6 +4,7 @@ aside {
   &.news  { border-bottom: solid 1px transparentize($green, 0.3); }
   input   { width: 100%; }
   ol      { margin-left: 23px; }
+  select  { width: 100%; margin-top: 10px;}
 }
 
 aside h3 {
