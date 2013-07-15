@@ -6,4 +6,5 @@ class OrganizationSerializer < ActiveModel::Serializer
   attribute :approved_membership_ids, key: :membership_ids
 
   attribute :membership_application_ids
+  attribute :bulletin_ids
 end

@@ -3,12 +3,12 @@ class BulletinsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create]
 
   def index
-    ## TODO dead bulletins shouldn't show up when routing directly by slug.
     if params[:slug]
       @bulletins = Bulletin.where(slug: params[:slug])
     elsif params[:page]
-      page = params[:page].to_i - 1
       @bulletins = Bulletin.homepage
+    elsif params[:ids]
+      @bulletins = Bulletin.where(id: [params[:ids]])
     end
     render json: @bulletins
   end

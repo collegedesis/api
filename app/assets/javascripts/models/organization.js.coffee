@@ -12,6 +12,7 @@ App.Organization = DS.Model.extend
   youtube: DS.attr('string')
   website: DS.attr('string')
   membership_applications: DS.hasMany('App.MembershipApplication')
+  bulletins: DS.hasMany('App.Bulletin')
 
   adminMemberships: (->
     @get('memberships').filterProperty('membership_type.id', 2)
