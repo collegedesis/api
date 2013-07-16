@@ -11,6 +11,7 @@ gem 'handlebars-source', '1.0.0.rc4' # or the version you need
 gem 'dalli'
 gem 'memcachier'
 gem 'newrelic_rpm'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'pry'
