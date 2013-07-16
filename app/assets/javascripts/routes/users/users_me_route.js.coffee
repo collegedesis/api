@@ -8,3 +8,13 @@ App.UsersMeRoute = Ember.Route.extend
   model: ->
     id = App.session.get('currentUserId')
     App.User.find(id)
+
+  setupController: (controller, model) ->
+    controller.set('content', model)
+    orgsController = @controllerFor('organizationsIndex')
+    orgsController.set('content', App.Organization.find())
+
+  deactivate: ->
+    App.session.set('messages', null)
+    @get('controller.content.memberships_applications').forEach (item) ->
+      item.deleteRecord() if item.get('isNew')
