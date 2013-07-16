@@ -6,6 +6,8 @@
       <li>{{#linkTo 'news.story' bulletin}}{{bulletin.title}}{{/linkTo}}</li>
       {{/each}}
     </ul>
+  {{else}}
+    {{name}} has not posted anything yet.
   {{/if}}
   {{#if currentUserIsMember}}
     <div class="cta">{{#linkTo 'bulletins.new'}}Post{{/linkTo}}</div>

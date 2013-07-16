@@ -1,8 +1,45 @@
 <section class="links">
-  <ul>
-    {{#if twitter}}<li><a target="_blank" {{bindAttr href="twitterUrl"}}>Twitter</a></li>{{/if}}
-    {{#if facebook}}<li><a target="_blank" {{bindAttr href="facebookUrl"}}>Facebook</a></li>{{/if}}
-    {{#if website}}<li><a target="_blank" {{bindAttr href="websiteUrl"}}>Website</a></li>{{/if}}
-    {{#if youtube}}<li><a target="_blank" {{bindAttr href="youtubeUrl"}}>YouTube</a></li>{{/if}}
-  </ul>
+  <h4>Elsewhere</h4>
+  <table class="left-heading">
+    <tr>
+      <td>Website:</td>
+      <td>
+        {{#if website}}
+          <a target="_blank" {{bindAttr href="websiteUrl"}}>{{websiteUrl}}</a>
+        {{else}}
+        None
+        {{/if}}
+      </td>
+    </tr>
+    <tr>
+      <td>Twitter:</td>
+      <td>
+        {{#if twitter}}
+          <a target="_blank" {{bindAttr href="twitterUrl"}}>{{twitterUrl}}</a>
+        {{else}}
+        None
+        {{/if}}
+      </td>
+    </tr>
+    <tr>
+      <td>Facebook:</td>
+      <td>
+        {{#if facebook}}
+          <a target="_blank" {{bindAttr href="facebookUrl"}}>{{facebookUrl}}</a>
+        {{else}}
+        None
+        {{/if}}
+      </td>
+    </tr>
+    <tr>
+      <td>YouTube:</td>
+      <td>
+        {{#if youtube}}
+          <a target="_blank" {{bindAttr href="youtubeUrl"}}>{{youtubeUrl}}</a>
+        {{else}}
+        None
+        {{/if}}
+      </td>
+    </tr>
+  </table>
 </section>

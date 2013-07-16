@@ -33,13 +33,6 @@
   }
 }
 
-@mixin editable {
-  @include heading;
-  border-bottom: solid 1px $brown2;
-  color: $brown4;
-}
-
-
 div.editable {
   @include editable;
   width: 100%;
@@ -47,37 +40,4 @@ div.editable {
   padding: 5px 10px;
   font-size: $font-size * 0.9;
   background-color: transparentize($brown2, 0.7);
-}
-
-table.left-heading {
-  width: 100%;
-  tr {
-    height: 30px;
-    margin-bottom: 5px;
-  }
-  tr td {
-    box-shadow: 0 0 3px $brown2;
-    padding: 5px 10px;
-  }
-  tr td:first-child {
-    @include heading;
-    padding-right: 20px;
-  }
-
-  td span {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  td .editable {
-    @include editable;
-    background-color: transparentize($brown2, 0.8);
-    padding: 1px;
-    padding-right: 3px;
-  }
-
-  td .prompt {
-    color: $brown4;
-    font-family: $header-font;
-  }
 }
