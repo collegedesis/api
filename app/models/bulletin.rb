@@ -23,7 +23,7 @@ class Bulletin < ActiveRecord::Base
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
   scope :alive, where(expired: false)
-  scope :has_author, conditions: 'author_id IS NOT NULL'
+  scope :homepage, conditions: 'author_id IS NOT NULL AND is_dead is false', order: 'score DESC'
 
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
@@ -49,15 +49,6 @@ class Bulletin < ActiveRecord::Base
 
   def is_post?
     bulletin_type == 1
-  end
-
-  def self.homepage
-    Bulletin.has_author.where(is_dead: false).order("score DESC")
-  end
-
-  # TODO this should be using an additional scope
-  def self.recent
-    Bulletin.has_author.where(is_dead: false).order("score DESC").each_slice(10).to_a
   end
 
   def relative_local_url
