@@ -25,7 +25,7 @@ class BulletinTweeter
       Twitter.update(tweet_text)
       true
     rescue => e
-      puts "#{e.inspect} - #{self.title}"
+      puts "#{e.inspect} - #{title_to_tweet}"
       false
     end
   end
