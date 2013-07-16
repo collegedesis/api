@@ -1,5 +1,5 @@
 class OrganizationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :website, :display_name, :location, :slug, :university_name, :about, :reputation, :twitter, :facebook
+  attributes :id, :name, :website, :display_name, :location, :slug, :university_name, :about, :reputation, :twitter, :facebook, :youtube
 
   # Association
   attribute :organization_type_id, key: :org_type_id
