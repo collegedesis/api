@@ -1,4 +1,4 @@
-App.UsersShowController = Ember.ObjectController.extend
+App.UsersMeController = Ember.ObjectController.extend
   needs: ['organizationsIndex']
 
   loading: false

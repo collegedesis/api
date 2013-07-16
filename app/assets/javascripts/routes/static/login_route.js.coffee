@@ -3,4 +3,4 @@ App.LoginRoute = Ember.Route.extend
   activate: ->
     $(document).attr('title', 'CollegeDesis - Login')
     user = @controllerFor('application').get('currentUser')
-    @transitionTo('users.show', user) if user
+    @transitionTo('users.me') if user

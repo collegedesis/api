@@ -1,6 +1,4 @@
 Collegedesis::Application.routes.draw do
-  get "comments/create"
-
   root to: "site#home"
 
   resources :sessions,                only: [:create, :destroy]
@@ -22,7 +20,7 @@ Collegedesis::Application.routes.draw do
   # Non REST conventions
   match 'info', to: 'site#info'
 
-  # render Ember apps
+  # redirect to Ember routes
   match "/news" => redirect("/#/news/1")
   match "/contact" => redirect("/#/about/contact")
   match "/store" => redirect("/#/")
@@ -30,4 +28,5 @@ Collegedesis::Application.routes.draw do
   match "/party" => redirect("/#/radio")
   match "/radio" => redirect("/#/radio")
   match "/join" => redirect("/#/users/signup")
+  match "/me" => redirect("/#/users/me")
 end
