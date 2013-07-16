@@ -23,8 +23,8 @@ App.Router.map ->
     @route "settings", {path: ":slug/settings"}
 
   @resource "users", ->
-    @route "show", {path: ':user_id'}
     @route 'new', {path: 'signup'}
+    @route 'me'
 
   @resource "radio", ->
     @route "acappella"
