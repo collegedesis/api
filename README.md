@@ -1,4 +1,4 @@
-# CollegeDesis
+![image](http://collegedesis.com/assets/collegedesis.png)
 
 [![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com) 
 
