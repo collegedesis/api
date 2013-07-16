@@ -1,6 +1,7 @@
 @import '_imports';
 
 aside {
+  background-color: $background;
   &.news  { border-bottom: solid 1px transparentize($green, 0.3); }
   input   { width: 100%; }
   ol      { margin-left: 23px; }

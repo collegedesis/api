@@ -8,6 +8,13 @@
 }
 
 .bulletin {
+  height: 450px;
+  overflow-y: scroll;
+  padding: 20px;
+  margin: 20px 0 20px -5px;
+  box-shadow: 0 0 5px 2px $green;
+}
+.bulletin {
   .bulletin-header {
     text-align: center;
     position: relative;
