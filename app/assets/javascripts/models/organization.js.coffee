@@ -35,7 +35,7 @@ App.Organization = DS.Model.extend
   ).property('youtube')
 
   websiteUrl: (->
-    "http://" + @get('website[')
+    "http://" + @get('website')
   ).property('website')
 
   adminApplications: (->
