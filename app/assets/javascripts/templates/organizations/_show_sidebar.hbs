@@ -1,24 +1,24 @@
 <h3>Quick Look</h3>
-<table>
+<table class="left-heading">
   <tr>
-    <td class="heading">Name</td>
+    <td>Name</td>
     <td>{{name}}</td>
   </tr>
   <tr>
-    <td class="heading">University</td>
+    <td>University</td>
     <td>{{university_name}}</td>
   </tr>
   <tr>
-    <td class="heading">Reputation</td>
+    <td>Reputation</td>
     <td>{{reputation}}</td>
   </tr>
   <tr>
-    <td class="heading">Members</td>
+    <td>Members</td>
     <td>{{memberships.length}}</td>
   </tr>
   {{#if currentUser}}
     <tr>
-      <td class="heading">You</td>
+      <td>You</td>
       <td>{{currentUserStatus}}</td>
     </tr>
   {{/if}}

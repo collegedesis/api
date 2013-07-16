@@ -20,6 +20,12 @@ $font-size:16px;
 
 $col: 42px;
 
+@mixin editable {
+  @include heading;
+  border-bottom: solid 1px $brown2;
+  color: $brown4;
+}
+
 @mixin subnav {
   & > * {
     display: block;
