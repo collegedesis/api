@@ -32,7 +32,7 @@ class Bulletin < ActiveRecord::Base
 
   def expire
     val = should_be_expired?
-    bulletin.update_attributes(expired: val)
+    update_attributes(expired: val)
   end
 
   def update_score
