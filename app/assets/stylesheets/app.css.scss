@@ -32,10 +32,12 @@ body {
 
 .app-header {
   position: fixed;
-  height: 140px;
-  width: 966px;
+  height: 160px;
+  width: $col * 23;
   z-index: 999;
   background-color: $background;
+  box-shadow: 0 0 1px #4C4440;
+  padding: 10px 20px;
   h1 {
     cursor: pointer;
     text-align:center;
@@ -54,9 +56,8 @@ body {
 }
 
 .app-content {
-  padding: 0 0 3px 3px;
   overflow: hidden;
-  padding-top: 140px;
+  padding-top: 180px;
   padding-bottom: 80px;
   aside {
     position: fixed;
@@ -66,7 +67,7 @@ body {
   }
   .main {
     margin-left: $col * 8;
-    width: $col * 14;
+    width: $col * 15;
     float: left;
     padding: 0 20px;
   }
@@ -151,7 +152,7 @@ h3, h4, h5, span.heading {
 }
 
 .attn-wrapper {
-  margin: 0 auto 20px;
+  margin: 20px auto;
   max-width: 840px;
   attn {
     h3 {
