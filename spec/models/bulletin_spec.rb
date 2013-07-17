@@ -2,6 +2,22 @@ require 'spec_helper'
 
 describe Bulletin, focus: true do
 
+  describe "#expire" do
+    it "sets expire to true if should be expired" do
+      bulletin = FactoryGirl.create(:bulletin_post)
+      bulletin.stub(:should_be_expired?) { true }
+      bulletin.expire
+      expect(bulletin.expired).to eq true
+    end
+
+    it "doesn't expire if should not be expired" do
+      bulletin = FactoryGirl.create(:bulletin_post)
+      bulletin.stub(:should_be_expired?) { false }
+      bulletin.expire
+      expect(bulletin.expired).to eq false
+    end
+  end
+
   describe "#create" do
     it "can create a valid post bulletin" do
       bulletin = FactoryGirl.create(:bulletin_post)
