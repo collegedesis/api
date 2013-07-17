@@ -45,11 +45,11 @@ class Bulletin < ActiveRecord::Base
   end
 
   def is_link?
-    bulletin_type == 2
+    bulletin_type == BULLETIN_TYPE_LINK
   end
 
   def is_post?
-    bulletin_type == 1
+    bulletin_type == BULLETIN_TYPE_POST
   end
 
   def relative_local_url
