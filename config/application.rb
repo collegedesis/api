@@ -26,7 +26,6 @@ module Collegedesis
 
     # Activate observers that should always be running.
     observers = [
-        :bulletin_observer,
         :user_observer,
         :membership_observer,
         :membership_application_observer

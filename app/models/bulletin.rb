@@ -71,11 +71,6 @@ class Bulletin < ActiveRecord::Base
     votes.map(&:user_id).include? user.id
   end
 
-  def author_is_admin?
-    org = Organization.where(name: "CollegeDesis").first
-    user.memberships.map(&:organization_id).include?(org.id) if org
-  end
-
   def tweet
     tweeter = BulletinTweeter.new(self)
     tweeter.tweet
