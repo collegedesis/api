@@ -23,7 +23,8 @@ class Bulletin < ActiveRecord::Base
   validates_uniqueness_of :url, :allow_nil => true, :allow_blank => true
 
   scope :alive, where(expired: false)
-  scope :homepage, conditions: 'author_id IS NOT NULL AND is_dead is false', order: 'score DESC'
+  scope :homepage, -> { recent.where('author_id IS NOT NULL and is_dead = ?', false).order('score DESC') }
+  scope :recent, where(" created_at > ?", 10.days.ago)
 
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
