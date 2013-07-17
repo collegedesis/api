@@ -2,6 +2,28 @@ require 'spec_helper'
 
 describe Bulletin, focus: true do
 
+  describe "is_link?" do
+    it "returns true if bulletin type is link" do
+      bulletin = FactoryGirl.build(:bulletin, bulletin_type: BULLETIN_TYPE_LINK)
+      expect(bulletin.is_link?).to eq true
+    end
+    it "returns false if bulletin type is not link" do
+      bulletin = FactoryGirl.build(:bulletin, bulletin_type: BULLETIN_TYPE_POST)
+      expect(bulletin.is_link?).to eq false
+    end
+  end
+
+  describe "is_post?" do
+    it "returns true if bulletin type is post" do
+      bulletin = FactoryGirl.build(:bulletin, bulletin_type: BULLETIN_TYPE_POST)
+      expect(bulletin.is_post?).to eq true
+    end
+    it "returns false if bulletin type is not post" do
+      bulletin = FactoryGirl.build(:bulletin, bulletin_type: BULLETIN_TYPE_LINK)
+      expect(bulletin.is_post?).to eq false
+    end
+  end
+
   describe "#expire" do
     it "sets expire to true if should be expired" do
       bulletin = FactoryGirl.create(:bulletin_post)
