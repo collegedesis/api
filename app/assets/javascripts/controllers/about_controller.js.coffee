@@ -4,3 +4,6 @@ App.AboutController = Ember.Controller.extend
 
 App.AboutIntroController = Ember.Controller.extend
   needs: ['application']
+
+App.AboutHowItWorksController = Ember.Controller.extend
+  needs: ['application']
