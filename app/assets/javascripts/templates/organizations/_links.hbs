@@ -1,45 +1,43 @@
-<section class="links">
-  <h4>Elsewhere</h4>
-  <table class="left-heading">
-    <tr>
-      <td>Website:</td>
-      <td>
-        {{#if website}}
-          <a target="_blank" {{bindAttr href="websiteUrl"}}>{{websiteUrl}}</a>
-        {{else}}
-        None
-        {{/if}}
-      </td>
-    </tr>
-    <tr>
-      <td>Twitter:</td>
-      <td>
-        {{#if twitter}}
-          <a target="_blank" {{bindAttr href="twitterUrl"}}>{{twitterUrl}}</a>
-        {{else}}
-        None
-        {{/if}}
-      </td>
-    </tr>
-    <tr>
-      <td>Facebook:</td>
-      <td>
-        {{#if facebook}}
-          <a target="_blank" {{bindAttr href="facebookUrl"}}>{{facebookUrl}}</a>
-        {{else}}
-        None
-        {{/if}}
-      </td>
-    </tr>
-    <tr>
-      <td>YouTube:</td>
-      <td>
-        {{#if youtube}}
-          <a target="_blank" {{bindAttr href="youtubeUrl"}}>{{youtubeUrl}}</a>
-        {{else}}
-        None
-        {{/if}}
-      </td>
-    </tr>
-  </table>
-</section>
+<h3>Elsewhere</h3>
+<table class="left-heading">
+  <tr>
+    <td>Website</td>
+    <td>
+      {{#if website}}
+        <a target="_blank" {{bindAttr href="websiteUrl"}}>{{websiteUrl}}</a>
+      {{else}}
+      None
+      {{/if}}
+    </td>
+  </tr>
+  <tr>
+    <td>Twitter</td>
+    <td>
+      {{#if twitter}}
+        <a target="_blank" {{bindAttr href="twitterUrl"}}>{{twitterUrl}}</a>
+      {{else}}
+      None
+      {{/if}}
+    </td>
+  </tr>
+  <tr>
+    <td>Facebook</td>
+    <td>
+      {{#if facebook}}
+        <a target="_blank" {{bindAttr href="facebookUrl"}}>{{facebookUrl}}</a>
+      {{else}}
+      None
+      {{/if}}
+    </td>
+  </tr>
+  <tr>
+    <td>YouTube</td>
+    <td>
+      {{#if youtube}}
+        <a target="_blank" {{bindAttr href="youtubeUrl"}}>{{youtubeUrl}}</a>
+      {{else}}
+      None
+      {{/if}}
+    </td>
+  </tr>
+</table>
