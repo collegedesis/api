@@ -1,6 +1,4 @@
-<p>
-  Hello <%= @org.name %>!
-</p>
+<p>Hello <%= @org.name %>!</p>
 
 <p>
   We recently launched full organizational profile pages on collegedesis.com and <%= @user.full_name %> has applied to be an administrator! The application remains pending until someone approves it from this email account.
@@ -9,6 +7,4 @@
 <h1><%=link_to "Approve", @app.approval_url %></h1>
 <h1><%=link_to "Reject", @app.rejection_url %></h1>
 
-<p>If you have any questions, feel free to reply to this email and someone will get back to you as possible! You can all check out our <a href="https://collegedesis.com/#/contact">contact</a> page for more ways to contact us.</p>
-
-<p>Thank you!</p>
+<%= render partial: 'email_footer' %>
