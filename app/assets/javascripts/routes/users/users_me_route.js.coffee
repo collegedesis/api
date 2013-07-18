@@ -16,5 +16,5 @@ App.UsersMeRoute = Ember.Route.extend
 
   deactivate: ->
     App.session.set('messages', null)
-    @get('controller.content.memberships_applications').forEach (item) ->
+    @get('controller.content.membership_applications').forEach (item) ->
       item.deleteRecord() if item.get('isNew')

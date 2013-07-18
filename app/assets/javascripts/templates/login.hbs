@@ -10,7 +10,7 @@
 <div class="main">
   {{App.session.messages}}
   <form class="user-signup-form">
-    <h4>{{#linkTo users.new}}Sign up{{/linkTo}} / Log in</h4>
+    <h4>Log in</h4>
     <div class="row">
       <div class="header">Email</div>
       <div class="contents">
@@ -25,6 +25,6 @@
         {{#unless validPassword}}<span class="error">can't login without a password, silly</span>{{/unless}}
       </div>
     </div>
-    <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Log in</button>
+    <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Log in</button> or {{#linkTo users.new}}Sign up{{/linkTo}}
   </form>
 </div>

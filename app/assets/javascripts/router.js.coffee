@@ -10,10 +10,9 @@ App.Router.map ->
 
   # simple pages
   @resource 'about', ->
-    @route('intro')
-    @route('contact')
-    @route('website')
-    @route('goals')
+    @route('quick-start')
+    @route('represent')
+    @route('news')
 
   @route 'login', {path: 'login'}
 

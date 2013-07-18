@@ -9,7 +9,7 @@
 </aside>
 <div class="main">
   <form class="user-signup-form">
-    <h4>Sign up / {{#linkTo "login"}}Log in{{/linkTo}}</h4>
+    <h4>Sign up</h4>
     <div class="row">
       <div class="header">Full Name</div>
       <div class="contents">
@@ -41,7 +41,7 @@
     {{#if controller.working}}
       Working...
     {{else}}
-      <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Sign up</button>
+      <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Sign up</button>  or {{#linkTo "login"}}Log in{{/linkTo}}
     {{/if}}
   </form>
 </div>
