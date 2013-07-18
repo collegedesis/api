@@ -1,17 +1,13 @@
 <p>Hey <%=@user.full_name%></p>
 
-<p>Thank you for signing up for <a href="https://collegedesis.com">collegedesis.com</a>!</p>
+<p>Thanks for signing up for <a href="https://collegedesis.com">collegedesis.com</a>!</p>
 
 <p>
-  Our goal at CollegeDesis is to create the foundation of a meaningful community and distribute the control and power to South Asian student organizations all around the country. We think that by organizing this community, we can help students discover and share culture, work on meaningful projects, and in the process, make the world a better place.
+  Represent your organization by adding a membership from your <a href="https://collegedesis.com/#/users/me %>">profile page</a>!
 </p>
 
 <p>
-  Add a membership to one of the South Asian organizations in the country from your <a href="https://collegedesis.com/#/users/<%=@user.id %>">profile page</a> to publish to over 600 organizations.
-</p>
-<p>
-  PS. If you forget your password or something, just send us an email at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a> and we'll help you take care of it.
+  If you forget your password, just send us an email at <a href="mailto:brownkids@collegedesis.com">brownkids@collegedesis.com</a> and we'll help you take care of it.
 </p>
 
-<p>CollegeDesis</p>
-<p>@collegedesis</p>
+<%= render partial: 'email_footer' %>
