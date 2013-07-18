@@ -2,6 +2,7 @@ class MembershipObserver < ActiveRecord::Observer
 
   def after_create(membership)
     membership.user.update_approved_status
+    AdminMailer.notify(membership)
   end
 
   def after_destroy(membership)
