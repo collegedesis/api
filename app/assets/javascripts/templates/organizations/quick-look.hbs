@@ -1,0 +1,25 @@
+<h3>Quick Look</h3>
+<table class="left-heading">
+  <tr>
+    <td>Name</td>
+    <td>{{name}}</td>
+  </tr>
+  <tr>
+    <td>University</td>
+    <td>{{university_name}}</td>
+  </tr>
+  <tr>
+    <td>Reputation</td>
+    <td>{{reputation}}</td>
+  </tr>
+  <tr>
+    <td>Members</td>
+    <td>{{memberships.length}}</td>
+  </tr>
+  {{#if currentUser}}
+    <tr>
+      <td>You</td>
+      <td>{{currentUserStatus}}</td>
+    </tr>
+  {{/if}}
+</table>

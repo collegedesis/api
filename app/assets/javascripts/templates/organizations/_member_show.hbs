@@ -2,6 +2,5 @@
   <h4>About</h4>
   <p>{{#if about}}{{about}}{{else}}{{#unless currentUserIsAdmin}}<span {{action applyAdmin}}>Become an admin</span> to update this profile!{{else}}{{#linkTo 'organizations.settings' this}}Edit this{{/linkTo}}{{/unless}}{{/if}}</p>
 </div>
-{{partial 'organizations/links'}}
 {{partial 'organizations/member_list'}}
 {{partial 'organizations/bulletins_list'}}
