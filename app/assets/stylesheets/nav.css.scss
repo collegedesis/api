@@ -16,15 +16,22 @@ body nav {
       display: inline-block;
     }
     a {
-      display: block;
-      min-width: 50px;
-      text-align: center;
-      height: 100%;
-      padding: 5px;
+      display: inline-block;
+      vertical-align: middle;
       color: $brown4;
-      &:hover { border-bottom:solid 1px $green; }
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      -ie-user-select: none;
+      cursor: pointer;
+      height: 32px;
+      text-align: center;
+      padding: 5px 10px;
+      box-shadow: 0 0 1px $green;
+      border-radius: 3px;
+      width: 100px;
     }
-    .active { border-bottom:solid 2px $green; }
+    .active { box-shadow: 0 0 6px $green; }
   }
 }
 
