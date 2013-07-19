@@ -8,10 +8,13 @@
          on {{humanizedCreatedAt}}
       </h5>
     </div>
-    <div {{bindAttr class="hasBeenVotedOn:voted :vote"}}>
+
+    {{#if isLink}}
+      <a {{bindAttr href="url"}} target="_blank" class="button">Read The Post</a>
+    {{/if}}
+    <div {{bindAttr class="hasBeenVotedOn:voted :vote :button"}}>
       {{#if hasBeenVotedOn}}
-        <span>Score</span>
-        <span class="heading">{{roundedScore}}</span>
+        Score: <span class="heading">{{roundedScore}}</span>
       {{else}}
         <img src="/assets/upvote.png" width="20px" height="20px">
         <span {{action voteOnBulletin}}>Recommend</span>
@@ -20,7 +23,6 @@
   </div>
   <div class="bulletin-body">
     {{htmlBody}}
-    {{#if isLink}}This bulletin is a link. <a {{bindAttr href="url"}} target="_blank">Visit</a>.{{/if}}
   </div>
   <div class="bulletin-comments">
     {{view Ember.TextArea valueBinding="comment" placeholder="Be the first to comment"}}
