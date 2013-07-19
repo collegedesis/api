@@ -14,7 +14,7 @@ App.LoginController = Ember.Controller.extend
             alert result.error
           else
             # TODO we should remember the current route and load that again.
-            window.location = "/"
+            window.location = "/me"
         .fail (result) =>
           alert "Something bad happened. We're going to reload the page"
     else

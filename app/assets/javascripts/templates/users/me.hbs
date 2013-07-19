@@ -13,7 +13,9 @@
   <h3>Memberships</h3>
   <div {{bindAttr class=":info loading"}}>
     {{#unless memberships}}
-      You haven't registered any memberships yet
+      {{#unless newApplications}}
+        Register a membership to be able to post on the {{#linkTo 'news'}}News Board{{/linkTo}}!
+      {{/unless}}
     {{/unless}}
     <ul class="memberships">
       {{#each mem in memberships}}
@@ -44,7 +46,7 @@
       <button {{action cancel}}>Cancel</button>
     </div>
     {{else}}
-      <a class="cta" {{action newMembershipApplication}}>New</a>
+      <button class="cta" {{action newMembershipApplication}}>New</button>
     {{/if}}
   </div>
 </div>
