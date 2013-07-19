@@ -72,8 +72,7 @@ body, .app-header, .app-content, .footer {
   height: 160px;
   z-index: 999;
   background-color: $background;
-  box-shadow: 0 0 1px #4C4440;
-  padding: 10px 20px;
+  padding: 10px 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   h1 {
@@ -140,10 +139,10 @@ h3, h4, h5, span.heading {
 }
 
 .footer {
-  border-top: solid 1px $green;
+  // box-shadow: 0 0 1px $brown4;
   position: fixed;
   bottom: 0;
-  background-color: $background;
+  background-color: darken($background, 3%);
   padding: 10px 0 20px;
   height: 70px;
   text-align: center;
