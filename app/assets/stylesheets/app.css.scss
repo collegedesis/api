@@ -2,7 +2,7 @@
 
 p {
   margin-bottom:10px;
-  line-height: $font-size*1.25;
+  line-height: $font-size * 1.875;
 }
 
 strong {
@@ -11,17 +11,14 @@ strong {
   background-color: transparentize($green, 0.7);
   padding: 3px;
   border-radius: 5px;
-  // box-shadow: 0 0 3px $green;
-  // display: inline-block;
 }
 
 .center {
   text-align: center;
   width: 60%;
   margin: 0 auto 10px;
-  position: relative;
-  line-height: $font-size * 1.875;
 }
+
 .center input {
   margin: 0 auto;
   width: 50%;
