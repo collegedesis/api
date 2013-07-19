@@ -13,10 +13,13 @@ strong {
   border-radius: 5px;
 }
 
+h1.center {
+  font-size: $font-size * 3;
+}
 .center {
   text-align: center;
   width: 60%;
-  margin: 0 auto 10px;
+  margin: 10px auto;
 }
 
 .center input {
@@ -167,12 +170,12 @@ h3, h4, h5, span.heading {
   attn {
     h3 {
       color: white;
-      font-size: $font-size * 5;
+      font-size: $font-size * 3;
     }
     @include greenify;
     border-radius: 5px;
     color: $brown4;
-    height: 200px;
+    height: 150px;
     width: 30%;
     min-width: 270px;
     margin: 0 auto 10px;
