@@ -28,8 +28,9 @@
   }
 }
 
-.bulletin-header .button {
+.button {
   display: inline-block;
+  vertical-align: middle;
   color: $brown4;
   -webkit-user-select: none;
   -moz-user-select: none;
