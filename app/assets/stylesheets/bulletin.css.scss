@@ -14,9 +14,8 @@
 
 .bulletin {
   .bulletin-header {
-    text-align: center;
     position: relative;
-    padding: 0 30px;
+    font-size: $font-size * 0.9;
     h3 { color: $brown4; }
   }
   .bulletin-comments {
@@ -29,8 +28,9 @@
   }
 }
 
-.bulletin-header .vote {
-  margin: 0 auto;
+.bulletin-header .button {
+  display: inline-block;
+  color: $brown4;
   -webkit-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
@@ -39,20 +39,16 @@
   height: 32px;
   text-align: center;
   padding: 5px 10px;
-  box-shadow: 0 0 1px $green;
+  box-shadow: 0 0 3px $green;
   border-radius: 3px;
   width: 150px;
-  &:hover { box-shadow: 0 0 3px $green;}
+  &:hover { box-shadow: 0 0 6px $green;}
+}
+
+.bulletin-header .vote {
   & > * {
     display: inline-block;
     vertical-align: middle;
-  }
-
-  span {
-    font-size: $font-size * 0.9;
-    color: $brown4;
-    position: relative;
-    top: 2px;
   }
   img {
     position: relative;
@@ -61,21 +57,7 @@
 
   &.voted {
     cursor: auto;
-    width: auto;
-    box-shadow: none;
-    &:hover { background-color: transparent; }
-    span.heading {
-      color: $brown4;
-      width: 25px;
-      height: 25px;
-      line-height: 25px;
-      border-radius: 3px;
-      border: solid 1px $brown4;
-    }
-    &.vote span {
-      top: 0;
-      cursor: auto;
-    }
+    &:hover { box-shadow: 0 0 3px $green; }
   }
 }
 
