@@ -2,17 +2,21 @@
   <attn>&nbsp;<h3>{{numOfOrganizations}}</h3>organizations</attn><attn>at <h3>{{numOfUniversities}}</h3>universities</attn><attn>in <h3>{{numOfStates}}</h3>states</attn>
 </div>
 <p class="center">
-  We make tools to help South Asian organizations connect, collaborate and share.
+  We build tools to help South Asian student organizations
+  <br>
+  <strong>connect</strong>, <strong>collaborate</strong> and <strong>share</strong>.
 </p>
 <p class="center">
-  We belive that a strong and robust community is the key to making the world a better place.
+  Do you belong to an organization or team?
+</p>
+
+<form class="center">
+  {{input placeholder="Email Address" type="email" value=email}}
+  <button {{action proceedSignUp}} class="cta join">Join</button>
+</form>
+<p class="center">
+  or {{#linkTo 'login'}}Log in{{/linkTo}}
 </p>
 <p class="center">
   {{#linkTo 'about'}}Learn more{{/linkTo}}
-</p>
-<div class="cta join">
-  {{#linkTo 'users.new'}}Join{{/linkTo}}
-</div>
-<p class="center">
-  or {{#linkTo 'login'}}Log in{{/linkTo}}
 </p>
