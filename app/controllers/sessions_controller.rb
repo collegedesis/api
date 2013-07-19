@@ -1,6 +1,12 @@
 class SessionsController < ApplicationController
 
   def create
+    begin
+      puts "----------#{params[:email]}logging in!---------"
+      puts params[:email]
+      puts "-----------logging in---------"
+    end
+
     email = params[:email].downcase
     @user = User.where(email: email).first
 
