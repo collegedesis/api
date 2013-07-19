@@ -1,9 +1,6 @@
 class UserObserver < ActiveRecord::Observer
   def after_create(user)
     MemberMailer.welcome_email(user).deliver
-    begin
-      text_team(user)
-    end
   end
 
   def text_team(user)
