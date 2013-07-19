@@ -8,6 +8,7 @@ App.UsersNewRoute = Ember.Route.extend
     controller.set('content.email', email)
 
   redirect: ->
-    App.session.set('messages', 'Already signed up!')
     user = @controllerFor('application').get('currentUser')
-    @transitionTo('users.me') if user
+    if user
+      App.session.set('messages', 'Already signed up!')
+      @transitionTo('users.me')
