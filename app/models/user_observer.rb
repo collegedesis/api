@@ -11,7 +11,7 @@ class UserObserver < ActiveRecord::Observer
     auth_token = ENV['TWILIO_AUTH_TOKEN']
 
     if account_sid && auth_token
-      @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+      @twilio_client = Twilio::REST::Client.new account_sid, auth_token
       @twilio_client.account.sms.messages.create(
         :from => "+16418146200",
         :to => "+19712642651",
