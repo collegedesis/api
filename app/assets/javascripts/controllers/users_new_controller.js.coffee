@@ -1,6 +1,7 @@
 App.UsersNewController = Ember.ObjectController.extend
 
   working: false
+  wipEmail: null # set from homepage
 
   submit: ->
     @get('content').addObserver('id', this, '_userCreated')
