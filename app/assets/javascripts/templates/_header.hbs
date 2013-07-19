@@ -10,10 +10,13 @@
     <li>{{#linkTo about}}About{{/linkTo}}</li>
   </ul>
 
+  <ul class="account">
   {{#if currentUser}}
-    <div class="account">
-      {{#linkTo 'users.me'}}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
-      {{#if currentUser}}<a {{action logout}}>Sign out</a></li>{{/if}}
-    </div>
+
+      <li>{{#linkTo 'users.me'}}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}</li>
+      {{#if currentUser}}<li><a {{action logout}}>Sign out</a></li>{{/if}}
+  {{else}}
+    <li>{{#linkTo 'login'}}Log in{{/linkTo}}</li>
   {{/if}}
+  </ul>
 </nav>
