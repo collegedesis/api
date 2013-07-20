@@ -4,7 +4,7 @@ App.BulletinsNewRoute = Ember.Route.extend
     if user
      if !user.get('approved')
       App.session.set('messages', 'Add a Membership to post!')
-      @transitionTo('users.show', user)
+      @transitionTo('users.me')
     else
       App.session.set('messages', 'You need to be logged in to post!')
       @transitionTo('login')
