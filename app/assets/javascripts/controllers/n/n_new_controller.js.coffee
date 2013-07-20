@@ -1,4 +1,4 @@
-App.BulletinsNewController = Ember.ObjectController.extend
+App.NNewController = Ember.ObjectController.extend
   needs: ['application']
 
   currentUser: (->
