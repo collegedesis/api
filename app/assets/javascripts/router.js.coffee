@@ -4,14 +4,10 @@ App.Router.map ->
     @route "index"
     @route "show", {path: ':slug'}
 
+  @route 'news'
   @resource 'n', ->
     @route 'story', {path: ':slug'}
-    @route 'new'
-
-  # TODO this is legacy. We should
-  # remove it eventually and add a 404 route.
-  @resource 'news', ->
-    @route 'story', {path: ':slug'}
+    @route 'submit'
 
   # simple pages
   @resource 'about', ->
@@ -21,6 +17,7 @@ App.Router.map ->
 
   @route 'login', {path: 'login'}
 
+  @route 'directory'
   @resource 'd', ->
     @route "show", {path: ':slug'}
 

@@ -1,4 +1,4 @@
-App.NNewController = Ember.ObjectController.extend
+App.NSubmitController = Ember.ObjectController.extend
   needs: ['application']
 
   currentUser: (->
