@@ -1,8 +1,8 @@
-App.OrganizationsSettingsRoute = Ember.Route.extend
+App.DSettingsRoute = Ember.Route.extend
   redirect: (model) ->
     user = @controllerFor('application').get('currentUser')
     if !user && user.adminOf(model.get('id'))
-      @transitionTo('organizations.show', model)
+      @transitionTo('d.show', model)
 
   serialize: (model, params) ->
     object = {}

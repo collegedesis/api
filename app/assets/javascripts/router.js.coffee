@@ -21,10 +21,12 @@ App.Router.map ->
 
   @route 'login', {path: 'login'}
 
+  @resource 'd', ->
+    @route "show", {path: ':slug'}
+
   @resource "organizations", ->
     @route "index"
     @route "show", {path: ':slug'}
-    @route "settings", {path: ":slug/settings"}
 
   @resource "users", ->
     @route 'new', {path: 'signup'}
