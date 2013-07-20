@@ -1,4 +1,4 @@
-App.NNewRoute = Ember.Route.extend
+App.NSubmitRoute = Ember.Route.extend
   redirect: (model) ->
     user = @controllerFor('application').get('currentUser')
     if user

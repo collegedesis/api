@@ -1,4 +1,4 @@
-App.NController = Ember.ArrayController.extend
+App.BaseNewsController = Ember.ArrayController.extend
   needs: ['application', 'bulletinsIndex']
   currentUserBinding: Ember.Binding.oneWay('controllers.application.currentUser')
 
@@ -11,3 +11,7 @@ App.NController = Ember.ArrayController.extend
     'performances',
     'accomplishments'
   ]
+
+App.NIndexController = App.BaseNewsController.extend()
+App.NewsController = App.BaseNewsController.extend()
+App.NController = App.BaseNewsController.extend()
