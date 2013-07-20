@@ -1,4 +1,4 @@
-App.OrganizationsShowController = Ember.ObjectController.extend
+App.DShowController = Ember.ObjectController.extend
   needs: ['application']
 
   currentUser: (->

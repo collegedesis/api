@@ -1,5 +1,5 @@
 <aside>
-  {{partial 'organizations/show_sidebar'}}
+  {{partial 'd/show_sidebar'}}
   {{#if isDirty}}
     <button class="cta" {{action save}}>Save</button>
   {{/if}}
@@ -8,8 +8,8 @@
       <p style="color: red;">{{msg}}</p>
     {{/each}}
   {{/if}}
-  {{#linkTo 'organizations.show' this}}Back{{/linkTo}}
+  {{#linkTo 'd.show' this}}Back{{/linkTo}}
 </aside>
 <div class="main">
-  {{partial 'organizations/admin_show'}}
+  {{partial 'd/admin_show'}}
 </div>

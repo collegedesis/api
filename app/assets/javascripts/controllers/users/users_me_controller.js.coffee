@@ -1,5 +1,5 @@
 App.UsersMeController = Ember.ObjectController.extend
-  needs: ['organizationsIndex']
+  needs: ['dIndex']
 
   loading: false
 

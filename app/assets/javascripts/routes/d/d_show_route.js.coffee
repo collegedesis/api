@@ -1,4 +1,4 @@
-App.OrganizationsShowRoute = Ember.Route.extend
+App.DShowRoute = Ember.Route.extend
   serialize: (model, params) ->
     object = {}
     name = params[0]

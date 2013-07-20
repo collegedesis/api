@@ -1,6 +1,6 @@
-App.OrganizationsSettingsController = Ember.ObjectController.extend
+App.DSettingsController = Ember.ObjectController.extend
 
-  needs: ['application', 'organizationsShow']
+  needs: ['application', 'dShow']
 
   currentUser: (->
     @get('controllers.application.currentUser')

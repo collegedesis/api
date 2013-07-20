@@ -11,7 +11,7 @@ App.UsersMeRoute = Ember.Route.extend
 
   setupController: (controller, model) ->
     controller.set('content', model)
-    orgsController = @controllerFor('organizationsIndex')
+    orgsController = @controllerFor('dIndex')
     orgsController.set('content', App.Organization.find())
 
   deactivate: ->
