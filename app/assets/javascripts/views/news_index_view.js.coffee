@@ -2,7 +2,7 @@ App.ListView = Ember.ListView.extend
   height: 500,
   rowHeight: 60,
   width: 342,
-  itemViewClass: Ember.ListItemView.extend({templateName: "bulletins/_index_row"})
+  itemViewClass: Ember.ListItemView.extend({templateName: "n/_index_row"})
 
   didInsertElement: ->
     asideHeight = $('aside').height()

@@ -1,4 +1,4 @@
-App.BulletinsNewRoute = Ember.Route.extend
+App.NNewRoute = Ember.Route.extend
   redirect: (model) ->
     user = @controllerFor('application').get('currentUser')
     if user
