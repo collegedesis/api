@@ -4,15 +4,9 @@ class BulletinTweeter
   SEPARATOR = " - "
 
   def self.tweet_top(num)
-    bulletins = Bulletin.homepage.flatten
-    successful_tweets = 0
-
-    bulletins.each do |b|
-      if successful_tweets < 3
-        if !b.expired
-          successful_tweets += 1 if b.tweet
-        end
-      end
+    tweetable_bulletins = Bulletin.homepage.limit(num)
+    tweetable_bulletins.each do |b|
+      b.tweet if !b.expired
     end
   end
 
