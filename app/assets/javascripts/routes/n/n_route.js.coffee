@@ -1,4 +1,4 @@
-App.NewsRoute = Ember.Route.extend
+App.NRoute = Ember.Route.extend
   setupController: (controller) ->
     @loadBulletins(1)
 

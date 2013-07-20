@@ -1,11 +1,16 @@
 App.Router.map ->
+  # TODO remove these
   @resource "bulletins", ->
     @route "index"
     @route "new"
     @route "show", {path: ':slug'}
 
+  @resource 'n', ->
+    @route 'story', {path: ':slug'}
+
+  # TODO this is legacy. We should
+  # remove it eventually and add a 404 route.
   @resource 'news', ->
-    @route 'page', {path: ':page'}
     @route 'story', {path: ':slug'}
 
   # simple pages

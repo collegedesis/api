@@ -1,4 +1,4 @@
-App.NewsStoryController = Ember.ObjectController.extend
+App.NStoryController = Ember.ObjectController.extend
   needs: ['application']
   comment: null
 
@@ -7,7 +7,7 @@ App.NewsStoryController = Ember.ObjectController.extend
     if user
       if !user.get('approved')
         App.session.set('messages', 'Add a Membership to comment!')
-        @transitionToRoute('users.show', user)
+        @transitionToRoute('users.me')
         @set('comment', null)
       else
         @get('comments').createRecord({body: @get('comment')})

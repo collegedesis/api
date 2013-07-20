@@ -1,4 +1,4 @@
-App.NewsStoryRoute = Ember.Route.extend
+App.NStoryRoute = Ember.Route.extend
   serialize: (model, params) ->
     object = {}
     name = params[0]
