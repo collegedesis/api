@@ -163,28 +163,6 @@ h3, h4, h5, span.heading {
   font-size: $font-size * 0.7;
 }
 
-.attn-wrapper {
-  margin: 20px auto;
-  max-width: 840px;
-  attn {
-    h3 {
-      color: white;
-      font-size: $font-size * 3;
-    }
-    @include greenify;
-    border-radius: 5px;
-    color: $brown4;
-    height: 150px;
-    width: 30%;
-    min-width: 270px;
-    margin: 0 auto 10px;
-    margin-right: 10px;
-    display: inline-block;
-    text-align: center;
-    padding-top: 25px;
-  }
-}
-
 .cta.join {
   width: 160px;
   height: 50px;

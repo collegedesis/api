@@ -6,6 +6,9 @@
 #= require dateFormatter
 #= require jquery
 #= require jquery_ujs
+#= require jquery.mousewheel
+#= require raphael
+#= require mapsvg.min
 
 # Ember libs
 
@@ -13,8 +16,6 @@
 #= require ember
 #= require ember-data
 #= require list-view
-
-
 
 # Ember Application
 #= require_self
