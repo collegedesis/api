@@ -15,7 +15,7 @@ class Organization < ActiveRecord::Base
   has_many :membership_applications
 
   has_many :bulletins, :as => :author, :dependent => :destroy
-  default_scope order('name ASC')
+  default_scope order('organizations.name ASC')
   scope :reachable, conditions: 'email IS NOT NULL'
   scope :exposed, conditions: 'exposed'
 
@@ -44,9 +44,9 @@ class Organization < ActiveRecord::Base
   end
 
   def self.filter_by_params(params)
-    orgs = Organization.all
+    orgs = Organization.eager_load(:university)
     if params[:type]
-      orgs = Organization.reachable.exposed
+      orgs = Organization.eager_load(:university).reachable.exposed
       type = OrganizationType.where("lower(name) = ?", params[:type].downcase).first
       orgs = orgs.reachable.where(organization_type_id: type.id)
     end
@@ -55,9 +55,9 @@ class Organization < ActiveRecord::Base
 
   def self.filter_by_states(states)
     if states.length
-      Organization.joins(:university).where("universities.state in (?)", states)
+      Organization.eager_load(:university).where("universities.state in (?)", states)
     else
-      Organization.all
+      Organization.eager_load(:university)
     end
   end
 
