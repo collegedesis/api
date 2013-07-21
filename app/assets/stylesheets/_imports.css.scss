@@ -20,6 +20,22 @@ $font-size:16px;
 
 $col: 42px;
 
+@mixin clickable-button($width) {
+  display: inline-block;
+  vertical-align: middle;
+  color: $brown4;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ie-user-select: none;
+  height: 32px;
+  text-align: center;
+  padding: 5px 10px;
+  box-shadow: 0 0 1px $green;
+  border-radius: 3px;
+  width: $width;
+}
+
 @mixin editable {
   @include heading;
   border-bottom: solid 1px $brown2;

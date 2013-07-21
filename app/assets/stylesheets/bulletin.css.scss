@@ -29,24 +29,15 @@
 }
 
 .button {
-  display: inline-block;
-  vertical-align: middle;
-  color: $brown4;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ie-user-select: none;
-  cursor: pointer;
-  height: 32px;
-  text-align: center;
-  padding: 5px 10px;
-  box-shadow: 0 0 1px $green;
-  border-radius: 3px;
-  width: 150px;
-  &:hover { box-shadow: 0 0 6px $green;}
+  @include clickable-button(125px);
+  &.clickable {
+    cursor: pointer;
+    &:hover {box-shadow: 0 0 6px $green;}
+  }
 }
 
 .bulletin-header .vote {
+  display: inline-block;
   & > * {
     display: inline-block;
     vertical-align: middle;
@@ -54,11 +45,6 @@
   img {
     position: relative;
     bottom: 3px;
-  }
-
-  &.voted {
-    cursor: auto;
-    &:hover { box-shadow: 0 0 3px $green; }
   }
 }
 
