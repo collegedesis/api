@@ -1,10 +1,12 @@
 App.MapView = Ember.View.extend({
   layout: Ember.Handlebars.compile("<div class='map-container'>{{yield}}</div>"),
-  templateName: 'directory_map',
+  templateName: 'map',
 
   didInsertElement: function() {
     var _this = this;
-    return $('#map').mapSvg({
+    id = $('#map').attr('id')
+
+    return $('#map').mapSvg(id, {
       source: '/assets/usa.svg',
       cursor: 'pointer',
       loadingText: 'Loading Map...',

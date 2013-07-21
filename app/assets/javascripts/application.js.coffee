@@ -8,7 +8,7 @@
 #= require jquery_ujs
 #= require jquery.mousewheel
 #= require raphael
-#= require mapsvg.min
+#= require mapsvg
 
 # Ember libs
 
