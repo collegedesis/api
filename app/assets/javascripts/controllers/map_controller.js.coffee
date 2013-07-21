@@ -57,4 +57,4 @@ App.MapController = Ember.ArrayController.extend
     window.setTimeout =>
       if currentLength == @get('selectedStates.length')
         @set('queries', @get('queries') + 1)
-    , 1000
+    , 200
