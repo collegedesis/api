@@ -114,8 +114,6 @@ var mapSVG = function(elem, options){
     var _data;
 
     this.methods = {
-
-
         // destroy
         destroy : function(){
             delete instances[_data.$map.attr('id')];
@@ -890,8 +888,8 @@ var mapSVG = function(elem, options){
             rObj.mapsvg_type = 'text';
 
             $(rObj.node).css({
-            	"-webkit-touch-callout": "none",
-            	"-webkit-user-select": "none",
+                "-webkit-touch-callout": "none",
+                "-webkit-user-select": "none",
                 'pointer-events': 'none'
             });
           return rObj;
@@ -1245,18 +1243,18 @@ var mapSVG = function(elem, options){
 
             // Calculate width and height
             if ((!_data.options.width && !_data.options.height)){
-                _data.options.width	 = _data.svgDefault.width;
+                _data.options.width  = _data.svgDefault.width;
                 _data.options.height = _data.svgDefault.height;
             }else if (!_data.options.width && _data.options.height){
-            	_data.options.width	 = parseInt(_data.options.height * _data.svgDefault.width / _data.svgDefault.height);
+                _data.options.width  = parseInt(_data.options.height * _data.svgDefault.width / _data.svgDefault.height);
             }else if (_data.options.width && !_data.options.height){
-            	_data.options.height = parseInt(_data.options.width * _data.svgDefault.height/_data.svgDefault.width);
+                _data.options.height = parseInt(_data.options.width * _data.svgDefault.height/_data.svgDefault.width);
             }
 
             if(_data.options.responsive){
                 var maxWidth  = _data.options.width;
                 var maxHeight = _data.options.height;
-                _data.options.width	 = _data.svgDefault.width;
+                _data.options.width  = _data.svgDefault.width;
                 _data.options.height = _data.svgDefault.height;
             }
 
@@ -1631,7 +1629,7 @@ var mapSVG = function(elem, options){
                     if(_data.options.panBackground)
                         _data.background = _data.R.rect(_data.svgDefault.viewBox[0],_data.svgDefault.viewBox[1],_data.svgDefault.viewBox[2],_data.svgDefault.viewBox[3]).attr({fill: _data.options.colors.background});
 
-                	_data.RMap     = _data.R.set();
+                    _data.RMap     = _data.R.set();
                     _data.RMarks   = _data.R.set();
 
                     // Render each SVG element
@@ -1759,7 +1757,7 @@ var mapSVG = function(elem, options){
 
                     /* EVENTS */
                     if(!touchDevice){
-                    	_data.RMap
+                        _data.RMap
                             .mouseover( function(e){_this.mouseOverHandler.call(this, e, _this, options);} )
                             .mouseout(  function(e){_this.mouseOutHandler.call(this, e, _this, options);} );
                     }
@@ -1807,7 +1805,6 @@ var mapSVG = function(elem, options){
                 });// end of AJAX
 
 
-
         return _this;
 
         } // end of init
@@ -1820,17 +1817,20 @@ var mapSVG = function(elem, options){
 
 
   /** $.FN **/
-  $.fn.mapSvg = function( opts ) {
+  $.fn.mapSvg = function(id, opts ) {
 
-    var id = $(this).attr('id');
+    // var id = $(this).attr('id');
+    var el = $('#' + id);
 
     if(typeof opts == 'object' && instances[id] === undefined){
-        instances[id] = new mapSVG(this, opts);
-        return instances[id].methods.init(opts, this);
+        instances[id] = new mapSVG(el, opts);
+        return instances[id].methods.init(opts, el);
     }else if(instances[id]){
-        return instances[id].methods;
+        // some recursive business right here [mehulkar]
+        instances[id].methods.destroy()
+        $.fn.mapSvg(id, opts);
     }else{
-        return $(this);
+        return $(el);
     }
 
   }; // end of $.fn.mapSvg
