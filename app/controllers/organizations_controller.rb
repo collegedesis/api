@@ -2,15 +2,16 @@ class OrganizationsController < ApplicationController
   respond_to :json
 
   def index
-    @organizations = if params[:slug]
-      Organization.where(slug: params[:slug])
+    if params[:slug]
+      @organizations = Organization.where(slug: params[:slug])
+      render json: @organizations
     elsif params[:states]
-      Organization.filter_by_states(params[:states])
+      @organizations = Organization.filter_by_states(params[:states])
+      render json: @organizations, each_serializer: BasicOrganizationSerializer
     else
-      Organization.filter_by_params(params)
+      @organizations = Organization.filter_by_params(params)
+      render json: @organizations, each_serializer: BasicOrganizationSerializer
     end
-
-    render json: @organizations
   end
 
   def show
