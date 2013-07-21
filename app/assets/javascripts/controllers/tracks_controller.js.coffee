@@ -22,7 +22,7 @@ App.TracksController = Ember.ArrayController.extend
   createAndInsertWidget: (->
     if @get('currentTrack.isLoaded') && !@get('currentTrack.inDom')
       view = App.SoundCloudWidgetView.create(
-        template: Ember.Handlebars.compile @get('currentTrack.oEmbed.html')
+        template: Ember.Handlebars.compile @get('currentTrack.embedHtml')
         track: @get('currentTrack')
         controller: @
       )
