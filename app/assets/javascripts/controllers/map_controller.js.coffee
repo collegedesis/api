@@ -38,7 +38,10 @@ App.MapController = Ember.ArrayController.extend
 
   fetchOrgs: ->
     states = @get('selectedStates')
-    if states.get('length') == 0 && App.Organization.all().get('length') > 0
+    # we check for > 1 because it's possible
+    # that first landed on an org route and loaded one
+    # and then went to the home page.
+    if states.get('length') == 0 && App.Organization.all().get('length') > 1
       return App.Organization.all()
     else
       @store.findQuery(App.Organization, {states: states})
