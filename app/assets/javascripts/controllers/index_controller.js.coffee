@@ -10,3 +10,5 @@ App.IndexController = Ember.Controller.extend
   proceedSignUp: ->
     @set('controllers.usersNew.wipEmail', @get('email'))
     @transitionToRoute('users.new')
+
+  organizations: null

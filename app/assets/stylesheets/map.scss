@@ -1,0 +1,35 @@
+@import '_imports';
+
+.map-container {
+  width: 75%;
+  margin: 0 auto;
+  & > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+#map {
+  width: 400px !important;
+}
+
+.map-stats li {
+  &.loading {
+    @include loader(50px);
+    background-position: 10px center;
+    background-color: $green;
+  }
+  .stat {
+    color: white;
+    font-size: $font-size * 1.5;
+  }
+  font-size: $font-size * 0.9;
+  background-color: $green;
+  padding: 0 10px;
+  border-radius: 5px;
+  color: $brown4;
+  height: 50px;
+  line-height: 50px;
+  width: 300px;
+  margin: 0 10px 10px auto;
+}

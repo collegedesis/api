@@ -1,19 +1,11 @@
-<div class="attn-wrapper">
-  <attn>We help<h3>{{numOfOrganizations}}</h3>student organizations</attn><attn>at <h3>{{numOfUniversities}}</h3>universities</attn><attn>in <h3>{{numOfStates}}</h3>states</attn>
-</div>
-<p class="center">
-  <strong>Connect</strong>, <strong>Collaborate</strong> and <strong>Share</strong>
-</p>
-<p class="center">
-  Do you belong to an organization or team?
+{{render 'map'}}
+
+<p class="center" style="font-weight:800;">
+  Are you a member<br>
+  of a South Asian student organization or team?
 </p>
 
 <form class="center">
   {{input placeholder="Enter your email address" type="email" value=email}}
   <button {{action proceedSignUp}} class="cta join">Join</button>
 </form>
-<p class="center">
-  or
-  <br>
-  {{#linkTo 'about'}}Learn More{{/linkTo}}
-</p>

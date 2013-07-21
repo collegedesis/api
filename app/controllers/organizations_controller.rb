@@ -1,11 +1,15 @@
 class OrganizationsController < ApplicationController
   respond_to :json
+
   def index
-    if params[:slug]
-      @organizations = Organization.where(slug: params[:slug])
+    @organizations = if params[:slug]
+      Organization.where(slug: params[:slug])
+    elsif params[:states]
+      Organization.filter_by_states(params[:states])
     else
-      @organizations = Organization.filter_by_params(params)
+      Organization.filter_by_params(params)
     end
+
     render json: @organizations
   end
 

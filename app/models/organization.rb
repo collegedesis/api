@@ -44,12 +44,21 @@ class Organization < ActiveRecord::Base
   end
 
   def self.filter_by_params(params)
-    orgs = Organization.reachable.exposed
+    orgs = Organization.all
     if params[:type]
+      orgs = Organization.reachable.exposed
       type = OrganizationType.where("lower(name) = ?", params[:type].downcase).first
-      orgs = orgs.where(organization_type_id: type.id)
+      orgs = orgs.reachable.where(organization_type_id: type.id)
     end
     return orgs
+  end
+
+  def self.filter_by_states(states)
+    if states.length
+      Organization.joins(:university).where("universities.state in (?)", states)
+    else
+      Organization.all
+    end
   end
 
   def reputation
