@@ -104,7 +104,8 @@ input, textarea {
     outline: none;
   }
 }
-input, textarea, select, button {
+
+input, textarea, select {
   padding:5px;
   box-sizing:border-box;
   font-size:$font-size * 1.1;
@@ -112,16 +113,17 @@ input, textarea, select, button {
   display: block;
 }
 
-input, textarea, button {
+input, textarea {
   background-color: transparentize($brown2, 0.9);
 }
 
+.button {
+  @include clickable-button(150px);
+}
+
 input[type='submit'], button {
-  cursor: pointer;
-  max-width: 200px;
-  margin: 10px 0;
-  display: block;
-  border: 1px solid $brown2;
+  font-size: $font-size * 1.1;
+  @include clickable-button(75px);
   &[disabled] {}
 }
 
@@ -236,6 +238,12 @@ table.left-heading {
     color: $brown4;
     font-family: $header-font;
   }
+}
+
+.row-of-buttons > * {
+  &:first-child {padding-left: 3px;}
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .ember-list-view {

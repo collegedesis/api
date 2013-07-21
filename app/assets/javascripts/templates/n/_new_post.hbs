@@ -1,27 +1,10 @@
-{{#if controller.showingPreview}}
-  <div class="preview">
-      <div class="bulletin-header">
-        <div class="bulletin-info">
-          <h2>{{#if title}}{{title}}{{else}}No title{{/if}}</h2>
-        </div>
-      </div>
-      <div class="bulletin-body">{{htmlBody}}</div>
-    </div>
+{{#if showingPreview}}
+  {{partial 'n/new_post_preview'}}
 {{else}}
-  <p>
-    Title
-    {{#unless title}}
-      <br>
-      <span class="error">Missing title</span>
-    {{/unless}}
-  </p>
+  <h4>Title</h4>
+  {{#unless title}}<span class="error">Missing title</span>{{/unless}}
   {{input value=title}}
-  <p>
-    Body
-    {{#unless body}}
-      <br>
-      <span class="error">Missing body</span>
-    {{/unless}}
-  </p>
+  <h4>Body</h4>
+  {{#unless body}}<span class="error">Missing body</span>{{/unless}}
   {{textarea value=body}}
 {{/if}}

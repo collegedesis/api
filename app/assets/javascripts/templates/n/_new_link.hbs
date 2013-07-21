@@ -1,17 +1,13 @@
-<p>
-  Title
-  {{#unless title}}
-    <br>
-    <span class="error">Missing title</span>
-  {{/unless}}
-</p>
+{{#if showingPreview}}
+  <h3>No preview available for link bulletins.</h3>
+{{else}}
+<h4>Title</h4>
+{{#unless title}}<span class="error">Missing title</span>{{/unless}}
 {{input value=title}}
 
-<p>
-  Url
-  {{#unless validUrl}}
-    <br>
-    <p class="error">Make sure you include http or https at the beginning!</p>
-  {{/unless}}
-</p>
+<h4>URL</h4>
+{{#unless validUrl}}
+<span class="error">Make sure you include http or https at the beginning!</span>
+{{/unless}}
 {{input value=url placeholder="http://"}}
+{{/if}}

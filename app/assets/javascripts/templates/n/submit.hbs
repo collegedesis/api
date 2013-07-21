@@ -1,20 +1,20 @@
-<h3>Who do you want to post as?</h3>
-{{view Ember.Select contentBinding="possibleAuthors"
-                    optionValuePath="content"
-                    optionLabelPath="content.name"
-                    selectionBinding="assignedAuthor"}}
-<div class="bulletin-new">
-  <p>
-    {{#if isPost}}
-      <a {{bindAttr class="isLink:selected"}} {{action setLink}}>Submit a link</a> to another website or article instead.
-    {{else}}
-      <a {{bindAttr class="isPost:selected"}} {{action setPost}}>Write</a> a blog post instead.
-    {{/if}}
-  </p>
-  <form>
-    {{#if isPost}}{{partial "n/new_post"}}{{/if}}
-    {{#if isLink}}{{partial "n/new_link"}}{{/if}}
-    {{#if isPost}}<button {{action preview}}>{{#if showingPreview}}Edit{{else}}Preview{{/if}}</button>{{/if}}
+{{#unless showingPreview}}
+  <h3><a {{action toggleBulletinType}}>{{toggleTypePrompt}}</a> instead.</h3>
+{{/unless}}
+<form class="bulletin-new">
+  {{#if isLink}}{{partial "n/new_link"}}{{/if}}
+  {{#if isPost}}{{partial "n/new_post"}}{{/if}}
+  {{#unless showingPreview}}
+  <h3>Who do you want to post as?</h3>
+  {{view Ember.Select contentBinding="possibleAuthors"
+                  optionValuePath="content"
+                  optionLabelPath="content.name"
+                  selectionBinding="assignedAuthor"}}
+  {{/unless}}
+  <div class="row-of-buttons">
     <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Submit</button>
-  </form>
-</div>
+    <button class="clickable" {{action preview}}>
+    {{#if showingPreview}}Edit{{else}}Preview{{/if}}
+    </button>
+  </div>
+</form>
