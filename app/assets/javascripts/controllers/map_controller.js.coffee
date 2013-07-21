@@ -11,8 +11,7 @@ App.MapController = Ember.ArrayController.extend
 
   selectedOrgs: (->
     @set('loading', true)
-    states = @get('selectedStates')
-    xhr = @store.findQuery(App.Organization, {states: states})
+    xhr = @fetchOrgs()
     xhr.then => @set('loading', false)
     return xhr
   ).property('queries')
@@ -36,6 +35,13 @@ App.MapController = Ember.ArrayController.extend
     newStates = @get('selectedStates').without(state)
     @set('selectedStates', newStates)
     @_incrementQueries()
+
+  fetchOrgs: ->
+    states = @get('selectedStates')
+    if states.get('length') == 0 && App.Organization.all().get('length') > 0
+      return App.Organization.all()
+    else
+      @store.findQuery(App.Organization, {states: states})
 
   # For some reason, `selectedOrgs` doesn't fire
   # when selectedStates changes. I've tried watching
