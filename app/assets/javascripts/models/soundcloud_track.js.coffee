@@ -11,3 +11,7 @@ App.SoundCloudTrack = Ember.Object.extend
       @set('oEmbed', oEmbed)
 
   isLoaded: (-> @get('oEmbed')? ).property('oEmbed')
+
+  embedHtml: (->
+    @get('oEmbed.html').replace("http%3A%2F%2F", '//')
+  ).property('oEmbed')
