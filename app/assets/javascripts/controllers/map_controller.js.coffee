@@ -53,4 +53,8 @@ App.MapController = Ember.ArrayController.extend
   # - mehulkar
   queries: 0
   _incrementQueries: ->
-    @set('queries', @get('queries') + 1)
+    currentLength = @get('selectedStates.length')
+    window.setTimeout =>
+      if currentLength == @get('selectedStates.length')
+        @set('queries', @get('queries') + 1)
+    , 1000
