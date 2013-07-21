@@ -9,22 +9,24 @@
       </h5>
     </div>
 
-    {{#if isLink}}
-      <a class="button clickable" {{bindAttr href="url"}} target="_blank">Visit Link</a>
-    {{/if}}
-    <div class="vote">
-      {{#if hasBeenVotedOn}}
-        <div class="button">Score: <span class="heading">{{roundedScore}}</span></div>
-      {{else}}
-      <a class="button clickable" {{action voteOnBulletin}}>
-        <img src="/assets/upvote.png" width="20px" height="20px">
-        <span>Recommend</span>
-      </a>
+    <div class="row-of-buttons">
+      {{#if isLink}}
+        <a class="button" {{bindAttr href="url"}} target="_blank">Visit Link</a>
       {{/if}}
+      <div class="vote">
+        {{#if hasBeenVotedOn}}
+          <div class="button no-click">Score: <span class="heading">{{roundedScore}}</span></div>
+        {{else}}
+        <a class="button" {{action voteOnBulletin}}>
+          <img src="/assets/upvote.png" width="20px" height="20px">
+          <span>Recommend</span>
+        </a>
+        {{/if}}
+      </div>
+      <a class="button" {{action jumpToComment target="view"}}>
+        Comment{{#if comments}} ({{comments.length}}){{/if}}
+      </a>
     </div>
-    <a class="button clickable" {{action jumpToComment target="view"}}>
-      Comment{{#if comments}} ({{comments.length}}){{/if}}
-    </a>
   </div>
   <div class="bulletin-body">
     {{htmlBody}}

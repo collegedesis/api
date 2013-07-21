@@ -15,22 +15,7 @@ body nav {
     li {
       display: inline-block;
     }
-    a {
-      display: inline-block;
-      vertical-align: middle;
-      color: $brown4;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -o-user-select: none;
-      -ie-user-select: none;
-      cursor: pointer;
-      height: 32px;
-      text-align: center;
-      padding: 5px 10px;
-      box-shadow: 0 0 1px $green;
-      border-radius: 3px;
-      width: 100px;
-    }
+    a { @include clickable-button(100px); }
     .active { box-shadow: 0 0 6px $green; }
   }
 }

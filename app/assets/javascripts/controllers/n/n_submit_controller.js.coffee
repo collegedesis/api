@@ -81,5 +81,15 @@ App.NSubmitController = Ember.ObjectController.extend
     @get('url').match(/^https?:\/\/.+\..+/) if @get('url')?
   ).property('url')
 
-  setPost: -> @set('bulletin_type', 1)
-  setLink: -> @set('bulletin_type', 2)
+  toggleBulletinType: ->
+    currentType = @get('bulletin_type')
+    if currentType == 1 then newType = 2 else newType = 1
+    @set('bulletin_type', newType)
+
+  toggleTypePrompt: (->
+    type = @get('bulletin_type')
+    if type == 1
+      "Post a link"
+    else
+      "Write a blog post"
+  ).property('bulletin_type')
