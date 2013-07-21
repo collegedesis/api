@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
 
+  default_scope eager_load(:user)
   def bulletin_id
     commentable.id if commentable_type == "Bulletin"
   end
