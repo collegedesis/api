@@ -10,17 +10,21 @@
     </div>
 
     {{#if isLink}}
-      <a {{bindAttr href="url"}} target="_blank" class="button">Read The Post</a>
+      <a class="button clickable" {{bindAttr href="url"}} target="_blank">Visit Link</a>
     {{/if}}
-    <div {{bindAttr class="hasBeenVotedOn:voted :vote :button"}}>
+    <div class="vote">
       {{#if hasBeenVotedOn}}
-        Score: <span class="heading">{{roundedScore}}</span>
+        <div class="button">Score: <span class="heading">{{roundedScore}}</span></div>
       {{else}}
+      <a class="button clickable" {{action voteOnBulletin}}>
         <img src="/assets/upvote.png" width="20px" height="20px">
-        <span {{action voteOnBulletin}}>Recommend</span>
+        <span>Recommend</span>
+      </a>
       {{/if}}
     </div>
-    <a class="button" {{action jumpToComment target="view"}}>Comment</a>
+    <a class="button clickable" {{action jumpToComment target="view"}}>
+      Comment{{#if comments}} ({{comments.length}}){{/if}}
+    </a>
   </div>
   <div class="bulletin-body">
     {{htmlBody}}
