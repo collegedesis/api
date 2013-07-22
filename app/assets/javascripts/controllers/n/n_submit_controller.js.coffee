@@ -57,7 +57,7 @@ App.NSubmitController = Ember.ObjectController.extend
   _createdBulletin: ->
     bulletin = @get('content')
     bulletin.removeObserver('slug', this, '_createdBulletin')
-    @transitionToRoute("news.story", bulletin)
+    @transitionToRoute("n.story", bulletin)
 
   errors: (->
     val = true
