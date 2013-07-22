@@ -4,7 +4,7 @@ App.BaseNewsRoute = Ember.Route.extend
 
   events:
     goToBulletin: (bulletin) ->
-      @transitionTo('news.story', bulletin)
+      @transitionTo('n.story', bulletin)
 
   # TODO remove bulletinsIndex controller and just use the
   # newsController.
@@ -19,5 +19,7 @@ App.BaseNewsRoute = Ember.Route.extend
 
 App.NewsRoute = App.BaseNewsRoute.extend()
 App.NRoute = App.BaseNewsRoute.extend()
+
+# This exists so we the main news page url is /news
 App.NIndexRoute = Ember.Route.extend
   redirect: -> @transitionTo('news.index')
