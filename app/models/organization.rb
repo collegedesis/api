@@ -46,10 +46,11 @@ class Organization < ActiveRecord::Base
   def self.filter_and_search_by_query(query)
     states = query[:states]
     param = query[:param].downcase
+    like_param = "%#{param}%"
     orgs = if param && states
-      Organization.eager_load(:university).where("universities.state in (?) and lower(organizations.name) like ?", states, "%#{param}%")
+      Organization.eager_load(:university).where("universities.state in (?) and lower(organizations.name) like ?", states, like_param)
     elsif param && !states
-      Organization.eager_load(:university).where("lower(organizations.name) like ?", param)
+      Organization.eager_load(:university).where("lower(organizations.name) like ?", like_param)
     elsif !param && !states
       []
     end
