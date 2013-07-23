@@ -5,8 +5,8 @@ class OrganizationsController < ApplicationController
     if params[:slug]
       @organizations = Organization.where(slug: params[:slug])
       render json: @organizations
-    elsif params[:states]
-      @organizations = Organization.filter_by_states(params[:states])
+    elsif params[:query]
+      @organizations = Organization.filter_and_search_by_query(params[:query])
       render json: @organizations, each_serializer: BasicOrganizationSerializer
     else
       @organizations = Organization.filter_by_params(params)

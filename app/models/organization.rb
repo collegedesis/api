@@ -29,7 +29,7 @@ class Organization < ActiveRecord::Base
 
   def display_name
     if university
-      "#{name} (#{university.name})"
+      "#{university.name} - #{name}"
     else
       name
     end
@@ -41,6 +41,19 @@ class Organization < ActiveRecord::Base
 
   def university_name
     university.name if university
+  end
+
+  def self.filter_and_search_by_query(query)
+    states = query[:states]
+    param = query[:param].downcase
+    orgs = if param && states
+      Organization.eager_load(:university).where("universities.state in (?) and lower(organizations.name) like ?", states, "%#{param}%")
+    elsif param && !states
+      Organization.eager_load(:university).where("lower(organizations.name) like ?", param)
+    elsif !param && !states
+      []
+    end
+    return orgs
   end
 
   def self.filter_by_params(params)

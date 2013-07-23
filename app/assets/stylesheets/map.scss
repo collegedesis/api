@@ -13,6 +13,39 @@
   width: 400px !important;
 }
 
+.map-stats, .map-results {
+  width: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.map-results {
+  position: relative;
+  padding: 0 5px;
+  h3 {
+    padding: 5px;
+    position: fixed;
+    height: 30px;
+    width: 100%;
+    background-color: $background;
+  }
+  ul {
+    margin-top: 30px;
+    max-height: 250px;
+    &.loading { @include loader(250px); }
+    li {
+      font-size: $font-size * 0.9;
+      border-bottom: solid 1px $green;
+      @include ellipsis;
+      padding: 5px;
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 3px $green;
+      }
+    }
+  }
+}
+
 .map-stats li {
   &.loading {
     @include loader(50px);
@@ -30,6 +63,5 @@
   color: $brown4;
   height: 50px;
   line-height: 50px;
-  width: 300px;
   margin: 0 10px 10px auto;
 }

@@ -1,5 +1,4 @@
 App.MapView = Ember.View.extend({
-  layout: Ember.Handlebars.compile("<div class='map-container'>{{yield}}</div>"),
   templateName: 'map',
 
   didInsertElement: function() {
