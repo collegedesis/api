@@ -25,9 +25,7 @@
   text-align: left;
   span {
     display: inline-block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    @include ellipsis;
     max-width: 200px;
   }
 }
@@ -51,9 +49,7 @@
       display: block;
       padding: 5px 10px;
       border-radius: 5px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+      @include ellipsis;
       &, &:hover, &:visited {color: $brown4;}
     }
     .active {

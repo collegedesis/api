@@ -29,7 +29,7 @@ class Organization < ActiveRecord::Base
 
   def display_name
     if university
-      "#{name} (#{university.name})"
+      "#{university.name} - #{name}"
     else
       name
     end

@@ -22,9 +22,7 @@
     a {
       width: 100%;
       display: block;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+      @include ellipsis;
       color: $brown3;
       &:hover {
         text-decoration: underline;
