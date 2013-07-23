@@ -2,18 +2,18 @@
   <div class="map-stats">
     <p><strong>Connect</strong>, <strong>Collaborate</strong> and <strong>Share</strong> with</p>
     <ul>
-      <li {{bindAttr class="loading"}}>
-        <span class="stat">{{numOfOrganizations}}</span>
+      <li>
+        <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfOrganizations}}</div>
         <span>South Asian student organizations</span>
       </li>
-      <li {{bindAttr class="loading"}}>
+      <li>
         <span>at</span>
-        <span class="stat">{{numOfUniversities}}</span>
+        <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfUniversities}}</div>
         <span>universities</span>
       </li>
-      <li {{bindAttr class="loading"}}>
+      <li>
         <span>in</span>
-        <span class="stat">{{numOfStates}}</span>
+        <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfStates}}</div>
         <span>states</span>
       </li>
     </ul>
