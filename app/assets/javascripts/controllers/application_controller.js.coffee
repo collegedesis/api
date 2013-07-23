@@ -25,3 +25,7 @@ App.ApplicationController = Ember.Controller.extend
   firstPage: (->
     {page: '1'}
   ).property()
+
+  homePage: (->
+    @get('currentPath') == "index"
+  ).property('currentPath')
