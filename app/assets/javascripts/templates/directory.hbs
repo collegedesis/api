@@ -1,2 +1,8 @@
-<h3>Directory</h3>
-<p>Coming soon</p>
+{{input value=controllers.map.searchParam placeholder="Search"}}
+{{render 'map'}}
+
+<ul>
+{{#each org in controllers.map.organizations}}
+  <li>{{org.display_name}}</li>
+{{/each}}
+</ul>

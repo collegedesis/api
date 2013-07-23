@@ -1,4 +1,27 @@
+<div class="map-container">
+
 {{render 'map'}}
+
+<div class="map-stats">
+  <p><strong>Connect</strong>, <strong>Collaborate</strong> and <strong>Share</strong> with</p>
+  <ul>
+  <li {{bindAttr class="loading"}}>
+    <span class="stat">{{numOfOrganizations}}</span>
+    <span>South Asian student organizations</span>
+  </li>
+  <li {{bindAttr class="loading"}}>
+    <span>at</span>
+    <span class="stat">{{numOfUniversities}}</span>
+    <span>universities</span>
+  </li>
+  <li {{bindAttr class="loading"}}>
+    <span>in</span>
+    <span class="stat">{{numOfStates}}</span>
+    <span>states</span>
+  </li>
+  </ul>
+</div>
+</div>
 
 <p class="center" style="font-weight:800;">
   Are you a member<br>
