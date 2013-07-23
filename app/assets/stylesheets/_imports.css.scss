@@ -79,6 +79,7 @@ $col: 42px;
 @mixin loader($min-height) {
   background: url("spinner.gif") no-repeat center center;
   height: $min-height;
+  min-height: 30px;
   & > * { display: none !important;}
 }
 
