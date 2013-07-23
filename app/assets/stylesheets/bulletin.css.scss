@@ -1,8 +1,6 @@
 @import '_imports';
 
 .bulletin {
-  max-height: 450px;
-  overflow-y: auto;
   h3 { color: $brown4; }
   & > * { margin-bottom: 20px; }
   .bulletin-header {

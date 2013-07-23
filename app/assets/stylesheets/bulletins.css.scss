@@ -8,11 +8,12 @@
 }
 
 .bulletin-wrapper {
-  box-shadow: inset 0 0 3px 0px $green;
   height: 60px;
   width: $col * 8;
   padding: 5px 10px;
   text-transform: capitalize;
+  border-bottom: solid 1px $green;
+  overflow: hidden;
   .subtext, .title {
     a {
       width: 100%;

@@ -58,14 +58,11 @@ body, .app-header, .app-content, .footer {
 
 .app-content {
   overflow: hidden;
-  aside, .main { float: left; }
+  aside, .main { display: inline-block; vertical-align: top; }
   aside {
-    width: $col * 8;
-    position: fixed;
-    margin-bottom: 20px;
+    width: ($col * 8) - 5px;
   }
   .main {
-    margin-left: $col * 8;
     width: $col * 15;
     padding: 0 20px;
   }
