@@ -82,10 +82,6 @@ class Organization < ActiveRecord::Base
     100
   end
 
-  def send_new_member_notification(user)
-    OrganizationMailer.new_member(user, self).deliver
-  end
-
 protected
   def send_welcome_email
     OrganizationMailer.welcome(self).deliver if self.email?
