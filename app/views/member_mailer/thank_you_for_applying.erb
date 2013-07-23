@@ -1,0 +1,5 @@
+<p>Hey <%=@app.user.full_name%></p>
+
+<p><%= @app.organization.name %> received your application to be an admin! When they approve it, we'll let you know :)</p>
+
+<%= render partial: 'email_footer' %>
