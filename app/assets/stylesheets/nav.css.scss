@@ -4,14 +4,18 @@ nav ul li:first-child {
   padding-left: 0 !important;
 }
 
-body nav > * { display: inline-block; }
+nav > * {
+  display: inline-block;
+  vertical-align: middle;
+}
 
-body nav {
-  h1  { margin-right: 20px; }
+nav {
+  h1.logo {
+    margin-right: 20px; margin-bottom: 0;
+  }
   background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  height: 32px;
   margin-bottom: 10px;
   width: $col * 23;
   border: solid 1px $green;
@@ -29,7 +33,6 @@ body nav {
         -moz-user-select: none;
         -o-user-select: none;
         -ie-user-select: none;
-        height: 32px;
         text-align: center;
         padding: 5px 10px;
         cursor: pointer;
