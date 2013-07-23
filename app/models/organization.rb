@@ -47,11 +47,14 @@ class Organization < ActiveRecord::Base
     states = query[:states]
     param = query[:param].downcase
     like_param = "%#{param}%"
-    orgs = if param && states
+    # binding.pry
+    orgs = if param.present? && states.present?
       Organization.eager_load(:university).where("universities.state in (?) and lower(organizations.name) like ?", states, like_param)
-    elsif param && !states
+    elsif param.blank? && states.present?
+      Organization.eager_load(:university).where("universities.state in (?)", states)
+    elsif param.present? && states.blank?
       Organization.eager_load(:university).where("lower(organizations.name) like ?", like_param)
-    elsif !param && !states
+    elsif param.blank? && states.blank?
       []
     end
     return orgs
