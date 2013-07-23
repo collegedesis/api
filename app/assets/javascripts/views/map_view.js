@@ -1,5 +1,5 @@
 App.MapView = Ember.View.extend({
-  template: Ember.Handlebars.compile("<div id='map'></div>"),
+  templateName: 'map',
 
   didInsertElement: function() {
     var _this = this;
