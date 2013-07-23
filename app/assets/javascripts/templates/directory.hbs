@@ -9,11 +9,13 @@
 
 
 <div class=" center map-results">
-  {{#if controllers.map.organizations}}
-    <h2>{{controllers.map.organizations.length}} organizations found</h2>
+  {{#unless loading}}
+    {{#if controllers.map.organizations}}
+      <h2><span {{bindAttr class="controllers.map.loading"}}>{{controllers.map.organizations.length}}</span> organizations found</h2>
+    {{/if}}
   {{else}}
-    <h2>No Results</h2>
-  {{/if}}
+    <h2><span {{bindAttr class="controllers.map.loading"}}>{{controllers.map.organizations.length}}</span> organizations found</h2>
+  {{/unless}}
   <ul {{bindAttr class="controllers.map.loading"}}>
     {{#each org in controllers.map.organizations}}
       {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}

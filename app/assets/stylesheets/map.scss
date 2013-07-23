@@ -22,12 +22,20 @@
 .map-results {
   position: relative;
   padding: 0 5px;
-  h3 { padding: 5px; }
+  h2 {
+    @include heading;
+    padding: 5px;
+    span.loading {
+      @include loader(30px);
+      text-indent: -9999px;
+      display: inline-block;
+      min-width: 30px;
+    }
+  }
   ul {
     margin-top: 30px;
     &.loading { @include loader(250px); }
     li {
-      // font-size: $font-size * 0.9;
       border-bottom: solid 1px $green;
       @include ellipsis;
       padding: 10px 5px;
