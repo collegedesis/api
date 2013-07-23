@@ -1,12 +1,14 @@
 App.IndexController = Ember.Controller.extend
-  needs: ['application', 'usersNew']
+  needs: ['usersNew', 'map']
 
-  numOfOrganizationsBinding: Ember.Binding.oneWay('controllers.application.numOfOrganizations')
-  numOfUniversitiesBinding: Ember.Binding.oneWay('controllers.application.numOfUniversities')
-  numOfStatesBinding: Ember.Binding.oneWay('controllers.application.numOfStates')
+  numOfOrganizationsBinding: Ember.Binding.oneWay('controllers.map.numOfOrganizations')
+  numOfUniversitiesBinding: Ember.Binding.oneWay('controllers.map.numOfUniversities')
+  numOfStatesBinding: Ember.Binding.oneWay('controllers.map.numOfStates')
 
+  # This `email` property is a floating property
+  # we send to the users.new controller
+  # when `proceedSignUp` is called,
   email: null
-
   proceedSignUp: ->
     @set('controllers.usersNew.wipEmail', @get('email'))
     @transitionToRoute('users.new')

@@ -8,25 +8,14 @@ App.MapController = Ember.ArrayController.extend
     @_super()
 
   selectedStates: Em.A()
+  searchParam: null
 
-  selectedOrgs: (->
-    @set('loading', true)
-    xhr = @fetchOrgs()
-    xhr.then => @set('loading', false)
-    return xhr
-  ).property('queries')
+  clearResults: ->
+    @set('searchParam', null)
+    @set('selectedStates', Em.A())
+    @_resetQueries()
 
-  numOfUniversities: (->
-    @get('selectedOrgs').mapProperty('university_name').uniq().get('length')
-  ).property('selectedOrgs.@each.university')
-
-  numOfStates: (->
-    if @get('selectedStates.length') == 0
-      @get('controllers.application.numOfStates')
-    else
-      @get('selectedStates.length')
-  ).property('queries', 'controllers.application.numOfStates')
-
+  # filter actions
   selectState: (state) ->
     @get('selectedStates').push(state)
     @_incrementQueries()
@@ -36,24 +25,52 @@ App.MapController = Ember.ArrayController.extend
     @set('selectedStates', newStates)
     @_incrementQueries()
 
-  fetchOrgs: ->
-    states = @get('selectedStates')
-    # we check for > 1 because it's possible
-    # that first landed on an org route and loaded one
-    # and then went to the home page.
-    if states.get('length') == 0 && App.Organization.all().get('length') > 1
-      return App.Organization.all()
-    else
-      @store.findQuery(App.Organization, {states: states})
+  # search
+  searchParamDidChange: (->
+    @_incrementQueries()
+  ).observes('searchParam')
 
-  # For some reason, `selectedOrgs` doesn't fire
-  # when selectedStates changes. I've tried watching
-  # `selectedStates.@each` and `selectedStates.length`
-  # To get around this, I'm incrementing a counter
-  # every time we select or unselect a state
-  # and using that to recalculate selectedOrgs
-  # TODO this should be fixed
-  # - mehulkar
+  organizations: (->
+    @set('loading', true)
+    promise = @makeAPICall()
+    promise.then => @set('loading', false)
+    return promise
+  ).property('queries')
+
+  makeAPICall: ->
+    states = @get('selectedStates')
+    param = @get('searchParam')
+    query = {
+      states: states,
+      param: param
+    }
+    return @store.findQuery(App.Organization, {query: query})
+
+  numOfUniversities: (->
+    if @get('organizations.length')
+      @get('organizations').mapProperty('university_name').uniq().get('length')
+    else
+      @get('controllers.application.numOfUniversities')
+  ).property('organizations.@each.university_name', 'controllers.application.numOfUniversities')
+
+  numOfStates: (->
+    if @get('selectedStates.length') == 0
+      @get('controllers.application.numOfStates')
+    else
+      @get('selectedStates.length')
+  ).property('queries', 'controllers.application.numOfStates')
+
+  numOfOrganizations: (->
+    if @get('organizations.length')
+      @get('organizations.length')
+    else
+      @get('controllers.application.numOfOrganizations')
+  ).property('organizations.length')
+
+  # call `_incrementQueries` whenever you want to watch
+  # make an api call based on a user interaction
+  # when the query property changes, we recalculate organizations
+  # by making an api call
   queries: 0
   _incrementQueries: ->
     currentLength = @get('selectedStates.length')
@@ -61,3 +78,6 @@ App.MapController = Ember.ArrayController.extend
       if currentLength == @get('selectedStates.length')
         @set('queries', @get('queries') + 1)
     , 200
+
+  _resetQueries: ->
+    @set('queries', 0)
