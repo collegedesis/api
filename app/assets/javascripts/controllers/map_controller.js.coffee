@@ -10,6 +10,11 @@ App.MapController = Ember.ArrayController.extend
   selectedStates: Em.A()
   searchParam: null
 
+  clearResults: ->
+    @set('searchParam', null)
+    @set('selectedStates', Em.A())
+    @_resetQueries()
+
   # filter actions
   selectState: (state) ->
     @get('selectedStates').push(state)
@@ -42,9 +47,11 @@ App.MapController = Ember.ArrayController.extend
     return @store.findQuery(App.Organization, {query: query})
 
   numOfUniversities: (->
-    if @get('organizations')
+    if @get('organizations.length')
       @get('organizations').mapProperty('university_name').uniq().get('length')
-  ).property('organizations.@each.university')
+    else
+      @get('controllers.application.numOfUniversities')
+  ).property('organizations.@each.university_name', 'controllers.application.numOfUniversities')
 
   numOfStates: (->
     if @get('selectedStates.length') == 0
@@ -71,3 +78,6 @@ App.MapController = Ember.ArrayController.extend
       if currentLength == @get('selectedStates.length')
         @set('queries', @get('queries') + 1)
     , 200
+
+  _resetQueries: ->
+    @set('queries', 0)
