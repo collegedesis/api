@@ -3,7 +3,7 @@ App.MapView = Ember.View.extend({
 
   didInsertElement: function() {
     var _this = this;
-    id = $('#map').attr('id')
+    id = $('#map').attr('id');
 
     return $('#map').mapSvg(id, {
       source: '/assets/usa.svg',
