@@ -4,19 +4,47 @@ nav ul li:first-child {
   padding-left: 0 !important;
 }
 
-body nav > * {
-  display: inline-block;
-}
 body nav {
-  height: 55px;
-  margin-top: 6px;
+  background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 32px;
+  margin-bottom: 10px;
+  position: fixed;
+  width: $col * 23;
+  border: solid 1px $green;
+  z-index: 999;
   ul {
     display: inline-block;
     li {
+      font-size: $font-size * 0.9;
+      // width: 75px;
       display: inline-block;
+      a {
+        display: inline-block;
+        vertical-align: middle;
+        color: $brown4;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        -ie-user-select: none;
+        height: 32px;
+        text-align: center;
+        padding: 5px 10px;
+        // min-width: 75px;
+        cursor: pointer;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        &.no-click { cursor: auto;
+          &:hover { box-shadow: none; }
+        }
+      }
     }
-    a { @include clickable-button(100px); }
-    .active { box-shadow: 0 0 6px $green; }
+    .active {
+      font-weight: 800;
+      background-color: #CFE3B0; /*transparentize($green, 0.7); */
+      border-bottom: solid 2px $green;
+    }
   }
 }
 
@@ -29,15 +57,13 @@ nav .account {
 }
 
 body .sub-nav {
+
   margin-bottom: 10px;
-  &.no-link {
-    li {
-      padding: 5px; }
-  }
+  &.no-link li { padding: 5px; }
   li {
     @include subnav;
+    box-shadow: 0 0 3px $green;
     display: block;
-    box-shadow: inset 0 0 3px 0px $green;
     height: 48px;
     line-height: 37px;
     a {

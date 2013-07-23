@@ -1,10 +1,6 @@
-<h1 {{action goHome}}><span>College</span>Desis</h1>
-<div class="subtitle">Connecting all the South Asian student organizations in America</div>
 <nav>
   <ul>
-    {{#unless currentUser}}
     <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
-    {{/unless}}
     <li>{{#linkTo news}}News{{/linkTo}}</li>
     <li>{{#linkTo radio}}Radio{{/linkTo}}</li>
     <li>{{#linkTo about}}About{{/linkTo}}</li>
@@ -13,11 +9,13 @@
 
   <ul class="account">
   {{#if currentUser}}
-
-      <li>{{#linkTo 'users.me'}}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}</li>
-      {{#if currentUser}}<li><a {{action logout}}>Sign out</a></li>{{/if}}
+    <li>{{#linkTo 'users.me'}}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}</li>
+    {{#if currentUser}}<li><a {{action logout}}>Sign out</a></li>{{/if}}
   {{else}}
     <li>{{#linkTo 'login'}}Log in{{/linkTo}}</li>
   {{/if}}
   </ul>
 </nav>
+<div class="app-header">
+  <h1 {{action goHome}}><span>College</span>Desis</h1>
+</div>
