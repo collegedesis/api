@@ -1,6 +1,6 @@
 <div class="map-container">
+  {{render 'map'}}
   <div class="map-stats">
-    <p><strong>Connect</strong>, <strong>Collaborate</strong> and <strong>Share</strong> with</p>
     <ul>
       <li>
         <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfOrganizations}}</div>
@@ -18,16 +18,11 @@
       </li>
     </ul>
   </div>
-  {{render 'map'}}
-  <p class="center">&darr;</p>
 </div>
 
-<p class="center" style="font-weight:800;">
-  Are you a member<br>
-  of a South Asian student organization or team?
-</p>
+<h2 class="center">Belong to one of these?</h2>
 
 <form class="center">
   {{input placeholder="Enter your email address" type="email" value=email}}
-  <button {{action proceedSignUp}} class="cta join">Join</button>
+  <span {{action proceedSignUp}} class="cta join">Join</span>
 </form>

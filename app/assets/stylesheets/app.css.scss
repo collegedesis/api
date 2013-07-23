@@ -16,6 +16,11 @@ strong {
 h1.center {
   font-size: $font-size * 3;
 }
+
+h2.center {
+  @include heading;
+  color: $brown4;
+}
 .center {
   text-align: center;
   width: 60%;
@@ -66,21 +71,23 @@ body, .app-header, .app-content, .footer {
   }
 }
 
+h1.logo {
+  cursor: pointer;
+  text-align:center;
+  color: $brown3;
+  font-family: $logo-font;
+  span { color: $brown2; }
+}
+
 .app-header {
-  height: 120px;
+  height: 80px;
   background-color: $background;
-  padding: 40px 0 10px;
+  padding: 0 0 10px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   h1 {
-    cursor: pointer;
-    text-align:center;
-    color: $brown3;
-    font-family: $logo-font;
     font-size: $font-size * 3.75;
     line-height: $font-size * 3.75 * 1.1;
-    font-weight: bold;
-    span { color: $brown2; }
   }
   .subtitle {
     text-align:center;

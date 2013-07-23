@@ -4,21 +4,22 @@ nav ul li:first-child {
   padding-left: 0 !important;
 }
 
+body nav > * { display: inline-block; }
+
 body nav {
+  h1  { margin-right: 20px; }
   background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   height: 32px;
   margin-bottom: 10px;
-  position: fixed;
   width: $col * 23;
   border: solid 1px $green;
   z-index: 999;
+  padding: 0 10px;
   ul {
-    display: inline-block;
     li {
       font-size: $font-size * 0.9;
-      // width: 75px;
       display: inline-block;
       a {
         display: inline-block;
@@ -31,7 +32,6 @@ body nav {
         height: 32px;
         text-align: center;
         padding: 5px 10px;
-        // min-width: 75px;
         cursor: pointer;
         border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;
