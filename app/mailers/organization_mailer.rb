@@ -6,10 +6,10 @@ class OrganizationMailer < ActionMailer::Base
     mail(to: org.email, subject: 'You\'re in the CollegeDesis directory!')
   end
 
-  def new_member(member, org)
-    @member = member
-    @org = org
-    mail(to: @org.email, subject:"#{member.full_name} is a new member!")
+  def new_member(membership)
+    @member = membership.user
+    @org = membership.organization
+    mail(to: @org.email, subject:"#{@member.full_name} is a new member!")
   end
 
   def bulletin_promotion(bulletin, org)
