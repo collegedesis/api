@@ -65,7 +65,7 @@ body .sub-nav {
   &.no-link li { padding: 5px; }
   li {
     @include subnav;
-    box-shadow: 0 0 3px $green;
+    border-bottom: solid 1px $green;
     display: block;
     height: 48px;
     line-height: 37px;

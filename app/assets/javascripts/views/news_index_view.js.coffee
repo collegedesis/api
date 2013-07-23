@@ -1,7 +1,7 @@
 App.ListView = Ember.ListView.extend
   height: 500,
   rowHeight: 60,
-  width: 342,
+  width: 331,
   itemViewClass: Ember.ListItemView.extend({templateName: "n/_index_row"})
 
   didInsertElement: ->
