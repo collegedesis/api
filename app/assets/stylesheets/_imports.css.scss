@@ -45,7 +45,7 @@ $col: 42px;
   &:hover {box-shadow: 0 0 6px $green;}
   &.no-click {
     cursor: auto;
-    &:hover { box-shadow: none; }
+    &:hover { box-shadow: 0 0 1px $green; }
   }
 }
 
