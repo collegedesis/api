@@ -1,20 +1,20 @@
 @import '_imports';
 
 .map-container {
-  width: 75%;
+  max-width: $col * 23;
   margin: 0 auto 50px;
-  & > * {
-    display: inline-block;
-    vertical-align: top;
-  }
+  min-height: 300px;
+  text-align: center;
 }
 
 #map {
-  width: 400px !important;
+  margin: 0 auto;
+  display: block;
 }
 
-.map-stats, .map-results {
-  width: 320px;
+.map-stats {
+  margin: 0 auto;
+  max-width: 700px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -22,22 +22,15 @@
 .map-results {
   position: relative;
   padding: 0 5px;
-  h3 {
-    padding: 5px;
-    position: fixed;
-    height: 30px;
-    width: 100%;
-    background-color: $background;
-  }
+  h3 { padding: 5px; }
   ul {
     margin-top: 30px;
-    max-height: 250px;
     &.loading { @include loader(250px); }
     li {
-      font-size: $font-size * 0.9;
+      // font-size: $font-size * 0.9;
       border-bottom: solid 1px $green;
       @include ellipsis;
-      padding: 5px;
+      padding: 10px 5px;
       &:hover {
         cursor: pointer;
         box-shadow: 0 0 3px $green;
@@ -47,6 +40,8 @@
 }
 
 .map-stats li {
+  display: inline-block;
+  min-width: 150px;
   &.loading {
     @include loader(50px);
     background-position: 10px center;
