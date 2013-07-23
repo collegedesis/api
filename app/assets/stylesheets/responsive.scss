@@ -1,6 +1,9 @@
 @import '_imports';
 
 @media only screen and (max-device-width: 600px) {
+  nav, nav > * { height: 50px; }
+  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
+
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
@@ -9,15 +12,15 @@
     width: 30%;
     attn { display: block; }
   }
-  aside { display: none; }
   .app-content .main {
-    margin-left: 0;
     max-width: 100%;
   }
 }
 
 /* iPhone < 5 Media Query */
 @media screen and (device-aspect-ratio: 2/3) {
+  nav, nav > * { height: 50px; }
+  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
@@ -26,15 +29,15 @@
     width: 30%;
     attn { display: block; }
   }
-  aside { display: none; }
   .app-content .main {
-    margin-left: 0;
     max-width: 100%;
   }
 }
 
 /* iPhone 5 Media Query */
 @media screen and (device-aspect-ratio: 40/71) {
+  nav, nav > * { height: 50px; }
+  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
@@ -43,15 +46,15 @@
     width: 30%;
     attn { display: block; }
   }
-  aside { display: none; }
   .app-content .main {
-    margin-left: 0;
     max-width: 100%;
   }
 }
 
 /* iPad 5 Media Query */
 @media screen and (device-aspect-ratio: 3/4) {
+  nav, nav > * { height: 50px; }
+  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
@@ -60,9 +63,7 @@
     width: 30%;
     attn { display: block; }
   }
-  aside { display: none; }
   .app-content .main {
-    margin-left: 0;
     max-width: 100%;
   }
 }
