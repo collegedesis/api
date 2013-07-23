@@ -1,21 +1,21 @@
 <div class="map-container">
   {{render 'map'}}
-
-  <div class="map-results">
-    {{#if controllers.map.organizations}}
-      <h3>{{controllers.map.organizations.length}} organizations found</h3>
-    {{else}}
-      <h3>No Results</h3>
-    {{/if}}
-    <ul {{bindAttr class="controllers.map.loading"}}>
-      {{#each org in controllers.map.organizations}}
-        {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}
-      {{/each}}
-    </ul>
-  </div>
 </div>
 
 <div class="center">
   <h3>Click on a state or search by name!</h3>
   {{input value=controllers.map.searchParam placeholder="Search"}}
+</div>
+
+<div class="map-results">
+  {{#if controllers.map.organizations}}
+    <h2>{{controllers.map.organizations.length}} organizations found</h2>
+  {{else}}
+    <h2>No Results</h2>
+  {{/if}}
+  <ul {{bindAttr class="controllers.map.loading"}}>
+    {{#each org in controllers.map.organizations}}
+      {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}
+    {{/each}}
+  </ul>
 </div>

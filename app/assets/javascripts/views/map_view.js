@@ -3,13 +3,13 @@ App.MapView = Ember.View.extend({
 
   didInsertElement: function() {
     var _this = this;
-    id = $('#map').attr('id');
+    var id = $('#map').attr('id');
 
     return $('#map').mapSvg(id, {
       source: '/assets/usa.svg',
       cursor: 'pointer',
       loadingText: 'Loading Map...',
-      width: 400,
+      width: 600,
       multiSelect: true,
       responsive: true,
       colors: {
