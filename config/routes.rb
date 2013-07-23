@@ -1,5 +1,5 @@
 Collegedesis::Application.routes.draw do
-  root to: "site#home"
+  root to: 'site#home'
 
   resources :sessions,                only: [:create, :destroy]
   # Used as API
@@ -21,12 +21,13 @@ Collegedesis::Application.routes.draw do
   match 'info', to: 'site#info'
 
   # redirect to Ember routes
-  match "/news" => redirect("/#/news/1")
-  match "/contact" => redirect("/#/about/contact")
-  match "/store" => redirect("/#/")
-  match "/about" => redirect("/#/about")
-  match "/party" => redirect("/#/radio")
-  match "/radio" => redirect("/#/radio")
-  match "/join" => redirect("/#/users/signup")
-  match "/me" => redirect("/#/users/me")
+  match '/news' => redirect('/#/news/')
+  match '/contact' => redirect('/#/about/contact')
+  match '/store' => redirect('/#/')
+  match '/store.php' => redirect('/#/')
+  match '/about' => redirect('/#/about')
+  match '/radio' => redirect('/#/radio')
+  match '/join' => redirect('/#/users/signup')
+  match '/me' => redirect('/#/users/me')
+  match '/directory' => redirect('/#/directory')
 end
