@@ -1,8 +1,11 @@
 App.DSettingsRoute = Ember.Route.extend
   redirect: (model) ->
     user = @controllerFor('application').get('currentUser')
-    if !user && user.adminOf(model.get('id'))
+    if !user
       @transitionTo('d.show', model)
+    else if user && !user.adminOf(model.get('id'))
+      @transitionTo('d.show', model)
+
 
   serialize: (model, params) ->
     object = {}
