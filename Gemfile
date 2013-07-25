@@ -24,10 +24,13 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner', '~> 0.9.1'
-  gem 'faker'
-  gem 'guard-rspec'
   gem 'zeus'
   gem 'rb-fsevent'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'cucumber-rails', require: false
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
 end
 
 gem 'pg'
