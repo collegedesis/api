@@ -9,4 +9,16 @@ class Membership < ActiveRecord::Base
   belongs_to :organization, inverse_of: :memberships
   delegate :display_name, to: :organization
   belongs_to :membership_type
+
+  def self.create_and_approve_with_application(app)
+    conditions = {
+      organization_id: app.organization.id,
+      user_id: app.user.id
+    }
+    membership = Membership.where(conditions).first || Membership.new(conditions)
+    membership.membership_type_id = app.membership_type_id
+    membership.approved = true
+    membership.save
+    return membership
+  end
 end
