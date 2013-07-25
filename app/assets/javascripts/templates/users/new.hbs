@@ -5,23 +5,23 @@
     <li>Earn reputation for your team</li>
     <li>Fundraise</li>
   </ul>
-  <a href="#/news/how-to-sign-up">Learn More</a>
+  <a href="#/n/how-to-sign-up">Learn More</a>
 </aside>
 <div class="main">
-  <form class="user-signup-form">
+  <form id="signup">
     <h4>Sign up</h4>
     <div class="row">
       <div class="header">Email</div>
       <div class="contents">
         {{input type=email value=email}}
-        {{#unless validEmail}}<span class="error">and your own email</span>{{/unless}}
+        {{#unless validEmail}}<span class="error">Use your own email</span>{{/unless}}
       </div>
     </div>
     <div class="row">
       <div class="header">Full Name</div>
       <div class="contents">
         {{input value=full_name}}
-        <span class="error">Use your own name</span>
+        <span class="error">and your own name</span>
       </div>
     </div>
     <div class="row">
