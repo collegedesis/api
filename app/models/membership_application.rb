@@ -11,7 +11,7 @@ class MembershipApplication < ActiveRecord::Base
   validates :code, uniqueness: true, presence: true
 
   def approve
-    new_membership = update_or_create_new_membership
+    new_membership = Membership.create_and_approve_with_application(self)
     update_status(APP_STATUS_APPROVED)
     send_approved_notifications
   end
@@ -44,14 +44,6 @@ class MembershipApplication < ActiveRecord::Base
 
   def send_rejected_notifications
     MemberMailer.rejected_application(self).deliver
-  end
-
-  def update_or_create_new_membership
-    conditions = {organization_id: organization.id, user_id: user.id}
-    membership = Membership.where(conditions).first || Membership.new(conditions)
-    membership.membership_type_id = self.membership_type_id
-    membership.approved           = true
-    membership.save
   end
 
   def should_be_auto_approved?

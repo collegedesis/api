@@ -2,21 +2,6 @@ require 'spec_helper'
 
 describe Membership do
 
-  describe "#new" do
-    let(:user) { FactoryGirl.create(:user) }
-    it "should be approved if the organization auto approves memberships" do
-      org = FactoryGirl.create(:organization, :auto_approve_memberships => true)
-      mem = org.memberships.create(user_id: user.id)
-      mem.approved.should eq true
-    end
-
-    it "should not approve memberships if the organization does not auto approve membership" do
-      org = FactoryGirl.create(:organization, :auto_approve_memberships => false)
-      mem = org.memberships.create(user_id: user.id)
-      mem.approved.should eq false
-    end
-  end
-
   describe "Uniquness validations for memberships" do
     before(:each) do
       @org1 = FactoryGirl.create(:organization)
@@ -45,16 +30,27 @@ describe Membership do
     end
   end
 
-  describe "#destroy" do
-    let(:org)         { FactoryGirl.create(:organization) }
-    let(:user)        { FactoryGirl.create(:user) }
-    let(:membership)  { org.memberships.create(user_id: user.id) }
+  describe ".create_and_approve_with_application" do
+    let(:application) { FactoryGirl.create(:pending_application) }
 
-    it "sends an email to the user" do
-      mailer = mock(MemberMailer)
-      mailer.should_receive(:deliver)
-      MemberMailer.should_receive(:membership_rejected).with(membership).and_return(mailer)
-      membership.destroy
+    before(:each) do
+      @mem = Membership.create_and_approve_with_application(application)
+    end
+    it "creates an approved membership" do
+      expect(@mem.approved).to eq true
+    end
+
+    it "creates a membership with the same membership_type_id as application" do
+      expect(@mem.membership_type_id).to eq application.membership_type_id
+    end
+
+    it "has the same organization as applcation" do
+      expect(@mem.user).to eq application.user
+    end
+
+    it "has the same organization as applcation" do
+      expect(@mem.organization).to eq application.organization
     end
   end
+
 end
