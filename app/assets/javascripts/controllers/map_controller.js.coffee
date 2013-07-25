@@ -47,11 +47,11 @@ App.MapController = Ember.ArrayController.extend
     return @store.findQuery(App.Organization, {query: query})
 
   numOfUniversities: (->
-    if @get('organizations.length')
+    if @get('selectedStates.length')
       @get('organizations').mapProperty('university_name').uniq().get('length')
     else
       @get('controllers.application.numOfUniversities')
-  ).property('organizations.@each.university_name', 'controllers.application.numOfUniversities')
+  ).property('selectedStates.length', 'organizations.@each.university_name', 'controllers.application.numOfUniversities')
 
   numOfStates: (->
     if @get('selectedStates.length') == 0
@@ -61,11 +61,11 @@ App.MapController = Ember.ArrayController.extend
   ).property('queries', 'controllers.application.numOfStates')
 
   numOfOrganizations: (->
-    if @get('organizations.length')
+    if @get('selectedStates.length')
       @get('organizations.length')
     else
       @get('controllers.application.numOfOrganizations')
-  ).property('organizations.length')
+  ).property('organizations.length', 'selectedStates.length')
 
   # call `_incrementQueries` whenever you want to watch
   # make an api call based on a user interaction
