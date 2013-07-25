@@ -7,7 +7,7 @@ development:
   username:
   password:
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: cd_test
@@ -22,3 +22,6 @@ production:
   pool: 5
   username: college_desis
   password:
+
+cucumber:
+  <<: *test
