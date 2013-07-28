@@ -33,6 +33,15 @@ h2.center {
   text-align: center;
 }
 
+.center.inline {
+  & > * {
+    display: inline;
+    vertical-align: middle;
+    margin: 0 5px;
+    height: 32px;
+  }
+}
+
 ul li { list-style-type: none; }
 
 body {

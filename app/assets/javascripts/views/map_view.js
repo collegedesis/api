@@ -15,7 +15,8 @@ App.MapView = Ember.View.extend({
       colors: {
         background: '#F7F7E6',
         base: '#4C4440',
-        selected: "#A0CC6F"
+        selected: "#A0CC6F",
+        hover: "#7ab03e"
       },
       onClick: function(event, map) {
         var stateElement = this,

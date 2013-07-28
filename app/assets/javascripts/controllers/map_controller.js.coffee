@@ -26,9 +26,7 @@ App.MapController = Ember.ArrayController.extend
     @_incrementQueries()
 
   # search
-  searchParamDidChange: (->
-    @_incrementQueries()
-  ).observes('searchParam')
+  search: -> @_incrementQueries()
 
   organizations: (->
     @set('loading', true)

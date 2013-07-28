@@ -1,12 +1,11 @@
-<div class="center">
-  <h3>Click on a state or search by name!</h3>
-  {{input value=controllers.map.searchParam placeholder="Search"}}
-</div>
-
 <div class="map-container">
   {{render 'map'}}
 </div>
 
+<div class="center inline">
+  {{input value=controllers.map.searchParam}}
+  <button class="cta" {{action search target='controllers.map'}}>Search</button>
+</div>
 
 <div class=" center map-results">
   {{#unless loading}}
