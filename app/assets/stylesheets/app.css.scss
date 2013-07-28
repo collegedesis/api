@@ -21,6 +21,7 @@ h2.center {
   @include heading;
   color: $brown4;
 }
+
 .center {
   text-align: center;
   width: 60%;
@@ -61,8 +62,11 @@ body {
   }
 }
 
-body, .app-header, .app-content, .footer {
+.page, .app-header, .app-content, .footer {
   max-width: $col * 23;
+}
+.page {
+  margin: 0 auto;
 }
 
 .app-content {

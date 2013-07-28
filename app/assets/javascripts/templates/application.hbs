@@ -1,5 +1,7 @@
-{{partial 'header'}}
-<div class="app-content">
-  {{outlet}}
+<div class="page">
+  {{partial 'header'}}
+  <div class="app-content">{{outlet}}</div>
 </div>
-<div class="footer"></div>
+<div class="footer">
+  {{render 'radio'}}
+</div>

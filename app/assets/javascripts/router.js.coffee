@@ -30,10 +30,4 @@ App.Router.map ->
     @route 'new', {path: 'signup'}
     @route 'me'
 
-  @resource "radio", ->
-    @route "acappella"
-    @route "mashup"
-    @route "bhangra"
-    @route "independent"
-
   @route('applicationresponse', {path: 'application-response/:id'} )
