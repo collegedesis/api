@@ -31,6 +31,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'guard-cucumber'
   gem 'guard-rspec'
+  gem 'simplecov'
 end
 
 gem 'pg'
