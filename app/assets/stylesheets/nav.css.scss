@@ -36,8 +36,6 @@ nav {
         text-align: center;
         padding: 5px 10px;
         cursor: pointer;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
         &.no-click { cursor: auto;
           &:hover { box-shadow: none; }
         }
@@ -46,7 +44,7 @@ nav {
     .active {
       font-weight: 800;
       background-color: #CFE3B0; /*transparentize($green, 0.7); */
-      border-bottom: solid 2px $green;
+      border-bottom: solid 1px $green;
     }
   }
 }
