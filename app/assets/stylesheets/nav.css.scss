@@ -13,7 +13,7 @@ nav {
   h1.logo {
     margin-right: 20px; margin-bottom: 0;
   }
-  background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
+  background-color: transparentize(lighten($green, 10%), 0.7);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   margin-bottom: 10px;
@@ -43,7 +43,7 @@ nav {
     }
     .active {
       font-weight: 800;
-      background-color: #CFE3B0; /*transparentize($green, 0.7); */
+      background-color: transparentize($green, 0.7);
       border-bottom: solid 1px $green;
     }
   }
