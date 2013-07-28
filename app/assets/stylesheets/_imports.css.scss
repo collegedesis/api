@@ -3,7 +3,7 @@
 @import url('//fonts.googleapis.com/css?family=Snippet');
 
 $green: #A0CC6F;
-$shadow-green: #88ae5f;
+$darken-green: darken($green, 15%);
 $brown2: #B2AE73;
 $brown3: #40210D;
 $brown4: #4C4440;
