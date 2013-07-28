@@ -7,8 +7,15 @@
   text-align: center;
 }
 
+.map-container-small {
+  max-width: $col * 13;
+  min-height: 300px;
+  text-align: center;
+  float: left;
+}
+
 #map {
-  margin: 50px auto 20px;
+  margin: 0 auto 20px;
   display: block;
 }
 

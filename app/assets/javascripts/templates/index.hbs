@@ -1,5 +1,5 @@
-<div class="map-container">
-
+<div class="map-container-small">
+  {{render 'map'}}
   <div class="map-stats">
     <ul>
       <li>
@@ -21,9 +21,15 @@
   {{render 'map'}}
 </div>
 
-<h2 class="center">Belong to one of these?</h2>
+<div class="index-right">
+  <ul class="activity">
+    {{#each mem in memberships}}
+      <li>{{mem.user.full_name}} joined {{mem.organization.name}}</li>
+    {{/each}}
+  </ul>
 
-<form class="center">
-  {{input placeholder="Enter your email address" type="email" value=email}}
-  <span {{action proceedSignUp}} class="cta join">Join</span>
-</form>
+  <form class="inline">
+    {{input placeholder="Enter your email address" type="email" value=email}}
+    <button {{action proceedSignUp}} class="cta">Join</button>
+  </form>
+</div>

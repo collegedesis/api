@@ -28,17 +28,11 @@ h2.center {
   margin: 10px auto;
 }
 
-.center input {
-  margin: 0 auto;
-  width: 50%;
-  text-align: center;
-}
-
-.center.inline {
+.inline {
   & > * {
-    display: inline;
+    display: inline-block;
     vertical-align: middle;
-    margin: 0 5px;
+    margin-right: 10px;
     height: 32px;
   }
 }
@@ -109,7 +103,7 @@ h1.logo {
 .main.loading { @include loader(500px); }
 .info.loading { @include loader(200px); }
 
-input, textarea, select { width: 500px; }
+input, textarea, select { max-width: 500px; }
 
 input, textarea {
   box-shadow: 0 0 1px $green;
@@ -123,7 +117,6 @@ input, textarea, select {
   padding:5px;
   box-sizing:border-box;
   font-size:$font-size * 1.1;
-  margin-bottom:10px;
   display: block;
 }
 
@@ -266,4 +259,9 @@ table.left-heading {
 }
 .ember-list-item-view {
   position: absolute;
+}
+
+.index-right {
+  width: $col * 10;
+  float: left;
 }
