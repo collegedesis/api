@@ -9,7 +9,6 @@ App.MapView = Ember.View.extend({
       source: '/assets/usa.svg',
       cursor: 'pointer',
       loadingText: 'Loading Map...',
-      width: 600,
       multiSelect: true,
       responsive: true,
       colors: {
