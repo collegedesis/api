@@ -21,3 +21,4 @@
 config/initializers/00_secrets.rb
 *.crt
 *.key
+coverage/
