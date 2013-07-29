@@ -35,6 +35,11 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  def directory_profile
+    base = "https://collegedesis.com/#"
+    slug ? "#{base}/d/#{slug}" : "#{base}/directory"
+  end
+
   def location
     university.state if university
   end
