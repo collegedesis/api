@@ -1,35 +1,27 @@
-<div class="map-container-small">
-  {{render 'map'}}
-  <div class="map-stats">
-    <ul>
-      <li>
-        <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfOrganizations}}</div>
-        <span>South Asian student organizations</span>
-      </li>
-      <li>
-        <span>at</span>
-        <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfUniversities}}</div>
-        <span>universities</span>
-      </li>
-      <li>
-        <span>in</span>
-        <div {{bindAttr class="controllers.map.loading :stat"}}>{{numOfStates}}</div>
-        <span>states</span>
-      </li>
+<div class="home-content">
+  <div class="map-container-small">
+    {{render 'map'}}
+    <div class="map-stats">
+      <div class="stat-wrapper">
+        <span {{bindAttr class="controllers.map.loading :stat"}}>{{numOfOrganizations}}</span>
+        South Asian student organizations at
+        <span {{bindAttr class="controllers.map.loading :stat"}}>{{numOfUniversities}}</span>
+        universities in
+        <span {{bindAttr class="controllers.map.loading :stat"}}>{{numOfStates}}</span>
+        states
+      </div>
+    </div>
+  </div>
+
+  <div class="index-right">
+    <form class="inline">
+      {{input placeholder="Your email address" type="email" value=email}}
+      <button {{action proceedSignUp}} class="cta">Join</button>
+    </form>
+    <ul class="activity">
+      {{#each mem in memberships}}
+        <li>{{mem.user.full_name}} joined {{mem.organization.name}}</li>
+      {{/each}}
     </ul>
   </div>
-  {{render 'map'}}
-</div>
-
-<div class="index-right">
-  <ul class="activity">
-    {{#each mem in memberships}}
-      <li>{{mem.user.full_name}} joined {{mem.organization.name}}</li>
-    {{/each}}
-  </ul>
-
-  <form class="inline">
-    {{input placeholder="Enter your email address" type="email" value=email}}
-    <button {{action proceedSignUp}} class="cta">Join</button>
-  </form>
 </div>

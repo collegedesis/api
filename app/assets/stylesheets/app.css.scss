@@ -63,6 +63,10 @@ body {
   margin: 0 auto;
 }
 
+.app-content .home-content {
+  margin-top: 100px;
+}
+
 .app-content {
   overflow: hidden;
   aside, .main { display: inline-block; vertical-align: top; }
@@ -81,23 +85,6 @@ h1.logo {
   color: $brown3;
   font-family: $logo-font;
   span { color: $brown2; }
-}
-
-.app-header {
-  height: 80px;
-  background-color: $background;
-  padding: 0 0 10px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  h1 {
-    font-size: $font-size * 3.75;
-    line-height: $font-size * 3.75 * 1.1;
-  }
-  .subtitle {
-    text-align:center;
-    font-size:$font-size * 0.75;
-    font-family:$header-font;
-  }
 }
 
 .main.loading { @include loader(500px); }
@@ -262,6 +249,6 @@ table.left-heading {
 }
 
 .index-right {
-  width: $col * 10;
+  width: $col * 9;
   float: left;
 }

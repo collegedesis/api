@@ -10,17 +10,14 @@ nav > * {
 }
 
 nav {
-  h1.logo {
-    margin-right: 20px; margin-bottom: 0;
-  }
-  background-color: transparentize(lighten($green, 10%), 0.7);
+  width: $col * 23;
+  background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  margin-bottom: 10px;
-  width: $col * 23;
   border: solid 1px $green;
   z-index: 999;
   padding: 0 10px;
+  h1.logo { margin-right: 20px; margin-bottom: 0; }
   ul {
     li {
       font-size: $font-size * 0.9;
