@@ -1,7 +1,10 @@
-<p>Hello!</p>
+<p>Hey <%= @org.name %></p>
 
 <p>
-  Someone, (hopefully you or someone you know) asked to add <%= @org.name %> to the CollegeDesis Directory. Now your members can sign up and promote you on <%= link_to "collegedesis.com", "https://collegedesis.com" %>!
+  You've been added to the CollegeDesis <%= link_to "Directory", "https://collegedesis.com/directory" %>. Check out your organization's profile <%= link_to "here", @org.directory_profile %>!
+</p>
+<p>
+  In the fall, we're coming out with ways for you to fundraise and promote your events. The more members who register memberships with <%= @org.name %>, the better!
 </p>
 
 <%= render partial: 'email_footer' %>
