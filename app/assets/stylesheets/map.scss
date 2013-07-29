@@ -8,7 +8,7 @@
 }
 
 .map-container-small {
-  max-width: $col * 13;
+  max-width: $col * 14;
   min-height: 300px;
   text-align: center;
   float: left;
@@ -54,7 +54,7 @@
   }
 }
 
-.map-stats li {
+.map-stats .stat-wrapper {
   display: inline-block;
   min-width: 150px;
   .stat {
