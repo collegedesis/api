@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/collegedesis/collegedesis.com.png)](http://waffle.io/collegedesis/collegedesis.com)  
 ![image](http://collegedesis.com/assets/collegedesis.png)
 
 We build tools to help South Asian student organizations connect, collaborate, and share.
