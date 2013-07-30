@@ -18,10 +18,15 @@
       {{input placeholder="Your email address" type="email" value=email}}
       <button {{action proceedSignUp}} class="cta">Join</button>
     </form>
-    <ul class="activity">
-      {{#each mem in memberships}}
-        <li>{{mem.user.full_name}} joined {{mem.organization.name}}</li>
-      {{/each}}
-    </ul>
+    <p>
+      We're building a community of <strong>South Asian student organizations</strong> to make large-scale social, cultural, and political impact.
+    </p>
+    <p>
+      We help South Asian student organizations fundraise and promote themselves.
+    </p>
+    <p class="small">
+      Brands? {{#linkTo about.contact}}Contact us{{/linkTo}}
+    </p>
+
   </div>
 </div>
