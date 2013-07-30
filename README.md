@@ -1,5 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/collegedesis/collegedesis.com.png)](http://waffle.io/collegedesis/collegedesis.com)  
 ![image](http://collegedesis.com/assets/collegedesis.png)
+
+[![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com) 
+[![Stories in Ready](https://badge.waffle.io/collegedesis/collegedesis.com.png)](http://waffle.io/collegedesis/collegedesis.com)  
 
 We build tools to help South Asian student organizations connect, collaborate, and share.
 
@@ -22,4 +24,3 @@ We build tools to help South Asian student organizations connect, collaborate, a
 
 Want to help? [Contact us](//collegedesis.com/#/about/contact)!
 
-[![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com) 
