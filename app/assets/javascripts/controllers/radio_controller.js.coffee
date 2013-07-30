@@ -8,11 +8,13 @@ App.RadioController = Ember.ArrayController.extend
   kAcappellaGroupID: "124320" # soundcloud.com/groups/south-asian-a-cappella-radio
   kIndependentGroupID: "126422" # soundcloud.com/groups/collegedesis-independent
 
+  featureTrackURL: "https://soundcloud.com/sodhivine/we-cant-stop-cover-sodhivine"
+
   currentGroupId: null
   defaultGroupId: (-> @get('kMashupGroupID') ).property()
 
   initializeRadio: ->
-    SC.initialize({client_id: @get('clientID')})
+    SC.initialize({client_id: @get('kClientID')})
 
     @set('currentGroupId', @get('defaultGroupId')) if !@get('currentGroupId')
     @set('hasTracks', true)
@@ -21,13 +23,20 @@ App.RadioController = Ember.ArrayController.extend
     url = @get('soundcloudAPIUrl')
     trackObjects = Em.A() # to collect track Objects in
 
+    # add the featureTrack first
+    featureTrackURL = @get('featureTrackURL')
+    SC.get '/resolve', { url: featureTrackURL }, (track) =>
+      featureTrack = App.SoundCloudTrack.create({json: track, id: 0 })
+      trackObjects.pushObject(featureTrack)
+
     xhr = $.getJSON url, (tracksJSONObjects) =>
       @_shuffleTrackObjects(tracksJSONObjects)
 
       $(tracksJSONObjects).each (index, item) ->
         # create an Ember Object with the json and create an array of them
-        trackObject = App.SoundCloudTrack.create({json: item, id: index})
+        trackObject = App.SoundCloudTrack.create({json: item, id: index + 1})
         trackObjects.pushObject(trackObject)
+
 
       # tune into the channel with the emberObjects
       @set('content', trackObjects)
