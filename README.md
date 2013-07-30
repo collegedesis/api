@@ -1,4 +1,4 @@
-![image](http://collegedesis.com/assets/collegedesis.png)
+![image](http://i.imgur.com/bkxtvgj.png?2)
 
 [![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com) 
 [![Stories in Ready](https://badge.waffle.io/collegedesis/collegedesis.com.png)](http://waffle.io/collegedesis/collegedesis.com)  
