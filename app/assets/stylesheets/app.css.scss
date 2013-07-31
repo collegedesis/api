@@ -5,8 +5,8 @@ p {
   line-height: $font-size * 1.30;
   &.small {
     font-size: $font-size * 0.9;
-    margin-bottom: $font-size * 0.9;
-    line-height: $font-size * 0.9;
+    margin-bottom: $font-size * 0.9 * 1.30;
+    line-height: $font-size * 0.9 * 1.30;
   }
 }
 
@@ -282,7 +282,7 @@ table.left-heading {
 }
 
 .index-right {
-  max-width: $col * 9;
+  max-width: $col * 8;
   float: right;
   padding-left: 10px;
 }
