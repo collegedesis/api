@@ -11,8 +11,8 @@ App.SoundCloudWidgetView = Ember.View.extend
     @set('track.widget', widget)
 
     widget.bind SC.Widget.Events.READY, =>
-      @_play()
-      @set('controller.playing', true)
+      # @_play()
+      # @set('controller.playing', true)
 
     widget.bind SC.Widget.Events.FINISH, =>
       @_moveToNextTrack()

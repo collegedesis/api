@@ -1,9 +1,18 @@
 @import '_imports';
 
-@media only screen and (max-device-width: 600px) {
-  nav > ul { display: block; float: none !important; }
+@media screen and (max-width: 600px) {
+  nav > ul {
+    display: block;
+    float: none !important;
+  }
+
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+  .app-content .home-content > * {
+    width: 100%;
+    padding: 0 10px;
+    float: none;
+    display: block;
+  }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
@@ -20,9 +29,18 @@
 
 /* iPhone < 5 Media Query */
 @media screen and (device-aspect-ratio: 2/3) {
-  nav > ul { display: block; float: none !important; }
+  nav > ul {
+    display: block;
+    float: none !important;
+  }
+
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+  .app-content .home-content > * {
+    width: 100%;
+    padding: 0 10px;
+    float: none;
+    display: block;
+  }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
@@ -39,9 +57,18 @@
 
 /* iPhone 5 Media Query */
 @media screen and (device-aspect-ratio: 40/71) {
-  nav > ul { display: block; float: none !important; }
+  nav > ul {
+    display: block;
+    float: none !important;
+  }
+
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+  .app-content .home-content > * {
+    width: 100%;
+    padding: 0 10px;
+    float: none;
+    display: block;
+  }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
@@ -58,9 +85,18 @@
 
 /* iPad 5 Media Query */
 @media screen and (device-aspect-ratio: 3/4) {
-  nav > ul { display: block; float: none !important; }
+  nav > ul {
+    display: block;
+    float: none !important;
+  }
+
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+  .app-content .home-content > * {
+    width: 100%;
+    padding: 0 10px;
+    float: none;
+    display: block;
+  }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
