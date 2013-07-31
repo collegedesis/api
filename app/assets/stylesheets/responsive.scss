@@ -1,112 +1,116 @@
 @import '_imports';
 
 @media screen and (max-width: 600px) {
-  nav > ul {
-    display: block;
-    float: none !important;
-  }
-
+  nav .logo { display: none; }
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * {
-    width: 100%;
-    padding: 0 10px;
-    float: none;
-    display: block;
+  .app-content .home-content {
+    .index-right {
+      text-align: center;
+      margin-bottom: 40px;
+      hr {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    & > * {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 10px;
+      float: none;
+      display: block;
+    }
   }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .app-content .main {
-    max-width: 100%;
-  }
-  .home-content > * {
-    display: block;
-    float: none;
-  }
+  .app-content .main { max-width: 100%; }
 }
 
 /* iPhone < 5 Media Query */
 @media screen and (device-aspect-ratio: 2/3) {
-  nav > ul {
-    display: block;
-    float: none !important;
-  }
-
+  nav .logo { display: none; }
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * {
-    width: 100%;
-    padding: 0 10px;
-    float: none;
-    display: block;
+  .app-content .home-content {
+    .index-right {
+      text-align: center;
+      margin-bottom: 40px;
+      hr {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    & > * {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 10px;
+      float: none;
+      display: block;
+    }
   }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .app-content .main {
-    max-width: 100%;
-  }
-  .home-content > * {
-    display: block;
-    float: none;
-  }
+  .app-content .main { max-width: 100%; }
 }
 
 /* iPhone 5 Media Query */
 @media screen and (device-aspect-ratio: 40/71) {
-  nav > ul {
-    display: block;
-    float: none !important;
-  }
-
+  nav .logo { display: none; }
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * {
-    width: 100%;
-    padding: 0 10px;
-    float: none;
-    display: block;
+  .app-content .home-content {
+    .index-right {
+      text-align: center;
+      margin-bottom: 40px;
+      hr {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    & > * {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 10px;
+      float: none;
+      display: block;
+    }
   }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .app-content .main {
-    max-width: 100%;
-  }
-  .home-content > * {
-    display: block;
-    float: none;
-  }
+  .app-content .main { max-width: 100%; }
 }
 
 /* iPad 5 Media Query */
 @media screen and (device-aspect-ratio: 3/4) {
-  nav > ul {
-    display: block;
-    float: none !important;
-  }
-
+  nav .logo { display: none; }
   .app-content .home-content { margin-top: 20px; }
-  .app-content .home-content > * {
-    width: 100%;
-    padding: 0 10px;
-    float: none;
-    display: block;
+  .app-content .home-content {
+    .index-right {
+      text-align: center;
+      margin-bottom: 40px;
+      hr {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    & > * {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 10px;
+      float: none;
+      display: block;
+    }
   }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .app-content .main {
-    max-width: 100%;
-  }
-  .home-content > * {
-    display: block;
-    float: none;
-  }
+  .app-content .main { max-width: 100%; }
 }
