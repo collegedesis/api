@@ -1,15 +1,41 @@
 @import '_imports';
 
 p {
-  margin-bottom:10px;
-  line-height: $font-size * 1.875;
+  margin-bottom: $font-size * 1.30;
+  line-height: $font-size * 1.30;
+  &.small {
+    font-size: $font-size * 0.9;
+    margin-bottom: $font-size * 0.9;
+    line-height: $font-size * 0.9;
+  }
+}
+
+.muted {
+  color: lighten($brown4, 30%);
+}
+
+h5.subtitle {
+  font-family: $font;
+  color: $brown4;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, $brown4, transparentize($brown4, 0.9));
+  background-image:    -moz-linear-gradient(left, $brown4, transparentize($brown4, 0.9));
+  background-image:     -ms-linear-gradient(left, $brown4, transparentize($brown4, 0.9));
+  background-image:      -o-linear-gradient(left, $brown4, transparentize($brown4, 0.9));
+  width: 60%;
+  margin-top: $font-size * 2.5;
+  margin-bottom: $font-size * 0.5;
 }
 
 strong {
   font-weight: 800;
   letter-spacing: -1px;
   background-color: transparentize($green, 0.7);
-  padding: 3px;
+  padding: 0 3px;
   border-radius: 5px;
 }
 
@@ -79,12 +105,19 @@ body {
   }
 }
 
-h1.logo {
-  cursor: pointer;
-  text-align:center;
-  color: $brown3;
+.logo {
   font-family: $logo-font;
-  span { color: $brown2; }
+  cursor: pointer;
+  color: $brown3;
+  span {
+    color: $brown2;
+    text-shadow: 1px 1px $brown3;
+  }
+}
+
+.app-content .logo {
+  font-size: $font-size * 2.2;
+  cursor: auto;
 }
 
 .main.loading { @include loader(500px); }
@@ -251,4 +284,5 @@ table.left-heading {
 .index-right {
   width: $col * 9;
   float: left;
+  padding-left: 10px;
 }
