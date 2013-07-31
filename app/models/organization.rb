@@ -1,7 +1,5 @@
 class Organization < ActiveRecord::Base
   include Slugify
-  searchkick
-  scope :search_import, includes(:university)
 
   validates_presence_of :name, :university_id, :organization_type_id
   validates_uniqueness_of :email, allow_nil: true
@@ -21,6 +19,16 @@ class Organization < ActiveRecord::Base
   default_scope order('organizations.name ASC')
   scope :reachable, conditions: 'email IS NOT NULL'
   scope :exposed, conditions: 'exposed'
+
+
+  searchkick
+  scope :search_import, includes(:university) # optional, but makes reindexing faster
+  def search_data
+    {
+      name: name,
+      state: university.state
+    }
+  end
 
   def approved_membership_ids
     memberships.where(approved: true).select(:id).map(&:id)
