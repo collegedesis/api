@@ -90,7 +90,7 @@ body {
 }
 
 .app-content .home-content {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .app-content {
@@ -282,7 +282,7 @@ table.left-heading {
 }
 
 .index-right {
-  width: $col * 9;
+  max-width: $col * 9;
   float: right;
   padding-left: 10px;
 }
