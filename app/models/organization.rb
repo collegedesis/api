@@ -75,14 +75,6 @@ class Organization < ActiveRecord::Base
     return orgs
   end
 
-  def self.filter_by_states(states)
-    if states.length
-      Organization.eager_load(:university).where("universities.state in (?)", states)
-    else
-      Organization.eager_load(:university)
-    end
-  end
-
   def reputation
     100
   end
