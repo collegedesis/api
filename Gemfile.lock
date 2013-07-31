@@ -48,6 +48,7 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    ansi (1.4.3)
     arel (3.0.2)
     barber (0.4.2)
       ember-source
@@ -134,6 +135,7 @@ GEM
       guard (>= 1.8)
       rspec (~> 2.13)
     handlebars-source (1.0.0.rc4)
+    hashr (0.0.22)
     hike (1.2.2)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -216,6 +218,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.2.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -236,6 +240,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    searchkick (0.1.2)
+      tire
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -253,6 +259,14 @@ GEM
       rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
+    tire (0.6.0)
+      activemodel (>= 3.0)
+      activesupport
+      ansi
+      hashr (~> 0.0.19)
+      multi_json (~> 1.3)
+      rake
+      rest-client (~> 1.6)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -306,6 +320,7 @@ DEPENDENCIES
   redcarpet
   rspec-rails (~> 2.13.2)
   sass-rails (~> 3.2.3)
+  searchkick
   simplecov
   thin
   twilio-ruby
