@@ -1,69 +1,76 @@
 @import '_imports';
 
 @media only screen and (max-device-width: 600px) {
-  nav, nav > * { height: 50px; }
-  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
+  nav > ul { display: block; float: none !important; }
+  .app-content .home-content { margin-top: 20px; }
+  .app-content .home-content > * { width: 100%; padding: 0 10px; }
 
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .attn-wrapper {
-    width: 30%;
-    attn { display: block; }
-  }
   .app-content .main {
     max-width: 100%;
+  }
+  .home-content > * {
+    display: block;
+    float: none;
   }
 }
 
 /* iPhone < 5 Media Query */
 @media screen and (device-aspect-ratio: 2/3) {
-  nav, nav > * { height: 50px; }
-  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
+  nav > ul { display: block; float: none !important; }
+  .app-content .home-content { margin-top: 20px; }
+  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .attn-wrapper {
-    width: 30%;
-    attn { display: block; }
-  }
   .app-content .main {
     max-width: 100%;
+  }
+  .home-content > * {
+    display: block;
+    float: none;
   }
 }
 
 /* iPhone 5 Media Query */
 @media screen and (device-aspect-ratio: 40/71) {
-  nav, nav > * { height: 50px; }
-  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
+  nav > ul { display: block; float: none !important; }
+  .app-content .home-content { margin-top: 20px; }
+  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .attn-wrapper {
-    width: 30%;
-    attn { display: block; }
-  }
   .app-content .main {
     max-width: 100%;
+  }
+  .home-content > * {
+    display: block;
+    float: none;
   }
 }
 
 /* iPad 5 Media Query */
 @media screen and (device-aspect-ratio: 3/4) {
-  nav, nav > * { height: 50px; }
-  nav h1.logo, nav ul li { font-size: $font-size * 1.5; }
+  nav > ul { display: block; float: none !important; }
+  .app-content .home-content { margin-top: 20px; }
+  .app-content .home-content > * { width: 100%; padding: 0 10px; }
+
   body, p, .app-header, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
-  .attn-wrapper {
-    width: 30%;
-    attn { display: block; }
-  }
   .app-content .main {
     max-width: 100%;
+  }
+  .home-content > * {
+    display: block;
+    float: none;
   }
 }
