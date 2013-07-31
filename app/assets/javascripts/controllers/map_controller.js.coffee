@@ -42,7 +42,7 @@ App.MapController = Ember.ArrayController.extend
       states: states,
       param: param
     }
-    return @store.findQuery(App.Organization, {query: query})
+    return @store.findQuery(App.Organization, {q: query})
 
   numOfUniversities: (->
     if @get('selectedStates.length')

@@ -1,5 +1,8 @@
 class Organization < ActiveRecord::Base
   include Slugify
+  searchkick
+  scope :search_import, includes(:university)
+
   validates_presence_of :name, :university_id, :organization_type_id
   validates_uniqueness_of :email, allow_nil: true
   validates_uniqueness_of :slug, allow_nil: true
@@ -48,19 +51,11 @@ class Organization < ActiveRecord::Base
 
   def self.filter_and_search_by_query(query)
     states = query[:states]
-    param = query[:param].downcase
-    like_param = "%#{param}%"
-    # binding.pry
-    orgs = if param.present? && states.present?
-      Organization.eager_load(:university).where("universities.state in (?) and lower(organizations.name) like ?", states, like_param)
-    elsif param.blank? && states.present?
-      Organization.eager_load(:university).where("universities.state in (?)", states)
-    elsif param.present? && states.blank?
-      Organization.eager_load(:university).where("lower(organizations.name) like ?", like_param)
-    elsif param.blank? && states.blank?
-      []
-    end
-    return orgs
+    param = query[:param]
+    query_results = Organization.eager_load(:university)
+    query_results = query_results.search(param) if param
+    query_results = query_results.map {|org| org if states.include? org.location }.compact if states.present?
+    return query_results
   end
 
   def self.filter_by_params(params)
