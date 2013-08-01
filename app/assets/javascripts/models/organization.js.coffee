@@ -11,6 +11,7 @@ App.Organization = DS.Model.extend
   facebook: DS.attr('string')
   youtube: DS.attr('string')
   website: DS.attr('string')
+  instagram: DS.attr('string')
   membership_applications: DS.hasMany('App.MembershipApplication')
   bulletins: DS.hasMany('App.Bulletin')
 
@@ -33,6 +34,10 @@ App.Organization = DS.Model.extend
   youtubeUrl: (->
     "http://youtube.com/" + @get('youtube')
   ).property('youtube')
+
+  instagramUrl: (->
+    "http://instagram.com/" + @get('instagram')
+  ).property('instagram')
 
   websiteUrl: (->
     "http://" + @get('website')

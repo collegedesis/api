@@ -40,4 +40,14 @@
       {{/if}}
     </td>
   </tr>
+  <tr>
+    <td>Instagram</td>
+    <td>
+      {{#if instagram}}
+        <a target="_blank" {{bindAttr href="instagramUrl"}}>{{instagramUrl}}</a>
+      {{else}}
+      None
+      {{/if}}
+    </td>
+  </tr>
 </table>
