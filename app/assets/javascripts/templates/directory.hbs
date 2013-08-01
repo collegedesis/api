@@ -5,10 +5,10 @@
   </div>
 </div>
 
-<div class="center inline">
+<form class="center inline">
   {{input value=controllers.map.searchParam}}
   <button class="cta" {{action search target='controllers.map'}}>Search</button>
-</div>
+</form>
 
 <div class=" center map-results">
   {{#unless loading}}
