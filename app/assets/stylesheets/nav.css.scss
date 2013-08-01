@@ -16,7 +16,6 @@ nav {
   border-bottom-left-radius: 5px;
   border: solid 1px $green;
   z-index: 999;
-  padding: 0 10px;
   h1.logo { margin-right: 20px; margin-bottom: 0; }
   ul {
     li {
@@ -47,7 +46,7 @@ nav {
 }
 
 nav .account {
-  // float:right;
+  float:right;
   img {
     height: 15px;
     margin-right: 5px;
