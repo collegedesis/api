@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/ankane/searchkick.git
+  revision: 5b454a99aca57ccc22437a9fefeef632dae04162
+  specs:
+    searchkick (0.1.2)
+      tire
+
+GIT
   remote: https://github.com/emberjs/ember-rails.git
   revision: b29050fea28d2893b221e186e2e4f1abf83ea12c
   specs:
@@ -240,8 +247,6 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    searchkick (0.1.2)
-      tire
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -320,7 +325,7 @@ DEPENDENCIES
   redcarpet
   rspec-rails (~> 2.13.2)
   sass-rails (~> 3.2.3)
-  searchkick
+  searchkick!
   simplecov
   thin
   twilio-ruby
