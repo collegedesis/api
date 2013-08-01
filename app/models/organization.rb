@@ -26,7 +26,7 @@ class Organization < ActiveRecord::Base
   def search_data
     {
       name: name,
-      state: university.state
+      state: location
     }
   end
 
