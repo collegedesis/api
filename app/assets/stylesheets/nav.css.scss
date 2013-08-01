@@ -10,7 +10,8 @@ nav > * {
 }
 
 nav {
-  width: $col * 23;
+  max-width: $col * 23;
+  width: 100%;
   background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
