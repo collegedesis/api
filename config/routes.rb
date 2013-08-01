@@ -26,7 +26,6 @@ Collegedesis::Application.routes.draw do
   match '/store' => redirect('/#/')
   match '/store.php' => redirect('/#/')
   match '/about' => redirect('/#/about')
-  match '/radio' => redirect('/#/radio')
   match '/join' => redirect('/#/users/signup')
   match '/me' => redirect('/#/users/me')
   match '/directory' => redirect('/#/directory')
