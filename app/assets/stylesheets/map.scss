@@ -9,8 +9,16 @@
 
 .map-container-small {
   max-width: $col * 14;
+  width: 65%;
   min-height: 300px;
   text-align: center;
+}
+
+.index-right {
+  max-width: $col * 9;
+  width: 35%;
+  float: right;
+  padding-left: 10px;
 }
 
 #map {
@@ -55,12 +63,12 @@
   display: inline-block;
   min-width: 150px;
   font-size: $font-size * 0.9;
+  line-height: $font-size * 0.9 * 1.5;
   background-color: $green;
-  padding: 0 10px;
+  padding: 5px;
   border-radius: 5px;
   color: $brown4;
   margin: 0 10px 10px auto;
-  line-height: 50px;
   .stat {
     color: white;
     font-size: $font-size * 1.5;
