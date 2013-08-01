@@ -21,15 +21,6 @@ class Organization < ActiveRecord::Base
   scope :exposed, conditions: 'exposed'
 
 
-  searchkick
-  scope :search_import, includes(:university) # optional, but makes reindexing faster
-  def search_data
-    {
-      name: name,
-      state: location
-    }
-  end
-
   def approved_membership_ids
     memberships.where(approved: true).select(:id).map(&:id)
   end
@@ -62,13 +53,13 @@ class Organization < ActiveRecord::Base
     param = query[:param]
     # if both states and param
     query_results = if states.present? && param.present?
-      Organization.search(param,  fields: [:name], where: {state: states}).results
+      Organization.eager_load(:university).where('organizations.name like ? AND universities.state IN (?)', "%#{param}%", states)
     # if states but not param
     elsif states.present? && param.blank?
       Organization.eager_load(:university).where('universities.state IN (?)', states)
     # if para but not states
     elsif states.empty? && param.present?
-      Organization.search(param,  fields: [:name]).results
+      Organization.where('name like ?', "%#{param}%")
     elsif states.empty? && param.blank?
       []
     end
