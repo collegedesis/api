@@ -134,6 +134,8 @@ GEM
       guard (>= 1.8)
       rspec (~> 2.13)
     handlebars-source (1.0.0.rc4)
+    heroku_rails_deflate (0.2.1)
+      rack (~> 1.4.5)
     hike (1.2.2)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -293,6 +295,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   handlebars-source (= 1.0.0.rc4)
+  heroku_rails_deflate
   jquery-rails
   memcachier
   newrelic_rpm
