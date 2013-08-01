@@ -58,11 +58,20 @@ class Organization < ActiveRecord::Base
   end
 
   def self.filter_and_search_by_query(query)
-    states = query[:states]
+    states = query[:states] || []
     param = query[:param]
-    query_results = Organization.eager_load(:university)
-    query_results = query_results.search(param) if param
-    query_results = query_results.map {|org| org if states.include? org.location }.compact if states.present?
+    # if both states and param
+    query_results = if states.present? && param.present?
+      Organization.search(param,  fields: [:name], where: {state: states}).results
+    # if states but not param
+    elsif states.present? && param.blank?
+      Organization.eager_load(:university).where('universities.state IN (?)', states)
+    # if para but not states
+    elsif states.empty? && param.present?
+      Organization.search(param,  fields: [:name]).results
+    elsif states.empty? && param.blank?
+      []
+    end
     return query_results
   end
 
