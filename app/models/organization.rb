@@ -20,7 +20,7 @@ class Organization < ActiveRecord::Base
   scope :exposed, conditions: 'exposed'
 
   def approved_membership_ids
-    memberships.select {|m| m if m.approved? }.map(&:id)
+    memberships.where(approved: true).select(:id).map(&:id)
   end
 
   def has_email?
