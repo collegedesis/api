@@ -7,7 +7,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "//connect.soundcloud.com/sdk.js", "//w.soundcloud.com/player/api.js" %>
     <meta property="og:image" content="https://collegedesis.com/assets/logo.png">
     <meta property="og:url" content="https://www.collegedesis.com">
     <meta property="og:description" content="We build tools to help South Asian student organizations connect, collaborate, and share.">
@@ -31,4 +30,5 @@
     <% end %>
   </head>
   <body>
+  <%= javascript_include_tag "//connect.soundcloud.com/sdk.js", "//w.soundcloud.com/player/api.js" %>
 </html>
