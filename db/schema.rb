@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715021220) do
+ActiveRecord::Schema.define(:version => 20130801083920) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20130715021220) do
     t.string   "slug"
     t.boolean  "auto_approve_memberships", :default => true
     t.text     "about"
+    t.string   "instagram"
   end
 
   add_index "organizations", ["slug"], :name => "index_organizations_on_slug"
