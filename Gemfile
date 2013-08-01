@@ -13,6 +13,7 @@ gem 'dalli'
 gem 'memcachier'
 gem 'newrelic_rpm'
 gem 'twilio-ruby'
+gem 'heroku_rails_deflate', :group => :production
 
 group :development, :test do
   gem 'pry'
