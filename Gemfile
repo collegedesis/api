@@ -13,7 +13,6 @@ gem 'dalli'
 gem 'memcachier'
 gem 'newrelic_rpm'
 gem 'twilio-ruby'
-gem "searchkick", github: "ankane/searchkick"
 
 group :development, :test do
   gem 'pry'
