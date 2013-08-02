@@ -19,6 +19,3 @@ App.ApplicationRoute = Ember.Route.extend
         type: 'DELETE'
         success: (result) =>
           window.location.reload()
-
-  activate: ->
-    @controllerFor('radio').initializeRadio()

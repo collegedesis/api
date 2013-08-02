@@ -6,36 +6,33 @@
   bottom: 0;
   height: 40px;
   background-color: transparentize($green, 0.3);
-  text-align: center;
+  #party * { display: none; }
+  .loading { @include loader(30px); }
 }
 
 .radio-inner {
   background-color: transparentize(lighten($green, 10%), 0.3);
   max-width: 500px;
   margin: 0 auto;
+  height: 100%;
   @include ellipsis;
   & > div  {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
     height: 30px;
+    line-height: 30px;
     margin: 5px;
   }
 }
 
 .radio .now-playing {
-  max-width: 430px;
-  width: 430px;
+  width: 300px;
   @include ellipsis;
-  &.loading { @include loader(30px); }
   line-height: 30px;
+  a { @include ellipsis; }
+  &.loading { background-position: left; }
 }
 
-.radio #party * { display: none;}
-
-.radio-controls {
-  float:left;
-  width: 70px;
-}
 .radio-icon {
   display: inline-block;
   vertical-align: top;
