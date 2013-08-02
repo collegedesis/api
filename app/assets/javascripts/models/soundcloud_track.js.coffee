@@ -15,3 +15,15 @@ App.SoundCloudTrack = Ember.Object.extend
   embedHtml: (->
     @get('oEmbed.html').replace("http%3A%2F%2F", '//')
   ).property('oEmbed')
+
+  title: (->
+    @get('json.title')
+  ).property('json.title')
+
+  url: (->
+    @get('json.permalink_url')
+  ).property('json.permalink_url')
+
+  artist: (->
+    @get('json.user.username')
+  ).property('json.user.username')

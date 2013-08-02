@@ -8,118 +8,134 @@ App.RadioController = Ember.ArrayController.extend
   kAcappellaGroupID: "124320" # soundcloud.com/groups/south-asian-a-cappella-radio
   kIndependentGroupID: "126422" # soundcloud.com/groups/collegedesis-independent
 
-  featureTrackURL: "https://soundcloud.com/sodhivine/we-cant-stop-cover-sodhivine"
+  currentGroupId: "77839" # starts as the mashup group
 
-  currentGroupId: null
-  defaultGroupId: (-> @get('kMashupGroupID') ).property()
+  # the radio gets initialized when the user hits play for the first time
+  initialized: false
 
-  initializeRadio: ->
-    SC.initialize({client_id: @get('kClientID')})
+  # used for showing spinner
+  loading: false
 
-    @set('currentGroupId', @get('defaultGroupId')) if !@get('currentGroupId')
-    @set('hasTracks', true)
+  # keep track of all the widgets we're adding to the DOM
+  # so we can clear them
+  viewObjects: Em.A()
+
+  initializeRadioWithChannel: (groupId) ->
+    # tell the UI that we're working
     @set('loading', true)
 
+    # clear all the soundcloud widgets currently in the dom
+    @_clearViews()
+
+    # prepare the SC client with API authorization
+    SC.initialize({client_id: @get('kClientID')})
+
+    # an array to collect track objects in
+    trackObjects = Em.A()
+
+    # the URL for the currentGroup including the kClientID parameter
     url = @get('soundcloudAPIUrl')
-    trackObjects = Em.A() # to collect track Objects in
 
-    # add the featureTrack first
-    featureTrackURL = @get('featureTrackURL')
-    SC.get '/resolve', { url: featureTrackURL }, (track) =>
-      featureTrack = App.SoundCloudTrack.create({json: track, id: 0 })
-      trackObjects.pushObject(featureTrack)
+    xhr = $.getJSON url, (jsonTracks) =>
+      @_shuffleTrackObjects(jsonTracks)
 
-    xhr = $.getJSON url, (tracksJSONObjects) =>
-      @_shuffleTrackObjects(tracksJSONObjects)
+      # create an Ember Object with each jsonTrack
+      $(jsonTracks).each (index, json) ->
+        track = App.SoundCloudTrack.create
+          id: index
+          json: json
 
-      $(tracksJSONObjects).each (index, item) ->
-        # create an Ember Object with the json and create an array of them
-        trackObject = App.SoundCloudTrack.create({json: item, id: index + 1})
-        trackObjects.pushObject(trackObject)
+        trackObjects.pushObject(track)
 
-
-      # tune into the channel with the emberObjects
+      # set the content of the controller with the track
       @set('content', trackObjects)
-      @tuneIntoChannel()
 
+      # set the current and next tracks
+      @set('currentTrack', @get('content').objectAt(0))
+      @set('nextTrack', @get('content').objectAt(1))
 
-  content: null # an array of App.SoundCloudTrack objects
-  viewObjects: Em.A() # an array of views currently inDOM
+      # load the first track
+      @get('currentTrack').load()
+
+      # set the initialized to true
+      @set('initialized', true)
+
+  # currently playing sound. this is a App.SoundCloudTrack instance
+  # and has a handle to three things as properties:
+  # 1. the soundcloud widget object,
+  # 2. and the actual html for the widget
+  # 3. the json from soundcloud
   currentTrack: null
   nextTrack: null
 
-  # manually set these properties when entering a route
-  hasTracks: true
-  loading: false
-  playing: false
-
-  readyToPlay: (->
-    @get('hasTracks') && @get('currentTrack.isLoaded') && @get('nextTrack.isLoaded')
-  ).property('currentTrack.isLoaded', 'nextTrack.isLoaded', 'hasTracks')
-
-
-  # gets the currentTrack, loads it and inserts it into the DOM
-  # this fires every time a new track is loaded.
-  # a new track is loaded every time nextTrack changes
-  # nextTrack changes when it is set to null
-  # next track is set to null when the the currentTrack finishes
-  createAndInsertWidget: (->
-    if @get('currentTrack.isLoaded') && !@get('currentTrack.inDom')
-      view = App.SoundCloudWidgetView.create(
-        template: Ember.Handlebars.compile @get('currentTrack.embedHtml')
-        track: @get('currentTrack')
-        controller: @
-      )
-      Em.run.next =>
-        view.prepend()
-        @get('viewObjects').pushObject(view)
-      @set('currentTrack.inDom', true)
-  ).observes('readyToPlay')
-
-  # when the next track is null, we load the next available track
-  # and set it as the next track
-  loadNewTrack: (->
-    if @get('nextTrack') == null
-      track = @get('content').objectAt(@get('currentTrack.id') + 1)
-      track.load()
-      @set('nextTrack', track)
-  ).observes('nextTrack')
-
-  # triggered when the current track finishes
-  # or when the user hits next
+  # triggered when the current track finishes or when the user hits next
   nextSong: ->
+    # next track should already be loaded right now
+    # so all we have to do is create the view object and insert it into the dom
+    @set('loading', true)
     @set('currentTrack', @get('nextTrack'))
     @set('nextTrack', null)
 
-  togglePlay: ->
-    @get('currentTrack.widget').toggle()
-    @set('playing', !@get('playing'))
+  # insert the currentTrack into the DOM
+  # it will start playing when then view is inserted and the widget is ready
+  # see the App.SoundCloudWidgetView definition
+  insertCurrentTrack: (->
+    if @get('currentTrack.isLoaded') && !@get('currentTrack.inDom')
 
-  # this is called after the xhr returns
-  tuneIntoChannel: ->
-    content = @get('content')
+      view = App.SoundCloudWidgetView.create
+        template: Ember.Handlebars.compile @get('currentTrack.embedHtml')
+        track: @get('currentTrack')
+        controller: @
 
-    if content.length
-      @set 'currentTrack', content.objectAt(0)
-      @set 'nextTrack', content.objectAt(1)
-      @get('currentTrack').load()
+      @set('currentTrack.inDom', true)
+
+      Em.run.next => view.prepend()
+
+  ).observes('nextTrack.isLoaded', 'currentTrack.isLoaded')
+
+  # load the html for another track when the current track changes,
+  # so we can queue it up
+  loadAnotherTrack: (->
+    if @get('nextTrack') == null
+      console.log 'queuing the next track'
+      id = @get('currentTrack.id')
+      newTrack = @get('content').objectAt(id + 1)
+      @set('nextTrack', newTrack)
       @get('nextTrack').load()
-    else
-      @set('hasTracks', false)
+  ).observes('currentTrack.id', 'nextTrack')
 
-    # we are no longer loading
-    @set('loading', false)
+  # use this to change the UI for play/pause button
+  playing: false
+
+  # triggered by play/pause button in UI
+  play: ->
+    @_animiteTitle()
+    if @get('initialized')
+      @get('currentTrack.widget').play()
+      @set('playing', true) # for the UI
+      @set('loading', false) # for the UI
+    else
+      @initializeRadioWithChannel @get('currentGroupId')
+
+  pause: ->
+    @get('currentTrack.widget').pause()
+    @set('playing', false) # for the UI
 
   # we clear views when moving into a new channel
   _clearViews: -> @get('viewObjects').forEach (view) -> view.remove()
 
+  _animiteTitle: ->
+    $('.now-playing').removeClass('fadeInUp')
+    Em.run.next -> $('.now-playing').addClass('fadeInUp')
+
+  # constructs the url for the soundcloud group where we send the network request to fetch tracks
   soundcloudAPIUrl: (->
     groupID = @get('currentGroupId')
     clientID = @get('kClientID')
     "https://api.soundcloud.com/groups/#{groupID}/tracks.json?client_id=#{clientID}&limit=50"
   ).property('currentGroupId', 'kClientID')
 
-  # fisherYates algorithm to shuffle the array
+  # fisherYates algorithm to shuffle an array
   _shuffleTrackObjects: (tracks) ->
     i = tracks.length
     return false  if i is 0
