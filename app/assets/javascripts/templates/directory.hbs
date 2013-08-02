@@ -1,26 +1,28 @@
 <div class='home-content'>
-  <div class="index-right"></div>
+  <div class="index-right">
+    <form class="inline">
+      <div class="input-wrapper">
+        <div class="search icon"></div>
+        {{input value=controllers.map.searchParam autocomplete="off"}}
+      </div>
+      <button style="visibility:hidden;" {{action search target='controllers.map'}}>Search</button>
+    </form>
+    <div class="map-results">
+      {{#if controllers.map.organizations}}
+        <ul {{bindAttr class="controllers.map.loading"}}>
+          {{#each org in controllers.map.organizations}}
+            {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}
+          {{/each}}
+        </ul>
+      {{else}}
+        <div class="muted" style="height: 100%; width: 100%; text-align:center;">Search me or click on the map</div>
+      {{/if}}
+    </div>
+  {{#if controllers.map.organizations}}
+    <h4 {{bindAttr class="controllers.map.loading"}}>{{controllers.map.organizations.length}} matches</h4>
+  {{/if}}
+  </div>
   <div class="map-container-small">
     {{render 'map'}}
   </div>
-</div>
-
-<form class="center inline">
-  {{input value=controllers.map.searchParam}}
-  <button class="cta" {{action search target='controllers.map'}}>Search</button>
-</form>
-
-<div class=" center map-results">
-  {{#unless loading}}
-    {{#if controllers.map.organizations}}
-      <h2><span {{bindAttr class="controllers.map.loading"}}>{{controllers.map.organizations.length}}</span> organizations found</h2>
-    {{/if}}
-  {{else}}
-    <h2><span {{bindAttr class="controllers.map.loading"}}>{{controllers.map.organizations.length}}</span> organizations found</h2>
-  {{/unless}}
-  <ul {{bindAttr class="controllers.map.loading"}}>
-    {{#each org in controllers.map.organizations}}
-      {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}
-    {{/each}}
-  </ul>
 </div>

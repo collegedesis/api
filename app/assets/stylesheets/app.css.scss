@@ -125,23 +125,45 @@ body {
 
 input, textarea, select { max-width: 500px; }
 
-input, textarea {
+@mixin input {
   box-shadow: 0 0 1px $green;
+  background-color: transparentize($brown2, 0.9);
   &:focus {
     box-shadow: 0 0 6px $green;
     outline: none;
+  }
+}
+input, textarea {
+  @include input;
+}
+
+.input-wrapper {
+  @include input;
+  width: 100%;
+  .search {
+    background: url('search.svg') center no-repeat;
+    background-size: 80%;
+    width: 30px;
+    height: 30px;
+  }
+  .icon, input {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+  }
+  input {
+    text-align: left;
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
   }
 }
 
 input, textarea, select {
   padding:5px;
   box-sizing:border-box;
-  font-size:$font-size * 1.1;
+  font-size: $font-size * 1.1;
   display: block;
-}
-
-input, textarea {
-  background-color: transparentize($brown2, 0.9);
 }
 
 .button {
