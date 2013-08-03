@@ -15,6 +15,12 @@ gem 'newrelic_rpm'
 gem 'twilio-ruby'
 gem 'heroku_rails_deflate', :group => :production
 
+group 'development' do
+  gem "bullet"
+  gem 'uniform_notifier'
+  gem 'ruby-growl'
+end
+
 group :development, :test do
   gem 'pry'
   gem 'pry-debugger'
