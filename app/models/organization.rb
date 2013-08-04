@@ -30,9 +30,11 @@ class Organization < ActiveRecord::Base
   end
 
   def display_name
-    str = name
-    str.prepend("#{university_name} - ") if university_name
-    return str
+    if university_name
+      "#{university_name} - #{name}"
+    else
+      name
+    end
   end
 
   def directory_profile
