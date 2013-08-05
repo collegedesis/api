@@ -8,15 +8,14 @@
       <button style="visibility:hidden;" {{action search target='controllers.map'}}>Search</button>
     </form>
     <div class="map-results">
-      {{#if controllers.map.organizations}}
-        <ul {{bindAttr class="controllers.map.loading"}}>
-          {{#each org in controllers.map.organizations}}
-            {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}
-          {{/each}}
-        </ul>
-      {{else}}
+      <ul {{bindAttr class="controllers.map.loading"}}>
+        {{#each org in controllers.map.organizations}}
+          {{#linkTo d.show org tagName="li"}}{{org.display_name}}{{/linkTo}}
+        {{/each}}
+      </ul>
+      {{#unless controllers.map.organizations}}
         <div class="muted" style="height: 100%; width: 100%; text-align:center;">Search me or click on the map</div>
-      {{/if}}
+      {{/unless}}
     </div>
   {{#if controllers.map.organizations}}
     <h4 {{bindAttr class="controllers.map.loading"}}>{{controllers.map.organizations.length}} matches</h4>
