@@ -1,33 +1,5 @@
 @import '_imports';
 
-.map-container {
-  max-width: $col * 23;
-  margin: 0 auto;
-  min-height: 300px;
-  text-align: center;
-}
-
-.map-container-small {
-  max-width: $col * 14;
-  width: 65%;
-  min-height: 300px;
-  text-align: center;
-  max-height: 430px;
-}
-
-.index-right {
-  background-color: darken($background, 3%);
-  padding: 10px;
-  max-width: $col * 9;
-  width: 35%;
-  float: right;
-  min-height: 300px;
-  max-height: 430px;
-  .inline {
-    height: 35px;
-  }
-}
-
 #map {
   margin: 0 auto 20px;
   display: block;
