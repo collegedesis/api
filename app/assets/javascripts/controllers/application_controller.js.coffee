@@ -29,3 +29,7 @@ App.ApplicationController = Ember.Controller.extend
   homePage: (->
     @get('currentPath') == "index"
   ).property('currentPath')
+
+  newsPage: (->
+    if @get('currentPath').match(/n\./) then true else false
+  ).property('currentPath')
