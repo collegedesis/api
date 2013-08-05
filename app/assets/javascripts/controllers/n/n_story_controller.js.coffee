@@ -10,9 +10,10 @@ App.NStoryController = Ember.ObjectController.extend
         @transitionToRoute('users.me')
         @set('comment', null)
       else
-        @get('comments').createRecord({body: @get('comment')})
-        @store.commit()
-        @set('comment', null)
+        if @get('comment')
+          @get('comments').createRecord({body: @get('comment')})
+          @store.commit()
+          @set('comment', null)
     else
       App.session.set('messages', 'You need to be logged in to comment!')
       @transitionToRoute('login')
