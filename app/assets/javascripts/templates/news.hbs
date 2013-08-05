@@ -1,18 +1,24 @@
-{{partial 'n/news_index'}}
-<div class="main">
-  <h3>News</h3>
-
-  <p>
-    The News Board helps members and alumni of {{numOfOrganizations}} South Asian organizations share their thoughts, events, and accomplishments.
-  </p>
-
-  <ol>
-    <li><strong>Share</strong> a link or write a blog post</li>
-    <li>Get fellow members to <strong>vote</strong> it up</li>
-    <li>We'll <strong>promote</strong> it to our national community</li>
-  </ol>
-
-  <p>
-    {{#linkTo 'n.submit' tagName="button" classNames="cta"}}Share{{/linkTo}}
-  </p>
+<div class='home-content'>
+  <div class='main-inside-container right'>
+  </div>
+  <div class='index left'>
+    <div class="bulletins-list">
+    {{#each controllers.bulletinsIndex}}
+      <div class='bulletin-wrapper'>
+        <div class='title'>
+        {{#linkTo 'n.story' this}}
+          {{title}}
+        {{/linkTo}}
+      </div>
+        <div class='subtext'>
+          {{#if authorIsOrganization}}
+            {{#linkTo 'd.show' author}}{{author.name}}{{/linkTo}}
+          {{/if}}
+          {{#if authorIsUser}}{{author.full_name}}{{/if}}
+        </div>
+      </div>
+    {{/each}}
+    </div>
+    {{#linkTo 'n.submit' tagName='button' classNames='cta'}}Share{{/linkTo}}
+  </div>
 </div>
