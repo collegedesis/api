@@ -28,12 +28,14 @@
   ul {
     &.loading { @include loader(250px); }
     li {
-      border-bottom: solid 1px $green;
-      @include ellipsis;
       padding: 10px 5px;
+      margin-left: 2px;
+      margin-bottom: 0;
+      cursor: pointer;
+      font-size: $font-size * 0.9;
       &:hover {
-        cursor: pointer;
-        box-shadow: 0 0 3px $green;
+        border-left: solid 2px $green;
+        margin-left: 0;
       }
     }
   }
