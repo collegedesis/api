@@ -1,13 +1,19 @@
 {{#if showingPreview}}
   <h3>No preview available for link bulletins.</h3>
 {{else}}
-<h4>Title</h4>
-{{#unless title}}<span class="error">Missing title</span>{{/unless}}
-{{input value=title}}
+<div class="row">
+  <div class="header">Title</div>
+  <div class="contents">
+    {{input value=title}}
+    {{#unless title}}<span class="error">Missing title</span>{{/unless}}
+  </div>
+</div>
 
-<h4>URL</h4>
-{{#unless validUrl}}
-<span class="error">Make sure you include http or https at the beginning!</span>
-{{/unless}}
-{{input value=url placeholder="http://"}}
+<div class="row">
+  <div class="header">URL</div>
+  <div class="contents">
+    {{input value=url placeholder="http://"}}
+    {{#unless validUrl}}<span class="error">Make sure you include http or https at the beginning!</span>{{/unless}}
+  </div>
+</div>
 {{/if}}

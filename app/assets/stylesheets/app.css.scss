@@ -123,7 +123,10 @@ body {
 .main.loading { @include loader(500px); }
 .info.loading { @include loader(200px); }
 
-input, textarea, select { max-width: 500px; }
+input, textarea, select {
+  width: 100%;
+  max-width: 500px;
+}
 
 @mixin input {
   box-shadow: 0 0 1px $green;
@@ -232,24 +235,28 @@ h3, h4, h5, span.heading {
 
 form h4 { color: $brown4; }
 
-#signup {
+#main-form {
   .row {
-    height: 60px;
+    min-height: 60px;
     padding: 5px 0;
     margin-bottom: 5px;
     & > * {
       display: inline-block;
     }
   }
-  .row input {
-    width: 300px;
+  .row input, textarea {
     margin-bottom: 0;
   }
   .row .header {
     @include heading;
     vertical-align: top;
-    width: 100px;
+    max-width: 100px;
+    width: 35%;
     margin-right: 10px;
+  }
+  .contents {
+    min-width: 300px;
+    width: 65%;
   }
 }
 
@@ -301,4 +308,11 @@ table.left-heading {
 }
 .ember-list-item-view {
   position: absolute;
+}
+
+ol { margin-left: 40px; }
+ul, ol {
+  li {
+    margin-bottom: 5px;
+  }
 }
