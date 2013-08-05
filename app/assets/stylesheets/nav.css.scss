@@ -55,18 +55,22 @@ nav .account {
 }
 
 body .sub-nav {
-
   margin-bottom: 10px;
-  &.no-link li { padding: 5px; }
+  &.no-link li {
+    padding: 5px;
+    cursor: auto;
+  }
   li {
     @include subnav;
-    border-bottom: solid 1px $green;
     display: block;
-    height: 48px;
-    line-height: 37px;
-    a {
-      color: $brown4;
-      padding: 5px;
+    min-height: 40px;
+    cursor: pointer;
+    margin-left: 2px;
+    margin-bottom: 0;
+    padding: 10px;
+    &.active {
+      border-left: 2px solid $green;
+      margin-left: 0;
     }
   }
 }

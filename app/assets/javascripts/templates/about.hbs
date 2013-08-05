@@ -1,15 +1,16 @@
-<aside>
-  <h3>About</h3>
+<div class="home-content">
+<div class="index left">
   <ul class="sub-nav">
-    <li>{{#linkTo 'about.quick-start'}}Quick Start{{/linkTo}}</li>
-    <li>{{#linkTo 'about.represent'}}Represent Your Organization/Team{{/linkTo}}</li>
-    <li>{{#linkTo 'about.news'}}News Board FAQ{{/linkTo}}</li>
+    {{#linkTo 'about.quick-start' tagName='li'}}Quick Start{{/linkTo}}
+    {{#linkTo 'about.represent' tagName='li'}}Represent Your Organization/Team{{/linkTo}}
+    {{#linkTo 'about.news' tagName='li'}}News Board FAQ{{/linkTo}}
     <li><a href="/#/d/collegedesis">Our Team, Contact, & Mission</a></li>
   </ul>
   {{#unless currentUser}}
     <div class="cta">{{#linkTo 'users.new'}}Join{{/linkTo}}</div>
   {{/unless}}
-</aside>
-<div class="main">
+</div>
+<div class="main-inside-container left">
   {{outlet}}
+</div>
 </div>
