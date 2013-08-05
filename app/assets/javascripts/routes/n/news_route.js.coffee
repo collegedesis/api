@@ -22,4 +22,4 @@ App.NRoute = App.BaseNewsRoute.extend()
 
 # This exists so we the main news page url is /news
 App.NIndexRoute = Ember.Route.extend
-  redirect: -> @transitionTo('news.index')
+  redirect: -> @transitionTo('news')
