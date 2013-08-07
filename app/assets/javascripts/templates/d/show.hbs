@@ -1,17 +1,19 @@
-<aside>
-  {{partial 'd/show_sidebar'}}
-  {{#if currentUserIsAdmin}}
-    {{#linkTo 'd.settings' this}}Admin Settings{{/linkTo}}
-  {{/if}}
-</aside>
-<div class="main">
-  {{#if currentUser}}
-    {{#if currentUserIsMember}}
-      {{partial 'd/member_show'}}
-    {{else}}
-      {{partial 'd/logged_in_user_show'}}
+<div class="home-content">
+  <div class="index left">
+    {{partial 'd/show_sidebar'}}
+    {{#if currentUserIsAdmin}}
+      {{#linkTo 'd.settings' this}}Admin Settings{{/linkTo}}
     {{/if}}
-  {{else}}
-    {{partial 'd/guest_show'}}
-  {{/if}}
+  </div>
+  <div class="main-inside-container left">
+    {{#if currentUser}}
+      {{#if currentUserIsMember}}
+        {{partial 'd/member_show'}}
+      {{else}}
+        {{partial 'd/logged_in_user_show'}}
+      {{/if}}
+    {{else}}
+      {{partial 'd/guest_show'}}
+    {{/if}}
+  </div>
 </div>

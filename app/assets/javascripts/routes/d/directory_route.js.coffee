@@ -4,3 +4,6 @@ App.DirectoryRoute = Ember.Route.extend
   deactivate: ->
     controller = @controllerFor('map')
     controller.clearResults()
+
+App.DIndexRoute = Ember.Route.extend
+  redirect: -> @transitionTo('directory')

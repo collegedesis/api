@@ -1,9 +1,5 @@
 @import '_imports';
 
-.main section {
-  margin-bottom: 20px;
-}
-
 .main .memberships {
   margin-bottom: 10px;
   ul li {
@@ -38,4 +34,9 @@ div.editable {
   padding: 5px 10px;
   font-size: $font-size * 0.9;
   background-color: transparentize($brown2, 0.7);
+}
+
+body .links a {
+  color: $brown4;
+  margin-right: 10px;
 }

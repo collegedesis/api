@@ -3,11 +3,11 @@
   {{#if bulletins}}
     <ul>
       {{#each bulletin in bulletins}}
-      <li>{{#linkTo 'n.story' bulletin}}{{bulletin.title}}{{/linkTo}}</li>
+      <li class="small">{{#linkTo 'n.story' bulletin}}{{bulletin.title}}{{/linkTo}}</li>
       {{/each}}
     </ul>
   {{else}}
-    {{name}} has not posted anything yet.
+    <p class="small muted">{{name}} has not posted anything yet.</p>
   {{/if}}
   {{#if currentUserIsMember}}
     <div class="cta">{{#linkTo 'n.submit'}}Post{{/linkTo}}</div>
