@@ -1,6 +1,13 @@
 App.DShowController = Ember.ObjectController.extend
   needs: ['application']
 
+  noContactInfo: (->
+    if !@get('website') && !@get('facebook') && !@get('instagram') && !@get('youtube') && !@get('twitter')
+      true
+    else
+      false
+  ).property('website', 'facebook', 'instagram', 'youtube', 'twitter')
+
   currentUser: (->
     @get('controllers.application.currentUser')
   ).property('controllers.application.currentUser')

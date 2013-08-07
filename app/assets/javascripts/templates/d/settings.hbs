@@ -1,4 +1,4 @@
-<aside>
+<div class="index left">
   {{partial 'd/show_sidebar'}}
   {{#if isDirty}}
     <button class="cta" {{action save}}>Save</button>
@@ -9,7 +9,71 @@
     {{/each}}
   {{/if}}
   {{#linkTo 'd.show' this}}Back{{/linkTo}}
-</aside>
-<div class="main">
-  {{partial 'd/admin_show'}}
+</div>
+<div class="main-inside-container left">
+  <section class="form">
+  <h4>About</h4>
+  <p>
+    {{view App.ContenteditableView
+          valueBinding="about"
+          editableBinding="currentUserIsAdmin"}}
+  </p>
+
+  <h4>Links</h4>
+  <table class="left-heading">
+    <tr>
+      <td>Slug</td>
+      <td>collegedesis.com/#/d/{{view App.ContenteditableView
+            valueBinding="slug"
+            tagName="span"
+            editableBinding="currentUserIsAdmin"}}</td>
+    </tr>
+    <tr>
+      <td>Website</td>
+      <td>
+        <span class="prompt">http://</span>{{view App.ContenteditableView
+          valueBinding="website"
+          tagName="span"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+    <tr>
+      <td>Twitter</td>
+      <td>
+        <span class="prompt">@</span>{{view App.ContenteditableView
+          valueBinding="twitter"
+          tagName="span"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+    <tr>
+      <td>Facebook</td>
+      <td>
+        <span class="prompt">facebook.com/</span>{{view App.ContenteditableView
+          valueBinding="facebook"
+          tagName="span"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+    <tr>
+      <td>YouTube</td>
+      <td>
+        <span class="prompt">youtube.com/</span>{{view App.ContenteditableView
+          valueBinding="youtube"
+          tagName="span"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+        <tr>
+      <td>Instagram</td>
+      <td>
+        <span class="prompt">instagram.com/</span>{{view App.ContenteditableView
+          valueBinding="instagram"
+          tagName="span"
+          editableBinding="currentUserIsAdmin"}}
+      </td>
+    </tr>
+  </table>
+</section>
+{{partial 'd/member_list'}}
 </div>

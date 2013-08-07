@@ -1,53 +1,33 @@
 <h3>Contact</h3>
-<table class="left-heading">
-  <tr>
-    <td>Website</td>
-    <td>
-      {{#if website}}
-        <a target="_blank" {{bindAttr href="websiteUrl"}}>{{websiteUrl}}</a>
-      {{else}}
-      None
-      {{/if}}
-    </td>
-  </tr>
-  <tr>
-    <td>Twitter</td>
-    <td>
-      {{#if twitter}}
-        <a target="_blank" {{bindAttr href="twitterUrl"}}>{{twitterUrl}}</a>
-      {{else}}
-      None
-      {{/if}}
-    </td>
-  </tr>
-  <tr>
-    <td>Facebook</td>
-    <td>
-      {{#if facebook}}
-        <a target="_blank" {{bindAttr href="facebookUrl"}}>{{facebookUrl}}</a>
-      {{else}}
-      None
-      {{/if}}
-    </td>
-  </tr>
-  <tr>
-    <td>YouTube</td>
-    <td>
-      {{#if youtube}}
-        <a target="_blank" {{bindAttr href="youtubeUrl"}}>{{youtubeUrl}}</a>
-      {{else}}
-      None
-      {{/if}}
-    </td>
-  </tr>
-  <tr>
-    <td>Instagram</td>
-    <td>
-      {{#if instagram}}
-        <a target="_blank" {{bindAttr href="instagramUrl"}}>{{instagramUrl}}</a>
-      {{else}}
-      None
-      {{/if}}
-    </td>
-  </tr>
-</table>
+<section class="links">
+{{#if website}}
+  <a target="_blank" {{bindAttr href="websiteUrl"}}>
+    <i class="icon-globe icon-2x"></i>
+  </a>
+{{/if}}
+{{#if twitter}}
+  <a target="_blank" {{bindAttr href="twitterUrl"}}>
+    <i class="icon-twitter icon-2x"></i>
+  </a>
+{{/if}}
+{{#if facebook}}
+  <a target="_blank" {{bindAttr href="facebookUrl"}}>
+    <i class="icon-facebook icon-2x"></i>
+  </a>
+{{/if}}
+{{#if youtube}}
+  <a target="_blank" {{bindAttr href="youtubeUrl"}}>
+    <i class="icon-youtube icon-2x"></i>
+  </a>
+{{/if}}
+{{#if instagram}}
+  <a target="_blank" {{bindAttr href="instagramUrl"}}>
+    <i class="icon-instagram icon-2x"></i>
+  </a>
+{{/if}}
+{{#if noContactInfo}}
+  <p class="small muted">
+    {{name}} hasn't filled out their contact information. Are you a member?
+  </p>
+{{/if}}
+</section>

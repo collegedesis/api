@@ -1,6 +1,6 @@
 @import '_imports';
 
-p {
+p, li {
   margin-bottom: $font-size * 1.30;
   line-height: $font-size * 1.30;
   &.small {

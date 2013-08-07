@@ -1,6 +1,6 @@
-<div class="header">
+<section class="header">
   <h4>About</h4>
-  <p>{{#if about}}{{about}}{{else}}{{#unless currentUserIsAdmin}}<span {{action applyAdmin}}>Become an admin</span> to update this profile!{{else}}{{#linkTo 'd.settings' this}}Edit this{{/linkTo}}{{/unless}}{{/if}}</p>
-</div>
+  <p class="small muted">{{#if about}}{{about}}{{else}}{{#unless currentUserIsAdmin}}<span {{action applyAdmin}}>Become an admin</span> to update this profile!{{else}}{{#linkTo 'd.settings' this}}Edit this{{/linkTo}}{{/unless}}{{/if}}</p>
+</section>
 {{partial 'd/member_list'}}
 {{partial 'd/bulletins_list'}}
