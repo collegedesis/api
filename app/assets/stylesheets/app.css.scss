@@ -250,6 +250,7 @@ form h4 { color: $brown4; }
   }
   .row .header {
     @include heading;
+    color: $brown4;
     vertical-align: top;
     max-width: 100px;
     width: 35%;

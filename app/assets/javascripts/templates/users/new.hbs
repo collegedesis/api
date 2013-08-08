@@ -1,15 +1,5 @@
-<aside>
-  <h3>Why</h3>
-  <ul class="sub-nav no-link">
-    <li>Join a national community</li>
-    <li>Earn reputation for your team</li>
-    <li>Fundraise</li>
-  </ul>
-  <a href="#/n/how-to-sign-up">Learn More</a>
-</aside>
-<div class="main">
-  <form id="signup">
-    <h4>Sign up</h4>
+<div class="home-content">
+  <form id="main-form" class="index right">
     <div class="row">
       <div class="header">Email</div>
       <div class="contents">
@@ -41,7 +31,15 @@
     {{#if controller.working}}
       Working...
     {{else}}
-      <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Sign up</button>  or {{#linkTo "login"}}Log in{{/linkTo}}
+      <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Sign up</button>
+      <p class="small">or {{#linkTo "login"}}Log in{{/linkTo}}</p>
     {{/if}}
   </form>
+  <div class="main-inside-container right">
+    <h3>Sign up</h3>
+    <p>
+      Earn reputation for your team, fundraise for events, and connect with South Asian students from all around America.
+    </p>
+    <p class="small muted">Learn <a href="#/news/how-to-sign-up">how to register</a>.</p>
+  </div>
 </div>
