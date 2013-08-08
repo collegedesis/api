@@ -1,6 +1,3 @@
 App.DirectoryController = Ember.Controller.extend
+  # the map controller is being used in the template
   needs: ['map']
-
-  numOfOrganizationsBinding: Ember.Binding.oneWay('controllers.map.numOfOrganizations')
-  numOfUniversitiesBinding: Ember.Binding.oneWay('controllers.map.numOfUniversities')
-  numOfStatesBinding: Ember.Binding.oneWay('controllers.map.numOfStates')
