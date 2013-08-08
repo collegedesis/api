@@ -45,7 +45,7 @@ App.MapController = Ember.ArrayController.extend
     return @store.findQuery(App.Organization, {q: query})
 
   numOfUniversities: (->
-    if @get('selectedStates.length')
+    if @get('selectedStates.length') or @get('searchParam.length')
       @get('organizations').mapProperty('university_name').uniq().get('length')
     else
       @get('controllers.application.numOfUniversities')
@@ -59,7 +59,7 @@ App.MapController = Ember.ArrayController.extend
   ).property('queries', 'controllers.application.numOfStates')
 
   numOfOrganizations: (->
-    if @get('selectedStates.length')
+    if @get('selectedStates.length') or @get('searchParam.length')
       @get('organizations.length')
     else
       @get('controllers.application.numOfOrganizations')
