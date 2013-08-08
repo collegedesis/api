@@ -1,13 +1,9 @@
-<h3>Quick Look</h3>
+<h3>{{name}}</h3>
+{{#if university_name}}<h4 class="small muted">{{university_name}}</h4>{{/if}}
+
+{{partial 'd/links'}}
+
 <table class="left-heading">
-  <tr>
-    <td>Name</td>
-    <td>{{name}}</td>
-  </tr>
-  <tr>
-    <td>University</td>
-    <td>{{university_name}}</td>
-  </tr>
   <tr>
     <td>Reputation</td>
     <td>{{reputation}}</td>

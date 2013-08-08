@@ -36,9 +36,12 @@ div.editable {
   background-color: transparentize($brown2, 0.7);
 }
 
-body .links a {
-  color: $brown4;
-  margin-right: 10px;
+body .links {
+  margin-bottom: 10px;
+  a {
+    color: $brown4;
+    margin-right: 10px;
+  }
 }
 
 .about p {
