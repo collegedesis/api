@@ -1,52 +1,56 @@
-<aside>
-  <h3>Trouble?</h3>
-  <ul class="sub-nav no-link">
-    <li><a href="#/n/how-to-sign-up">Adding Memberships</a></li>
-  </ul>
-</aside>
-<div class="main profile-page">
-  {{App.session.messages}}
-  <div class="profile-head">
-    <img {{bindAttr src="avatar_url"}}>
-    <h1>{{full_name}}</h1>
-  </div>
-  <h3>Memberships</h3>
-  <div {{bindAttr class=":info loading"}}>
-    {{#unless memberships}}
-      {{#unless newApplications}}
-        Register a membership to be able to post on the {{#linkTo n}}News Board{{/linkTo}}!
+<div class="home-content">
+  <div class="index left">
+    <h3>Memberships</h3>
+    <div {{bindAttr class=":info loading"}}>
+      {{#unless memberships}}
+        {{#unless newApplications}}
+          Register a membership to be able to post on the {{#linkTo n}}News Board{{/linkTo}}!
+        {{/unless}}
       {{/unless}}
-    {{/unless}}
-    <ul class="memberships">
-      {{#each mem in memberships}}
-        <li {{bindAttr class="mem.notApproved mem.loading:loading"}}>
-          {{#linkTo 'd.show' mem.organization tagName='div'}}
-            {{mem.display_name}}
-          {{/linkTo}}
-          <a class="attention" {{action deleteMembership mem}}>Delete</a>
-        </li>
-      {{/each}}
-    </ul>
-    <ul class="memberships">
-      {{#each app in pendingMembershipApplications}}
-      {{#if app.isNew}}
-        <li>{{view Ember.Select contentBinding="controllers.dIndex"
-                                optionValuePath="content"
-                                optionLabelPath="content.display_name"
-                                selectionBinding="app.organization"}}
-        </li>
+      <ul class="memberships">
+        {{#each mem in memberships}}
+          <li {{bindAttr class="mem.notApproved mem.loading:loading"}}>
+            <i {{action deleteMembership mem}} class="icon-remove-circle"></i>
+            {{#linkTo 'd.show' mem.organization tagName="div"}}
+              {{mem.display_name}}
+            {{/linkTo}}
+          </li>
+        {{/each}}
+      </ul>
+      <ul class="memberships">
+        {{#each app in pendingMembershipApplications}}
+        {{#if app.isNew}}
+          <li>{{view Ember.Select contentBinding="controllers.dIndex"
+                                  optionValuePath="content"
+                                  optionLabelPath="content.display_name"
+                                  selectionBinding="app.organization"}}
+          </li>
+        {{else}}
+          <li>Applied to {{app.organization.display_name}}</li>
+        {{/if}}
+        {{/each}}
+      </ul>
+      {{#if newApplications}}
+      <div class="row-of-buttons">
+        <button class="cta" {{action submit}}>Save</button>
+        <button {{action cancel}}>Cancel</button>
+      </div>
       {{else}}
-        <li>Applied to {{app.organization.display_name}}</li>
+        <a class="cta" {{action newMembershipApplication}}>Add Membership</a>
       {{/if}}
-      {{/each}}
-    </ul>
-    {{#if newApplications}}
-    <div class="row-of-buttons">
-      <button class="cta" {{action submit}}>Save</button>
-      <button {{action cancel}}>Cancel</button>
     </div>
-    {{else}}
-      <button class="cta" {{action newMembershipApplication}}>New</button>
-    {{/if}}
+  </div>
+  <div class="main-inside-container left profile-page">
+    {{#if App.session.messages}}<p class="muted">{{App.session.messages}}</p>{{/if}}
+    <div class="profile-head">
+      <img {{bindAttr src="avatar_url"}}>
+      <h1>{{full_name}}</h1>
+    </div>
+    <p class="muted">
+      There isn't a whole lot to do on your profile page yet.
+    </p>
+    <p class="small muted">
+      We are building a kick ass social network for South Asian student organizations, so the focus is on {{#linkTo 'directory'}}organizational profiles{{/linkTo}}. Don't worry though, we'll let you add Twitbook and Instachat links and all that good stuff soon though.
+    </p>
   </div>
 </div>
