@@ -1,16 +1,6 @@
-<aside>
-  <h3>Why</h3>
-  <ul class="sub-nav no-link">
-    <li>Join a national community</li>
-    <li>Earn reputation for your team</li>
-    <li>Fundraise</li>
-  </ul>
-  <a href="#/news/how-to-sign-up">Learn More</a>
-</aside>
-<div class="main">
-  {{App.session.messages}}
-  <form id="main-form">
-    <h4>Log in</h4>
+<div class="home-content">
+  <form id="main-form" class="index right">
+    {{#if App.session.messages}}<p class="muted">{{App.session.messages}}</p>{{/if}}
     <div class="row">
       <div class="header">Email</div>
       <div class="contents">
@@ -25,6 +15,14 @@
         {{#unless validPassword}}<span class="error">can't login without a password, silly</span>{{/unless}}
       </div>
     </div>
-    <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Log in</button> or {{#linkTo users.new}}Sign up{{/linkTo}}
+    <button class="cta" {{bindAttr disabled="controller.errors"}} {{action submit}}>Log in</button>
+    <p class="small">or {{#linkTo users.new}}Sign up{{/linkTo}}</p>
   </form>
+  <div class="main-inside-container right">
+    <h3>Log in</h3>
+    <p>
+      Earn reputation for your team, fundraise for events, and connect with South Asian students from all around America.
+    </p>
+    <p class="small muted">Learn <a href="#/news/how-to-sign-up">how to register</a>.</p>
+  </div>
 </div>
