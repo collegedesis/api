@@ -21,6 +21,7 @@ $col: 42px;
   overflow: hidden;
   white-space: nowrap;
 }
+
 @mixin clickable-button($width) {
   display: inline-block;
   vertical-align: middle;
@@ -66,29 +67,12 @@ $col: 42px;
   font-family: $header-font;
 }
 
-@mixin greenify {
-  background-color: $green;
-  padding: 5px 10px;
-  color: white;
-}
-
 @mixin loader($min-height) {
   background: url("spinner.gif") no-repeat center center;
   height: $min-height;
   min-height: 30px;
   text-indent: -999px;
   * { display: none !important; }
-}
-
-@mixin score($size) {
-  width: $size;
-  height: $size;
-  line-height: $size;
-  color: lighten($brown4, 60%);
-  font-size: $size / 3;
-  text-align: center;
-  border-radius: 50%;
-  background: $brown4;
 }
 
 @mixin red {
