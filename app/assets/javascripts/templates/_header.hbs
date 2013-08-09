@@ -20,3 +20,10 @@
   {{/if}}
   </ul>
 </nav>
+<div class="messages">
+  {{#if currentUser}}
+    {{#unless currentUser.approved}}
+      <p class="error">Get your profile approved by registering a membership with one of the {{numOfOrganizations}} organizations in our {{#linkTo 'directory'}}directory{{/linkTo}}!</p>
+    {{/unless}}
+  {{/if}}
+</div>
