@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/ankane/searchkick
-  revision: 3cede7b6f0a4cbd77b2b240c240e071eccebdd81
+  remote: git://github.com/mehulkar/searchkick
+  revision: 37c5c72955606c632d0cd7d0c3a820eb2eca6d4e
   specs:
     searchkick (0.1.4)
       tire
