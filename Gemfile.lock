@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/mehulkar/searchkick
-  revision: 37c5c72955606c632d0cd7d0c3a820eb2eca6d4e
+  revision: 036310276c13b1e4e1aa2c57ea5c21d1dff4b736
+  branch: hack
   specs:
     searchkick (0.1.4)
       tire
@@ -152,7 +153,7 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
-    i18n (0.6.4)
+    i18n (0.6.5)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -173,9 +174,9 @@ GEM
       treetop (~> 1.4.8)
     memcachier (0.0.2)
     method_source (0.8.1)
-    mime-types (1.23)
+    mime-types (1.24)
     mini_portile (0.5.1)
-    multi_json (1.7.3)
+    multi_json (1.7.9)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
     newrelic_rpm (3.6.5.130)
@@ -222,7 +223,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.4)
+    rake (10.1.0)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.0)
       ffi (>= 0.5.0)
