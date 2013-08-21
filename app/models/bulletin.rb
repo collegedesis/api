@@ -53,7 +53,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def relative_local_url
-    url.present? ? url : "#/n/#{slug}"
+    "#/n/#{slug}"
   end
 
   def url_to_serialize
