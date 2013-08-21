@@ -33,3 +33,14 @@ App.ApplicationController = Ember.Controller.extend
   newsPage: (->
     if @get('currentPath').match(/n\./) then true else false
   ).property('currentPath')
+
+  leftNavVisible: false
+  showNav: ->
+    @set('leftNavVisible', !@get('leftNavVisible'))
+    @pushBody()
+
+  pushBody: ->
+    if @get('leftNavVisible')
+      $('.app-content').addClass('push-right');
+    else
+      $('.app-content').removeClass('push-right')
