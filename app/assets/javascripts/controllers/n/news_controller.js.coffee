@@ -12,6 +12,10 @@ App.BaseNewsController = Ember.ArrayController.extend
     'accomplishments'
   ]
 
+  scrollToStories: ->
+    pos = $('.bulletins-list .bulletin-wrapper:first').position().top
+    $('body').animate({scrollTop: pos })
+
 App.NIndexController = App.BaseNewsController.extend()
 App.NewsController = App.BaseNewsController.extend()
 App.NController = App.BaseNewsController.extend()
