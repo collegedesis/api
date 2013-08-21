@@ -1,19 +1,10 @@
 {{partial 'd/quick_look'}}
-{{#if currentUser}}
-  {{#if currentUserIsMember}}
-    {{#if canApplyForAdmin}}
-      <a {{action applyAdmin}} class="cta">Become Admin</a>
-    {{/if}}
-    {{#if pendingAdminApplication}}
-      <p>You applied to be an administrator. Awaiting verification!</p>
-    {{/if}}
+{{#if currentUserIsMember}}
+  {{#if pendingAdminApplication}}
+    <p>You applied to be an administrator. Awaiting verification!</p>
   {{else}}
-    <div class="cta">
-      {{#linkTo 'users.me'}}Register{{/linkTo}}
-    </div>
+    <a {{action applyAdmin}} class="cta">Claim Admin</a>
   {{/if}}
 {{else}}
-  <div class="cta">
-    {{#linkTo 'users.new'}}Sign up{{/linkTo}}
-  </div>
+  <a {{action applyMembership}} class="cta">Join</a>
 {{/if}}

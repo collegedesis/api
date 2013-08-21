@@ -34,23 +34,32 @@ App.DShowController = Ember.ObjectController.extend
         return "Not a member"
   ).property('currentUserIsAdmin', 'currentUserIsMember')
 
-  canApplyForAdmin: (->
-    # is a member
-    @get('currentUserIsMember') &&
-    # is not an admin
-    !@get('currentUserIsAdmin') &&
-    # has not applied already
-    !@get('pendingAdminApplication')
-  ).property('currentUser', 'currentUserIsAdmin', 'pendingAdminApplication')
+  applyMembership: ->
+    mem_type_id = 1 # regular member
+    @createMembership(mem_type_id)
 
   applyAdmin: ->
+    mem_type_id = 2 # admin member
+    @createMembership(mem_type_id)
+
+  createMembership: (mem_type_id) ->
     user = @get('currentUser')
+    @transitionToRoute('login') if !user
     organization = @get('content')
-    admin_type = App.MembershipType.find(2)
-    App.MembershipApplication.createRecord
+    mem_type = App.MembershipType.find(mem_type_id)
+
+    app = App.MembershipApplication.createRecord
       user: user
       organization: organization
-      membership_type: admin_type
+      membership_type: mem_type
       application_status_id: 1
 
+    app.addObserver('id', this, '_createdMembership')
     @get('store').commit()
+
+  # TODO this should change when we upgrade ember-data
+  # and start using a promise based commit
+  _createdMembership: (app) ->
+    app.get('organization').reload()
+    app.get('user').reload()
+    app.removeObserver('id', this, '_createdMembership')

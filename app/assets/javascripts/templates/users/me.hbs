@@ -4,7 +4,7 @@
     <div {{bindAttr class=":info loading"}}>
       {{#unless memberships}}
         {{#unless newApplications}}
-          Register a membership to be able to post on the {{#linkTo n}}News Board{{/linkTo}}!
+          <p class="small muted">To get your account approved, join one of the {{numOfOrganizations}} organizations in our {{#linkTo 'directory'}}Directory{{/linkTo}}!</p>
         {{/unless}}
       {{/unless}}
       <ul class="memberships">
@@ -30,14 +30,6 @@
         {{/if}}
         {{/each}}
       </ul>
-      {{#if newApplications}}
-      <div class="row-of-buttons">
-        <button class="cta" {{action submit}}>Save</button>
-        <button {{action cancel}}>Cancel</button>
-      </div>
-      {{else}}
-        <a class="cta" {{action newMembershipApplication}}>Add Membership</a>
-      {{/if}}
     </div>
   </div>
   <div class="main-inside-container left profile-page">
