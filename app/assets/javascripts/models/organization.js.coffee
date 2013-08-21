@@ -50,8 +50,9 @@ App.Organization = DS.Model.extend
   ).property('website')
 
   adminApplications: (->
-    @get('membership_applications').filterProperty('membership_type.id', 2)
-  ).property('membership_applications.@each.membership_type.id')
+    adminType = App.MembershipType.find(2)
+    @get('membership_applications').filterProperty('membership_type', adminType)
+  ).property('membership_applications.@each.membership_type.id', 'membership_applications.length')
 
   pendingAdminApplications: (->
     @get('adminApplications').filterProperty('application_status_id', 1)

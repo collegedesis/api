@@ -1,23 +1,7 @@
 App.UsersMeController = Ember.ObjectController.extend
-  needs: ['dIndex']
+  needs: ['dIndex', 'application']
 
   loading: false
-
-  newMembershipApplication: ->
-    member_type = App.MembershipType.find(1) # Member (see constants.rb)
-    @get('membership_applications').createRecord
-      membership_type: member_type
-      application_status_id: 1
-
-  submit: ->
-    @get('membership_applications').forEach (item) ->
-      item.one "didCreate", this, ->
-        item.get('user').reload()
-    @store.commit()
-
-  cancel: ->
-    @get('membership_applications').forEach (item) ->
-      item.deleteRecord() if item.get('isNew')
 
   deleteMembership: (mem) ->
     org = mem.get('organization.name')
@@ -25,6 +9,6 @@ App.UsersMeController = Ember.ObjectController.extend
       mem.deleteRecord()
       @store.commit()
 
-  newApplications: (->
-    @get('membership_applications').filterProperty('isNew', true).get('length')
-  ).property('membership_applications.@each.isNew')
+  numOfOrganizations: (->
+    @get('controllers.application.numOfOrganizations')
+  ).property('controllers.application.numOfOrganizations')
