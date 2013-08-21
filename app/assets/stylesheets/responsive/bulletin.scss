@@ -1,22 +1,26 @@
 @media screen and (max-width: 600px) {
+  .mobile { display: block; }
   .button {
     width: 50px;
     span { display: none; }
   }
 }
 @media screen and (device-aspect-ratio: 2/3) {
+  .mobile { display: block; }
   .button {
     width: 50px;
     span { display: none; }
   }
 }
 @media screen and (device-aspect-ratio: 40/71) {
+  .mobile { display: block; }
   .button {
     width: 50px;
     span { display: none; }
   }
 }
 @media screen and (device-aspect-ratio: 3/4) {
+  .mobile { display: block; }
   .button {
     width: 50px;
     span { display: none; }
