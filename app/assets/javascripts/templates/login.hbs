@@ -4,7 +4,7 @@
     <div class="row">
       <div class="header">Email</div>
       <div class="contents">
-        {{input type=text value=session.email}}
+        {{input type=email value=session.email}}
         {{#unless validEmail}}<span class="error">that doesn't look like an email address?</span>{{/unless}}
       </div>
     </div>
