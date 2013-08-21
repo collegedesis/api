@@ -36,16 +36,5 @@ Collegedesis::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
- 
-  config.after_initialize do
-      Bullet.enable = true
-      Bullet.bullet_logger = true
-      Bullet.console = true
-      Bullet.growl = true
-      Bullet.rails_logger = true
-      Bullet.airbrake = false
-      Bullet.n_plus_one_query_enable = false
-      Bullet.unused_eager_loading_enable = false
-      Bullet.counter_cache_enable = false
-  end
+
 end
