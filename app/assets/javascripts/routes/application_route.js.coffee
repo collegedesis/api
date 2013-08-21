@@ -18,7 +18,7 @@ App.ApplicationRoute = Ember.Route.extend
       @transitionTo('index')
     goToN: ->
       @get('controller').showNav()
-      @transitionTo('n')
+      @transitionTo('n.index')
     goToNews: ->
       @get('controller').showNav()
       @transitionTo('news')
