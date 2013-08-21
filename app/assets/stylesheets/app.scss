@@ -86,13 +86,10 @@ body {
 .page, .app-header, .app-content, .footer {
   max-width: $col * 23;
 }
-.page {
-  margin: 0 auto;
-}
 
-.app-content .home-content {
-  margin-top: 50px;
-}
+.page { margin: 0 auto; }
+
+.app-content .home-content { margin-top: 20px; }
 
 .app-content {
   overflow: hidden;
