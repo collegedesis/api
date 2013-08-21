@@ -14,13 +14,8 @@ gem 'memcachier'
 gem 'newrelic_rpm'
 gem 'twilio-ruby'
 gem 'heroku_rails_deflate', :group => :production
-gem 'searchkick', git: "git://github.com/mehulkar/searchkick", branch: "hack"
-
-group 'development' do
-  gem "bullet"
-  gem 'uniform_notifier'
-  gem 'ruby-growl'
-end
+# gem 'searchkick', git: "git://github.com/mehulkar/searchkick", branch: "hack"
+gem 'searchkick', path: '/Users/mehulkar/dev/searchkick'
 
 group :development, :test do
   gem 'pry'
