@@ -13,6 +13,22 @@ App.ApplicationRoute = Ember.Route.extend
 
   events:
     goHome: -> @transitionTo('index')
+    goToHome: ->
+      @get('controller').showNav()
+      @transitionTo('index')
+    goToN: ->
+      @get('controller').showNav()
+      @transitionTo('n')
+    goToNews: ->
+      @get('controller').showNav()
+      @transitionTo('news')
+    goToAbout: ->
+      @get('controller').showNav()
+      @transitionTo('about')
+    goToDirectory: ->
+      @get('controller').showNav()
+      @transitionTo('directory')
+
     logout: ->
       id = App.session.get('currentUserId')
       $.ajax "/sessions/#{id}",

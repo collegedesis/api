@@ -315,3 +315,13 @@ ul, ol {
     margin-bottom: 5px;
   }
 }
+
+.app-content {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+.push-right {
+  left: 60%;
+}

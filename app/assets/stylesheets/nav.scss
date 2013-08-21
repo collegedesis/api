@@ -13,10 +13,9 @@ nav {
   max-width: $col * 23;
   width: 100%;
   background-color: #E4EECD; /* transparentize(lighten($green, 10%), 0.7); */
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
   border: solid 1px $green;
   z-index: 999;
+  padding-left: 5px;
   h1.logo { margin-right: 20px; margin-bottom: 0; }
   ul {
     li {
@@ -45,6 +44,50 @@ nav {
       border-bottom: solid 1px $green;
     }
   }
+}
+
+.left-nav {
+  width: 60%;
+  left: -60%;
+  position: fixed;
+  height: 100%;
+  background-color: transparentize(lighten($green, 10%), 0.3);
+  li {
+    display: block;
+    font-size: $font-size * 0.9;
+    margin-bottom: 5px;
+    a {
+      display: block;
+      color: $brown4;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      -ie-user-select: none;
+      text-align: center;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  }
+  .active {
+    font-weight: 800;
+    background-color: transparentize($green, 0.7);
+    border-bottom: solid 1px $green;
+  }
+  &.visible {
+    left: 0;
+  }
+}
+
+.left-nav, .app-content {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+nav .min-nav {
+  width: 100px;
+  display: none;
+  cursor: pointer;
 }
 
 nav .account {

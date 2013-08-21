@@ -1,0 +1,19 @@
+@media screen and (max-width: 600px) {
+  nav .min-nav { display: inline-block; }
+  nav .top-nav { display: none; }
+}
+
+@media screen and (device-aspect-ratio: 2/3) {
+  nav .min-nav { display: inline-block; }
+  nav .top-nav { display: none; }
+}
+
+@media screen and (device-aspect-ratio: 40/71) {
+  nav .min-nav { display: inline-block; }
+  nav .top-nav { display: none; }
+}
+
+@media screen and (device-aspect-ratio: 3/4) {
+  nav .min-nav { display: inline-block; }
+  nav .top-nav { display: none; }
+}
