@@ -2,9 +2,9 @@ class Bulletin < ActiveRecord::Base
   include Slugify
 
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date, :author_id, :author_type
-  before_save :normalize_title
+  before_save :normalize_title, :create_slug
   before_save :nullify_body, :if => :is_link?
-  before_create :create_slug, :create_shortened_url, :set_expiration_date
+  before_create :set_short_url, :set_expiration_date
 
   has_many :votes, :as => :votable, :dependent => :destroy
 
@@ -56,10 +56,6 @@ class Bulletin < ActiveRecord::Base
     "#/n/#{slug}"
   end
 
-  def url_to_serialize
-    Rails.env.production? ? shortened_url : relative_local_url
-  end
-
   def promote
     orgs = Organization.reachable
     orgs.each do |org|
@@ -86,14 +82,10 @@ class Bulletin < ActiveRecord::Base
     self.body = nil
   end
 
-  def create_shortened_url
+  def set_short_url
     if Rails.env.production?
       client = Bitly.client
-      to_shorten = if self.is_post?
-        "https://collegedesis.com/" + relative_local_url
-      else
-        relative_local_url
-      end
+      "https://collegedesis.com/" + relative_local_url
       self.shortened_url = client.shorten(to_shorten).short_url
     end
   end
