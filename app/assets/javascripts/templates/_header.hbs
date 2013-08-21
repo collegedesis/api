@@ -31,11 +31,3 @@
   <li><a {{action goToAbout}}>About</a></li>
   <li><a {{action goToDirectory}}>Directory</a></li>
 </ul>
-
-<div class="messages">
-  {{#if currentUser}}
-    {{#unless currentUser.approved}}
-      <p class="error">Get your profile approved by registering a membership with one of the {{numOfOrganizations}} organizations in our {{#linkTo 'directory'}}directory{{/linkTo}}!</p>
-    {{/unless}}
-  {{/if}}
-</div>
