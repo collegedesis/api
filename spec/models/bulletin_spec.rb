@@ -74,9 +74,18 @@ describe Bulletin, focus: true do
 
 
   describe "#relative_local_url" do
-    it "should return the url if bulletin is a link"do
-      bulletin = FactoryGirl.create(:bulletin_link, :url => "http://google.com")
-      bulletin.relative_local_url.should == "http://google.com"
+    context "post" do
+      it "should include the slug" do
+        bulletin = FactoryGirl.create(:bulletin_post)
+        expect(bulletin.relative_local_url).to include bulletin.slug
+      end
+    end
+
+    context "link" do
+      it "should include the slug" do
+        bulletin = FactoryGirl.create(:bulletin_post)
+        expect(bulletin.relative_local_url).to include bulletin.slug
+      end
     end
   end
 
