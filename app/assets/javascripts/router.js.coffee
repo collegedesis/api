@@ -1,9 +1,4 @@
 App.Router.map ->
-  # TODO remove these
-  @resource "bulletins", ->
-    @route "index"
-    @route "show", {path: ':slug'}
-
   @route 'news'
   @resource 'n', ->
     @route 'story', {path: ':slug'}
@@ -19,15 +14,15 @@ App.Router.map ->
 
   @route 'directory'
   @resource 'd', ->
-    @route "show", {path: ':slug'}
-    @route "settings", {path: ":slug/settings"}
+    @route 'show', {path: ':slug'}
+    @route 'settings', {path: ':slug/settings'}
 
-  @resource "organizations", ->
-    @route "index"
-    @route "show", {path: ':slug'}
+  @resource 'organizations', ->
+    @route 'index'
+    @route 'show', {path: ':slug'}
 
-  @resource "users", ->
-    @route 'new', {path: 'signup'}
+  @resource 'users', ->
+    @route 'new', {path: 'join'}
     @route 'me'
 
   @route('applicationresponse', {path: 'application-response/:id'} )

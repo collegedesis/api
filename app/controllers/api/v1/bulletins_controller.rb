@@ -1,4 +1,4 @@
-class BulletinsController < ApplicationController
+class Api::V1::BulletinsController < ApplicationController
   respond_to :json
   before_filter :authenticate_user!, :only => [:create]
 

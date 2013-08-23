@@ -36,3 +36,7 @@ App.Adapter = DS.RESTAdapter.extend({
 App.Adapter.configure("plurals", {
   university: "universities"
 });
+
+App.Adapter.reopen({
+  namespace: 'api/v1'
+})

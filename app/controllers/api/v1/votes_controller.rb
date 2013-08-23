@@ -1,4 +1,4 @@
-class VotesController < ApplicationController
+class Api::V1::VotesController < ApplicationController
   def index
     @votes = params[:id] ? Vote.find(params[:id]) : Vote.all
     render json: @votes

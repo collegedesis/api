@@ -1,4 +1,4 @@
-class UniversitiesController < ApplicationController
+class Api::V1::UniversitiesController < ApplicationController
   respond_to :json
   def index
     @universities = params[:id] ? University.where(id: params[:ids]) : University.all

@@ -17,5 +17,5 @@ Then(/^there should be a new user in the database$/) do
 end
 
 Then(/^I should be redirected to the login page$/) do
-  expect(page.current_path).to eq "/#/login"
+  expect(page.current_path).to eq "/login"
 end

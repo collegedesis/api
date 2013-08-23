@@ -1,4 +1,4 @@
-class OrganizationsController < ApplicationController
+class Api::V1::OrganizationsController < ApplicationController
   respond_to :json
 
   def index
