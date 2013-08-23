@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   respond_to :json
   def index
     @users = params[:id] ? User.where(id: params[:id]) : User.all

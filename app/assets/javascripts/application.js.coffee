@@ -21,4 +21,10 @@
 #= require_self
 #= require collegedesis
 
-window.App = Ember.Application.create()
+window.App = Ember.Application.create
+  ready: ->
+    if location.hash
+      window.location = location.origin + location.hash.slice(1)
+
+App.Router.reopen
+  location: 'history'

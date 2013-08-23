@@ -1,4 +1,4 @@
-class MembershipApplicationsController < ApplicationController
+class Api::V1::MembershipApplicationsController < ApplicationController
 
   def show
     @app = MembershipApplication.find(params[:id])
@@ -31,7 +31,7 @@ class MembershipApplicationsController < ApplicationController
       if @app.application_status_id == APP_STATUS_PENDING
         @app.approve
       end
-      redirect_to "/#/application-response/#{@app.id}"
+      redirect_to "/application-response/#{@app.id}"
     else
       render text: "<h3>Couldn't find application</h3>Email
                   <a href='mailto:brownkids@collegedesis.com'>brownkids@collegedesis.com</a>
@@ -45,7 +45,7 @@ class MembershipApplicationsController < ApplicationController
       if @app.application_status_id == APP_STATUS_PENDING
         @app.reject
       end
-      redirect_to "/#/application-response/#{@app.id}"
+      redirect_to "/application-response/#{@app.id}"
     else
       render text: "<h3>Couldn't find application</h3>Email
                     <a href='mailto:brownkids@collegedesis.com'>brownkids@collegedesis.com</a>

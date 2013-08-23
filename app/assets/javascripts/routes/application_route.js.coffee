@@ -5,7 +5,7 @@ App.ApplicationRoute = Ember.Route.extend
       controller.set('currentUser', user)
       controller.set('currentUserId', user.get('id'))
 
-    $.get '/info', (data) =>
+    $.get 'api/v1/info', (data) =>
       controller.set('numOfOrganizations', data.orgsCount)
       controller.set('numOfUniversities', data.universityCount)
       controller.set('numOfStates', data.stateCount)

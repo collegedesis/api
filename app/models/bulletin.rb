@@ -53,7 +53,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def relative_local_url
-    "#/n/#{slug}"
+    "n/#{slug}"
   end
 
   def promote

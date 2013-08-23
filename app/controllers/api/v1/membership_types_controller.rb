@@ -1,4 +1,4 @@
-class MembershipTypesController < ApplicationController
+class Api::V1::MembershipTypesController < ApplicationController
   respond_to :json
 
   def index

@@ -20,13 +20,13 @@ describe Organization do
     it "has a link to its profile in the directory" do
       org = FactoryGirl.create(:organization)
       org.stub(:slug) { "something-cray-cray"}
-      expect(org.directory_profile).to eq "https://collegedesis.com/#/d/something-cray-cray"
+      expect(org.directory_profile).to eq "https://collegedesis.com/d/something-cray-cray"
     end
 
     it "returns base directory if there is no slug" do
       org = FactoryGirl.create(:organization)
       org.stub(:slug) { nil }
-      expect(org.directory_profile).to eq "https://collegedesis.com/#/directory"
+      expect(org.directory_profile).to eq "https://collegedesis.com/directory"
     end
   end
 end
