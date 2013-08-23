@@ -1,9 +1,11 @@
 Collegedesis::Application.routes.draw do
   root to: 'site#home'
 
+  # Sessions
+  resources :sessions,                only: [:create, :destroy]
+
   namespace :api do
     namespace :v1 do
-      resources :sessions,                only: [:create, :destroy]
       resources :organizations,           only: [:index, :show, :create, :update]
       resources :organization_types,      only: [:index, :show]
       resources :users
