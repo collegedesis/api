@@ -1,29 +1,19 @@
 <section class="links">
-  {{#if website}}
-    <a target="_blank" {{bindAttr href="websiteUrl"}}>
-      <i class="icon-globe icon-2x"></i>
-    </a>
-  {{/if}}
-  {{#if twitter}}
-    <a target="_blank" {{bindAttr href="twitterUrl"}}>
-      <i class="icon-twitter icon-2x"></i>
-    </a>
-  {{/if}}
-  {{#if facebook}}
-    <a target="_blank" {{bindAttr href="facebookUrl"}}>
-      <i class="icon-facebook icon-2x"></i>
-    </a>
-  {{/if}}
-  {{#if youtube}}
-    <a target="_blank" {{bindAttr href="youtubeUrl"}}>
-      <i class="icon-youtube icon-2x"></i>
-    </a>
-  {{/if}}
-  {{#if instagram}}
-    <a target="_blank" {{bindAttr href="instagramUrl"}}>
-      <i class="icon-instagram icon-2x"></i>
-    </a>
-  {{/if}}
+  <a target="_blank" {{bindAttr href="websiteUrl" class="website:link"}}>
+    <i class="icon-globe icon-2x"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="twitterUrl" class="twitter:link"}}>
+    <i class="icon-twitter icon-2x"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="facebookUrl" class="facebook:link"}}>
+    <i class="icon-facebook icon-2x"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="youtubeUrl" class="youtube:link"}}>
+    <i class="icon-youtube icon-2x"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="instagramUrl" class="instagram:link"}}>
+    <i class="icon-instagram icon-2x"></i>
+  </a>
   {{#if noContactInfo}}
     <p class="small muted">
       {{name}} hasn't filled out their contact information. Are you a member?
