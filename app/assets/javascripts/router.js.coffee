@@ -5,10 +5,7 @@ App.Router.map ->
     @route 'submit'
 
   # simple pages
-  @resource 'about', ->
-    @route('quick-start')
-    @route('represent')
-    @route('news')
+  @route 'about'
 
   @route 'login', {path: 'login'}
 
