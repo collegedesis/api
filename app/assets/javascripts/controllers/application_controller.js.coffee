@@ -31,7 +31,7 @@ App.ApplicationController = Ember.Controller.extend
   ).property('currentPath')
 
   newsPage: (->
-    if @get('currentPath').match(/n\./) then true else false
+    if @get('currentPath') && @get('currentPath').match(/n\./) then true else false
   ).property('currentPath')
 
   leftNavVisible: false
