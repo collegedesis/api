@@ -22,9 +22,6 @@ App.ApplicationRoute = Ember.Route.extend
     goToNews: ->
       @get('controller').showNav()
       @transitionTo('news')
-    goToAbout: ->
-      @get('controller').showNav()
-      @transitionTo('about')
     goToDirectory: ->
       @get('controller').showNav()
       @transitionTo('directory')

@@ -8,7 +8,7 @@
     {{else}}
       <li>{{#linkTo news}}News{{/linkTo}}</li>
     {{/if}}
-    <li>{{#linkTo about}}About{{/linkTo}}</li>
+    <li>{{#linkTo 'about'}}About{{/linkTo}}</li>
     <li>{{#linkTo directory}}Directory{{/linkTo}}</li>
   </ul>
 
@@ -28,6 +28,6 @@
   {{else}}
     <li><a {{action goToNews}}>News</a></li>
   {{/if}}
-  <li><a {{action goToAbout}}>About</a></li>
+  <li>{{#linkTo 'about'}}About{{/linkTo}}</li>
   <li><a {{action goToDirectory}}>Directory</a></li>
 </ul>
