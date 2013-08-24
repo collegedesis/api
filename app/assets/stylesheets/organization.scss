@@ -39,8 +39,9 @@ div.editable {
 body .links {
   margin-bottom: 10px;
   a {
-    color: $brown4;
+    color: #ccc;
     margin-right: 10px;
+    &.link { color: $brown4; }
   }
 }
 
