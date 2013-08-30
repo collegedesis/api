@@ -72,6 +72,6 @@ class MembershipApplication < ActiveRecord::Base
 
   def base_url
     base = Rails.env.production? ? "https://collegedesis.com" : "http://localhost:3000"
-    base + "/application/"
+    base + "/api/v1/application/"
   end
 end

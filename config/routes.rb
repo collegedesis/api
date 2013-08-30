@@ -18,12 +18,13 @@ Collegedesis::Application.routes.draw do
       resources :votes,                   only: [:index, :create]
       # TODO do this better
       match 'info', to: 'stats#info'
+
+      # Legacy. TODO needs update
+      get '/application/:code/approve', to: 'membership_applications#approve'
+      get '/application/:code/reject', to: 'membership_applications#reject'
     end
   end
 
-  # Legacy. TODO needs update
-  get '/application/:code/approve', to: 'membership_applications#approve'
-  get '/application/:code/reject', to: 'membership_applications#reject'
 
   # Smart URLs
   # TODO handle this client side
