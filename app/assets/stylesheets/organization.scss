@@ -28,12 +28,11 @@
 }
 
 div.editable {
-  @include editable;
   width: 100%;
   min-height: 50px;
   padding: 5px 10px;
   font-size: $font-size * 0.9;
-  background-color: transparentize($brown2, 0.7);
+  background-color: transparentize($brown2, 0.8);
 }
 
 body .links {
@@ -48,11 +47,14 @@ body .links {
 .about {
   max-height: 200px;
   overflow: scroll;
-  border: solid 1px rgba(0, 0, 0, 0.1);
+  border-bottom: solid 1px $brown2;
+  margin-bottom: 20px;
   padding: 5px 10px;
+  font-size: $font-size * 0.9;
+  color: lighten($brown4, 30%);
   p {
-    font-size: $font-size * 0.9;
     margin-bottom: $font-size * 0.9 * 1.30;
     line-height: $font-size * 0.9 * 1.30;
+
   }
 }

@@ -12,7 +12,6 @@ App.Router.map ->
   @route 'directory'
   @resource 'd', ->
     @route 'show', {path: ':slug'}
-    @route 'settings', {path: ':slug/settings'}
 
   @resource 'organizations', ->
     @route 'index'
