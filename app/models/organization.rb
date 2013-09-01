@@ -38,7 +38,7 @@ class Organization < ActiveRecord::Base
   end
 
   def directory_profile
-    base = "https://collegedesis.com/#"
+    base = "https://collegedesis.com"
     slug ? "#{base}/d/#{slug}" : "#{base}/directory"
   end
 

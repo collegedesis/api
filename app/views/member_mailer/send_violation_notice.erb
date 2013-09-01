@@ -1,0 +1,10 @@
+<p>Hey <%= @user.full_name %>,</p>
+
+<p>Your user account along has been deleted because you registered with the name or email address of your organization instead of yourself. Your <%= link_to "organization profile", @org.directory_profile %> is still in <a href="https://collegedesis.com/directory">our Directory</a>.</p>
+
+<h4>Explanation</h4>
+<p><i>User profiles</i> must be registered to individuals. Once you register a <i>membership</i> to an <i>organization</i>, you will be able to post as that organization.</p>
+
+For more information read <a href="https://collegedesis.com/n/how-to-sign-up">"How To Sign Up"</a>, check out our <a href="https://collegedesis.com/d/collegedesis">sample profile</a> or reply to this email for help!
+
+<%= render partial: 'email_footer' %>
