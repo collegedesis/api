@@ -81,8 +81,15 @@ class Bulletin < ActiveRecord::Base
     # if the url is a youtube link,
     # assign the body with the showdown markdown
     # for rendering youtube links
-    regex = /((http|https):\/\/)?(www\.)?(youtube\.com)(\/)?([a-zA-Z0-9\-\.]+)\/?/
-    self.body = "^^#{url}" if regex.match(url)
+    youtube_regex = /((http|https):\/\/)?(www\.)?(youtube\.com)(\/)?([a-zA-Z0-9\-\.]+)\/?/
+    if youtube_regex.match(url)
+      self.body = "^^#{url}"
+    end
+
+    image_regex = /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpe?g|gif|png)$/
+    if image_regex.match(url)
+      self.body = "![#{title}](#{url})"
+    end
   end
 
   def set_short_url
