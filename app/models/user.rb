@@ -52,6 +52,17 @@ class User < ActiveRecord::Base
     memberships.map(&:organization_id).include?(organization.id)
   end
 
+  def remove_fake_profile
+    self.memberships.destroy_all
+    self.membership_applications.destroy_all
+    self.votes.destroy_all
+    self.comments.destroy_all
+    # Destroy all bulletins post as self or as an organization
+    Bulletin.where('user_id = ? or author_id = ?', self.id, self.id).destroy_all
+    MemberMailer.send_violation_notice(self).deliver
+    self.destroy
+  end
+
   protected
   def get_membership(org)
     memberships.where(organization_id: org.id).first

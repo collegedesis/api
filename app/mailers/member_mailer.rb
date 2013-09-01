@@ -43,4 +43,12 @@ class MemberMailer < ActionMailer::Base
     @membership = membership
     mail(to: @app.user.email, subject: "#{@admin.full_name} is an administrator of #{@membership.organization.name}")
   end
+
+  def send_violation_notice(user)
+    @user = user
+    @org = Organization.where('lower(email) = ? or lower(name) = ?', user.email.downcase, user.full_name.downcase).first
+    if @user && @org
+      mail(to: @user.email, subject: "Your user account has been deleted for violating our policies")
+    end
+  end
 end
