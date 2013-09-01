@@ -1,10 +1,11 @@
 $green: #A0CC6F;
+$light-green: transparentize($green, 0.7);
 $darken-green: darken($green, 15%);
 $brown2: #B2AE73;
 $brown3: #40210D;
 $brown4: #4C4440;
 $link-color: #08C;
-$background: #F7F7E6;
+$background: #FFF;
 $red: red;
 $darkred: darken(red, 15%);
 $lightred: darken(red, 10%);
@@ -73,6 +74,14 @@ $col: 42px;
   min-height: 30px;
   text-indent: -999px;
   * { display: none !important; }
+}
+
+@mixin green {
+  background-image: -moz-linear-gradient(top, $light-green, $green);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($light-green), to($green));
+  background-image: -webkit-linear-gradient(top, $light-green, $green);
+  background-image: -o-linear-gradient(top, $light-green, $green);
+  background-image: linear-gradient(to bottom, $light-green, $green);
 }
 
 @mixin red {

@@ -12,7 +12,7 @@ App.MapView = Ember.View.extend({
       multiSelect: true,
       responsive: true,
       colors: {
-        background: '#F7F7E6',
+        background: 'rgba(255, 255, 255, 0)', // transparent
         base: '#4C4440',
         selected: "#A0CC6F",
         hover: "#7ab03e"
