@@ -1,20 +1,10 @@
 <h3>{{name}} {{#if university_name}}<span class="small muted"> {{university_name}}</span>{{/if}}</h3>
 <section class="links">
-  <a target="_blank" {{bindAttr href="websiteUrl" class="website:link"}}>
-    <i class="icon-globe icon-large"></i>
-  </a>
-  <a target="_blank" {{bindAttr href="twitterUrl" class="twitter:link"}}>
-    <i class="icon-twitter icon-large"></i>
-  </a>
-  <a target="_blank" {{bindAttr href="facebookUrl" class="facebook:link"}}>
-    <i class="icon-facebook icon-large"></i>
-  </a>
-  <a target="_blank" {{bindAttr href="youtubeUrl" class="youtube:link"}}>
-    <i class="icon-youtube icon-large"></i>
-  </a>
-  <a target="_blank" {{bindAttr href="instagramUrl" class="instagram:link"}}>
-    <i class="icon-instagram icon-large"></i>
-  </a>
+  {{view App.SocialIconLinkView hrefBinding="websiteUrl" iconClasses="icon-large icon-globe"}}
+  {{view App.SocialIconLinkView hrefBinding="facebookUrl" iconClasses="icon-large icon-facebook"}}
+  {{view App.SocialIconLinkView hrefBinding="twitterUrl" iconClasses="icon-large icon-twitter"}}
+  {{view App.SocialIconLinkView hrefBinding="youtubeUrl" iconClasses="icon-large icon-youtube"}}
+  {{view App.SocialIconLinkView hrefBinding="instagramUrl" iconClasses="icon-large icon-instagram"}}
 </section>
 <section class="control">
 {{#if currentUserIsAdmin}}

@@ -1,0 +1,7 @@
+{{#if view.href}}
+  <a target="_blank" {{bindAttr href="view.href" class="view.href:link"}}>
+    <i {{bindAttr class="view.iconClasses"}}></i>
+  </a>
+{{else}}
+  <i {{bindAttr class="view.iconClasses"}}></i>
+{{/if}}

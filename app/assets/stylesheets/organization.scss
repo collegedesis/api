@@ -36,11 +36,10 @@ div.editable {
 }
 
 body .links {
-  margin-bottom: 10px;
+  & > * { display: inline-block; margin-right: 10px;}
+  i { color: #ccc; }
   a {
-    color: #ccc;
-    margin-right: 10px;
-    &.link { color: $brown4; }
+    i { color: $brown4; }
   }
 }
 

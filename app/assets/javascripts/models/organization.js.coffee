@@ -25,23 +25,23 @@ App.Organization = DS.Model.extend
   ).property('memberships.@each.membership_type.id')
 
   twitterUrl: (->
-    "http://twitter.com/" + @get('twitter')
+    "http://twitter.com/" + @get('twitter') if @get('twitter')
   ).property('twitter')
 
   facebookUrl: (->
-    "http://facebook.com/" + @get('facebook')
+    "http://facebook.com/" + @get('facebook') if @get('facebook')
   ).property('facebook')
 
   youtubeUrl: (->
-    "http://youtube.com/" + @get('youtube')
+    "http://youtube.com/" + @get('youtube') if @get('youtube')
   ).property('youtube')
 
   instagramUrl: (->
-    "http://instagram.com/" + @get('instagram')
+    "http://instagram.com/" + @get('instagram') if @get('instagram')
   ).property('instagram')
 
   websiteUrl: (->
-    "http://" + @get('website')
+    "http://" + @get('website') if @get('website')
   ).property('website')
 
   adminApplications: (->
