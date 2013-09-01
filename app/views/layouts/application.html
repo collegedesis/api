@@ -5,7 +5,9 @@
     <%= stylesheet_link_tag "application" %>
     <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Snippet|Noto+Sans|Port+Lligat+Slab" %>
     <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" %>
-
+    <% if Rails.env.development? %>
+      <%= stylesheet_link_tag href="http://basehold.it/30" %>
+    <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= javascript_include_tag "application" %>
     <meta property="og:image" content="https://collegedesis.com/assets/logo.png">
