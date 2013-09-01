@@ -334,3 +334,9 @@ script {
 section {
   margin-bottom: 10px;
 }
+
+.sliding {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
