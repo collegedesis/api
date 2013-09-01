@@ -1,17 +1,40 @@
-<div class="index left">
-  {{partial 'd/show_sidebar'}}
-  {{#if currentUserIsAdmin}}
-    {{#linkTo 'd.settings' this}}Admin Settings{{/linkTo}}
-  {{/if}}
-</div>
-<div class="main-inside-container left">
-  {{#if currentUser}}
-    {{#if currentUserIsMember}}
-      {{partial 'd/member_show'}}
-    {{else}}
-      {{partial 'd/logged_in_user_show'}}
-    {{/if}}
+<h3>{{name}} {{#if university_name}}<span class="small muted"> {{university_name}}</span>{{/if}}</h3>
+<section class="links">
+  <a target="_blank" {{bindAttr href="websiteUrl" class="website:link"}}>
+    <i class="icon-globe icon-large"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="twitterUrl" class="twitter:link"}}>
+    <i class="icon-twitter icon-large"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="facebookUrl" class="facebook:link"}}>
+    <i class="icon-facebook icon-large"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="youtubeUrl" class="youtube:link"}}>
+    <i class="icon-youtube icon-large"></i>
+  </a>
+  <a target="_blank" {{bindAttr href="instagramUrl" class="instagram:link"}}>
+    <i class="icon-instagram icon-large"></i>
+  </a>
+</section>
+<section class="control">
+{{#if currentUserIsAdmin}}
+  {{#if isEditing}}
+    <a class="small" {{action save}}>Save</a>
+    <!-- TODO: Do Good CSS later -->
+    &nbsp;&nbsp;&nbsp;
+    <a class="small muted" {{action cancel}}>Cancel</a>
+    {{#each msg in errors}}<p style="color: red;">{{msg}}</p>{{/each}}
   {{else}}
-    {{partial 'd/guest_show'}}
+    <a class="small" {{action edit}}>Edit</a>
   {{/if}}
+{{/if}}
+</section>
+
+{{partial 'd/sidebar'}}
+<div class="main-inside-container left">
+  {{#if isEditing}}
+    {{{partial 'd/edit_links'}}}
+  {{/if}}
+  {{partial 'd/member_list'}}
+  {{partial 'd/activity'}}
 </div>

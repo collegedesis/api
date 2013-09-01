@@ -2,7 +2,6 @@ App.ContenteditableView = Em.View.extend({
   tagName: "div",
 
   attributeBindings: ['contenteditable'],
-  classNames: ['editable'],
 
   plaintext: false,
 
@@ -47,7 +46,13 @@ App.ContenteditableView = Em.View.extend({
   },
 
   setContent: function() {
-    this.$().html(this.get("value"));
+    if ( this.get('value') ) {
+      this.$().html(this.get("value"));
+    } else {
+      if ( this.get('default') ) {
+        this.$().html(this.get('default'))
+      }
+    }
 
     if (!this.get('value')) {
       this.$().css('min-width', '100px');
