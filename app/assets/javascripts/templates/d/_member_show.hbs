@@ -1,7 +1,7 @@
 <section class="header">
   <h4>About</h4>
   <div class="about">
-    {{#if about}}{{aboutMarkdown}}{{else}}{{#unless currentUserIsAdmin}}<span {{action applyAdmin}}>Become an admin</span> to update this profile!{{else}}{{#linkTo 'd.settings' this}}Edit this{{/linkTo}}{{/unless}}{{/if}}
+    {{#if about}}{{markdown about}}{{else}}{{#unless currentUserIsAdmin}}<span {{action applyAdmin}}>Become an admin</span> to update this profile!{{else}}{{#linkTo 'd.settings' this}}Edit this{{/linkTo}}{{/unless}}{{/if}}
   </div>
 </section>
 {{partial 'd/member_list'}}

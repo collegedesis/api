@@ -19,10 +19,10 @@
     </div>
   </div>
   <div class="bulletin-body">
-    {{#if htmlBody}}
-    {{htmlBody}}
+    {{#if body}}
+      {{markdown body}}
     {{else}}
-    <p>You didn't write anything!</p>
+      <p>You didn't write anything!</p>
     {{/if}}
   </div>
 </div>

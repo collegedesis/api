@@ -16,11 +16,6 @@ App.Organization = DS.Model.extend
   bulletins: DS.hasMany('App.Bulletin')
 
 
-  aboutMarkdown: (->
-    converter = new Showdown.converter()
-    new Ember.Handlebars.SafeString converter.makeHtml(@get('about')) if @get('about')
-  ).property('about')
-
   adminMemberships: (->
     @get('memberships').filterProperty('membership_type.id', 2)
   ).property('memberships.@each.membership_type.id')
