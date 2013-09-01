@@ -1,6 +1,6 @@
-<p>Hello!</p>
+<p>Hello people of <%= @org.name %>!</p>
 
-<p><b><%= link_to @bulletin.title, @bulletin.shortened_url %></b> was just posted on collegedesis.com and we thought <%= @org.name %> would be interested.</p>
+<p><b><%= link_to @bulletin.title, @bulletin.shortened_url %></b> was just posted on collegedesis.com/news and we thought you would be interested.</p>
 
 <p>In case the link above doesn't work, paste this into your browser:</p>
 <p><%= @bulletin.shortened_url %></p>
