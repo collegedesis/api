@@ -87,16 +87,18 @@ body {
   max-width: $col * 23;
 }
 
-.page { margin: 0 auto; }
+nav .logo {
+  width: 210px;
+  padding: 0 20px;
+}
 
-.app-content .home-content { margin-top: 20px; }
+.page {
+  margin-left: 210px;
+  margin-top: 20px;
+}
 
 .app-content {
   overflow: hidden;
-  .main {
-    width: $col * 15;
-    padding: 0 20px;
-  }
 }
 
 .logo {
@@ -114,7 +116,6 @@ body {
   cursor: auto;
 }
 
-.main.loading { @include loader(500px); }
 .info.loading { @include loader(200px); }
 
 input, textarea, select {
