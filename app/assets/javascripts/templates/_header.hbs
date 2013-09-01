@@ -8,26 +8,27 @@
     {{else}}
       {{#linkTo news tagName="li"}}News{{/linkTo}}
     {{/if}}
-    {{#linkTo 'about' tagName="li"}}About{{/linkTo}}
-    {{#linkTo directory tagName="li"}}Directory{{/linkTo}}
+    {{#linkTo 'd.show' collegeDesisOrg tagName="li"}}About{{/linkTo}}
+
+    {{#if directoryPage}}
+      {{#linkTo d tagName='li'}}Directory{{/linkTo}}
+    {{else}}
+      {{#linkTo directory tagName='li'}}Directory{{/linkTo}}
+    {{/if}}
   </ul>
 
   <ul class="account">
   {{#if currentUser}}
-    <li>{{#linkTo 'users.me'}}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}</li>
-    {{#if currentUser}}<li><a {{action logout}}>Sign out</a></li>{{/if}}
+    {{#linkTo 'users.me' tagName="li"}}<img {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
+    {{#if currentUser}}<li {{action logout}}>Sign out</li>{{/if}}
   {{else}}
-    <li>{{#linkTo 'login'}}Log in{{/linkTo}}</li>
+    {{#linkTo 'login' tagName="li"}}Log in{{/linkTo}}
   {{/if}}
   </ul>
 </nav>
 <ul {{bindAttr class="leftNavVisible:visible :left-nav"}}>
   <li {{action goToHome}}>Home</li>
-  {{#if newsPage}}
-    <li {{action goToN}}>News</li>
-  {{else}}
-    <li {{action goToNews}}>News</li>
-  {{/if}}
-  {{#linkTo 'about' tagName='li'}}About{{/linkTo}}
+  <li {{action goToNews}}>News</li>
+  <li {{action goToAbout}}>About</li>
   <li {{action goToDirectory}}>Directory</li>
 </ul>

@@ -34,6 +34,12 @@ App.ApplicationController = Ember.Controller.extend
     if @get('currentPath') && @get('currentPath').match(/n\./) then true else false
   ).property('currentPath')
 
+  directoryPage: (->
+    if @get('currentPath') && @get('currentPath').match(/d\./) then true else false
+  ).property('currentPath')
+
+  collegeDesisOrg: null
+
   leftNavVisible: false
   showNav: ->
     @set('leftNavVisible', !@get('leftNavVisible'))

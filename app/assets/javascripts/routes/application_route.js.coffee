@@ -11,6 +11,9 @@ App.ApplicationRoute = Ember.Route.extend
       controller.set('numOfStates', data.stateCount)
       @controllerFor('bulletinsIndex').set('numOfBulletins', data.bulletinsCount)
 
+    App.Organization.find({slug: 'collegedesis'}).then (data) =>
+      controller.set('collegeDesisOrg', data.get('firstObject'))
+
   events:
     goHome: -> @transitionTo('index')
     goToHome: ->
@@ -22,6 +25,9 @@ App.ApplicationRoute = Ember.Route.extend
     goToNews: ->
       @get('controller').showNav()
       @transitionTo('news')
+    goToAbout: ->
+      @get('controller').showNav()
+      @transitionTo('d.show', @get('controller.collegeDesisOrg'))
     goToDirectory: ->
       @get('controller').showNav()
       @transitionTo('directory')
