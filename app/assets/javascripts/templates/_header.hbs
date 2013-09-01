@@ -2,14 +2,14 @@
   <h1 class="logo" {{action goHome}}><span>College</span>Desis</h1>
   <div class="min-nav" {{action showNav}}><i class="icon-reorder icon-2x"></i></div>
   <ul class="top-nav">
-    <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
+    {{#linkTo 'index' tagName="li"}}Home{{/linkTo}}
     {{#if newsPage}}
-      <li>{{#linkTo n}}News{{/linkTo}}</li>
+      {{#linkTo n tagName="li"}}News{{/linkTo}}
     {{else}}
-      <li>{{#linkTo news}}News{{/linkTo}}</li>
+      {{#linkTo news tagName="li"}}News{{/linkTo}}
     {{/if}}
-    <li>{{#linkTo 'about'}}About{{/linkTo}}</li>
-    <li>{{#linkTo directory}}Directory{{/linkTo}}</li>
+    {{#linkTo 'about' tagName="li"}}About{{/linkTo}}
+    {{#linkTo directory tagName="li"}}Directory{{/linkTo}}
   </ul>
 
   <ul class="account">
@@ -22,12 +22,12 @@
   </ul>
 </nav>
 <ul {{bindAttr class="leftNavVisible:visible :left-nav"}}>
-  <li><a {{action goToHome}}>Home</a></li>
+  <li {{action goToHome}}>Home</li>
   {{#if newsPage}}
-    <li><a {{action goToN}}>News</a></li>
+    <li {{action goToN}}>News</li>
   {{else}}
-    <li><a {{action goToNews}}>News</a></li>
+    <li {{action goToNews}}>News</li>
   {{/if}}
-  <li>{{#linkTo 'about'}}About{{/linkTo}}</li>
-  <li><a {{action goToDirectory}}>Directory</a></li>
+  {{#linkTo 'about' tagName='li'}}About{{/linkTo}}
+  <li {{action goToDirectory}}>Directory</li>
 </ul>
