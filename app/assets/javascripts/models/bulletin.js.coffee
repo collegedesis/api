@@ -27,11 +27,6 @@ App.Bulletin = DS.Model.extend
       "Date"
   ).property("created_at")
 
-  htmlBody: (->
-    converter = new Showdown.converter({ extensions: ['video'] })
-    new Ember.Handlebars.SafeString converter.makeHtml(@get('body')) if @get('body')
-  ).property('body')
-
   isPost: (-> @get('bulletin_type') == 1 ).property('bulletin_type')
   isLink: (-> @get('bulletin_type') == 2 ).property('bulletin_type')
 

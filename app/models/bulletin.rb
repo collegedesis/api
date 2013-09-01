@@ -3,8 +3,7 @@ class Bulletin < ActiveRecord::Base
 
   attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date, :author_id, :author_type
   before_save :normalize_title, :create_slug
-  before_save :nullify_body, :if => :is_link?
-  before_create :set_short_url, :set_expiration_date
+  before_create :set_short_url, :set_expiration_date, :assign_smart_body
 
   has_many :votes, :as => :votable, :dependent => :destroy
 
@@ -78,8 +77,12 @@ class Bulletin < ActiveRecord::Base
 
   private
 
-  def nullify_body
-    self.body = nil
+  def assign_smart_body
+    # if the url is a youtube link,
+    # assign the body with the showdown markdown
+    # for rendering youtube links
+    regex = /((http|https):\/\/)?(www\.)?(youtube\.com)(\/)?([a-zA-Z0-9\-\.]+)\/?/
+    self.body = "^^#{url}" if regex.match(url)
   end
 
   def set_short_url
