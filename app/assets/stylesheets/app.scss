@@ -83,22 +83,13 @@ body {
   }
 }
 
-.page, .app-header, .app-content, .footer {
-  max-width: $col * 23;
-}
-
 nav .logo {
   width: 210px;
   padding: 0 20px;
 }
 
 .page {
-  margin-left: 210px;
-  margin-top: 20px;
-}
-
-.app-content {
-  overflow: hidden;
+  box-shadow: 0 0 3px 1px #aaa;
 }
 
 .logo {
@@ -314,15 +305,6 @@ ul, ol {
   }
 }
 
-.app-content {
-  overflow-x: hidden;
-  position: relative;
-  left: 0;
-}
-
-.push-right {
-  left: 60%;
-}
 .mobile {
   display: none;
 }

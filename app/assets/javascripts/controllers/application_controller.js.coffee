@@ -47,6 +47,6 @@ App.ApplicationController = Ember.Controller.extend
 
   pushBody: ->
     if @get('leftNavVisible')
-      $('.app-content').addClass('push-right');
+      $('.page').addClass('push-right');
     else
-      $('.app-content').removeClass('push-right')
+      $('.page').removeClass('push-right')
