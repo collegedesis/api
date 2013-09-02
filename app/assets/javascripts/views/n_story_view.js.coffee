@@ -1,4 +1,5 @@
 App.NStoryView = Ember.View.extend
+  classNames: ['bulletin']
   jumpToComment: -> $('.bulletin-comments textarea').focus()
 
   controllerContentDidChange: (->
