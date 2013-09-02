@@ -12,20 +12,20 @@
         display: inline-block;
         vertical-align: middle;
       }
-      .icon-thumbs-up {
-        font-size: 20px;
-      }
+      .icon-thumbs-up { font-size: 20px; }
     }
     .link, .bulletin-info {
       display: inline-block;
       vertical-align: top;
-      width: 80%;
+    }
+    .bulletin-info {
+      width: 79%;
+      padding: 0 5px;
     }
     .link {
       width: 20%;
       max-width: 50px;
       color: $brown4;
-      margin-right: 10px;
       i:hover {
         text-shadow: 2px 1px 5px $green;
       }
