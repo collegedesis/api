@@ -15,34 +15,13 @@ App.MapController = Ember.ArrayController.extend
     @set('selectedStates', Em.A())
     @_resetQueries()
 
-  # filter actions
-  selectState: (state) ->
-    @get('selectedStates').push(state)
+  ## Takes an array of 2 letter abbreviations of US states
+  updateSelectedStates: (selected) ->
+    @set('selectedStates', selected)
     @_incrementQueries()
+    @transitionToRoute('directory')
 
-  unselectState: (state) ->
-    newStates = @get('selectedStates').without(state)
-    @set('selectedStates', newStates)
-    @_incrementQueries()
-
-  # search
   search: -> @_incrementQueries()
-
-  organizations: (->
-    @set('loading', true)
-    promise = @makeAPICall()
-    promise.then => @set('loading', false)
-    return promise
-  ).property('queries')
-
-  makeAPICall: ->
-    states = @get('selectedStates')
-    param = @get('searchParam')
-    query = {
-      states: states,
-      param: param
-    }
-    return @store.findQuery(App.Organization, {q: query})
 
   numOfUniversities: (->
     if @get('selectedStates.length') or @get('searchParam.length')
@@ -65,8 +44,14 @@ App.MapController = Ember.ArrayController.extend
       @get('controllers.application.numOfOrganizations')
   ).property('organizations.length', 'selectedStates.length')
 
-  # call `_incrementQueries` whenever you want to watch
-  # make an api call based on a user interaction
+  # call `_incrementQueries` to make an api call
+  organizations: (->
+    @set('loading', true)
+    promise = @makeAPICall()
+    promise.then => @set('loading', false)
+    return promise
+  ).property('queries')
+
   # when the query property changes, we recalculate organizations
   # by making an api call
   queries: 0
@@ -77,5 +62,10 @@ App.MapController = Ember.ArrayController.extend
         @set('queries', @get('queries') + 1)
     , 200
 
-  _resetQueries: ->
-    @set('queries', 0)
+  _resetQueries: -> @set('queries', 0)
+
+  makeAPICall: ->
+    states = @get('selectedStates')
+    param = @get('searchParam')
+    query = { states: states, param: param }
+    return @store.findQuery(App.Organization, {q: query})
