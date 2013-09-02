@@ -1,15 +1,13 @@
 {{partial 'header'}}
 <div class="page">
-  <div class="app-content">
-    <div class="messages">
-      {{#if currentUser}}
-        {{#unless currentUser.approved}}
-          <p class="error">Get your profile approved by registering a membership with one of the {{numOfOrganizations}} organizations in our {{#linkTo 'directory'}}directory{{/linkTo}}!</p>
-        {{/unless}}
-      {{/if}}
-    </div>
-    {{outlet}}
+  <div class="messages">
+    {{#if currentUser}}
+      {{#unless currentUser.approved}}
+        <p class="error">Get your profile approved by registering a membership with one of the {{numOfOrganizations}} organizations in our {{#linkTo 'directory'}}directory{{/linkTo}}!</p>
+      {{/unless}}
+    {{/if}}
   </div>
+  {{outlet}}
 </div>
 <div class="footer">
   {{render 'radio'}}

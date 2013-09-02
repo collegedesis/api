@@ -19,15 +19,15 @@
       vertical-align: top;
     }
     .bulletin-info {
-      width: 79%;
-      padding: 0 5px;
-    }
-    .link {
-      width: 20%;
-      max-width: 50px;
-      color: $brown4;
-      i:hover {
-        text-shadow: 2px 1px 5px $green;
+      & > * { display: inline-block; }
+      .title { max-width: 350px;}
+      .link {
+        width: 44px;
+        color: $brown4;
+        margin-right: 10px;
+        i:hover {
+          text-shadow: 2px 1px 5px #ccc;
+        }
       }
     }
   }
