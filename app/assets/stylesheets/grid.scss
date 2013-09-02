@@ -5,15 +5,13 @@
 }
 
 .page {
-  margin-left: 210px;
-  margin-right: 50px;
-  margin-top: 20px;
+  margin: 36px 50px 0 210px;
   padding: 10px 20px;
 }
 
 .main-inside-container {
   width: 65%;
-  min-height: 300px;
+  min-height: 410px;
   padding: 0 20px;
 }
 
@@ -27,6 +25,7 @@
   min-width: 150px;
   width: 35%;
   overflow: scroll;
+  p { margin-bottom: 8.8px; }
   .inline {
     height: 35px;
   }
