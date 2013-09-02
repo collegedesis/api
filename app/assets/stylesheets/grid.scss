@@ -1,7 +1,17 @@
 @import '_imports';
 
+.page, .footer {
+  max-width: $col * 23;
+}
+
+.page {
+  margin-left: 210px;
+  margin-right: 50px;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
 .main-inside-container {
-  max-width: $col * 14;
   width: 65%;
   min-height: 300px;
   padding: 0 20px;
@@ -14,8 +24,8 @@
 .index {
   background-color: darken($background, 3%);
   padding: 10px;
+  min-width: 150px;
   width: 35%;
-  max-width: $col * 9;
   overflow: scroll;
   .inline {
     height: 35px;

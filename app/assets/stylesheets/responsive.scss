@@ -1,7 +1,7 @@
 @import '_imports';
 
 @media screen and (max-width: 600px) {
-  .page { margin-left: 0; padding: 0 10px;}
+  .page { margin: 20px;}
   nav .logo { display: none; }
   .app-content {
     .index {
@@ -21,7 +21,7 @@
     }
   }
 
-  body, p, .app-header, nav,
+  body, p, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
@@ -29,7 +29,7 @@
 
 /* iPhone < 5 Media Query */
 @media screen and (device-aspect-ratio: 2/3) {
-  .page { margin-left: 0; padding: 0 10px;}
+  .page { margin: 20px;}
   nav .logo { display: none; }
   .app-content {
     .index {
@@ -49,7 +49,7 @@
     }
   }
 
-  body, p, .app-header, nav,
+  body, p, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
@@ -57,7 +57,7 @@
 
 /* iPhone 5 Media Query */
 @media screen and (device-aspect-ratio: 40/71) {
-  .page { margin-left: 0; padding: 0 10px;}
+  .page { margin: 20px;}
   nav .logo { display: none; }
   .app-content {
     .index {
@@ -77,7 +77,7 @@
     }
   }
 
-  body, p, .app-header, nav,
+  body, p, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
@@ -85,7 +85,7 @@
 
 /* iPad 5 Media Query */
 @media screen and (device-aspect-ratio: 3/4) {
-  .page { margin-left: 0; padding: 0 10px;}
+  .page { margin: 20px;}
   nav .logo { display: none; }
   .app-content {
     .index {
@@ -105,7 +105,7 @@
     }
   }
 
-  body, p, .app-header, nav,
+  body, p, nav,
   .app-content, .app-content > *, .footer {
     width: 100%;
   }
