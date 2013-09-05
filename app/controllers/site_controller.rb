@@ -1,6 +1,9 @@
 class SiteController < ApplicationController
   # before_filter :require_login, only: [:home]
 
+  def home
+  end
+
   private
   def require_login
     authenticate_or_request_with_http_basic('Administration') do |username, password|
