@@ -116,13 +116,12 @@ input, textarea, select {
 }
 
 @mixin input {
-  box-shadow: 0 0 1px $green;
+  box-shadow: 0 0 3px #333;
+  outline: none;
+  border: none;
   background-color: transparentize($brown2, 0.9);
-  &:focus {
-    box-shadow: 0 0 6px $green;
-    outline: none;
-  }
 }
+
 input, textarea {
   @include input;
 }
@@ -275,7 +274,7 @@ table.left-heading {
 
   td .editable {
     @include editable;
-    background-color: transparentize($brown2, 0.8);
+    @include heading;
     padding: 1px;
     padding-right: 3px;
   }
