@@ -1,5 +1,5 @@
 <h3>{{name}} {{#if university_name}}<span class="small muted"> {{university_name}}</span>{{/if}}</h3>
-<section class="links">
+<section {{bindAttr class=":links :animated isEditing:fadeOutRight"}}>
   {{view App.SocialIconLinkView hrefBinding="websiteUrl" iconClasses="icon-large icon-globe"}}
   {{view App.SocialIconLinkView hrefBinding="facebookUrl" iconClasses="icon-large icon-facebook"}}
   {{view App.SocialIconLinkView hrefBinding="twitterUrl" iconClasses="icon-large icon-twitter"}}
