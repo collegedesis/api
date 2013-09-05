@@ -1,9 +1,9 @@
 <div class="index left">
-  {{view App.ContenteditableView
-        valueBinding="about"
-        editableBinding="isEditing"
-        classBinding=":about isEditing:editable"
-        default="Information not available"}}
+  {{#if isEditing}}
+    {{textarea classNames="about editable" value=about}}
+  {{else}}
+    <div class="about">{{markdown about}}</div>
+  {{/if}}
 
   <table class="left-heading">
     <tr>

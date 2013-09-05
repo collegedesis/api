@@ -28,14 +28,6 @@
   }
 }
 
-div.editable {
-  width: 100%;
-  min-height: 50px;
-  padding: 5px 10px;
-  font-size: $font-size * 0.9;
-  background-color: transparentize($brown2, 0.8);
-}
-
 body .links {
   & > * { display: inline-block; margin-right: 10px;}
   i { color: #ccc; }
@@ -52,6 +44,10 @@ body .links {
   padding: 5px 10px;
   font-size: $font-size * 0.9;
   color: lighten($brown4, 30%);
+  &.editable {
+    @include editable;
+    resize: vertical;
+  }
   p {
     margin-bottom: $font-size * 0.9 * 1.30;
     line-height: $font-size * 0.9 * 1.30;
