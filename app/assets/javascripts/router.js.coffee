@@ -17,6 +17,9 @@ App.Router.map ->
     @route 'index'
     @route 'show', {path: ':slug'}
 
+  @route 'join'
+  @route 'me'
+
   @resource 'users', ->
     @route 'new', {path: 'join'}
     @route 'me'

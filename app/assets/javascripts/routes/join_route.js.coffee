@@ -1,4 +1,4 @@
-App.UsersNewRoute = Ember.Route.extend
+App.JoinRoute = Ember.Route.extend
   model: -> App.User.createRecord()
   activate: (controller) -> $(document).attr('title', 'CollegeDesis - Signup')
 
@@ -11,4 +11,4 @@ App.UsersNewRoute = Ember.Route.extend
     user = @controllerFor('application').get('currentUser')
     if user
       App.session.set('messages', 'Already signed up!')
-      @transitionTo('users.me')
+      @transitionTo('me')

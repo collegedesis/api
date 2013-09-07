@@ -1,4 +1,4 @@
-App.UsersNewController = Ember.ObjectController.extend
+App.JoinController = Ember.ObjectController.extend
 
   working: false
   wipEmail: null # set from homepage
