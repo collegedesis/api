@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CollegeDesis | Connecting 600+ South Asian student organizations</title>
+    <title><%=h yield(:title) %></title>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application' %>
     <!-- Font awesome stylesheet -->
@@ -15,6 +15,9 @@
 
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
+    <noscript>
+      <%= yield %>
+    </noscript>
 
     <meta property='og:image' content='https://collegedesis.com/assets/logo.png'>
     <meta property='og:url' content='https://www.collegedesis.com'>
