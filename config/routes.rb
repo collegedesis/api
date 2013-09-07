@@ -25,6 +25,10 @@ Collegedesis::Application.routes.draw do
     end
   end
 
+  # Used to render inside the `noscript` tags for SEO
+  resources :d, only: [:show]
+  resources :n, only: [:show]
+
   # Catch all to serve ember app
   get '*foo', to: 'site#home'
 end

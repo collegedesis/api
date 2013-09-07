@@ -1,0 +1,3 @@
+<% content_for :title, @bulletin.title %>
+<h1><%= @bulletin.title %></h1>
+<%= @markdown.render(@bulletin.body).html_safe %>
