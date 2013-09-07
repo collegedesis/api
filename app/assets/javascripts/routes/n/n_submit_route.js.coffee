@@ -4,7 +4,7 @@ App.NSubmitRoute = Ember.Route.extend
     if user
      if !user.get('approved')
       App.session.set('messages', 'Add a Membership to post!')
-      @transitionTo('users.me')
+      @transitionTo('me')
     else
       App.session.set('messages', 'You need to be logged in to post!')
       @transitionTo('login')

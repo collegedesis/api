@@ -25,12 +25,6 @@ Collegedesis::Application.routes.draw do
     end
   end
 
-
-  # Smart URLs
-  # TODO handle this client side
-  get '/join', to: redirect('/users/join')
-  get '/me', to: redirect('/users/me')
-
   # Catch all to serve ember app
   get '*foo', to: 'site#home'
 end

@@ -19,7 +19,7 @@
 
   <ul class="account">
   {{#if currentUser}}
-    {{#linkTo 'users.me' tagName="li"}}<img height="14" {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
+    {{#linkTo 'me' tagName="li"}}<img height="14" {{bindAttr src="currentUser.avatar_url"}} />Profile{{/linkTo}}
     {{#if currentUser}}<li {{action logout}}>Sign out</li>{{/if}}
   {{else}}
     {{#linkTo 'login' tagName="li"}}Log in{{/linkTo}}

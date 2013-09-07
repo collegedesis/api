@@ -1,4 +1,4 @@
-App.UsersMeController = Ember.ObjectController.extend
+App.MeController = Ember.ObjectController.extend
   needs: ['dIndex', 'application']
 
   loading: false

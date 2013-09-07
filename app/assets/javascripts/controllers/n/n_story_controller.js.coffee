@@ -7,7 +7,7 @@ App.NStoryController = Ember.ObjectController.extend
     if user
       if !user.get('approved')
         App.session.set('messages', 'Add a Membership to comment!')
-        @transitionToRoute('users.me')
+        @transitionToRoute('me')
         @set('comment', null)
       else
         if @get('comment')
