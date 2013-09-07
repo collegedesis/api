@@ -1,4 +1,6 @@
 <% content_for :title, @organization.name %>
 <h1><%= @organization.name %></h1>
 
-<%= @markdown.render(@organization.about).html_safe %>
+<% if @organization.about.present? %>
+  <%= @markdown.render(@organization.about).html_safe %>
+<% end %>
