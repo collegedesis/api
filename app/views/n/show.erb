@@ -4,5 +4,5 @@
 
   <% if @bulletin.body.present? %>
     <%= @markdown.render(@bulletin.body).html_safe %>
-  <%= end %>
+  <% end %>
 <% end %>
