@@ -1,6 +1,8 @@
-<% content_for :title, @bulletin.title %>
-<h1><%= @bulletin.title %></h1>
+<% if @bulletin.present? %>
+  <% content_for :title, @bulletin.title %>
+  <h1><%= @bulletin.title %></h1>
 
-<% if @bulletin.body.present? %>
-  <%= @markdown.render(@bulletin.body).html_safe %>
-<%= end %>
+  <% if @bulletin.body.present? %>
+    <%= @markdown.render(@bulletin.body).html_safe %>
+  <%= end %>
+<% end %>
