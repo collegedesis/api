@@ -2,6 +2,9 @@
   .bulletin .bulletin-header .bulletin-info {
     .title { max-width: 240px; }
   }
+  .bulletin .bulletin-body {
+    iframe { height: 190px; }
+  }
   .mobile { display: block; }
   .button, .vote {
     width: 75px;
@@ -25,6 +28,9 @@
 @media screen and (device-aspect-ratio: 40/71) {
   .bulletin .bulletin-header .bulletin-info {
     .title { max-width: 162px; }
+  }
+  .bulletin .bulletin-body {
+    iframe { height: 190px; }
   }
   .mobile { display: block; }
   .button, .vote {
