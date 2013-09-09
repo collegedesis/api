@@ -48,13 +48,13 @@ App.DShowController = Ember.ObjectController.extend
 
   applyMembership: ->
     mem_type_id = 1 # regular member
-    @createMembership(mem_type_id)
+    @createMembershipApplication(mem_type_id)
 
   applyAdmin: ->
     mem_type_id = 2 # admin member
-    @createMembership(mem_type_id)
+    @createMembershipApplication(mem_type_id)
 
-  createMembership: (mem_type_id) ->
+  createMembershipApplication: (mem_type_id) ->
     user = @get('currentUser')
     if !user
       @transitionToRoute('login')
@@ -68,15 +68,15 @@ App.DShowController = Ember.ObjectController.extend
         membership_type: mem_type
         application_status_id: 1
 
-      app.addObserver('id', this, '_createdMembership')
+      app.addObserver('id', this, '_createdMembershipApplication')
       @get('store').commit()
 
   # TODO this should change when we upgrade ember-data
   # and start using a promise based commit
-  _createdMembership: (app) ->
+  _createdMembershipApplication: (app) ->
     app.get('organization').reload()
     app.get('user').reload()
-    app.removeObserver('id', this, '_createdMembership')
+    app.removeObserver('id', this, '_createdMembershipApplication')
 
   errors: (->
     arr = Em.A()
