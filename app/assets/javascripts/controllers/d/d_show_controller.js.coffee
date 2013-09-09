@@ -56,18 +56,20 @@ App.DShowController = Ember.ObjectController.extend
 
   createMembership: (mem_type_id) ->
     user = @get('currentUser')
-    @transitionToRoute('login') if !user
-    organization = @get('content')
-    mem_type = App.MembershipType.find(mem_type_id)
+    if !user
+      @transitionToRoute('login')
+    else
+      organization = @get('content')
+      mem_type = App.MembershipType.find(mem_type_id)
 
-    app = App.MembershipApplication.createRecord
-      user: user
-      organization: organization
-      membership_type: mem_type
-      application_status_id: 1
+      app = App.MembershipApplication.createRecord
+        user: user
+        organization: organization
+        membership_type: mem_type
+        application_status_id: 1
 
-    app.addObserver('id', this, '_createdMembership')
-    @get('store').commit()
+      app.addObserver('id', this, '_createdMembership')
+      @get('store').commit()
 
   # TODO this should change when we upgrade ember-data
   # and start using a promise based commit
