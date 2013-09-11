@@ -29,6 +29,14 @@ class Bulletin < ActiveRecord::Base
     Bulletin.where("lower(title) = lower(:title)", :title => title).first
   end
 
+  def author_name
+    if author_type == "Organization"
+      author.display_name
+    elsif  author_type == "User"
+      author.full_name
+    end
+  end
+
   def expire
     val = should_be_expired?
     update_attributes(expired: val)
@@ -73,6 +81,10 @@ class Bulletin < ActiveRecord::Base
 
   def approved?
     user.approved?
+  end
+
+  def production_link
+    "https://collegedesis.com/" + relative_local_url
   end
 
   private
