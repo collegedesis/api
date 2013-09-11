@@ -120,4 +120,24 @@ describe Bulletin, focus: true do
       expect(Bulletin.alive.include? bulletin).to eq false
     end
   end
+
+  describe "author_name" do
+    let(:bulletin) { FactoryGirl.build(:bulletin_post)}
+    context "author is organization" do
+      it "is the organization's display name" do
+        organization = FactoryGirl.build(:organization)
+        organization.stub(:display_name) {"Something"}
+
+        bulletin.author = organization
+        expect(bulletin.author_name).to eq "Something"
+      end
+    end
+    context "author is user" do
+      it "is the user's full name" do
+        user = FactoryGirl.build(:user, full_name: "Gnarls Berkeley")
+        bulletin.author = user
+        expect(bulletin.author_name).to eq "Gnarls Berkeley"
+      end
+    end
+  end
 end
