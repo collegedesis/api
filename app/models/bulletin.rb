@@ -64,7 +64,7 @@ class Bulletin < ActiveRecord::Base
   end
 
   def promote(orgs)
-    orgs = orgs.present? ? orgs : Organization.reachable
+    orgs = orgs.present? ? orgs.reachable : Organization.reachable
     orgs.each do |org|
       OrganizationMailer.bulletin_promotion(self, org).deliver
     end
