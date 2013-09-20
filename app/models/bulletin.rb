@@ -79,6 +79,12 @@ class Bulletin < ActiveRecord::Base
     tweeter.tweet
   end
 
+  # to facebook
+  def post_to_facebook
+    poster = BulletinFacebookPoster.new(self)
+    poster.post
+  end
+
   def approved?
     user.approved?
   end
@@ -107,8 +113,7 @@ class Bulletin < ActiveRecord::Base
   def set_short_url
     if Rails.env.production?
       client = Bitly.client
-      to_shorten = "https://collegedesis.com/" + relative_local_url
-      self.shortened_url = client.shorten(to_shorten).short_url
+      self.shortened_url = client.shorten(production_link).short_url
     end
   end
 
