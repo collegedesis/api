@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/mehulkar/searchkick
-  revision: 036310276c13b1e4e1aa2c57ea5c21d1dff4b736
-  branch: hack
-  specs:
-    searchkick (0.1.4)
-      tire
-
-GIT
   remote: https://github.com/emberjs/ember-rails.git
   revision: b29050fea28d2893b221e186e2e4f1abf83ea12c
   specs:
@@ -71,15 +63,6 @@ GEM
       multi_json (~> 1.3)
       oauth2 (>= 0.5.0, < 0.9)
     builder (3.0.4)
-    capybara (2.1.0)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
-    capybara-webkit (1.0.0)
-      capybara (~> 2.0, >= 2.0.2)
-      json
     clockwork (0.5.1)
       tzinfo (~> 0.3.35)
     coderay (1.0.9)
@@ -91,16 +74,6 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     columnize (0.3.6)
-    cucumber (1.3.2)
-      builder (>= 2.1.2)
-      diff-lcs (>= 1.1.3)
-      gherkin (~> 2.12.0)
-      multi_json (~> 1.3)
-    cucumber-rails (1.3.1)
-      capybara (>= 1.1.2)
-      cucumber (>= 1.2.0)
-      nokogiri (>= 1.5.0)
-      rails (~> 3.0)
     daemons (1.1.9)
     dalli (2.6.4)
     database_cleaner (0.9.1)
@@ -129,17 +102,12 @@ GEM
       multipart-post (~> 1.1)
     ffi (1.8.1)
     formatador (0.2.4)
-    gherkin (2.12.0)
-      multi_json (~> 1.3)
     guard (1.8.0)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-cucumber (1.4.0)
-      cucumber (>= 1.2.0)
-      guard (>= 1.1.0)
     guard-rspec (3.0.0)
       guard (>= 1.8)
       rspec (~> 2.13)
@@ -176,13 +144,10 @@ GEM
     memcachier (0.0.2)
     method_source (0.8.1)
     mime-types (1.24)
-    mini_portile (0.5.1)
     multi_json (1.7.9)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
     newrelic_rpm (3.6.5.130)
-    nokogiri (1.6.0)
-      mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -255,6 +220,9 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    searchkick (0.5.0)
+      tire
+      tire-contrib
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -272,7 +240,7 @@ GEM
       rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
-    tire (0.6.0)
+    tire (0.6.2)
       activemodel (>= 3.0)
       activesupport
       ansi
@@ -280,6 +248,8 @@ GEM
       multi_json (~> 1.3)
       rake
       rest-client (~> 1.6)
+    tire-contrib (0.1.3)
+      tire
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -295,8 +265,6 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    xpath (2.0.0)
-      nokogiri (~> 1.3)
     zeus (0.13.3)
       method_source (>= 0.6.7)
 
@@ -307,17 +275,13 @@ DEPENDENCIES
   active_model_serializers!
   bcrypt-ruby
   bitly
-  capybara
-  capybara-webkit
   clockwork
   coffee-rails (~> 3.2.1)
-  cucumber-rails
   dalli
   database_cleaner (~> 0.9.1)
   ember-rails!
   ember-source (= 1.0.0.rc5)
   factory_girl_rails (~> 4.2.1)
-  guard-cucumber
   guard-rspec
   handlebars-source (= 1.0.0.rc4)
   heroku_rails_deflate
@@ -335,7 +299,7 @@ DEPENDENCIES
   redcarpet
   rspec-rails (~> 2.13.2)
   sass-rails (~> 3.2.3)
-  searchkick!
+  searchkick
   simplecov
   thin
   twilio-ruby
