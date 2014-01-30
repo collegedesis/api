@@ -14,8 +14,7 @@ gem 'memcachier'
 gem 'newrelic_rpm'
 gem 'twilio-ruby'
 gem 'heroku_rails_deflate', :group => :production
-gem 'searchkick', git: "git://github.com/mehulkar/searchkick", branch: "hack"
-# gem 'searchkick', path: '/Users/mehulkar/dev/searchkick'
+gem 'searchkick'
 
 group :development, :test do
   gem 'pry'
@@ -29,10 +28,6 @@ group :test do
   gem 'database_cleaner', '~> 0.9.1'
   gem 'zeus'
   gem 'rb-fsevent'
-  gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'cucumber-rails', require: false
-  gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'simplecov'
 end
