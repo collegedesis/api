@@ -25,7 +25,7 @@ class BulletinFacebookPoster
 
     params = {
       client_id: ENV['FB_CLIENT_ID'],
-      client_secret: ENV['FB_CLIENT_SECRET'],,
+      client_secret: ENV['FB_CLIENT_SECRET'],
       redirect_uri: CGI.escape("https://collegedesis.com"),
       grant_type: "client_credentials",
     }
