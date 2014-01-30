@@ -1,5 +1,7 @@
 class BulletinFacebookPoster
   require 'cgi'
+  require 'open-uri'
+
   attr_accessor :bulletin, :user_graph_api_access_token
 
   def initialize(bulletin)
