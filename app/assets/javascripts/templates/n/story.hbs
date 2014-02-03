@@ -12,16 +12,6 @@
   </div>
 
   <div class="row-of-buttons">
-    <div class="vote">
-      {{#if hasBeenVotedOn}}
-        <div class="button no-click">Score: <span class="heading">{{roundedScore}}</span></div>
-      {{else}}
-      <a class="button" {{action voteOnBulletin}}>
-        <i class="icon-thumbs-up"></i>
-        <span>Recommend</span>
-      </a>
-      {{/if}}
-    </div>
     <a class="button" {{action jumpToComment target="view"}}>
       <i class="icon-comment"></i>
       <span>Comment{{#if comments}} ({{comments.length}}){{/if}}</span>

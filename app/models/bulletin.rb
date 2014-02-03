@@ -1,13 +1,14 @@
 class Bulletin < ActiveRecord::Base
   include Slugify
 
-  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date, :author_id, :author_type
+  attr_accessible :body, :title, :url, :bulletin_type, :user_id, :slug, :is_dead, :shortened_url, :score, :high_score, :expired, :expiration_date, :author_id, :author_type, :password_salt, :password_hash
   before_save :normalize_title, :create_slug
   before_create :set_short_url, :set_expiration_date, :assign_smart_body
 
   has_many :votes, :as => :votable, :dependent => :destroy
 
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :views, as: :viewable, dependent: :destroy
   belongs_to :user
   belongs_to :author, polymorphic: true
   # bulletin_types:
