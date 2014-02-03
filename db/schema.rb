@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801083920) do
+ActiveRecord::Schema.define(:version => 20140203222843) do
 
   create_table "bulletins", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130801083920) do
     t.boolean  "expired",         :default => false
     t.integer  "author_id"
     t.string   "author_type"
+    t.integer  "views_count",     :default => 0
   end
 
   add_index "bulletins", ["slug"], :name => "index_bulletins_on_slug"
@@ -163,6 +164,14 @@ ActiveRecord::Schema.define(:version => 20130801083920) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "views", :force => true do |t|
+    t.string   "ip"
+    t.integer  "viewable_id"
+    t.string   "viewable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "votes", :force => true do |t|
     t.integer  "votable_id"

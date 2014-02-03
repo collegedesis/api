@@ -16,6 +16,7 @@ Collegedesis::Application.routes.draw do
       resources :bulletins,               only: [:index, :show, :create]
       resources :comments,                only: [:index, :create]
       resources :votes,                   only: [:index, :create]
+      resources :views,                   only: [:create]
       # TODO do this better
       match 'info', to: 'stats#info'
 

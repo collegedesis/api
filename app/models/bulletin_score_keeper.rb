@@ -35,33 +35,10 @@ class BulletinScoreKeeper
 
   # TODO algorithm is not tested
   def popularity_score
-    num_of_votes = bulletin.votes.length
-    raw = (num_of_votes + num_of_clicks) / 2.0
+    num_of_views = bulletin.views.length
+    raw = num_of_views / 2.0
     score = Math.log(raw + 1)
     normalize(score)
-  end
-
-  # TODO add specs for this
-  def num_of_clicks
-    begin
-      token = ENV['BITLY_ACCESS_TOKEN']
-      escaped_url = CGI::escape(bulletin.shortened_url)
-
-      uri = URI.parse "https://api-ssl.bitly.com/v3/link/clicks?access_token=#{token}&link=#{escaped_url}"
-
-      http = Net::HTTP.new(uri.host, uri.port)
-
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      request = Net::HTTP::Get.new(uri.request_uri)
-
-      response = http.request(request)
-      hash = JSON.parse(response.body)
-      hash["data"]["link_clicks"]
-    rescue
-      1
-    end
   end
 
   private
