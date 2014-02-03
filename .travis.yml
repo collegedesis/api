@@ -8,7 +8,7 @@ before_script:
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare --trace
 script:
-  - RAILS_ENV=test bundle exec rake spec
+  - RAILS_ENV=test bundle exec rake
 
 gemfile: Gemfile.ci
 
