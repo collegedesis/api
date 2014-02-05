@@ -5,7 +5,7 @@ App.Bulletin = DS.Model.extend
   bulletin_type: DS.attr('number')
   created_at: DS.attr('date')
   errors: []
-  votes: DS.hasMany('App.Vote')
+  views_count: DS.attr('number')
   comments: DS.hasMany('App.Comment')
   user: DS.belongsTo('App.User')
   slug: DS.attr('string')
