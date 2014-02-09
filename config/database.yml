@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: cd_dev_old
   pool: 5
-  username:
+  username: collegedesis
   password:
 
 test: &test
@@ -19,7 +19,7 @@ production:
   encoding: unicode
   database: cd_prod
   pool: 5
-  username: college_desis
+  username: collegedesis
   password:
 
 cucumber:
