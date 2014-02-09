@@ -42,8 +42,8 @@ class BulletinTweeter
     end
   end
 
-  def  url_to_tweet
-    bulletin.shortened_url || "no_url_available"
+  def url_to_tweet
+    bulletin.shareable_link
   end
 
 end
