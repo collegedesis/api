@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe BulletinScoreKeeper do
   describe "#new" do
-    let(:bulletin)  { mock_model("Bulletin") }
+    let(:bulletin)  { FactoryGirl.build(:bulletin) }
     let(:scorekeep) { BulletinScoreKeeper.new(bulletin) }
 
     it "should be initialized with a bulletin object" do
@@ -11,10 +11,10 @@ describe BulletinScoreKeeper do
   end
 
   describe "#update_score" do
-    let(:bulletin)  { FactoryGirl.create(:bulletin_post) }
+    let(:bulletin)  { FactoryGirl.create(:bulletin) }
     let(:scorekeep) { BulletinScoreKeeper.new(bulletin) }
 
-    before(:each) { scorekeep.stub(:score) { 100 } }
+    before(:each) { scorekeep.stub(score: 100) }
 
     it "should update the score" do
       scorekeep.update_score

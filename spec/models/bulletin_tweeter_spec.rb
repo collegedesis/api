@@ -53,18 +53,9 @@ describe BulletinTweeter do
     let(:bulletin)  { mock_model("Bulletin") }
     let(:tweeter)   { BulletinTweeter.new(bulletin) }
 
-    context "with shortened_url" do
-      it "returns the bulletin.shortened_url" do
-        bulletin.stub(:shortened_url) { "http://bit.ly/randomchars" }
-        expect(tweeter.url_to_tweet).to eq "http://bit.ly/randomchars"
-      end
-    end
-
-    context "without shortened_url" do
-      it "returns placeholder" do
-        bulletin.stub(:shortened_url) { nil }
-        expect(tweeter.url_to_tweet).to eq "no_url_available"
-      end
+    it "returns the bulletin.shareable_link" do
+      bulletin.stub(:shareable_link) { "http://bit.ly/randomchars" }
+      expect(tweeter.url_to_tweet).to eq "http://bit.ly/randomchars"
     end
   end
 

@@ -1,9 +1,13 @@
 FactoryGirl.define do
   sequence(:email) { |n| "#{n}fake@fake.com" }
+  sequence(:username) { |n| "user #{n}"}
+
   factory :user do
     full_name "valid name"
+    username
     email
-    password "somepass"
+    password "secret"
+    password_confirmation "secret"
   end
 
   factory :approved_user, parent: :user do
