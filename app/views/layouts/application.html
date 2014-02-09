@@ -1,57 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=h yield(:title) %></title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application' %>
-    <!-- Font awesome stylesheet -->
-    <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" %>
-
-    <%= csrf_meta_tag %>
-
-    <% if Rails.env.development? %>
-      <link rel="stylesheet" href="http://basehold.it/36"> <!-- adds a vertical grid to page -->
-    <% end %>
-
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
-    <noscript>
-      <%= yield %>
-    </noscript>
-
-    <meta property='og:image' content='https://collegedesis.com/assets/logo.png'>
-    <meta property='og:url' content='https://www.collegedesis.com'>
-    <meta property='og:description' content='We build tools to help South Asian student organizations connect, collaborate, and share.'>
-    <meta property='og:title' content='CollegeDesis'>
-
-    <!-- For Google Bot -->
-    <meta name='fragment' content='!'>
-
-    <!-- For mobile safari -->
-    <%= favicon_link_tag '/logo-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
-    <%= favicon_link_tag '/logo-icon.png', rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
-
-    <script>
-      App.session = Ember.Object.create();
-    </script>
-
-    <% if session[:user_id] %>
-      <!-- set currentUserId for ember app -->
-      <script>
-        App.session.set('currentUserId', <%= session[:user_id] %> );
-        App.session.set('currentUser', null )
-      </script>
-    <% end %>
-
-    <% if session[:votedBulletinIds] %>
-      <!-- bulletins current user has voted on -->
-      <script>
-        App.session.set('votedBulletinIds', <%= session[:votedBulletinIds] %> )
-      </script>
-    <% end %>
-
+    <title>CollegeDesis API | Connecting 600+ South Asian student organizations</title>
   </head>
-  <body></body>
-  <!-- soundcloud scripts for radio -->
-  <%= javascript_include_tag '//connect.soundcloud.com/sdk.js', '//w.soundcloud.com/player/api.js' %>
+
+  <body>
+    <%= yield %>
+  </body>
 </html>
