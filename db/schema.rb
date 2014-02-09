@@ -9,177 +9,135 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203222843) do
+ActiveRecord::Schema.define(version: 20131231094440) do
 
-  create_table "bulletins", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.integer  "bulletin_type",   :default => 1
-    t.string   "url"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "api_keys", force: true do |t|
     t.integer  "user_id"
-    t.boolean  "protected",       :default => false
-    t.string   "slug"
-    t.boolean  "is_dead",         :default => false
-    t.string   "shortened_url"
-    t.integer  "votes_count"
-    t.integer  "score",           :default => 0
-    t.integer  "high_score",      :default => 0
-    t.datetime "expiration_date"
-    t.boolean  "expired",         :default => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.integer  "views_count",     :default => 0
+    t.string   "access_token"
+    t.string   "scope"
+    t.datetime "expired_at"
+    t.datetime "created_at"
   end
 
-  add_index "bulletins", ["slug"], :name => "index_bulletins_on_slug"
+  add_index "api_keys", ["access_token"], name: "index_api_keys_on_access_token", unique: true, using: :btree
+  add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id", using: :btree
 
-  create_table "comments", :force => true do |t|
+  create_table "bulletins", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url"
+    t.integer  "user_id"
+    t.string   "slug"
+    t.boolean  "is_dead",         default: false
+    t.integer  "score",           default: 0
+    t.integer  "high_score",      default: 0
+    t.datetime "expiration_date"
+    t.boolean  "expired",         default: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.integer  "views_count",     default: 0
+  end
+
+  add_index "bulletins", ["slug"], name: "index_bulletins_on_slug", using: :btree
+
+  create_table "comments", force: true do |t|
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.text     "body"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
-  create_table "emails", :force => true do |t|
-    t.integer  "organization_id"
-    t.integer  "message_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  create_table "membership_applications", :force => true do |t|
+  create_table "membership_applications", force: true do |t|
     t.integer  "user_id"
     t.integer  "membership_type_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.integer  "application_status_id", :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "application_status_id", default: 1
     t.integer  "organization_id"
     t.string   "code"
   end
 
-  create_table "membership_types", :force => true do |t|
+  create_table "membership_types", force: true do |t|
     t.string   "name"
     t.integer  "internal_ref"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "memberships", :force => true do |t|
+  create_table "memberships", force: true do |t|
     t.integer  "user_id"
     t.integer  "organization_id"
-    t.integer  "membership_type_id", :default => 1
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.boolean  "approved",           :default => false
+    t.integer  "membership_type_id", default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "approved",           default: false
   end
 
-  create_table "messages", :force => true do |t|
-    t.string   "subject"
-    t.text     "body"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.boolean  "test",       :default => true
-    t.string   "from_name"
-    t.string   "from_email"
-  end
-
-  create_table "notifications", :force => true do |t|
-    t.integer  "recipient_email"
-    t.integer  "bulletin_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  create_table "organization_types", :force => true do |t|
+  create_table "organization_types", force: true do |t|
     t.string   "name"
     t.string   "category"
     t.integer  "int_ref"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "organizations", :force => true do |t|
+  create_table "organizations", force: true do |t|
     t.string   "name"
     t.string   "website"
+    t.string   "email"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "youtube"
     t.string   "city"
     t.integer  "organization_type_id"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "university_id"
-    t.boolean  "exposed",                  :default => true
+    t.boolean  "exposed",                  default: true
     t.string   "slug"
-    t.boolean  "auto_approve_memberships", :default => true
+    t.boolean  "auto_approve_memberships", default: true
     t.text     "about"
     t.string   "instagram"
   end
 
-  add_index "organizations", ["slug"], :name => "index_organizations_on_slug"
+  add_index "organizations", ["slug"], name: "index_organizations_on_slug", using: :btree
 
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.integer  "price"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "purchases", :force => true do |t|
-    t.integer  "product_id"
-    t.integer  "beneficiary_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.string   "email"
-    t.string   "download_code"
-    t.boolean  "expired",        :default => false
-  end
-
-  create_table "universities", :force => true do |t|
+  create_table "universities", force: true do |t|
     t.string   "name"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users", force: true do |t|
     t.string   "email"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.string   "password_salt"
-    t.string   "password_hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "full_name"
-    t.boolean  "approved",      :default => false
+    t.boolean  "approved",        default: false
+    t.string   "image_url"
+    t.text     "bio"
+    t.string   "username"
+    t.string   "password_digest"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-
-  create_table "views", :force => true do |t|
+  create_table "views", force: true do |t|
     t.string   "ip"
     t.integer  "viewable_id"
     t.string   "viewable_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "votes", :force => true do |t|
-    t.integer  "votable_id"
-    t.string   "submitted_by_ip"
-    t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.string   "votable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
