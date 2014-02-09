@@ -1,26 +1,24 @@
-![image](http://i.imgur.com/bkxtvgj.png?2)
+[![image](http://i.imgur.com/bkxtvgj.png?2)](http://github.com/collegedesis/collegedesis.com)
 
-[![Build Status](https://travis-ci.org/collegedesis/collegedesis.com.png?branch=master)](https://travis-ci.org/collegedesis/collegedesis.com)
-[![Stories in Ready](https://badge.waffle.io/collegedesis/collegedesis.com.png)](http://waffle.io/collegedesis/collegedesis.com)
+This API is currently home to the Directory and the News Board.
+In the future, this API will only be for the Directory and the News board will be
+a separate application built on top of the API combined with what is now known 
+as [UI](http://github.com/collegedesis/ui).
 
-We build tools to help South Asian student organizations connect, collaborate, and share.
+## API
 
-[Read more](//collegedesis.com/about) on our website.
+This API is useful to get a list of organizations like this:
 
-## Current Features
+#### Organizations
 
-* News Board
-* Organization Profiles
-* Roster Management
-
-## Technology
-
-* [Rails](http://rubyonrails.org) API
-* [Ember.js](http://emberjs.com) for client side UI and navigation
-* [Postgres](//www.postgresql.org) database
-* [Heroku](//heroku.com) hosted
+1. `/v1/organizations/`
+2. `/v1/organizations/:id`
+3. `/v1/organizations/search?:keyword`
 
 ## Contributing
 
-Want to help? Check out [open issues](//github.com/collegedesis/collegedesis.com/issues)
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to set up the project locally to hack on.
 
+## About CollegeDesis
+
+More [about](http://github.com/collegedesis/about) CollegeDesis.
