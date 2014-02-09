@@ -1,5 +1,4 @@
-class OrganizationTypeSerializer < ActiveModel::Serializer 
+class OrganizationTypeSerializer < ApplicationSerializer 
   attributes :id, :name, :category
-  embed :ids
   has_many :organizations
 end

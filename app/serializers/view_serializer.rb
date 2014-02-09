@@ -1,2 +1,2 @@
-class ViewSerializer < ActiveModel::Serializer
+class ViewSerializer < ApplicationSerializer
 end

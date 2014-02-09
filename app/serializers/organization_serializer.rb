@@ -1,10 +1,12 @@
-class OrganizationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :website, :display_name, :location, :slug, :university_name, :about, :reputation, :twitter, :facebook, :youtube, :instagram
+class OrganizationSerializer < ApplicationSerializer
+  attributes :id, :name, :website,
+            :display_name, :location, :slug,
+            :university_name, :about, :reputation,
+            :twitter, :facebook, :youtube, :instagram
 
-  # Association
   attribute :organization_type_id, key: :org_type_id
-  attribute :approved_membership_ids, key: :membership_ids
 
-  attribute :membership_application_ids
-  attribute :bulletin_ids
+  has_many :memberships
+  has_many :membership_applications
+  has_many :bulletins
 end

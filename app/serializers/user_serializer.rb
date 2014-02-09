@@ -1,6 +1,7 @@
-class UserSerializer < ActiveModel::Serializer
-  attributes :id, :full_name, :avatar_url, :approved
-  attributes :membership_ids, :bulletin_ids
+class UserSerializer < ApplicationSerializer
+  attributes :id, :full_name, :image_url, :approved, :bio, :username
 
-  attribute :membership_application_ids
+  has_many :memberships
+  has_many :bulletins
+  has_many :membership_applications
 end
