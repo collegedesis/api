@@ -4,17 +4,18 @@ rvm:
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
 before_script:
-  - psql -c 'create database cd_test;' -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database myapp_test;' -U postgres
   - bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare --trace
 script:
-  - RAILS_ENV=test bundle exec rake
+  - RAILS_ENV=test bundle exec rake spec
 
-gemfile: Gemfile.ci
+services:
+  - elasticsearch
 
 notifications:
   email:
     recipients:
-      - mehul@collegedesis.com
+      - brownkids@collegedesis.com
     on_success: never
     on_failure: always
