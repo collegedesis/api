@@ -1,1 +1,0 @@
-App.DIndexController = Ember.ArrayController.extend()
