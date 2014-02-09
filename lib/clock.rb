@@ -21,5 +21,7 @@ every(1.day, 'Posting top bulletin to Facebook', at: '18:00') do
 end
 
 every(1.day, 'expire bulletins', at: '23:59') do
-  Bulletin.alive.each(&:expire)
+  Bulletin.alive.each do |b|
+    b.update_attributes(expired: true) if b.should_be_expired?
+  end
 end
