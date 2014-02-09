@@ -13,12 +13,6 @@ describe User do
       memberships.should eq []
     end
 
-    it "should delete all associated votes on destroy" do
-      @user.votes.create(votable_id: 1)
-      votes = @user.votes
-      @user.destroy
-      votes.should eq []
-    end
     it "should delete all associated comments on destroy" do
       @user.comments.create(commentable_id: 1)
       comments = @user.comments
@@ -26,7 +20,7 @@ describe User do
       comments.should eq []
     end
     it "should delete all associated bulletins on destroy" do
-      bulletin = FactoryGirl.create(:bulletin_post, user_id: @user.id)
+      bulletin = FactoryGirl.create(:bulletin, user_id: @user.id)
       bulletins = @user.bulletins
       @user.destroy
       bulletins.should eq []
@@ -68,6 +62,15 @@ describe User do
     it "is false if user is not a member of org", focus: true do
       user = FactoryGirl.create(:user)
       expect(user.is_admin_of?(org)).to eq false
+    end
+  end
+
+  describe '#api_key' do
+    it "#session" do
+      joe = FactoryGirl.create(:user)
+      api_key = joe.session_api_key
+      expect(api_key.access_token).to match(/\S{32}/)
+      expect(api_key.user_id).to eq(joe.id)
     end
   end
 end
