@@ -6,7 +6,9 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :slug, allow_nil: true
   before_create :create_slug
   after_create :send_welcome_email
-  attr_accessible :name, :university_id, :organization_type_id, :email, :website, :exposed, :slug, :about, :twitter, :facebook, :youtube, :instagram
+  attr_accessible :name, :university_id, :organization_type_id,
+                  :email, :website, :exposed, :slug, :about, :twitter,
+                  :facebook, :youtube, :instagram
 
   belongs_to :organization_type
   belongs_to :university
@@ -15,15 +17,10 @@ class Organization < ActiveRecord::Base
   has_many :memberships
   has_many :membership_applications
 
-  has_many :bulletins, :as => :author, :dependent => :destroy
-  default_scope order('organizations.name ASC')
-  scope :reachable, conditions: 'email IS NOT NULL'
-  scope :exposed, conditions: 'exposed'
-
-
-  def approved_membership_ids
-    memberships.where(approved: true).select(:id).map(&:id)
-  end
+  has_many :bulletins, as: :author, dependent: :destroy
+  default_scope         { order('organizations.name ASC') }
+  scope :reachable, ->  { where('email IS NOT NULL') }
+  scope :exposed,   ->  { where(exposed: true) }
 
   def has_email?
     self.email? ? true : false
@@ -60,21 +57,19 @@ class Organization < ActiveRecord::Base
     }
   end
 
-  def self.filter_and_search_by_query(query)
-    states = query[:states] || []
-    param = query[:param].downcase
-    # if both states and param
-    query_results = if states.present? && param.present?
-      Organization.search(query[:param]).results.select do |result|
-        result if query[:states].include? result.location
+  def self.filter_and_search_by_query(states, query)
+    # if both states and query
+    query_results = if states.present? && query.present?
+      Organization.search(query).results.select do |result|
+        result if states.include? result.location
       end
-    # if states but not param
-    elsif states.present? && param.blank?
+    # if states but not query
+    elsif states.present? && query.blank?
       Organization.eager_load(:university).where('universities.state IN (?)', states)
-    # if param but not states
-    elsif states.empty? && param.present?
-      Organization.search(param).results
-    elsif states.empty? && param.blank?
+    # if query but not states
+    elsif states.empty? && query.present?
+      Organization.search(query).results
+    elsif states.empty? && query.blank?
       []
     end
   end
@@ -90,7 +85,7 @@ class Organization < ActiveRecord::Base
   end
 
   def reputation
-    100
+    (memberships.length + bulletins.length) * 100
   end
 
 protected

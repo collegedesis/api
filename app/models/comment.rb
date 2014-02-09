@@ -1,9 +1,10 @@
 class Comment < ActiveRecord::Base
   attr_accessible :body, :commentable_id, :commentable_type, :user_id
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, polymorphic: true
   belongs_to :user
 
-  default_scope eager_load(:user)
+  default_scope { eager_load(:user) }
+
   def bulletin_id
     commentable.id if commentable_type == "Bulletin"
   end
