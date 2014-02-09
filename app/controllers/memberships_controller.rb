@@ -1,5 +1,4 @@
-class Api::V1::MembershipsController < ApplicationController
-  respond_to :json
+class MembershipsController < ApplicationController
 
   def index
     @mems = if params[:ids]

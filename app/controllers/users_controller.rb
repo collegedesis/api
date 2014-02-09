@@ -1,5 +1,5 @@
-class Api::V1::UsersController < ApplicationController
-  respond_to :json
+class UsersController < ApplicationController
+
   def index
     @users = params[:id] ? User.where(id: params[:id]) : User.all
     render json: @users
@@ -12,14 +12,19 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     # Get a user object
-    @user = User.find_or_create_by_email(params[:user][:email].downcase)
+    @user = User.find_or_create_by(email: params[:user][:email].downcase)
+
     # save and update params if the user is new
     if @user.new_record?
       if !@user.update_attributes(params[:user])
-        render json: @user.errors, status: 422
+        render json: @user.errors.messages, status: 422
         return
       end
     end
-    render json: @user
+    if @user.authenticate(params[:user][:password])
+      render json: @user.session_api_key, status: 201
+    else
+      render json: @user.errors.messages, status: 422
+    end
   end
 end

@@ -1,5 +1,5 @@
-class Api::V1::CommentsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create]
+class CommentsController < ApplicationController
+  before_filter :ensure_authenticated_user, only: [:create]
 
   def index
     @comments = params[:ids] ? Comment.where(id: params[:ids]) : Comment.all

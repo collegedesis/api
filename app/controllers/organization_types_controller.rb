@@ -1,5 +1,4 @@
-class Api::V1::OrganizationTypesController < ApplicationController
-  respond_to :json
+class OrganizationTypesController < ApplicationController
 
   def index
     @org_types = OrganizationType.all

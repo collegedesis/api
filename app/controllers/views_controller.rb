@@ -1,11 +1,10 @@
-class Api::V1::ViewsController < ApplicationController
+class ViewsController < ApplicationController
   def create
-    conditions = {
+    view = View.find_or_create_by(
       viewable_id: params[:view][:viewable_id],
       ip: request.remote_ip,
       viewable_type: params[:view][:viewable_type]
-    }
-    view = View.find(:first, conditions: conditions) || View.create(conditions)
+    )
     render json: view
   end
 end

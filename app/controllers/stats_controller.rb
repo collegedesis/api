@@ -1,4 +1,4 @@
-class Api::V1::StatsController < ApplicationController
+class StatsController < ApplicationController
   def info
     orgs = Organization.count
     unis = University.count

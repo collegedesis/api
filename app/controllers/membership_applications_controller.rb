@@ -1,4 +1,5 @@
-class Api::V1::MembershipApplicationsController < ApplicationController
+class MembershipApplicationsController < ApplicationController
+  before_filter :ensure_authenticated_user, only: [:create]
 
   def show
     @app = MembershipApplication.find(params[:id])
@@ -10,15 +11,12 @@ class Api::V1::MembershipApplicationsController < ApplicationController
     render json: @apps
   end
 
-  def show
-    @app = MembershipApplication.find(params[:id])
-    render json: @app
-  end
-
   def create
+
     attrs = params[:membership_application]
+    binding.pry
     if current_user
-      if attrs[:user_id] == current_user.id
+      if attrs[:user_id].to_i == current_user.id
         application = MembershipApplication.find(:first, conditions: attrs) || MembershipApplication.new(attrs)
         render json: application.save ? application : { errors: "failed" }
       end
