@@ -8,5 +8,9 @@ class OrganizationSerializer < ApplicationSerializer
 
   has_many :memberships
   has_many :membership_applications
-  has_many :bulletins
+  has_many :recent_bulletins, root: :bulletins
+
+  def recent_bulletins
+    object.bulletins.recent
+  end
 end
