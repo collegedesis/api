@@ -1,8 +1,0 @@
-<% if @organization.present? %>
-  <% content_for :title, "#{@organization.name} | CollegeDesis Profile" %>
-  <h1><%= @organization.name %></h1>
-
-  <% if @organization.about.present? %>
-    <%= @markdown.render(@organization.about).html_safe %>
-  <% end %>
-<% end %>
