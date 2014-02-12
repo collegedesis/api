@@ -63,7 +63,8 @@ class User < ActiveRecord::Base
     # password_digest field when we assign the password
     # we'll save that
     puts "Assigning password for #{self.full_name}"
-    self.password = unencrypted_password
+    self.password              = unencrypted_password
+    self.password_confirmation = unencrypted_password
     puts "#{self.full_name} now has a password_digest: #{self.password_digest}"
     self.save
   end
