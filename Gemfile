@@ -12,6 +12,9 @@ gem 'pg'
 gem 'rails-observers'
 gem 'protected_attributes'
 
+# For logging for heroku rails 4.0
+gem 'rails_12factor', group: :production
+
 # API
 gem 'active_model_serializers'
 gem 'searchkick', '~> 0.3.3'
