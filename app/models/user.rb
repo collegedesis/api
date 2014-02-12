@@ -66,7 +66,12 @@ class User < ActiveRecord::Base
     self.password              = unencrypted_password
     self.password_confirmation = unencrypted_password
     puts "#{self.full_name} now has a password_digest: #{self.password_digest}"
-    self.save
+    if self.save
+      return true
+    else
+      puts "Couldn't save the password_digest. Errors: #{self.errors}"
+      return false
+    end
   end
 
   def confirm_password?(password)
