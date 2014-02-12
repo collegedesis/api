@@ -25,6 +25,35 @@ class User < ActiveRecord::Base
     api_keys.active.session.first_or_create
   end
 
+  def authenticate_merge_strategy(unencrypted_password)
+    if password_digest
+      self.authenticate(unencrypted_password)
+    elsif self.confirm_password?(unencrypted_password)
+      if self.assign_password_digest(unencrypted_password)
+        self.remove_old_auth_fields_from_db
+        true
+      end
+      false
+    else
+      false
+    end
+  end
+
+  def remove_old_auth_fields_from_db
+    if self.password_digest
+      self.password_hash = nil
+      self.password_salt = nil
+    end
+  end
+
+  def assign_password_digest(unencrypted_password)
+    # has_secure_password should automatically assign the
+    # password_digest field when we assign the password
+    # we'll save that
+    self.password = unencrypted_password
+    self.save
+  end
+
   def confirm_password?(password)
     return false unless self.password_hash && self.password_salt
     self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)

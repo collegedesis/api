@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.where(email: params[:session][:email]).first
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate_merge_strategy(params[:session][:password])
       render json: user.session_api_key, status: 201
     else
       render json: {}, status: 401
