@@ -26,21 +26,29 @@ class User < ActiveRecord::Base
   end
 
   def authenticate_merge_strategy(unencrypted_password)
-    if password_digest
-      self.authenticate(unencrypted_password)
+    if self.password_digest
+      puts "#{self.full_name} has a password_digest"
+      val = self.authenticate(unencrypted_password)
+      puts "#{self.full_name} was able to authenticate using digest"
     elsif self.confirm_password?(unencrypted_password)
+      puts "#{self.full_name} does NOT have a password_digest."
       if self.assign_password_digest(unencrypted_password)
+        puts "#{self.full_name} now has a password_digest."
         self.remove_old_auth_fields_from_db
         true
       end
+      puts "#{self.full_name} could not confirm_password using salt/hash"
       false
     else
+      puts "#{self.full_name} does not have a password_digest and
+            was not able to authenticate using salt/hash"
       false
     end
   end
 
   def remove_old_auth_fields_from_db
     if self.password_digest
+      puts "#{self.full_name}: Removing hash/salt"
       self.password_hash = nil
       self.password_salt = nil
     end
@@ -50,7 +58,9 @@ class User < ActiveRecord::Base
     # has_secure_password should automatically assign the
     # password_digest field when we assign the password
     # we'll save that
+    puts "Assigning password for #{self.full_name}"
     self.password = unencrypted_password
+    puts "#{self.full_name} now has a password_digest: #{self.password_digest}"
     self.save
   end
 
