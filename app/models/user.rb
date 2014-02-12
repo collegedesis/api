@@ -55,6 +55,12 @@ class User < ActiveRecord::Base
       puts "#{self.full_name}: Removing hash/salt"
       self.password_hash = nil
       self.password_salt = nil
+      if self.save
+        return true
+      else
+        puts "Couldn't remove old auth fields. Errors: #{self.errors}"
+        return false
+      end
     end
   end
 
