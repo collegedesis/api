@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :full_name
   validates_presence_of :email
   validates_uniqueness_of :email
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, allow_nil: true
 
   has_secure_password
 
