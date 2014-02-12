@@ -27,9 +27,8 @@ class User < ActiveRecord::Base
 
   def authenticate_merge_strategy(unencrypted_password)
     if self.password_digest
-      puts "#{self.full_name} has a password_digest"
-      val = self.authenticate(unencrypted_password)
-      puts "#{self.full_name} was able to authenticate using digest"
+      puts "#{self.full_name} has a password_digest. Attempting to authenticate"
+      self.authenticate(unencrypted_password)
     elsif self.confirm_password?(unencrypted_password)
       puts "#{self.full_name} does NOT have a password_digest."
       if self.assign_password_digest(unencrypted_password)
