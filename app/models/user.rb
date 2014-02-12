@@ -31,13 +31,18 @@ class User < ActiveRecord::Base
       self.authenticate(unencrypted_password)
     elsif self.confirm_password?(unencrypted_password)
       puts "#{self.full_name} does NOT have a password_digest."
+
+      ## here we assign a password digest, save to db, and remove the old fields
       if self.assign_password_digest(unencrypted_password)
         puts "#{self.full_name} now has a password_digest."
         self.remove_old_auth_fields_from_db
         return true
+      else
+        puts "#{self.full_name} was not able to assign the password_digest"
+        return false
       end
-      puts "#{self.full_name} could not confirm_password using salt/hash"
-      return false
+
+    ## else if can't confirm password
     else
       puts "#{self.full_name} does not have a password_digest and
             was not able to authenticate using salt/hash"
