@@ -17,7 +17,7 @@ namespace :users do
     User.all.each do |u|
       hash = Digest::MD5.hexdigest(u.email.downcase)
       url = "//www.gravatar.com/avatar/#{hash}"
-      puts "Updating #{u.full_name}: u.url"
+      puts "Updating #{u.full_name}: #{u.url}"
       u.update_attributes(image_url: url)
     end
   end
