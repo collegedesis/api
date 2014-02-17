@@ -10,7 +10,7 @@ class BulletinFacebookPoster
   end
 
   def self.post_top_bulletin
-    bulletin_to_post = Bulletin.homepage.first
+    bulletin_to_post = Bulletin.where(" created_at > ?", 3.days.ago).first
     bulletin_to_post.post_to_facebook
   end
 
