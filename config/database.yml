@@ -11,7 +11,7 @@ test: &test
   encoding: unicode
   database: cd_test
   pool: 5
-  username: postgres
+  username: collegedesis
   password:
 
 production:
