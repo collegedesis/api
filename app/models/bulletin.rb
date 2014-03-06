@@ -67,7 +67,7 @@ class Bulletin < ActiveRecord::Base
 
   def shareable_link
     base = if Rails.env.production?
-     "https://collegedesis.com/"
+     "https://news.collegedesis.com/"
    else
       "http://localhost:3000/"
     end
