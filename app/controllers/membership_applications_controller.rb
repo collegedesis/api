@@ -14,7 +14,6 @@ class MembershipApplicationsController < ApplicationController
   def create
 
     attrs = params[:membership_application]
-    binding.pry
     if current_user
       if attrs[:user_id].to_i == current_user.id
         application = MembershipApplication.find(:first, conditions: attrs) || MembershipApplication.new(attrs)
