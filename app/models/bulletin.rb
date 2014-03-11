@@ -71,7 +71,7 @@ class Bulletin < ActiveRecord::Base
    else
       "http://localhost:3000/"
     end
-    base + "news/#{slug}"
+    base + "#{slug}"
   end
 
   private
