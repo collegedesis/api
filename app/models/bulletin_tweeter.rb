@@ -1,7 +1,7 @@
 class BulletinTweeter
   attr_accessor :bulletin
   TOTAL_TWEET_LENGTH = 140
-  SEPARATOR = " - "
+  SEPARATOR = "-"
 
   def self.tweet_top(num)
     tweetable_bulletins = Bulletin.homepage.limit(num)
@@ -24,12 +24,19 @@ class BulletinTweeter
     end
   end
 
+  def mentioned_author
+    handle = bulletin.author_twitter
+    handle.present? ? "@#{handle}" : nil
+  end
+
   def tweet_text
-    title_to_tweet + SEPARATOR + url_to_tweet
+    str = "#{title_to_tweet} - #{url_to_tweet}"
+    mentioned_author.present? ? "#{str} cc #{mentioned_author}" : str
   end
 
   def available_title_length
-    TOTAL_TWEET_LENGTH - SEPARATOR.length - url_to_tweet.length
+    len = TOTAL_TWEET_LENGTH - (" - ".length) - url_to_tweet.length
+    mentioned_author.present? ? (len - mentioned_author.length) : len
   end
 
   def title_to_tweet

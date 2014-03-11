@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bulletin, focus: true do
+describe Bulletin do
 
   describe "#create" do
     it "can create a valid post bulletin" do
@@ -70,6 +70,7 @@ describe Bulletin, focus: true do
 
   describe "author_name" do
     let(:bulletin) { FactoryGirl.build(:bulletin)}
+
     context "author is organization" do
       it "is the organization's display name" do
         organization = FactoryGirl.build(:organization)
@@ -79,11 +80,32 @@ describe Bulletin, focus: true do
         expect(bulletin.author_name).to eq "Something"
       end
     end
+
     context "author is user" do
       it "is the user's full name" do
         user = FactoryGirl.build(:user, full_name: "Gnarls Berkeley")
         bulletin.author = user
         expect(bulletin.author_name).to eq "Gnarls Berkeley"
+      end
+    end
+  end
+
+  describe "author_twitter" do
+    let(:author_with_twitter) { mock_model("Organization", twitter: "something") }
+    let(:bulletin) { FactoryGirl.build(:bulletin, author: author_with_twitter) }
+
+    context "author has a twitter method" do
+      it "returns author's twitter handle if there is one" do
+        expect(bulletin.author_twitter).to eq "something"
+      end
+    end
+
+    context "author does not have a twitter method" do
+      let(:author_without_twitter) { mock_model("User") }
+      let(:bulletin) { FactoryGirl.build(:bulletin, author: author_without_twitter) }
+
+      it "returns nil" do
+        expect(bulletin.author_twitter).to eq nil
       end
     end
   end

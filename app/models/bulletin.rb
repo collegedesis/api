@@ -24,6 +24,12 @@ class Bulletin < ActiveRecord::Base
   scope :homepage,  -> { recent.where('author_id IS NOT NULL and is_dead = ?', false).order('score DESC') }
   scope :recent,    -> { where(" created_at > ?", 10.days.ago) }
 
+  # TODO figure out why this delegate is not working
+  # delegate :twitter, to: :author, prefix: true, allow_nil: true
+  def author_twitter
+    author.send(:twitter) if author.respond_to?(:twitter)
+  end
+
   def self.find_by_title(title)
     Bulletin.where("lower(title) = lower(:title)", title: title).first
   end
