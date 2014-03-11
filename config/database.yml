@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: cd_dev_old
+  database: cd_dev
   pool: 5
   username: collegedesis
   password:
