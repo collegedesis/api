@@ -8,11 +8,12 @@ class SessionsController < ApplicationController
       render json: user.session_api_key, status: 201
     else
       if user
-        puts "FAIL: #{user.full_name} was not able to authenticate"
+        msg = "Error: Wrong password for #{user.email}."
       else
-        puts "FAIL: #{params[:session][:email]} does not have an account."
+        msg = "Error: Could not find account with email: #{params[:session][:email]}."
       end
-      render json: {}, status: 401
+      puts msg
+      render json: msg, status: 401
     end
   end
 
